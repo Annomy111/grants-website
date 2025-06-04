@@ -1,0 +1,19 @@
+{
+  "name": "civil-society-grants",
+  "version": "1.0.0",
+  "description": "Civil Society Grants Database - Full Stack Application",
+  "scripts": {
+    "test": "cd client && npm test",
+    "test:client": "cd client && npm test",
+    "test:server": "echo 'No server tests configured yet'",
+    "start:client": "cd client && npm start",
+    "start:server": "cd server && npm start",
+    "dev:server": "cd server && npm run dev",
+    "build": "cd client && npm run build",
+    "install:all": "npm install && cd client && npm install && cd ../server && npm install"
+  },
+  "dependencies": {
+    "csv-parser": "^3.2.0",
+    "puppeteer": "^24.9.0"
+  }
+}

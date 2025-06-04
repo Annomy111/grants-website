@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "puppeteer": {
+      "command": "/Users/winzendwyers/grants website/client/puppeteer-mcp-server/dist/index.js",
+      "args": [],
+      "env": {}
+    }
+  }
+}

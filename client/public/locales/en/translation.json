@@ -1,0 +1,106 @@
+{
+  "appName": "Civil Society Grants Database",
+  "navigation": {
+    "home": "Home",
+    "grants": "Grants",
+    "blog": "Blog",
+    "about": "About",
+    "admin": "Admin"
+  },
+  "languages": {
+    "en": "English",
+    "uk": "Ukrainian"
+  },
+  "home": {
+    "title": "Find Grants for Civil Society in Ukraine",
+    "subtitle": "A comprehensive database of grants for civil society organizations",
+    "description": "Search through our database of grants and funding opportunities for civil society organizations in Ukraine and internationally. Filter by criteria, deadlines, and funding amounts to find the perfect match for your organization.",
+    "browseGrants": "Browse Grants",
+    "updateMessage": "Last updated:",
+    "featuredGrants": "Featured Grants",
+    "upcomingDeadlines": "Upcoming Deadlines",
+    "viewAll": "View All Grants"
+  },
+  "grants": {
+    "search": "Search Grants",
+    "searchPlaceholder": "Search by keyword...",
+    "filters": "Filters",
+    "resetFilters": "Reset Filters",
+    "organization": "Funding Organization",
+    "country": "Country/Region",
+    "focusArea": "Focus Area",
+    "amount": "Grant Amount",
+    "deadline": "Application Deadline",
+    "noResults": "No grants found matching your criteria",
+    "resultsCount": "Found {{count}} grant",
+    "resultsCount_plural": "Found {{count}} grants",
+    "viewDetails": "View Details",
+    "eligibility": "Eligibility Criteria",
+    "duration": "Duration",
+    "website": "Official Website",
+    "applyNow": "Apply Now",
+    "filterByAmount": "Filter by Amount",
+    "minAmount": "Min Amount",
+    "maxAmount": "Max Amount",
+    "filterByDeadline": "Filter by Deadline",
+    "beforeDate": "Before Date",
+    "afterDate": "After Date",
+    "sortBy": "Sort By",
+    "sortOptions": {
+      "nameAsc": "Name (A-Z)",
+      "nameDesc": "Name (Z-A)",
+      "deadlineAsc": "Deadline (Soonest)",
+      "deadlineDesc": "Deadline (Latest)",
+      "amountAsc": "Amount (Low to High)",
+      "amountDesc": "Amount (High to Low)"
+    }
+  },
+  "grantDetail": {
+    "backToGrants": "Back to Grants",
+    "grantDetails": "Grant Details",
+    "organization": "Funding Organization",
+    "country": "Country/Region",
+    "eligibility": "Eligibility Criteria",
+    "focusAreas": "Focus Areas",
+    "amount": "Grant Amount",
+    "deadline": "Application Deadline",
+    "duration": "Duration",
+    "website": "Website",
+    "applyNow": "Apply Now"
+  },
+  "admin": {
+    "title": "Admin Panel",
+    "updateDatabase": "Update Database",
+    "uploadCsv": "Upload CSV File",
+    "uploadInstructions": "Upload a new CSV file to update the grants database. The file should have the same structure as the original database.",
+    "fileStructure": "Required Column Structure",
+    "reloadDatabase": "Reload Database",
+    "reloadSuccess": "Database reloaded successfully",
+    "uploadSuccess": "File uploaded successfully",
+    "uploadError": "Error uploading file"
+  },
+  "about": {
+    "title": "About This Database",
+    "purpose": "Purpose",
+    "purposeText": "This grants database aims to connect Ukrainian civil society organizations with funding opportunities to support their important work.",
+    "howToUse": "How to Use",
+    "howToUseText": "Use the search and filter functions to find grants that match your organization's needs. Each grant listing provides key information and links to official application pages.",
+    "contact": "Contact",
+    "contactText": "For questions or to submit grant information, please contact us."
+  },
+  "footer": {
+    "rights": "All Rights Reserved",
+    "disclaimer": "This database is for informational purposes only. Please verify all information with the official funding organizations."
+  },
+  "blog": {
+    "title": "Blog & News",
+    "subtitle": "Latest updates, success stories, and grant writing tips",
+    "allCategories": "All Categories",
+    "noPosts": "No blog posts found in this category.",
+    "readMore": "Read More",
+    "postNotFound": "Post Not Found",
+    "postNotFoundDesc": "The blog post you are looking for does not exist.",
+    "backToBlog": "Back to Blog",
+    "sharePost": "Share this post"
+  }
+}
