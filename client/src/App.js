@@ -6,6 +6,7 @@ import './App.css';
 // Import Components
 import Header from './components/Header';
 import Footer from './components/Footer';
+import GrantsChatWidget from './components/GrantsChatWidget';
 import HomePage from './pages/HomePage';
 import GrantsPage from './pages/GrantsPage';
 import GrantDetail from './pages/GrantDetail';
@@ -79,6 +80,7 @@ function App() {
                     <HomePage />
                   </main>
                   <Footer />
+                  <GrantsChatWidget />
                 </div>
               } />
               <Route path="/grants" element={
@@ -88,6 +90,7 @@ function App() {
                     <GrantsPage />
                   </main>
                   <Footer />
+                  <GrantsChatWidget />
                 </div>
               } />
               <Route path="/grants/:id" element={
@@ -97,6 +100,7 @@ function App() {
                     <GrantDetail />
                   </main>
                   <Footer />
+                  <GrantsChatWidget />
                 </div>
               } />
               <Route path="/about" element={
@@ -106,6 +110,7 @@ function App() {
                     <AboutPage />
                   </main>
                   <Footer />
+                  <GrantsChatWidget />
                 </div>
               } />
               <Route path="/blog" element={
@@ -115,6 +120,7 @@ function App() {
                     <BlogPage />
                   </main>
                   <Footer />
+                  <GrantsChatWidget />
                 </div>
               } />
               <Route path="/blog/:slug" element={
@@ -124,6 +130,7 @@ function App() {
                     <BlogPostPage />
                   </main>
                   <Footer />
+                  <GrantsChatWidget />
                 </div>
               } />
               
@@ -163,6 +170,7 @@ function App() {
                     <NotFoundPage />
                   </main>
                   <Footer />
+                  <GrantsChatWidget />
                 </div>
               } />
             </Routes>

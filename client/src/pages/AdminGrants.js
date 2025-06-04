@@ -23,7 +23,12 @@ const AdminGrants = () => {
 
   const fetchGrants = async () => {
     try {
-      const response = await axios.get('/api/grants');
+      const token = localStorage.getItem('token');
+      const response = await axios.get('/.netlify/functions/grants', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
       setGrants(response.data);
       setFilteredGrants(response.data);
       setLoading(false);
@@ -63,7 +68,12 @@ const AdminGrants = () => {
     if (!window.confirm('Are you sure you want to delete this grant?')) return;
 
     try {
-      await axios.delete(`/api/grants/${id}`);
+      const token = localStorage.getItem('token');
+      await axios.delete(`/.netlify/functions/grants/${id}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
       fetchGrants();
     } catch (error) {
       console.error('Failed to delete grant:', error);

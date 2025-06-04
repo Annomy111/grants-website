@@ -1,17 +1,53 @@
 [build]
   command = "npm run build"
   publish = "build"
-
+  
 [build.environment]
-  NODE_VERSION = "16.14.0"
+  NODE_VERSION = "18.19.0"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# API routes - proxy to Netlify functions (order matters!)
+[[redirects]]
+  from = "/api/auth/*"
+  to = "/.netlify/functions/auth/:splat"
+  status = 200
 
 [[redirects]]
-  from = "/api/*"
-  to = "https://civil-society-grants-api.netlify.app/api/:splat"
+  from = "/api/grants/*"
+  to = "/.netlify/functions/grants/:splat"
   status = 200
-  force = true
 
+[[redirects]]
+  from = "/api/grants"
+  to = "/.netlify/functions/grants"
+  status = 200
+
+[[redirects]]
+  from = "/api/chat/grants"
+  to = "/.netlify/functions/chat"
+  status = 200
+
+# SPA routing for everything else
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+# Headers for better caching
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    cache-control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    cache-control = "public, max-age=300"
+
+[[headers]]
+  for = "*.html"
+  [headers.values]
+    cache-control = "public, max-age=0, must-revalidate"

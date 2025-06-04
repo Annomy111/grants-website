@@ -16,7 +16,13 @@ const AdminBlog = () => {
 
   const fetchPosts = async () => {
     try {
-      const response = await axios.get('/api/blog?status=all');
+      // Get all posts (published and drafts) for admin view
+      const token = localStorage.getItem('token');
+      const response = await axios.get('/.netlify/functions/blog', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
       setPosts(response.data);
       setLoading(false);
     } catch (error) {
@@ -29,7 +35,12 @@ const AdminBlog = () => {
     if (!window.confirm('Are you sure you want to delete this post?')) return;
 
     try {
-      await axios.delete(`/api/blog/${id}`);
+      const token = localStorage.getItem('token');
+      await axios.delete(`/.netlify/functions/blog/${id}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
       fetchPosts();
     } catch (error) {
       console.error('Failed to delete post:', error);
@@ -39,7 +50,12 @@ const AdminBlog = () => {
 
   const handleStatusChange = async (id, newStatus) => {
     try {
-      await axios.put(`/api/blog/${id}`, { status: newStatus });
+      const token = localStorage.getItem('token');
+      await axios.put(`/.netlify/functions/blog/${id}`, { status: newStatus }, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
       fetchPosts();
     } catch (error) {
       console.error('Failed to update post status:', error);

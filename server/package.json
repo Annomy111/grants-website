@@ -23,12 +23,14 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.0.3",
     "multer": "^2.0.0",
+    "node-cache": "^5.1.2",
     "path": "^0.12.7",
     "puppeteer": "^24.9.0",
     "rss-parser": "^3.13.0",
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
+    "concurrently": "^9.1.2",
     "nodemon": "^2.0.22"
   }
 }

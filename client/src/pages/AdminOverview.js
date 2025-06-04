@@ -27,8 +27,15 @@ const AdminOverview = () => {
 
   const fetchDashboardData = async () => {
     try {
+      const token = localStorage.getItem('token');
+      const authHeaders = {
+        'Authorization': `Bearer ${token}`
+      };
+
       // Fetch grants
-      const grantsResponse = await axios.get('/api/grants');
+      const grantsResponse = await axios.get('/.netlify/functions/grants', {
+        headers: authHeaders
+      });
       const grants = grantsResponse.data;
       
       // Calculate stats
@@ -40,7 +47,9 @@ const AdminOverview = () => {
       }).length;
 
       // Fetch blog posts
-      const postsResponse = await axios.get('/api/blog?status=all');
+      const postsResponse = await axios.get('/.netlify/functions/blog', {
+        headers: authHeaders
+      });
       const posts = postsResponse.data;
       const publishedPosts = posts.filter(post => post.status === 'published').length;
 

@@ -2,12 +2,13 @@ const express = require('express');
 const { body, validationResult } = require('express-validator');
 const db = require('../database/db');
 const { authMiddleware } = require('../middleware/auth');
+const { cacheMiddleware, clearCache } = require('../middleware/cache');
 
 const router = express.Router();
 
 
-// Get filter options
-router.get('/filters', async (req, res) => {
+// Get filter options (cached for 10 minutes)
+router.get('/filters', cacheMiddleware(600), async (req, res) => {
   try {
     const organizations = await db.all('SELECT DISTINCT funding_organization FROM grants WHERE funding_organization IS NOT NULL ORDER BY funding_organization');
     const countries = await db.all('SELECT DISTINCT country_region FROM grants WHERE country_region IS NOT NULL ORDER BY country_region');
@@ -31,8 +32,8 @@ router.get('/filters', async (req, res) => {
   }
 });
 
-// Get all grants (with optional filters)
-router.get('/', async (req, res) => {
+// Get all grants (with optional filters) - cached for 5 minutes
+router.get('/', cacheMiddleware(300), async (req, res) => {
   const { 
     query, 
     organization, 
@@ -85,8 +86,8 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Get single grant (must be after other specific routes)
-router.get('/:id', async (req, res) => {
+// Get single grant (must be after other specific routes) - cached for 15 minutes
+router.get('/:id', cacheMiddleware(900), async (req, res) => {
   try {
     const grant = await db.get('SELECT * FROM grants WHERE id = ?', [req.params.id]);
     if (!grant) {
@@ -153,6 +154,10 @@ router.post('/', authMiddleware, [
     );
 
     const newGrant = await db.get('SELECT * FROM grants WHERE id = ?', [result.id]);
+    
+    // Clear relevant caches
+    clearCache('/api/grants');
+    
     res.status(201).json(newGrant);
   } catch (error) {
     console.error('Create grant error:', error);
@@ -191,6 +196,10 @@ router.put('/:id', authMiddleware, async (req, res) => {
     );
 
     const updatedGrant = await db.get('SELECT * FROM grants WHERE id = ?', [req.params.id]);
+    
+    // Clear relevant caches
+    clearCache('/api/grants');
+    
     res.json(updatedGrant);
   } catch (error) {
     console.error('Update grant error:', error);
@@ -202,6 +211,10 @@ router.put('/:id', authMiddleware, async (req, res) => {
 router.delete('/:id', authMiddleware, async (req, res) => {
   try {
     await db.run('DELETE FROM grants WHERE id = ?', [req.params.id]);
+    
+    // Clear relevant caches
+    clearCache('/api/grants');
+    
     res.json({ message: 'Grant deleted successfully' });
   } catch (error) {
     console.error('Delete grant error:', error);

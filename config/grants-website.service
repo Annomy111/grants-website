@@ -1,0 +1,39 @@
+# Systemd service file for Civil Society Grants Website
+# Copy to /etc/systemd/system/grants-website.service
+# Enable: sudo systemctl enable grants-website
+# Start: sudo systemctl start grants-website
+
+[Unit]
+Description=Civil Society Grants Website
+Documentation=https://github.com/yourrepo/grants-website
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/path/to/your/app/server
+Environment=NODE_ENV=production
+Environment=PATH=/usr/bin:/usr/local/bin:/home/www-data/.nvm/versions/node/v18.19.0/bin
+ExecStart=/home/www-data/.nvm/versions/node/v18.19.0/bin/node server.js
+Restart=on-failure
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=grants-website
+
+# Security
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/path/to/your/app
+
+# Resource limits
+LimitNOFILE=65536
+LimitNPROC=4096
+
+# Environment files
+EnvironmentFile=-/path/to/your/app/server/.env
+
+[Install]
+WantedBy=multi-user.target

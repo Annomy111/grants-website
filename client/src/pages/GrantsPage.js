@@ -38,11 +38,11 @@ const GrantsPage = () => {
         let filtersData;
 
         try {
-          // First try to fetch from API
-          const grantsResponse = await axios.get('/api/grants');
+          // First try to fetch from API (direct function endpoints)
+          const grantsResponse = await axios.get('/.netlify/functions/grants');
           grantsData = grantsResponse.data;
           
-          const filtersResponse = await axios.get('/api/filters');
+          const filtersResponse = await axios.get('/.netlify/functions/grants/filters');
           filtersData = filtersResponse.data;
           
           console.log('Loaded data from API endpoint');
@@ -98,19 +98,24 @@ const GrantsPage = () => {
       };
 
       grants.forEach(grant => {
+        // Support both database format and static JSON format
+        const organization = grant.funding_organization || grant["Funding Organization"];
+        const country = grant.country_region || grant["Country/Region"];
+        const focusAreas = grant.focus_areas || grant["Focus Areas"];
+
         // Organizations
-        if (grant.funding_organization && !filters.organizations.includes(grant.funding_organization)) {
-          filters.organizations.push(grant.funding_organization);
+        if (organization && !filters.organizations.includes(organization)) {
+          filters.organizations.push(organization);
         }
 
         // Countries
-        if (grant.country_region && !filters.countries.includes(grant.country_region)) {
-          filters.countries.push(grant.country_region);
+        if (country && !filters.countries.includes(country)) {
+          filters.countries.push(country);
         }
 
         // Focus Areas - these might be comma-separated
-        if (grant.focus_areas) {
-          const areas = grant.focus_areas.split(',').map(area => area.trim());
+        if (focusAreas) {
+          const areas = focusAreas.split(',').map(area => area.trim());
           areas.forEach(area => {
             if (!filters.focusAreas.includes(area)) {
               filters.focusAreas.push(area);
@@ -199,44 +204,53 @@ const GrantsPage = () => {
   const applyFilters = useCallback(() => {
     let filtered = [...grants];
 
-    // Text search
+    // Text search - support both data formats
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
       filtered = filtered.filter(
-        grant =>
-          grant.grant_name?.toLowerCase().includes(term) ||
-          grant.funding_organization?.toLowerCase().includes(term) ||
-          grant.focus_areas?.toLowerCase().includes(term) ||
-          grant.eligibility_criteria?.toLowerCase().includes(term)
+        grant => {
+          const grantName = grant.grant_name || grant["Grant Name"] || '';
+          const organization = grant.funding_organization || grant["Funding Organization"] || '';
+          const focusAreas = grant.focus_areas || grant["Focus Areas"] || '';
+          const eligibility = grant.eligibility_criteria || grant["Eligibility Criteria"] || '';
+          
+          return grantName.toLowerCase().includes(term) ||
+                 organization.toLowerCase().includes(term) ||
+                 focusAreas.toLowerCase().includes(term) ||
+                 eligibility.toLowerCase().includes(term);
+        }
       );
     }
 
     // Organization filter
     if (selectedOrganization) {
-      filtered = filtered.filter(grant =>
-        grant.funding_organization === selectedOrganization
-      );
+      filtered = filtered.filter(grant => {
+        const organization = grant.funding_organization || grant["Funding Organization"];
+        return organization === selectedOrganization;
+      });
     }
 
     // Country filter
     if (selectedCountry) {
-      filtered = filtered.filter(grant =>
-        grant.country_region === selectedCountry
-      );
+      filtered = filtered.filter(grant => {
+        const country = grant.country_region || grant["Country/Region"];
+        return country === selectedCountry;
+      });
     }
 
     // Focus area filter
     if (selectedFocusArea) {
-      filtered = filtered.filter(grant =>
-        grant.focus_areas?.toLowerCase().includes(selectedFocusArea.toLowerCase())
-      );
+      filtered = filtered.filter(grant => {
+        const focusAreas = grant.focus_areas || grant["Focus Areas"] || '';
+        return focusAreas.toLowerCase().includes(selectedFocusArea.toLowerCase());
+      });
     }
 
     // Grant amount filter
     if (minAmount || maxAmount) {
       filtered = filtered.filter(grant => {
         // Extract numbers from the grant amount field
-        const amountText = grant.grant_amount || '';
+        const amountText = grant.grant_amount || grant["Grant Amount"] || '';
         const amountMatch = amountText.match(/(\d[\d.,]*)/g);
         
         if (!amountMatch) return false;
@@ -258,9 +272,10 @@ const GrantsPage = () => {
       const filterDate = new Date(deadlineDate);
       
       filtered = filtered.filter(grant => {
-        if (!grant.application_deadline) return false;
+        const deadline = grant.application_deadline || grant["Application Deadline"];
+        if (!deadline) return false;
         
-        const grantDeadline = new Date(grant.application_deadline);
+        const grantDeadline = new Date(deadline);
         
         if (isNaN(grantDeadline.getTime())) return false;
         
@@ -274,9 +289,10 @@ const GrantsPage = () => {
       today.setHours(0, 0, 0, 0); // Set to start of today
       
       filtered = filtered.filter(grant => {
-        if (!grant.application_deadline) return true; // Keep grants without deadlines
+        const deadlineField = grant.application_deadline || grant["Application Deadline"];
+        if (!deadlineField) return true; // Keep grants without deadlines
         
-        const deadline = new Date(grant.application_deadline);
+        const deadline = new Date(deadlineField);
         if (isNaN(deadline.getTime())) return true; // Keep grants with invalid dates
         
         return deadline >= today; // Only show grants with deadlines today or in the future
@@ -540,7 +556,8 @@ const GrantsPage = () => {
               ) : (
                 <div className="space-y-6">
                   {filteredGrants.map((grant, index) => {
-                    const daysDiff = calculateDaysRemaining(grant.application_deadline);
+                    const deadline = grant.application_deadline || grant["Application Deadline"];
+                    const daysDiff = calculateDaysRemaining(deadline);
                     const isExpired = daysDiff !== null && daysDiff < 0;
                     const isUrgent = daysDiff !== null && daysDiff >= 0 && daysDiff <= 7;
                                         
@@ -555,22 +572,32 @@ const GrantsPage = () => {
                         } transition-all duration-200`}
                       >
                         <div className={`px-6 py-4 border-b ${darkMode ? 'bg-gray-700 border-gray-600' : 'bg-blue-50 border-blue-100'}`}>
-                          <h2 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-blue-800'}`}>{grant.grant_name}</h2>
-                          <p className={`${darkMode ? 'text-blue-300' : 'text-blue-600'}`}>{grant.funding_organization}</p>
+                          <h2 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-blue-800'}`}>
+                            {grant.grant_name || grant["Grant Name"]}
+                          </h2>
+                          <p className={`${darkMode ? 'text-blue-300' : 'text-blue-600'}`}>
+                            {grant.funding_organization || grant["Funding Organization"]}
+                          </p>
                         </div>
                         <div className="p-6">
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                             <div>
                               <h3 className={`font-semibold text-sm uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-700'}`}>{t('grants.country')}</h3>
-                              <p className={`${darkMode ? 'text-gray-300' : 'text-gray-800'} mt-1`}>{grant.country_region}</p>
+                              <p className={`${darkMode ? 'text-gray-300' : 'text-gray-800'} mt-1`}>
+                                {grant.country_region || grant["Country/Region"]}
+                              </p>
                             </div>
                             <div>
                               <h3 className={`font-semibold text-sm uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-700'}`}>{t('grants.focusArea')}</h3>
-                              <p className={`${darkMode ? 'text-gray-300' : 'text-gray-800'} mt-1`}>{truncateText(grant.focus_areas, 100)}</p>
+                              <p className={`${darkMode ? 'text-gray-300' : 'text-gray-800'} mt-1`}>
+                                {truncateText(grant.focus_areas || grant["Focus Areas"], 100)}
+                              </p>
                             </div>
                             <div>
                               <h3 className={`font-semibold text-sm uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-700'}`}>{t('grants.amount')}</h3>
-                              <p className={`${darkMode ? 'text-gray-300' : 'text-gray-800'} mt-1 font-medium`}>{grant.grant_amount || 'Not specified'}</p>
+                              <p className={`${darkMode ? 'text-gray-300' : 'text-gray-800'} mt-1 font-medium`}>
+                                {grant.grant_amount || grant["Grant Amount"] || 'Not specified'}
+                              </p>
                             </div>
                             <div>
                               <h3 className={`font-semibold text-sm uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-700'}`}>{t('grants.deadline')}</h3>
@@ -582,7 +609,7 @@ const GrantsPage = () => {
                                       ? (darkMode ? 'text-orange-400' : 'text-orange-600') 
                                       : (darkMode ? 'text-yellow-400' : 'text-yellow-600')
                                 }`}>
-                                  {formatDate(grant.application_deadline)}
+                                  {formatDate(grant.application_deadline || grant["Application Deadline"])}
                                 </p>
                                 {isExpired && (
                                   <div className={`text-xs mt-1 ${darkMode ? 'text-red-400' : 'text-red-600'} font-medium`}>
@@ -600,20 +627,24 @@ const GrantsPage = () => {
                           
                           <div className="mb-4">
                             <h3 className={`font-semibold text-sm uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-700'}`}>{t('grants.eligibility')}</h3>
-                            <p className={`${darkMode ? 'text-gray-300' : 'text-gray-800'} mt-1`}>{truncateText(grant.eligibility_criteria, 150)}</p>
+                            <p className={`${darkMode ? 'text-gray-300' : 'text-gray-800'} mt-1`}>
+                              {truncateText(grant.eligibility_criteria || grant["Eligibility Criteria"], 150)}
+                            </p>
                           </div>
                           
                           <div className={`flex justify-between items-center flex-wrap gap-2 border-t pt-4 mt-4 ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}>
                             <div>
                               <span className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'} mr-2`}>{t('grants.duration')}:</span>
-                              <span className={`text-sm font-medium ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>{grant.duration || 'Not specified'}</span>
+                              <span className={`text-sm font-medium ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                                {grant.duration || grant["Duration"] || 'Not specified'}
+                              </span>
                             </div>
                             <div className="flex space-x-2">
-                              {grant.website_link && (
+                              {(grant.website_link || grant["Website Link"]) && (
                                 <a 
                                   href={(() => {
                                     // Extract URL from the Website Link field which may contain label:url format
-                                    const link = grant.website_link;
+                                    const link = grant.website_link || grant["Website Link"];
                                     const urlPart = link.includes(':http') ? link.substring(link.indexOf(':http') + 1) : link;
                                     return urlPart.startsWith('http') ? urlPart : `https://${urlPart}`;
                                   })()} 

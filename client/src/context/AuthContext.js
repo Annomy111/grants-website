@@ -1,5 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import axios from 'axios';
+import { supabase } from '../lib/supabase';
 
 const AuthContext = createContext();
 
@@ -28,7 +29,7 @@ export const AuthProvider = ({ children }) => {
 
   const fetchUser = async () => {
     try {
-      const response = await axios.get('/api/auth/me');
+      const response = await axios.get('/.netlify/functions/auth/me');
       setUser(response.data);
     } catch (error) {
       console.error('Failed to fetch user:', error);
@@ -42,7 +43,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (username, password) => {
     try {
       setError(null);
-      const response = await axios.post('/api/auth/login', { username, password });
+      const response = await axios.post('/.netlify/functions/auth/login', { username, password });
       const { token, user } = response.data;
       
       localStorage.setItem('authToken', token);
@@ -65,7 +66,7 @@ export const AuthProvider = ({ children }) => {
 
   const changePassword = async (currentPassword, newPassword) => {
     try {
-      await axios.post('/api/auth/change-password', { currentPassword, newPassword });
+      await axios.post('/.netlify/functions/auth/change-password', { currentPassword, newPassword });
       return { success: true };
     } catch (error) {
       const message = error.response?.data?.error || 'Failed to change password';

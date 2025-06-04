@@ -6,8 +6,8 @@ node_modules/
 # Testing
 /coverage
 /test-reports
-test-*.js
-debug-*.js
+tests/debug/
+tests/screenshots/
 *.test.js
 *.spec.js
 
@@ -77,3 +77,5 @@ debug-screenshots/
 # Debug files
 debug-report.json
 error-screenshot.png
+# Local Netlify folder
+.netlify

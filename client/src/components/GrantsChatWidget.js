@@ -90,7 +90,7 @@ const GrantsChatWidget = () => {
     setIsTyping(true);
 
     try {
-      const response = await axios.post('/api/chat/grants', {
+      const response = await axios.post('/.netlify/functions/chat', {
         message: messageText.trim(),
         language: language,
         conversationHistory: messages.slice(-5) // Send last 5 messages for context

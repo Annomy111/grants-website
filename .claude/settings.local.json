@@ -21,7 +21,20 @@
       "Bash(curl:*)",
       "Bash(sed:*)",
       "Bash(git add:*)",
-      "Bash(git init:*)"
+      "Bash(git init:*)",
+      "Bash(git config:*)",
+      "Bash(git commit:*)",
+      "Bash(kill:*)",
+      "Bash(rg:*)",
+      "Bash(mv:*)",
+      "Bash(chmod:*)",
+      "Bash(npx:*)",
+      "Bash(netlify:*)",
+      "Bash(npm run build:*)",
+      "Bash(\"/Users/winzendwyers/grants website/deploy-script.sh\")",
+      "Bash(export:*)",
+      "Bash(supabase:*)",
+      "Bash(jq:*)"
     ],
     "deny": []
   },

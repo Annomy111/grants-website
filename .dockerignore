@@ -1,0 +1,73 @@
+# Docker ignore file
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Testing
+tests/debug/
+tests/screenshots/
+tests/utilities/
+*.test.js
+*.spec.js
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Dependency directories
+.npm
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Production build (will be copied from build stage)
+client/build
+
+# Environment files (will be mounted)
+.env
+.env.local
+.env.development
+.env.production
+
+# Database (will be mounted as volume)
+server/database/*.db
+
+# Uploads (will be mounted as volume)
+uploads/
+
+# Backups (will be mounted as volume)
+backups/
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Screenshots and debug files
+*.png
+*.jpg
+*.jpeg
+
+# Temporary files
+*.tmp
+*.temp

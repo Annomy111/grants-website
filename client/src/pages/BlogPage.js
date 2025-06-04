@@ -16,12 +16,17 @@ const BlogPage = () => {
 
   useEffect(() => {
     fetchPosts();
-    fetchCategories();
   }, []);
+
+  useEffect(() => {
+    if (posts.length > 0) {
+      fetchCategories();
+    }
+  }, [posts]);
 
   const fetchPosts = async () => {
     try {
-      const response = await axios.get('/api/blog?status=published');
+      const response = await axios.get('/.netlify/functions/blog');
       setPosts(response.data);
       setLoading(false);
     } catch (error) {
@@ -32,8 +37,11 @@ const BlogPage = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get('/api/blog/categories');
-      setCategories(response.data);
+      // Generate categories from posts for now
+      if (posts.length > 0) {
+        const uniqueCategories = [...new Set(posts.map(post => post.category).filter(Boolean))];
+        setCategories(uniqueCategories.map(cat => ({ id: cat, name: cat, slug: cat })));
+      }
     } catch (error) {
       console.error('Failed to fetch categories:', error);
     }
@@ -57,7 +65,7 @@ const BlogPage = () => {
   const filteredPosts = selectedCategory === 'all' 
     ? posts 
     : posts.filter(post => 
-        post.categories && post.categories.includes(selectedCategory)
+        post.category && post.category === selectedCategory
       );
 
   if (loading) {
@@ -164,23 +172,18 @@ const BlogPage = () => {
                     </div>
                   </div>
                   
-                  {post.categories && (
+                  {post.category && (
                     <div className="flex items-center mb-4">
                       <TagIcon className={`h-4 w-4 mr-2 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`} />
-                      <div className="flex flex-wrap gap-1">
-                        {post.categories.split(',').map((cat, idx) => (
-                          <span
-                            key={idx}
-                            className={`text-xs px-2 py-1 rounded-full ${
-                              darkMode 
-                                ? 'bg-gray-700 text-gray-300'
-                                : 'bg-gray-100 text-gray-700'
-                            }`}
-                          >
-                            {cat.trim()}
-                          </span>
-                        ))}
-                      </div>
+                      <span
+                        className={`text-xs px-2 py-1 rounded-full ${
+                          darkMode 
+                            ? 'bg-gray-700 text-gray-300'
+                            : 'bg-gray-100 text-gray-700'
+                        }`}
+                      >
+                        {post.category}
+                      </span>
                     </div>
                   )}
                   

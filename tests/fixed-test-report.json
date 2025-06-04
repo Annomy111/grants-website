@@ -1,0 +1,89 @@
+{
+  "summary": {
+    "total": 10,
+    "passed": 8,
+    "failed": 2,
+    "passRate": "80.0%",
+    "timestamp": "2025-06-04T20:43:35.452Z",
+    "environment": {
+      "url": "https://civil-society-grants-database.netlify.app",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      }
+    }
+  },
+  "results": [
+    {
+      "test": "Grants API",
+      "passed": true,
+      "details": "Status: 200, Array length: 50",
+      "timestamp": "2025-06-04T20:43:19.785Z"
+    },
+    {
+      "test": "Filters API",
+      "passed": true,
+      "details": "Status: 200, Keys: organizations, countries, focusAreas",
+      "timestamp": "2025-06-04T20:43:20.213Z"
+    },
+    {
+      "test": "Grants Cards Found",
+      "passed": true,
+      "details": "Found 43 grant cards",
+      "timestamp": "2025-06-04T20:43:27.351Z"
+    },
+    {
+      "test": "Grants Content Valid",
+      "passed": true,
+      "details": "Content check: Country/RegionFocus AreaGrant AmountNot specifiedApplication DeadlineEligibility CriteriaDuration:Not specified",
+      "timestamp": "2025-06-04T20:43:27.351Z"
+    },
+    {
+      "test": "Search Function",
+      "passed": true,
+      "details": "Search executed successfully",
+      "timestamp": "2025-06-04T20:43:30.603Z"
+    },
+    {
+      "test": "Chat Toggle Button",
+      "passed": false,
+      "details": "Chat toggle button not found",
+      "timestamp": "2025-06-04T20:43:34.526Z"
+    },
+    {
+      "test": "Load Time",
+      "passed": true,
+      "details": "922ms (target: <5000ms)",
+      "timestamp": "2025-06-04T20:43:35.450Z"
+    },
+    {
+      "test": "JS Heap Size",
+      "passed": true,
+      "details": "7MB (target: <50MB)",
+      "timestamp": "2025-06-04T20:43:35.450Z"
+    },
+    {
+      "test": "DOM Nodes",
+      "passed": false,
+      "details": "6595 nodes (target: <5000 for React app)",
+      "timestamp": "2025-06-04T20:43:35.450Z"
+    },
+    {
+      "test": "DOM Content Loaded",
+      "passed": true,
+      "details": "0ms (target: <2000ms)",
+      "timestamp": "2025-06-04T20:43:35.452Z"
+    }
+  ],
+  "screenshots": [
+    {
+      "name": "grants-page-loaded",
+      "path": "/Users/winzendwyers/grants website/tests/screenshots/fixed-grants-page-loaded-1749069802262.png"
+    },
+    {
+      "name": "search-results",
+      "path": "/Users/winzendwyers/grants website/tests/screenshots/fixed-search-results-1749069810161.png"
+    }
+  ]
+}

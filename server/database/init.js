@@ -79,7 +79,15 @@ db.serialize(() => {
   db.run(`INSERT OR IGNORE INTO users (username, email, password, role) VALUES (?, ?, ?, ?)`,
     ['mattia', 'mattia@grants.ua', defaultPassword, 'admin']);
 
-  console.log('Database initialized successfully');
+  // Create database indexes for better performance
+  db.run(`CREATE INDEX IF NOT EXISTS idx_grants_funding_organization ON grants(funding_organization)`);
+  db.run(`CREATE INDEX IF NOT EXISTS idx_grants_country_region ON grants(country_region)`);
+  db.run(`CREATE INDEX IF NOT EXISTS idx_grants_focus_areas ON grants(focus_areas)`);
+  db.run(`CREATE INDEX IF NOT EXISTS idx_grants_application_deadline ON grants(application_deadline)`);
+  db.run(`CREATE INDEX IF NOT EXISTS idx_grants_grant_name ON grants(grant_name)`);
+  db.run(`CREATE INDEX IF NOT EXISTS idx_grants_search ON grants(grant_name, funding_organization, focus_areas, eligibility_criteria)`);
+  
+  console.log('Database initialized with indexes successfully');
 });
 
 db.close();
