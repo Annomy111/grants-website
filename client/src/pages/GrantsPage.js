@@ -5,6 +5,7 @@ import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import { format } from 'date-fns';
 import { ThemeContext } from '../context/ThemeContext';
+import GrantsChatWidget from '../components/GrantsChatWidget';
 
 const GrantsPage = () => {
   const { t } = useTranslation();
@@ -641,6 +642,9 @@ const GrantsPage = () => {
           )}
         </div>
       </div>
+      
+      {/* AI Chat Widget */}
+      <GrantsChatWidget />
     </div>
   );
 };

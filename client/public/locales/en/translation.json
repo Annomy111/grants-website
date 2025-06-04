@@ -92,6 +92,13 @@
     "rights": "All Rights Reserved",
     "disclaimer": "This database is for informational purposes only. Please verify all information with the official funding organizations."
   },
+  "chat": {
+    "title": "Grants Assistant",
+    "toggle": "Toggle chat",
+    "placeholder": "Ask about grants...",
+    "recommendedGrants": "Recommended Grants",
+    "deadline": "Deadline"
+  },
   "blog": {
     "title": "Blog & News",
     "subtitle": "Latest updates, success stories, and grant writing tips",
