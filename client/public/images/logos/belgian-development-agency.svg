@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+<script>
+var gform;gform||(document.addEventListener("gform_main_scripts_loaded",function(){gform.scriptsLoaded=!0}),window.addEventListener("DOMContentLoaded",function(){gform.domLoaded=!0}),gform={domLoaded:!1,scriptsLoaded:!1,initializeOnLoaded:function(o){gform.domLoaded&&gform.scriptsLoaded?o():!gform.domLoaded&&gform.scriptsLoaded?window.addEventListener("DOMContentLoaded",o):document.addEventListener("gform_main_scripts_loaded",o)},hooks:{action:{},filter:{}},addAction:function(o,n,r,t){gform.addHook("action",o,n,r,t)},addFilter:function(o,n,r,t){gform.addHook("filter",o,n,r,t)},doAction:function(o){gform.doHook("action",o,arguments)},applyFilters:function(o){return gform.doHook("filter",o,arguments)},removeAction:function(o,n){gform.removeHook("action",o,n)},removeFilter:function(o,n,r){gform.removeHook("filter",o,n,r)},addHook:function(o,n,r,t,i){null==gform.hooks[o][n]&&(gform.hooks[o][n]=[]);var e=gform.hooks[o][n];null==i&&(i=n+"_"+e.length),gform.hooks[o][n].push({tag:i,callable:r,priority:t=null==t?10:t})},doHook:function(n,o,r){var t;if(r=Array.prototype.slice.call(r,1),null!=gform.hooks[n][o]&&((o=gform.hooks[n][o]).sort(function(o,n){return o.priority-n.priority}),o.forEach(function(o){"function"!=typeof(t=o.callable)&&(t=window[t]),"action"==n?t.apply(null,r):r[0]=t.apply(null,r)})),"filter"==n)return r[0]},removeHook:function(o,n,t,i){var r;null!=gform.hooks[o][n]&&(r=(r=gform.hooks[o][n]).filter(function(o,n,r){return!!(null!=i&&i!=o.tag||null!=t&&t!=o.priority)}),gform.hooks[o][n]=r)}});
+</script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <script type="text/javascript">
+	window.dataLayer = window.dataLayer || [];
+
+	function gtag() {
+		dataLayer.
+		push(arguments);
+	}
+
+	gtag("consent", "default", {
+		ad_user_data: "denied",
+		ad_personalization: "denied",
+		ad_storage: "denied",
+		analytics_storage: "denied",
+		functionality_storage: "denied",
+		personalization_storage: "denied",
+		security_storage: "granted",
+		wait_for_update: 500,
+	});
+	gtag("set", "ads_data_redaction", true);
+	gtag("set", "url_passthrough", true);
+</script>
+<script type="text/javascript">
+		(function (w, d, s, l, i) {
+		w[l] = w[l] || [];
+		w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+		var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l !== 'dataLayer' ? '&l=' + l : '';
+		j.async = true;
+		j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+		f.parentNode.insertBefore(j, f);
+	})(
+		window,
+		document,
+		'script',
+		'dataLayer',
+		'GTM-TSB93JR'
+	);
+</script>
+<script type="text/javascript"
+		id="Cookiebot"
+		src="https://consent.cookiebot.com/uc.js"
+		data-implementation="wp"
+		data-cbid="bf06410c-a14c-42fc-ba3e-c76833fbf7ea"
+							async	></script>
+<meta name='robots' content='noindex, follow' />
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	        <link rel="apple-touch-icon" sizes="180x180" href="https://www.enabel.be/app/uploads/2022/06/enabel-favicon-180x180.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="https://www.enabel.be/app/uploads/2022/06/enabel-favicon-32x29.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="https://www.enabel.be/app/uploads/2022/06/enabel-favicon-16x16.png" />
+        
+	<!-- This site is optimized with the Yoast SEO plugin v20.13 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>Page not found - Enabel - Belgian Development Agency |</title>
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:title" content="Page not found - Enabel - Belgian Development Agency |" />
+	<meta property="og:site_name" content="Enabel - Belgian Development Agency |" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.enabel.be/#website","url":"https://www.enabel.be/","name":"Enabel - Belgian Development Agency |","description":"Enabel is the development agency of Belgium’s federal government. We promote sustainable international solidarity.","publisher":{"@id":"https://www.enabel.be/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.enabel.be/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"Organization","@id":"https://www.enabel.be/#organization","name":"Enabel - Belgian Development Agency |","url":"https://www.enabel.be/","logo":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.enabel.be/#/schema/logo/image/","url":"https://www.enabel.be/app/uploads/2022/06/enabel-logo-color.svg","contentUrl":"https://www.enabel.be/app/uploads/2022/06/enabel-logo-color.svg","width":103,"height":35,"caption":"Enabel - Belgian Development Agency |"},"image":{"@id":"https://www.enabel.be/#/schema/logo/image/"},"sameAs":["https://www.facebook.com/EnabelBelgium/","https://twitter.com/Enabel_Belgium","https://www.instagram.com/enabel_be/","https://www.linkedin.com/company/enabel/","https://www.youtube.com/channel/UCHGr3iOQ9n2jORzgtkv5FyQ"]}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel='dns-prefetch' href='//maps.googleapis.com' />
+<link rel='dns-prefetch' href='//kit.fontawesome.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
+<style id='wp-emoji-styles-inline-css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link rel='stylesheet' id='wp-block-library-css' href='https://www.enabel.be/wp/wp-includes/css/dist/block-library/style.min.css?ver=6.7.2' media='all' />
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--primary-50: #F5FBFC;--wp--preset--color--primary-100: #EAF5EE;--wp--preset--color--primary-200: #D2EADB;--wp--preset--color--primary-300: #B9DFC8;--wp--preset--color--primary-400: #9ED2B2;--wp--preset--color--primary-500: rgba(0, 150, 190, 1);--wp--preset--color--primary-600: #5FB580;--wp--preset--color--primary-700: #012D3A;--wp--preset--color--primary-800: #014254;--wp--preset--color--primary-900: #014254;--wp--preset--color--secondary-50: #f0fdfa;--wp--preset--color--secondary-100: #ccfbf1;--wp--preset--color--secondary-200: #99f6e4;--wp--preset--color--secondary-300: #5eead4;--wp--preset--color--secondary-400: #2dd4bf;--wp--preset--color--secondary-500: #14b8a6;--wp--preset--color--secondary-600: #0d9488;--wp--preset--color--secondary-700: #0f766e;--wp--preset--color--secondary-800: #115e59;--wp--preset--color--secondary-900: #134e4a;--wp--preset--color--info-50: #f0f9ff;--wp--preset--color--info-100: #e0f2fe;--wp--preset--color--info-200: #bae6fd;--wp--preset--color--info-300: #7dd3fc;--wp--preset--color--info-400: #38bdf8;--wp--preset--color--info-500: #0ea5e9;--wp--preset--color--info-600: #0284c7;--wp--preset--color--info-700: #0369a1;--wp--preset--color--info-800: #075985;--wp--preset--color--info-900: #0c4a6e;--wp--preset--color--success-50: #ecfdf5;--wp--preset--color--success-100: #d1fae5;--wp--preset--color--success-200: #a7f3d0;--wp--preset--color--success-300: #6ee7b7;--wp--preset--color--success-400: #34d399;--wp--preset--color--success-500: #10b981;--wp--preset--color--success-600: #059669;--wp--preset--color--success-700: #047857;--wp--preset--color--success-800: #065f46;--wp--preset--color--success-900: #064e3b;--wp--preset--color--warning-50: #fffbeb;--wp--preset--color--warning-100: #fef3c7;--wp--preset--color--warning-200: #fde68a;--wp--preset--color--warning-300: #fcd34d;--wp--preset--color--warning-400: #fbbf24;--wp--preset--color--warning-500: #f59e0b;--wp--preset--color--warning-600: #d97706;--wp--preset--color--warning-700: #b45309;--wp--preset--color--warning-800: #92400e;--wp--preset--color--warning-900: #78350f;--wp--preset--color--danger-50: #fef2f2;--wp--preset--color--danger-100: #fee2e2;--wp--preset--color--danger-200: #fecaca;--wp--preset--color--danger-300: #fca5a5;--wp--preset--color--danger-400: #f87171;--wp--preset--color--danger-500: #ef4444;--wp--preset--color--danger-600: #dc2626;--wp--preset--color--danger-700: #b91c1c;--wp--preset--color--danger-800: #991b1b;--wp--preset--color--danger-900: #7f1d1d;--wp--preset--color--light-50: #fafaf9;--wp--preset--color--light-100: #f5f5f4;--wp--preset--color--light-200: #e7e5e4;--wp--preset--color--light-300: #d6d3d1;--wp--preset--color--light-400: #a8a29e;--wp--preset--color--light-500: #78716c;--wp--preset--color--light-600: #57534e;--wp--preset--color--light-700: #44403c;--wp--preset--color--light-800: #292524;--wp--preset--color--light-900: #1c1917;--wp--preset--color--dark-50: #f9fafb;--wp--preset--color--dark-100: #f3f4f6;--wp--preset--color--dark-200: #e5e7eb;--wp--preset--color--dark-300: #d1d5db;--wp--preset--color--dark-400: #9ca3af;--wp--preset--color--dark-500: #6b7280;--wp--preset--color--dark-600: #4b5563;--wp--preset--color--dark-700: #374151;--wp--preset--color--dark-800: #1f2937;--wp--preset--color--dark-900: #111827;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(body) { margin: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){margin-left: auto !important;margin-right: auto !important;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}a:where(:not(.wp-element-button)){text-decoration: underline;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;line-height: inherit;padding: calc(0.667em + 2px) calc(1.333em + 2px);text-decoration: none;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-primary-50-color{color: var(--wp--preset--color--primary-50) !important;}.has-primary-100-color{color: var(--wp--preset--color--primary-100) !important;}.has-primary-200-color{color: var(--wp--preset--color--primary-200) !important;}.has-primary-300-color{color: var(--wp--preset--color--primary-300) !important;}.has-primary-400-color{color: var(--wp--preset--color--primary-400) !important;}.has-primary-500-color{color: var(--wp--preset--color--primary-500) !important;}.has-primary-600-color{color: var(--wp--preset--color--primary-600) !important;}.has-primary-700-color{color: var(--wp--preset--color--primary-700) !important;}.has-primary-800-color{color: var(--wp--preset--color--primary-800) !important;}.has-primary-900-color{color: var(--wp--preset--color--primary-900) !important;}.has-secondary-50-color{color: var(--wp--preset--color--secondary-50) !important;}.has-secondary-100-color{color: var(--wp--preset--color--secondary-100) !important;}.has-secondary-200-color{color: var(--wp--preset--color--secondary-200) !important;}.has-secondary-300-color{color: var(--wp--preset--color--secondary-300) !important;}.has-secondary-400-color{color: var(--wp--preset--color--secondary-400) !important;}.has-secondary-500-color{color: var(--wp--preset--color--secondary-500) !important;}.has-secondary-600-color{color: var(--wp--preset--color--secondary-600) !important;}.has-secondary-700-color{color: var(--wp--preset--color--secondary-700) !important;}.has-secondary-800-color{color: var(--wp--preset--color--secondary-800) !important;}.has-secondary-900-color{color: var(--wp--preset--color--secondary-900) !important;}.has-info-50-color{color: var(--wp--preset--color--info-50) !important;}.has-info-100-color{color: var(--wp--preset--color--info-100) !important;}.has-info-200-color{color: var(--wp--preset--color--info-200) !important;}.has-info-300-color{color: var(--wp--preset--color--info-300) !important;}.has-info-400-color{color: var(--wp--preset--color--info-400) !important;}.has-info-500-color{color: var(--wp--preset--color--info-500) !important;}.has-info-600-color{color: var(--wp--preset--color--info-600) !important;}.has-info-700-color{color: var(--wp--preset--color--info-700) !important;}.has-info-800-color{color: var(--wp--preset--color--info-800) !important;}.has-info-900-color{color: var(--wp--preset--color--info-900) !important;}.has-success-50-color{color: var(--wp--preset--color--success-50) !important;}.has-success-100-color{color: var(--wp--preset--color--success-100) !important;}.has-success-200-color{color: var(--wp--preset--color--success-200) !important;}.has-success-300-color{color: var(--wp--preset--color--success-300) !important;}.has-success-400-color{color: var(--wp--preset--color--success-400) !important;}.has-success-500-color{color: var(--wp--preset--color--success-500) !important;}.has-success-600-color{color: var(--wp--preset--color--success-600) !important;}.has-success-700-color{color: var(--wp--preset--color--success-700) !important;}.has-success-800-color{color: var(--wp--preset--color--success-800) !important;}.has-success-900-color{color: var(--wp--preset--color--success-900) !important;}.has-warning-50-color{color: var(--wp--preset--color--warning-50) !important;}.has-warning-100-color{color: var(--wp--preset--color--warning-100) !important;}.has-warning-200-color{color: var(--wp--preset--color--warning-200) !important;}.has-warning-300-color{color: var(--wp--preset--color--warning-300) !important;}.has-warning-400-color{color: var(--wp--preset--color--warning-400) !important;}.has-warning-500-color{color: var(--wp--preset--color--warning-500) !important;}.has-warning-600-color{color: var(--wp--preset--color--warning-600) !important;}.has-warning-700-color{color: var(--wp--preset--color--warning-700) !important;}.has-warning-800-color{color: var(--wp--preset--color--warning-800) !important;}.has-warning-900-color{color: var(--wp--preset--color--warning-900) !important;}.has-danger-50-color{color: var(--wp--preset--color--danger-50) !important;}.has-danger-100-color{color: var(--wp--preset--color--danger-100) !important;}.has-danger-200-color{color: var(--wp--preset--color--danger-200) !important;}.has-danger-300-color{color: var(--wp--preset--color--danger-300) !important;}.has-danger-400-color{color: var(--wp--preset--color--danger-400) !important;}.has-danger-500-color{color: var(--wp--preset--color--danger-500) !important;}.has-danger-600-color{color: var(--wp--preset--color--danger-600) !important;}.has-danger-700-color{color: var(--wp--preset--color--danger-700) !important;}.has-danger-800-color{color: var(--wp--preset--color--danger-800) !important;}.has-danger-900-color{color: var(--wp--preset--color--danger-900) !important;}.has-light-50-color{color: var(--wp--preset--color--light-50) !important;}.has-light-100-color{color: var(--wp--preset--color--light-100) !important;}.has-light-200-color{color: var(--wp--preset--color--light-200) !important;}.has-light-300-color{color: var(--wp--preset--color--light-300) !important;}.has-light-400-color{color: var(--wp--preset--color--light-400) !important;}.has-light-500-color{color: var(--wp--preset--color--light-500) !important;}.has-light-600-color{color: var(--wp--preset--color--light-600) !important;}.has-light-700-color{color: var(--wp--preset--color--light-700) !important;}.has-light-800-color{color: var(--wp--preset--color--light-800) !important;}.has-light-900-color{color: var(--wp--preset--color--light-900) !important;}.has-dark-50-color{color: var(--wp--preset--color--dark-50) !important;}.has-dark-100-color{color: var(--wp--preset--color--dark-100) !important;}.has-dark-200-color{color: var(--wp--preset--color--dark-200) !important;}.has-dark-300-color{color: var(--wp--preset--color--dark-300) !important;}.has-dark-400-color{color: var(--wp--preset--color--dark-400) !important;}.has-dark-500-color{color: var(--wp--preset--color--dark-500) !important;}.has-dark-600-color{color: var(--wp--preset--color--dark-600) !important;}.has-dark-700-color{color: var(--wp--preset--color--dark-700) !important;}.has-dark-800-color{color: var(--wp--preset--color--dark-800) !important;}.has-dark-900-color{color: var(--wp--preset--color--dark-900) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-primary-50-background-color{background-color: var(--wp--preset--color--primary-50) !important;}.has-primary-100-background-color{background-color: var(--wp--preset--color--primary-100) !important;}.has-primary-200-background-color{background-color: var(--wp--preset--color--primary-200) !important;}.has-primary-300-background-color{background-color: var(--wp--preset--color--primary-300) !important;}.has-primary-400-background-color{background-color: var(--wp--preset--color--primary-400) !important;}.has-primary-500-background-color{background-color: var(--wp--preset--color--primary-500) !important;}.has-primary-600-background-color{background-color: var(--wp--preset--color--primary-600) !important;}.has-primary-700-background-color{background-color: var(--wp--preset--color--primary-700) !important;}.has-primary-800-background-color{background-color: var(--wp--preset--color--primary-800) !important;}.has-primary-900-background-color{background-color: var(--wp--preset--color--primary-900) !important;}.has-secondary-50-background-color{background-color: var(--wp--preset--color--secondary-50) !important;}.has-secondary-100-background-color{background-color: var(--wp--preset--color--secondary-100) !important;}.has-secondary-200-background-color{background-color: var(--wp--preset--color--secondary-200) !important;}.has-secondary-300-background-color{background-color: var(--wp--preset--color--secondary-300) !important;}.has-secondary-400-background-color{background-color: var(--wp--preset--color--secondary-400) !important;}.has-secondary-500-background-color{background-color: var(--wp--preset--color--secondary-500) !important;}.has-secondary-600-background-color{background-color: var(--wp--preset--color--secondary-600) !important;}.has-secondary-700-background-color{background-color: var(--wp--preset--color--secondary-700) !important;}.has-secondary-800-background-color{background-color: var(--wp--preset--color--secondary-800) !important;}.has-secondary-900-background-color{background-color: var(--wp--preset--color--secondary-900) !important;}.has-info-50-background-color{background-color: var(--wp--preset--color--info-50) !important;}.has-info-100-background-color{background-color: var(--wp--preset--color--info-100) !important;}.has-info-200-background-color{background-color: var(--wp--preset--color--info-200) !important;}.has-info-300-background-color{background-color: var(--wp--preset--color--info-300) !important;}.has-info-400-background-color{background-color: var(--wp--preset--color--info-400) !important;}.has-info-500-background-color{background-color: var(--wp--preset--color--info-500) !important;}.has-info-600-background-color{background-color: var(--wp--preset--color--info-600) !important;}.has-info-700-background-color{background-color: var(--wp--preset--color--info-700) !important;}.has-info-800-background-color{background-color: var(--wp--preset--color--info-800) !important;}.has-info-900-background-color{background-color: var(--wp--preset--color--info-900) !important;}.has-success-50-background-color{background-color: var(--wp--preset--color--success-50) !important;}.has-success-100-background-color{background-color: var(--wp--preset--color--success-100) !important;}.has-success-200-background-color{background-color: var(--wp--preset--color--success-200) !important;}.has-success-300-background-color{background-color: var(--wp--preset--color--success-300) !important;}.has-success-400-background-color{background-color: var(--wp--preset--color--success-400) !important;}.has-success-500-background-color{background-color: var(--wp--preset--color--success-500) !important;}.has-success-600-background-color{background-color: var(--wp--preset--color--success-600) !important;}.has-success-700-background-color{background-color: var(--wp--preset--color--success-700) !important;}.has-success-800-background-color{background-color: var(--wp--preset--color--success-800) !important;}.has-success-900-background-color{background-color: var(--wp--preset--color--success-900) !important;}.has-warning-50-background-color{background-color: var(--wp--preset--color--warning-50) !important;}.has-warning-100-background-color{background-color: var(--wp--preset--color--warning-100) !important;}.has-warning-200-background-color{background-color: var(--wp--preset--color--warning-200) !important;}.has-warning-300-background-color{background-color: var(--wp--preset--color--warning-300) !important;}.has-warning-400-background-color{background-color: var(--wp--preset--color--warning-400) !important;}.has-warning-500-background-color{background-color: var(--wp--preset--color--warning-500) !important;}.has-warning-600-background-color{background-color: var(--wp--preset--color--warning-600) !important;}.has-warning-700-background-color{background-color: var(--wp--preset--color--warning-700) !important;}.has-warning-800-background-color{background-color: var(--wp--preset--color--warning-800) !important;}.has-warning-900-background-color{background-color: var(--wp--preset--color--warning-900) !important;}.has-danger-50-background-color{background-color: var(--wp--preset--color--danger-50) !important;}.has-danger-100-background-color{background-color: var(--wp--preset--color--danger-100) !important;}.has-danger-200-background-color{background-color: var(--wp--preset--color--danger-200) !important;}.has-danger-300-background-color{background-color: var(--wp--preset--color--danger-300) !important;}.has-danger-400-background-color{background-color: var(--wp--preset--color--danger-400) !important;}.has-danger-500-background-color{background-color: var(--wp--preset--color--danger-500) !important;}.has-danger-600-background-color{background-color: var(--wp--preset--color--danger-600) !important;}.has-danger-700-background-color{background-color: var(--wp--preset--color--danger-700) !important;}.has-danger-800-background-color{background-color: var(--wp--preset--color--danger-800) !important;}.has-danger-900-background-color{background-color: var(--wp--preset--color--danger-900) !important;}.has-light-50-background-color{background-color: var(--wp--preset--color--light-50) !important;}.has-light-100-background-color{background-color: var(--wp--preset--color--light-100) !important;}.has-light-200-background-color{background-color: var(--wp--preset--color--light-200) !important;}.has-light-300-background-color{background-color: var(--wp--preset--color--light-300) !important;}.has-light-400-background-color{background-color: var(--wp--preset--color--light-400) !important;}.has-light-500-background-color{background-color: var(--wp--preset--color--light-500) !important;}.has-light-600-background-color{background-color: var(--wp--preset--color--light-600) !important;}.has-light-700-background-color{background-color: var(--wp--preset--color--light-700) !important;}.has-light-800-background-color{background-color: var(--wp--preset--color--light-800) !important;}.has-light-900-background-color{background-color: var(--wp--preset--color--light-900) !important;}.has-dark-50-background-color{background-color: var(--wp--preset--color--dark-50) !important;}.has-dark-100-background-color{background-color: var(--wp--preset--color--dark-100) !important;}.has-dark-200-background-color{background-color: var(--wp--preset--color--dark-200) !important;}.has-dark-300-background-color{background-color: var(--wp--preset--color--dark-300) !important;}.has-dark-400-background-color{background-color: var(--wp--preset--color--dark-400) !important;}.has-dark-500-background-color{background-color: var(--wp--preset--color--dark-500) !important;}.has-dark-600-background-color{background-color: var(--wp--preset--color--dark-600) !important;}.has-dark-700-background-color{background-color: var(--wp--preset--color--dark-700) !important;}.has-dark-800-background-color{background-color: var(--wp--preset--color--dark-800) !important;}.has-dark-900-background-color{background-color: var(--wp--preset--color--dark-900) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-primary-50-border-color{border-color: var(--wp--preset--color--primary-50) !important;}.has-primary-100-border-color{border-color: var(--wp--preset--color--primary-100) !important;}.has-primary-200-border-color{border-color: var(--wp--preset--color--primary-200) !important;}.has-primary-300-border-color{border-color: var(--wp--preset--color--primary-300) !important;}.has-primary-400-border-color{border-color: var(--wp--preset--color--primary-400) !important;}.has-primary-500-border-color{border-color: var(--wp--preset--color--primary-500) !important;}.has-primary-600-border-color{border-color: var(--wp--preset--color--primary-600) !important;}.has-primary-700-border-color{border-color: var(--wp--preset--color--primary-700) !important;}.has-primary-800-border-color{border-color: var(--wp--preset--color--primary-800) !important;}.has-primary-900-border-color{border-color: var(--wp--preset--color--primary-900) !important;}.has-secondary-50-border-color{border-color: var(--wp--preset--color--secondary-50) !important;}.has-secondary-100-border-color{border-color: var(--wp--preset--color--secondary-100) !important;}.has-secondary-200-border-color{border-color: var(--wp--preset--color--secondary-200) !important;}.has-secondary-300-border-color{border-color: var(--wp--preset--color--secondary-300) !important;}.has-secondary-400-border-color{border-color: var(--wp--preset--color--secondary-400) !important;}.has-secondary-500-border-color{border-color: var(--wp--preset--color--secondary-500) !important;}.has-secondary-600-border-color{border-color: var(--wp--preset--color--secondary-600) !important;}.has-secondary-700-border-color{border-color: var(--wp--preset--color--secondary-700) !important;}.has-secondary-800-border-color{border-color: var(--wp--preset--color--secondary-800) !important;}.has-secondary-900-border-color{border-color: var(--wp--preset--color--secondary-900) !important;}.has-info-50-border-color{border-color: var(--wp--preset--color--info-50) !important;}.has-info-100-border-color{border-color: var(--wp--preset--color--info-100) !important;}.has-info-200-border-color{border-color: var(--wp--preset--color--info-200) !important;}.has-info-300-border-color{border-color: var(--wp--preset--color--info-300) !important;}.has-info-400-border-color{border-color: var(--wp--preset--color--info-400) !important;}.has-info-500-border-color{border-color: var(--wp--preset--color--info-500) !important;}.has-info-600-border-color{border-color: var(--wp--preset--color--info-600) !important;}.has-info-700-border-color{border-color: var(--wp--preset--color--info-700) !important;}.has-info-800-border-color{border-color: var(--wp--preset--color--info-800) !important;}.has-info-900-border-color{border-color: var(--wp--preset--color--info-900) !important;}.has-success-50-border-color{border-color: var(--wp--preset--color--success-50) !important;}.has-success-100-border-color{border-color: var(--wp--preset--color--success-100) !important;}.has-success-200-border-color{border-color: var(--wp--preset--color--success-200) !important;}.has-success-300-border-color{border-color: var(--wp--preset--color--success-300) !important;}.has-success-400-border-color{border-color: var(--wp--preset--color--success-400) !important;}.has-success-500-border-color{border-color: var(--wp--preset--color--success-500) !important;}.has-success-600-border-color{border-color: var(--wp--preset--color--success-600) !important;}.has-success-700-border-color{border-color: var(--wp--preset--color--success-700) !important;}.has-success-800-border-color{border-color: var(--wp--preset--color--success-800) !important;}.has-success-900-border-color{border-color: var(--wp--preset--color--success-900) !important;}.has-warning-50-border-color{border-color: var(--wp--preset--color--warning-50) !important;}.has-warning-100-border-color{border-color: var(--wp--preset--color--warning-100) !important;}.has-warning-200-border-color{border-color: var(--wp--preset--color--warning-200) !important;}.has-warning-300-border-color{border-color: var(--wp--preset--color--warning-300) !important;}.has-warning-400-border-color{border-color: var(--wp--preset--color--warning-400) !important;}.has-warning-500-border-color{border-color: var(--wp--preset--color--warning-500) !important;}.has-warning-600-border-color{border-color: var(--wp--preset--color--warning-600) !important;}.has-warning-700-border-color{border-color: var(--wp--preset--color--warning-700) !important;}.has-warning-800-border-color{border-color: var(--wp--preset--color--warning-800) !important;}.has-warning-900-border-color{border-color: var(--wp--preset--color--warning-900) !important;}.has-danger-50-border-color{border-color: var(--wp--preset--color--danger-50) !important;}.has-danger-100-border-color{border-color: var(--wp--preset--color--danger-100) !important;}.has-danger-200-border-color{border-color: var(--wp--preset--color--danger-200) !important;}.has-danger-300-border-color{border-color: var(--wp--preset--color--danger-300) !important;}.has-danger-400-border-color{border-color: var(--wp--preset--color--danger-400) !important;}.has-danger-500-border-color{border-color: var(--wp--preset--color--danger-500) !important;}.has-danger-600-border-color{border-color: var(--wp--preset--color--danger-600) !important;}.has-danger-700-border-color{border-color: var(--wp--preset--color--danger-700) !important;}.has-danger-800-border-color{border-color: var(--wp--preset--color--danger-800) !important;}.has-danger-900-border-color{border-color: var(--wp--preset--color--danger-900) !important;}.has-light-50-border-color{border-color: var(--wp--preset--color--light-50) !important;}.has-light-100-border-color{border-color: var(--wp--preset--color--light-100) !important;}.has-light-200-border-color{border-color: var(--wp--preset--color--light-200) !important;}.has-light-300-border-color{border-color: var(--wp--preset--color--light-300) !important;}.has-light-400-border-color{border-color: var(--wp--preset--color--light-400) !important;}.has-light-500-border-color{border-color: var(--wp--preset--color--light-500) !important;}.has-light-600-border-color{border-color: var(--wp--preset--color--light-600) !important;}.has-light-700-border-color{border-color: var(--wp--preset--color--light-700) !important;}.has-light-800-border-color{border-color: var(--wp--preset--color--light-800) !important;}.has-light-900-border-color{border-color: var(--wp--preset--color--light-900) !important;}.has-dark-50-border-color{border-color: var(--wp--preset--color--dark-50) !important;}.has-dark-100-border-color{border-color: var(--wp--preset--color--dark-100) !important;}.has-dark-200-border-color{border-color: var(--wp--preset--color--dark-200) !important;}.has-dark-300-border-color{border-color: var(--wp--preset--color--dark-300) !important;}.has-dark-400-border-color{border-color: var(--wp--preset--color--dark-400) !important;}.has-dark-500-border-color{border-color: var(--wp--preset--color--dark-500) !important;}.has-dark-600-border-color{border-color: var(--wp--preset--color--dark-600) !important;}.has-dark-700-border-color{border-color: var(--wp--preset--color--dark-700) !important;}.has-dark-800-border-color{border-color: var(--wp--preset--color--dark-800) !important;}.has-dark-900-border-color{border-color: var(--wp--preset--color--dark-900) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='wpml-blocks-css' href='https://www.enabel.be/app/plugins/wpml-multilingual-cms/dist/css/blocks/styles.css?ver=4.6.14' media='all' />
+<link rel='stylesheet' id='wpml-legacy-horizontal-list-0-css' href='https://www.enabel.be/app/plugins/wpml-multilingual-cms/templates/language-switchers/legacy-list-horizontal/style.min.css?ver=1' media='all' />
+<style id='wpml-legacy-horizontal-list-0-inline-css'>
+.wpml-ls-statics-footer a, .wpml-ls-statics-footer .wpml-ls-sub-menu a, .wpml-ls-statics-footer .wpml-ls-sub-menu a:link, .wpml-ls-statics-footer li:not(.wpml-ls-current-language) .wpml-ls-link, .wpml-ls-statics-footer li:not(.wpml-ls-current-language) .wpml-ls-link:link {color:#444444;background-color:#ffffff;}.wpml-ls-statics-footer a, .wpml-ls-statics-footer .wpml-ls-sub-menu a:hover,.wpml-ls-statics-footer .wpml-ls-sub-menu a:focus, .wpml-ls-statics-footer .wpml-ls-sub-menu a:link:hover, .wpml-ls-statics-footer .wpml-ls-sub-menu a:link:focus {color:#000000;background-color:#eeeeee;}.wpml-ls-statics-footer .wpml-ls-current-language > a {color:#444444;background-color:#ffffff;}.wpml-ls-statics-footer .wpml-ls-current-language:hover>a, .wpml-ls-statics-footer .wpml-ls-current-language>a:focus {color:#000000;background-color:#eeeeee;}
+</style>
+<link rel='stylesheet' id='wpml-menu-item-0-css' href='https://www.enabel.be/app/plugins/wpml-multilingual-cms/templates/language-switchers/menu-item/style.min.css?ver=1' media='all' />
+<link rel='stylesheet' id='cms-navigation-style-base-css' href='https://www.enabel.be/app/plugins/wpml-cms-nav/res/css/cms-navigation-base.css?ver=1.5.5' media='screen' />
+<link rel='stylesheet' id='cms-navigation-style-css' href='https://www.enabel.be/app/plugins/wpml-cms-nav/res/css/cms-navigation.css?ver=1.5.5' media='screen' />
+<style id='akismet-widget-style-inline-css'>
+
+			.a-stats {
+				--akismet-color-mid-green: #357b49;
+				--akismet-color-white: #fff;
+				--akismet-color-light-grey: #f6f7f7;
+
+				max-width: 350px;
+				width: auto;
+			}
+
+			.a-stats * {
+				all: unset;
+				box-sizing: border-box;
+			}
+
+			.a-stats strong {
+				font-weight: 600;
+			}
+
+			.a-stats a.a-stats__link,
+			.a-stats a.a-stats__link:visited,
+			.a-stats a.a-stats__link:active {
+				background: var(--akismet-color-mid-green);
+				border: none;
+				box-shadow: none;
+				border-radius: 8px;
+				color: var(--akismet-color-white);
+				cursor: pointer;
+				display: block;
+				font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen-Sans', 'Ubuntu', 'Cantarell', 'Helvetica Neue', sans-serif;
+				font-weight: 500;
+				padding: 12px;
+				text-align: center;
+				text-decoration: none;
+				transition: all 0.2s ease;
+			}
+
+			/* Extra specificity to deal with TwentyTwentyOne focus style */
+			.widget .a-stats a.a-stats__link:focus {
+				background: var(--akismet-color-mid-green);
+				color: var(--akismet-color-white);
+				text-decoration: none;
+			}
+
+			.a-stats a.a-stats__link:hover {
+				filter: brightness(110%);
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 0 2px rgba(0, 0, 0, 0.16);
+			}
+
+			.a-stats .count {
+				color: var(--akismet-color-white);
+				display: block;
+				font-size: 1.5em;
+				line-height: 1.4;
+				padding: 0 13px;
+				white-space: nowrap;
+			}
+		
+</style>
+<link rel='stylesheet' id='font-roboto-css' href='//fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&#038;display=swap' media='all' />
+<link rel='stylesheet' id='sage/app.css-css' href='https://www.enabel.be/app/themes/cherrypulp/public/styles/app.css?id=992e78a8c7d50b4cc79dcccdb8961f7b' media='all' />
+<script id="wpml-cookie-js-extra">
+var wpml_cookies = {"wp-wpml_current_language":{"value":"en","expires":1,"path":"\/"}};
+var wpml_cookies = {"wp-wpml_current_language":{"value":"en","expires":1,"path":"\/"}};
+</script>
+<script src="https://www.enabel.be/app/plugins/wpml-multilingual-cms/res/js/cookies/language-cookie.js?ver=4.6.14" id="wpml-cookie-js" defer data-wp-strategy="defer"></script>
+<script src="https://www.enabel.be/app/plugins/wpo365-login/apps/dist/pintra-redirect.js?ver=33.3" id="pintraredirectjs-js" async></script>
+
+<!-- Google tag (gtag.js) snippet added by Site Kit -->
+
+<!-- Google Analytics snippet added by Site Kit -->
+<script src="https://www.googletagmanager.com/gtag/js?id=GT-TXXPP5J" id="google_gtagjs-js" async></script>
+<script id="google_gtagjs-js-after">
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag("set","linker",{"domains":["www.enabel.be"]});
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "GT-TXXPP5J");
+</script>
+
+<!-- End Google tag (gtag.js) snippet added by Site Kit -->
+<script src="https://www.enabel.be/wp/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script src="https://www.enabel.be/wp/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script defer crossorigin="anonymous" src="https://kit.fontawesome.com/c17e9d8792.js" id="fontawesome-js"></script>
+<link rel="https://api.w.org/" href="https://www.enabel.be/wp-json/" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.enabel.be/wp/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.7.2" />
+<meta name="generator" content="WPML ver:4.6.14 stt:37,1,4;" />
+<meta name="generator" content="Site Kit by Google 1.147.0" /><noscript>
+                <style>
+                    *[data-aos] {
+                        display: block !important;
+                        opacity: 1 !important;
+                        visibility: visible !important;
+                    }
+                </style>
+            </noscript><noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>    </head>
+    <body class="error404 wp-embed-responsive">
+                
+        <div class="app" role="main">
+            <nav class="nav">
+    <div class="nav__secondary | hidden md:flex container justify-end relative">
+                    <div class="secondary__navigation">
+                <div class="menu-secondary-navigation-container"><ul id="menu-secondary-navigation" class="nav__link"><li id="menu-item-852" class="search menu-item menu-item-type-custom menu-item-object-custom menu-item-852"><a href="#">Search</a></li>
+<li id="menu-item-669" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-669"><a href="https://www.enabel.be/contact/">Contact</a></li>
+<li id="menu-item-wpml-ls-11-en" class="menu-item wpml-ls-slot-11 wpml-ls-item wpml-ls-item-en wpml-ls-current-language wpml-ls-menu-item wpml-ls-first-item menu-item-type-wpml_ls_menu_item menu-item-object-wpml_ls_menu_item menu-item-has-children menu-item-wpml-ls-11-en"><a href="https://www.enabel.be/" title="English"><span class="wpml-ls-native" lang="en">English</span></a>
+<ul class="sub-menu">
+	<li id="menu-item-wpml-ls-11-nl" class="menu-item wpml-ls-slot-11 wpml-ls-item wpml-ls-item-nl wpml-ls-menu-item menu-item-type-wpml_ls_menu_item menu-item-object-wpml_ls_menu_item menu-item-wpml-ls-11-nl"><a href="https://www.enabel.be/nl/" title="Nederlands"><span class="wpml-ls-native" lang="nl">Nederlands</span></a></li>
+	<li id="menu-item-wpml-ls-11-fr" class="menu-item wpml-ls-slot-11 wpml-ls-item wpml-ls-item-fr wpml-ls-menu-item wpml-ls-last-item menu-item-type-wpml_ls_menu_item menu-item-object-wpml_ls_menu_item menu-item-wpml-ls-11-fr"><a href="https://www.enabel.be/fr/" title="Français"><span class="wpml-ls-native" lang="fr">Français</span></a></li>
+</ul>
+</li>
+</ul></div>
+            </div>
+            </div>
+
+    <div class="nav__primary | container flex items-start justify-between">
+        <a href="https://www.enabel.be" class="flex">
+            <img width="103" height="35" src="https://www.enabel.be/app/uploads/2022/06/enabel-logo-white.svg" class="white z-10 w-[103px] h-auto hidden" alt="enabel logo" decoding="async" />
+            <img width="103" height="35" src="https://www.enabel.be/app/uploads/2022/06/enabel-logo-color.svg" class="color z-10 w-[103px] h-auto" alt="enabel logo" decoding="async" />
+        </a>
+        <div class="burger">
+            <div class="burger__el"></div>
+        </div>
+        <form role="search" method="get" class="hidden search-form" id="form-navigation-search" action="https://www.enabel.be">
+            <label>
+                <input type="search" id="form-navigation-textbox" placeholder="Search" value="" name="s">
+            </label>
+        </form>
+                    <div class="menu-primary-navigation-container">
+                <div class="menu-primary-navigation-container"><ul id="menu-primary-navigation" class="nav__link"><li id="menu-item-299" class="menu-simple menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-299"><a href="https://www.enabel.be/who-we-are/">Who we are</a>
+<ul class="sub-menu">
+	<li id="menu-item-4283" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4283"><a href="https://www.enabel.be/who-we-are/our-identity/">Our identity</a></li>
+	<li id="menu-item-5303" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5303"><a href="https://www.enabel.be/who-we-are/our-strategy/">Our strategy</a></li>
+	<li id="menu-item-4282" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4282"><a href="https://www.enabel.be/who-we-are/integrity/">Integrity</a></li>
+	<li id="menu-item-5003" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5003"><a href="https://www.enabel.be/who-we-are/management-control-bodies/">Management &#038; control bodies</a></li>
+	<li id="menu-item-34831" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-34831"><a href="https://www.enabel.be/who-we-are/evaluation-at-enabel/">Evaluation at Enabel</a></li>
+</ul>
+</li>
+<li id="menu-item-865" class="menu-big menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-865"><a href="https://www.enabel.be/what-we-do/">What we do</a>
+<ul class="sub-menu">
+	<li id="menu-item-859" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-859"><a href="https://www.enabel.be/what-we-do/create-partnerships/">Create partnerships</a>
+	<ul class="sub-menu">
+		<li id="menu-item-23509" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23509"><a href="https://www.enabel.be/what-we-do/create-partnerships/">A world of partnerships</a></li>
+		<li id="menu-item-48280" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48280"><a href="https://www.enabel.be/public-partnerships/">Public partnerships</a></li>
+	</ul>
+</li>
+	<li id="menu-item-762" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-762"><a href="https://www.enabel.be/what-we-do/tackle-global-challenges/">Tackle global challenges</a>
+	<ul class="sub-menu">
+		<li id="menu-item-760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-760"><a href="https://www.enabel.be/what-we-do/tackle-global-challenges/climate-change-environment/">Climate change &#038; environment</a></li>
+		<li id="menu-item-2830" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2830"><a href="https://www.enabel.be/what-we-do/tackle-global-challenges/human-mobility/">Human Mobility</a></li>
+		<li id="menu-item-2828" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2828"><a href="https://www.enabel.be/what-we-do/tackle-global-challenges/peace-security/">Peace &#038; Security</a></li>
+		<li id="menu-item-2827" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2827"><a href="https://www.enabel.be/what-we-do/tackle-global-challenges/social-economic-inequality/">Social &#038; Economic Inequality</a></li>
+		<li id="menu-item-2829" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2829"><a href="https://www.enabel.be/what-we-do/tackle-global-challenges/urbanisation/">Urbanisation</a></li>
+	</ul>
+</li>
+	<li id="menu-item-761" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-761"><a href="https://www.enabel.be/what-we-do/offer-expertise/">Offer expertise</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1974" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1974"><a href="https://www.enabel.be/what-we-do/offer-expertise/education-training-employment/">Education, training &amp; decent employment</a></li>
+		<li id="menu-item-2031" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2031"><a href="https://www.enabel.be/what-we-do/offer-expertise/energy/">Energy</a></li>
+		<li id="menu-item-5443" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5443"><a href="https://www.enabel.be/what-we-do/offer-expertise/digitalisation/">Digitalisation</a></li>
+		<li id="menu-item-2030" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2030"><a href="https://www.enabel.be/what-we-do/offer-expertise/gender/">Gender equality and inclusion</a></li>
+		<li id="menu-item-2480" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2480"><a href="https://www.enabel.be/what-we-do/offer-expertise/governance-2/">Governance</a></li>
+		<li id="menu-item-2479" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2479"><a href="https://www.enabel.be/what-we-do/offer-expertise/health-2/">Health</a></li>
+		<li id="menu-item-50498" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-50498"><a href="https://www.enabel.be/what-we-do/offer-expertise/innovation-hub/">Innovation Hub</a></li>
+		<li id="menu-item-2478" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2478"><a href="https://www.enabel.be/what-we-do/offer-expertise/private-sector-2/">Private sector</a></li>
+		<li id="menu-item-806" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-806"><a href="https://www.enabel.be/what-we-do/offer-expertise/agriculture-rural-development/">Sustainable agriculture and food systems</a></li>
+		<li id="menu-item-814" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-814"><a href="https://www.enabel.be/what-we-do/offer-expertise/sustainable-trade/">Sustainable trade</a></li>
+		<li id="menu-item-4586" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4586"><a href="https://www.enabel.be/what-we-do/offer-expertise/water-sanitation-2/">Water &#038; sanitation</a></li>
+	</ul>
+</li>
+	<li id="menu-item-821" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-821"><a href="https://www.enabel.be/what-we-do/promote-global-citizenship/">Promote global citizenship</a>
+	<ul class="sub-menu">
+		<li id="menu-item-835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-835"><a href="https://www.enabel.be/what-we-do/promote-global-citizenship/become-or-hire-a-junior-expert/">Become or hire a Junior Expert</a></li>
+		<li id="menu-item-834" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-834"><a href="https://www.enabel.be/what-we-do/promote-global-citizenship/fair-trade-week/">Fair trade week</a></li>
+		<li id="menu-item-836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-836"><a href="https://www.enabel.be/what-we-do/promote-global-citizenship/global-citizenship-education/">Global citizenship education</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-466" class="menu-simple menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-466"><a href="https://www.enabel.be/where-we-work/">Where we work</a>
+<ul class="sub-menu">
+	<li id="menu-item-1448" class="menu-item menu-item-type-post_type menu-item-object-country menu-item-1448"><a href="https://www.enabel.be/country/belgium/">Belgium</a></li>
+	<li id="menu-item-896" class="menu-item menu-item-type-post_type menu-item-object-country menu-item-896"><a href="https://www.enabel.be/country/benin/">Benin</a></li>
+	<li id="menu-item-1458" class="menu-item menu-item-type-post_type menu-item-object-country menu-item-1458"><a href="https://www.enabel.be/country/burkina-faso/">Burkina Faso</a></li>
+	<li id="menu-item-1441" class="menu-item menu-item-type-post_type menu-item-object-country menu-item-1441"><a href="https://www.enabel.be/country/burundi/">Burundi</a></li>
+	<li id="menu-item-1447" class="menu-item menu-item-type-post_type menu-item-object-country menu-item-1447"><a href="https://www.enabel.be/country/central-african-republic/">Central African Republic</a></li>
+	<li id="menu-item-1469" class="menu-item menu-item-type-post_type menu-item-object-country menu-item-1469"><a href="https://www.enabel.be/country/dr-congo/">DR Congo</a></li>
+	<li id="menu-item-1445" class="menu-item menu-item-type-post_type menu-item-object-country menu-item-1445"><a href="https://www.enabel.be/country/guinea/">Guinea</a></li>
+	<li id="menu-item-31046" class="menu-item menu-item-type-post_type menu-item-object-country menu-item-31046"><a href="https://www.enabel.be/country/ivory-coast/">Ivory Coast</a></li>
+	<li id="menu-item-1446" class="menu-item menu-item-type-post_type menu-item-object-country menu-item-1446"><a href="https://www.enabel.be/country/jordan/">Jordan</a></li>
+	<li id="menu-item-1440" class="menu-item menu-item-type-post_type menu-item-object-country menu-item-1440"><a href="https://www.enabel.be/country/mali/">Mali</a></li>
+	<li id="menu-item-1374" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1374"><a href="https://www.enabel.be/country/mauritania/">Mauritania</a></li>
+	<li id="menu-item-1373" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1373"><a href="https://www.enabel.be/country/morocco/">Morocco</a></li>
+	<li id="menu-item-1372" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1372"><a href="https://www.enabel.be/country/mozambique/">Mozambique</a></li>
+	<li id="menu-item-1371" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1371"><a href="https://www.enabel.be/country/niger/">Niger</a></li>
+	<li id="menu-item-1444" class="menu-item menu-item-type-post_type menu-item-object-country menu-item-1444"><a href="https://www.enabel.be/country/palestine/">Palestine</a></li>
+	<li id="menu-item-1443" class="menu-item menu-item-type-post_type menu-item-object-country menu-item-1443"><a href="https://www.enabel.be/country/senegal/">Senegal</a></li>
+	<li id="menu-item-1442" class="menu-item menu-item-type-post_type menu-item-object-country menu-item-1442"><a href="https://www.enabel.be/country/tanzania/">Tanzania</a></li>
+	<li id="menu-item-1461" class="menu-item menu-item-type-post_type menu-item-object-country menu-item-1461"><a href="https://www.enabel.be/country/uganda/">Uganda</a></li>
+	<li id="menu-item-42927" class="menu-item menu-item-type-post_type menu-item-object-country menu-item-42927"><a href="https://www.enabel.be/country/ukraine/">Ukraine</a></li>
+</ul>
+</li>
+<li id="menu-item-469" class="menu-simple menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-469"><a href="https://www.enabel.be/work-with-us/">Work with us</a>
+<ul class="sub-menu">
+	<li id="menu-item-18880" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18880"><a href="https://www.enabel.be/work-with-us/">Jobs</a></li>
+	<li id="menu-item-18879" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18879"><a href="https://www.enabel.be/public-procurement/">Public procurement</a></li>
+	<li id="menu-item-18878" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18878"><a href="https://www.enabel.be/grants/">Grants</a></li>
+</ul>
+</li>
+<li id="menu-item-470" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-470"><a href="https://www.enabel.be/news-events/">News &#038; events</a></li>
+<li id="menu-item-21339" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-21339"><a href="https://www.enabel.be/news-events/?in_category%5B%5D=resources&#038;in_country=all&#038;in_year=all">Resources</a></li>
+<li id="menu-item-10685" class="lg-hidden menu-item menu-item-type-post_type menu-item-object-page menu-item-10685"><a href="https://www.enabel.be/contact/">Contact</a></li>
+<li id="menu-item-wpml-ls-7-en" class="menu-item wpml-ls-slot-7 wpml-ls-item wpml-ls-item-en wpml-ls-current-language wpml-ls-menu-item wpml-ls-first-item menu-item-type-wpml_ls_menu_item menu-item-object-wpml_ls_menu_item menu-item-has-children menu-item-wpml-ls-7-en"><a href="https://www.enabel.be/" title="English"><span class="wpml-ls-native" lang="en">English</span></a>
+<ul class="sub-menu">
+	<li id="menu-item-wpml-ls-7-nl" class="menu-item wpml-ls-slot-7 wpml-ls-item wpml-ls-item-nl wpml-ls-menu-item menu-item-type-wpml_ls_menu_item menu-item-object-wpml_ls_menu_item menu-item-wpml-ls-7-nl"><a href="https://www.enabel.be/nl/" title="Nederlands"><span class="wpml-ls-native" lang="nl">Nederlands</span></a></li>
+	<li id="menu-item-wpml-ls-7-fr" class="menu-item wpml-ls-slot-7 wpml-ls-item wpml-ls-item-fr wpml-ls-menu-item wpml-ls-last-item menu-item-type-wpml_ls_menu_item menu-item-object-wpml_ls_menu_item menu-item-wpml-ls-7-fr"><a href="https://www.enabel.be/fr/" title="Français"><span class="wpml-ls-native" lang="fr">Français</span></a></li>
+</ul>
+</li>
+</ul></div>
+            </div>
+            </div>
+</nav>
+
+<div class="flex justify-center modal-search">
+	<form role="search" method="get" class="search-form w-1/2 max-w-[730px] mt-[160px]" id="form-modal-search" action="https://www.enabel.be">
+		<label>
+			<input type="search" class="" id="modal-input" placeholder="Search" value="" name="s">
+		</label>
+	</form>
+</div>
+
+<main class="app-body">
+    <div class="cursor | flex fixed z-50 w-[140px] h-[140px] bg-black items-center justify-center rounded-full pointer-events-none hidden">
+    <svg class="-rotate-90 h-[43px] w-[auto]" width="12" height="18" viewBox="0 0 12 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.34054 0.497345L6.34054 16.5293M6.34054 16.5293L11.5273 11.2023M6.34054 16.5293L1.15373 11.2023" stroke="white" stroke-width="0.943056" />
+    </svg>
+</div>
+    
+            <header class="header--big relative flex align-center items-center min-h-screen">
+	<div class="z-20 container grid grid-cols-12">
+		<div class="z-30 relative col-span-12 md:col-span-8 col-start-1 md:col-start-3 text-center text-white">
+							<p class="h5" data-aos="fade-down">404 error</p>
+						<h1 data-aos="fade-up mb-0">Oops, we seem to have lost the page you are looking forward. </h1>
+											<a href="https://www.enabel.be/" class="btn-primary-white card--animation">
+		<span>Return to the homepage</span>
+	</a>
+					</div>
+	</div>
+				<img width="1358" height="858" src="https://www.enabel.be/app/uploads/2022/05/big-hero.jpg" class="z-0 absolute inset-0 w-full h-full object-cover object-top" alt="" decoding="async" srcset="https://www.enabel.be/app/uploads/2022/05/big-hero.jpg 1358w, https://www.enabel.be/app/uploads/2022/05/big-hero-300x190.jpg 300w, https://www.enabel.be/app/uploads/2022/05/big-hero-1024x647.jpg 1024w, https://www.enabel.be/app/uploads/2022/05/big-hero-768x485.jpg 768w" sizes="(max-width: 1358px) 100vw, 1358px" />
+		<div class="scroll rellax" data-rellax-percentage="0.5" data-rellax-speed="-1.5">
+		<p>
+			Scroll
+		</p>
+	</div>
+</header></main>
+
+
+<section class="section--newsletter bg-primary-800 text-white relative z-10">
+    <div class="text | container grid grid-cols-12 flex justify-between items-center">
+                    <div class="col-span-12 md:col-span-5">
+                <h2>Stay informed</h2>
+<p>Keep up-to-date with our latest activities and international development trends from a Belgian perspective.</p>
+
+            </div>
+                            <div class="col-span-12 md:col-span-5 mt-10 md:mt-0 col-start-1 md:col-start-8">
+                <script type="text/javascript"></script>
+                <div class='gf_browser_unknown gform_wrapper gravity-theme gform-theme--no-framework' data-form-theme='gravity-theme' data-form-index='0' id='gform_wrapper_14' ><div id='gf_14' class='gform_anchor' tabindex='-1'></div>
+                        <div class='gform_heading'>
+                            <h2 class="gform_title">Newsletter</h2>
+                            <p class='gform_description'></p>
+							<p class='gform_required_legend'>&quot;<span class="gfield_required gfield_required_asterisk">*</span>&quot; indicates required fields</p>
+                        </div><form method='post' enctype='multipart/form-data' target='gform_ajax_frame_14' id='gform_14'  action='/sites/default/files/generated/styles/large/public/2017-03/enabel_logo_line_color.svg#gf_14' data-formid='14' novalidate>
+                        <div class='gform-body gform_body'><div id='gform_fields_14' class='gform_fields top_label form_sublabel_below description_below'><div id="field_14_1" class="gfield gfield--type-email gfield--input-type-email gfield_contains_required field_sublabel_below gfield--no-description field_description_below hidden_label gfield_visibility_visible"  data-js-reload="field_14_1" ><label class='gfield_label gform-field-label' for='input_14_1'>Email<span class="gfield_required"><span class="gfield_required gfield_required_asterisk">*</span></span></label><div class='ginput_container ginput_container_email'>
+                            <input name='input_1' id='input_14_1' type='email' value='' class='large'   placeholder='Enter your email' aria-required="true" aria-invalid="false"  />
+                        </div></div><fieldset id="field_14_4" class="gfield gfield--type-consent gfield--type-choice gfield--input-type-consent gfield--width-full gfield_contains_required field_sublabel_below gfield--no-description field_description_below hidden_label gfield_visibility_visible"  data-js-reload="field_14_4" ><legend class='gfield_label gform-field-label gfield_label_before_complex' >Consent<span class="gfield_required"><span class="gfield_required gfield_required_asterisk">*</span></span></legend><div class='ginput_container ginput_container_consent'><input name='input_4.1' id='input_14_4_1' type='checkbox' value='1'   aria-required="true" aria-invalid="false"   /> <label class="gform-field-label gform-field-label--type-inline gfield_consent_label" for='input_14_4_1' >Yes, send me the monthly newsletter of Enabel.<span class="gfield_required gfield_required_asterisk">*</span></label><input type='hidden' name='input_4.2' value='Yes, send me the monthly newsletter of Enabel.' class='gform_hidden' /><input type='hidden' name='input_4.3' value='7' class='gform_hidden' /></div></fieldset><div id="field_14_5" class="gfield gfield--type-captcha gfield--input-type-captcha gfield--width-full field_sublabel_below gfield--no-description field_description_below gfield_visibility_visible"  data-js-reload="field_14_5" ><label class='gfield_label gform-field-label' for='input_14_5'>CAPTCHA</label><div id='input_14_5' class='ginput_container ginput_recaptcha' data-sitekey='6LePn24qAAAAAP2gWHiQoPrVYp4Tw5Lsp5EKFZbt'  data-theme='light' data-tabindex='-1' data-size='invisible' data-badge='bottomright'></div></div><div id="field_14_6" class="gfield gfield--type-honeypot gform_validation_container field_sublabel_below gfield--has-description field_description_below gfield_visibility_visible"  data-js-reload="field_14_6" ><label class='gfield_label gform-field-label' for='input_14_6'>Comments</label><div class='ginput_container'><input name='input_6' id='input_14_6' type='text' value='' autocomplete='new-password'/></div><div class='gfield_description' id='gfield_description_14_6'>This field is for validation purposes and should be left unchanged.</div></div></div></div>
+        <div class='gform_footer top_label'> <input type='submit' id='gform_submit_button_14' class='gform_button button' value='Sign up'  onclick='if(window["gf_submitting_14"]){return false;}  if( !jQuery("#gform_14")[0].checkValidity || jQuery("#gform_14")[0].checkValidity()){window["gf_submitting_14"]=true;}  ' onkeypress='if( event.keyCode == 13 ){ if(window["gf_submitting_14"]){return false;} if( !jQuery("#gform_14")[0].checkValidity || jQuery("#gform_14")[0].checkValidity()){window["gf_submitting_14"]=true;}  jQuery("#gform_14").trigger("submit",[true]); }' /> <input type='hidden' name='gform_ajax' value='form_id=14&amp;title=1&amp;description=1&amp;tabindex=0&amp;theme=data-form-theme=&#039;gravity-theme&#039;' />
+            <input type='hidden' class='gform_hidden' name='is_submit_14' value='1' />
+            <input type='hidden' class='gform_hidden' name='gform_submit' value='14' />
+            
+            <input type='hidden' class='gform_hidden' name='gform_unique_id' value='' />
+            <input type='hidden' class='gform_hidden' name='state_14' value='WyJ7XCI0LjFcIjpcIjMwZDA1YTdhN2ZmYzc4OGY3NGU3ZGEzMGJiNmM5YTNlXCIsXCI0LjJcIjpcIjM2MmU5ZjU2NTEyZjMyM2JjOGI2MmRkNThjMTZiNjJjXCIsXCI0LjNcIjpcIjUxZGZkY2MwODUwOTk3NTE2MzIxZjUwYzU3NTRkOTk4XCJ9IiwiNDc0ZjZkNzY2NTEwZjQxYTEzYzZlZDhiNzJlNjg4ZGYiXQ==' />
+            <input type='hidden' class='gform_hidden' name='gform_target_page_number_14' id='gform_target_page_number_14' value='0' />
+            <input type='hidden' class='gform_hidden' name='gform_source_page_number_14' id='gform_source_page_number_14' value='1' />
+            <input type='hidden' name='gform_field_values' value='' />
+            
+        </div>
+                        <p style="display: none !important;" class="akismet-fields-container" data-prefix="ak_"><label>&#916;<textarea name="ak_hp_textarea" cols="45" rows="8" maxlength="100"></textarea></label><input type="hidden" id="ak_js_1" name="ak_js" value="242"/><script>document.getElementById( "ak_js_1" ).setAttribute( "value", ( new Date() ).getTime() );</script></p></form>
+                        </div>
+		                <iframe style='display:none;width:0px;height:0px;' src='about:blank' name='gform_ajax_frame_14' id='gform_ajax_frame_14' title='This iframe contains the logic required to handle Ajax powered Gravity Forms.'></iframe>
+		                <script>
+gform.initializeOnLoaded( function() {gformInitSpinner( 14, 'https://www.enabel.be/app/plugins/gravityforms/images/spinner.svg', true );jQuery('#gform_ajax_frame_14').on('load',function(){var contents = jQuery(this).contents().find('*').html();var is_postback = contents.indexOf('GF_AJAX_POSTBACK') >= 0;if(!is_postback){return;}var form_content = jQuery(this).contents().find('#gform_wrapper_14');var is_confirmation = jQuery(this).contents().find('#gform_confirmation_wrapper_14').length > 0;var is_redirect = contents.indexOf('gformRedirect(){') >= 0;var is_form = form_content.length > 0 && ! is_redirect && ! is_confirmation;var mt = parseInt(jQuery('html').css('margin-top'), 10) + parseInt(jQuery('body').css('margin-top'), 10) + 100;if(is_form){jQuery('#gform_wrapper_14').html(form_content.html());if(form_content.hasClass('gform_validation_error')){jQuery('#gform_wrapper_14').addClass('gform_validation_error');} else {jQuery('#gform_wrapper_14').removeClass('gform_validation_error');}setTimeout( function() { /* delay the scroll by 50 milliseconds to fix a bug in chrome */ jQuery(document).scrollTop(jQuery('#gform_wrapper_14').offset().top - mt); }, 50 );if(window['gformInitDatepicker']) {gformInitDatepicker();}if(window['gformInitPriceFields']) {gformInitPriceFields();}var current_page = jQuery('#gform_source_page_number_14').val();gformInitSpinner( 14, 'https://www.enabel.be/app/plugins/gravityforms/images/spinner.svg', true );jQuery(document).trigger('gform_page_loaded', [14, current_page]);window['gf_submitting_14'] = false;}else if(!is_redirect){var confirmation_content = jQuery(this).contents().find('.GF_AJAX_POSTBACK').html();if(!confirmation_content){confirmation_content = contents;}setTimeout(function(){jQuery('#gform_wrapper_14').replaceWith(confirmation_content);jQuery(document).scrollTop(jQuery('#gf_14').offset().top - mt);jQuery(document).trigger('gform_confirmation_loaded', [14]);window['gf_submitting_14'] = false;wp.a11y.speak(jQuery('#gform_confirmation_message_14').text());}, 50);}else{jQuery('#gform_14').append(contents);if(window['gformRedirect']) {gformRedirect();}}        const gformWrapperDiv = document.getElementById( "gform_wrapper_14" );        if ( gformWrapperDiv ) {            const visibilitySpan = document.createElement( "span" );            visibilitySpan.id = "gform_visibility_test_14";            gformWrapperDiv.insertAdjacentElement( "afterend", visibilitySpan );        }        const visibilityTestDiv = document.getElementById( "gform_visibility_test_14" );        let postRenderFired = false;                function triggerPostRender() {            if ( postRenderFired ) {                return;            }            postRenderFired = true;            jQuery( document ).trigger( 'gform_post_render', [14, current_page] );            gform.utils.trigger( { event: 'gform/postRender', native: false, data: { formId: 14, currentPage: current_page } } );            if ( visibilityTestDiv ) {                visibilityTestDiv.parentNode.removeChild( visibilityTestDiv );            }        }        function debounce( func, wait, immediate ) {            var timeout;            return function() {                var context = this, args = arguments;                var later = function() {                    timeout = null;                    if ( !immediate ) func.apply( context, args );                };                var callNow = immediate && !timeout;                clearTimeout( timeout );                timeout = setTimeout( later, wait );                if ( callNow ) func.apply( context, args );            };        }        const debouncedTriggerPostRender = debounce( function() {            triggerPostRender();        }, 200 );        if ( visibilityTestDiv && visibilityTestDiv.offsetParent === null ) {            const observer = new MutationObserver( ( mutations ) => {                mutations.forEach( ( mutation ) => {                    if ( mutation.type === 'attributes' && visibilityTestDiv.offsetParent !== null ) {                        debouncedTriggerPostRender();                        observer.disconnect();                    }                });            });            observer.observe( document.body, {                attributes: true,                childList: false,                subtree: true,                attributeFilter: [ 'style', 'class' ],            });        } else {            triggerPostRender();        }    } );} );
+</script>
+
+
+            </div>
+            </div>
+</section>
+
+<footer class="footer bg-black text-white pt-20 pb-6 md:h-[100vh] flex items-end relative md:fixed bottom-0 right-0 left-0 md:z-[1] ">
+    <div class="container grid grid-cols-12">
+        <div class="footer__text col-span-12 md:col-span-3">
+            <img width="103" height="35" src="https://www.enabel.be/app/uploads/2022/06/enabel-logo-white.svg" class="white z-10 w-[103px] h-auto mb-4" alt="enabel logo" decoding="async" />
+                            <p>For a sustainable world where all live under the rule of law and are free to thrive.</p>
+                    </div>
+        <div class="footer__link | col-span-12 md:col-span-5">
+                            <div class="menu-footer-navigation-container"><ul id="menu-footer-navigation" class="nav__link"><li id="menu-item-560" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-560"><a href="https://www.enabel.be/who-we-are/">Who we are</a></li>
+<li id="menu-item-870" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-870"><a href="https://www.enabel.be/what-we-do/">What we do</a></li>
+<li id="menu-item-871" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-871"><a href="https://www.enabel.be/work-with-us/">Work with us</a></li>
+<li id="menu-item-872" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-872"><a href="https://www.enabel.be/where-we-work/">Where we work</a></li>
+<li id="menu-item-874" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-874"><a href="https://www.enabel.be/news-events/">Resources</a></li>
+<li id="menu-item-23728" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23728"><a href="https://www.enabel.be/graphic-identity/">Graphic identity</a></li>
+<li id="menu-item-875" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-875"><a href="https://www.enabel.be/contact/">Contact</a></li>
+<li id="menu-item-8967" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8967"><a href="https://www.enabel.be/who-we-are/integrity/">Report an integrity concern</a></li>
+</ul></div>
+                    </div>
+                    <div class="footer__link footer__legal | col-start-7 col-span-6 md:col-span-2 col-start-1">
+                <ul>
+                                            <li>
+                            <a href="https://www.enabel.be/open-enabel-be/">Open.enabel.be</a>
+                        </li>
+                                            <li>
+                            <a href="https://www.enabel.be/gdpr-privacy-notice/">GDPR Privacy notice</a>
+                        </li>
+                                            <li>
+                            <a href="https://www.enabel.be/cookies-policy/">Cookies policy</a>
+                        </li>
+                                            <li>
+                            <a href="https://www.enabel.be/accessibility-policy/">Accessibility of the site</a>
+                        </li>
+                                    </ul>
+            </div>
+                            <div class="footer__social | col-start-1 col-span-6 md:col-span-2">
+                <p class="mt-0">Follow us</p>
+                                    <a href="https://twitter.com/Enabel_Belgium/" class="no-underline hover:no-underline">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                                    <a href="https://www.facebook.com/EnabelBelgium/" class="no-underline hover:no-underline">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                                    <a href="https://www.instagram.com/enabel_be/" class="no-underline hover:no-underline">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                                    <a href="https://www.linkedin.com/company/enabel/" class="no-underline hover:no-underline">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                                    <a href="https://www.youtube.com/channel/UCHGr3iOQ9n2jORzgtkv5FyQ" class="no-underline hover:no-underline">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                            </div>
+                <div class="footer--logo | col-span-12 flex justify-center mt-20 mb-16">
+                            <img width="356" height="84" src="https://www.enabel.be/app/uploads/2022/06/CBD_logo_EN_white.png" class="white z-10 w-[240px] h-auto bg-black p-5" alt="" decoding="async" srcset="https://www.enabel.be/app/uploads/2022/06/CBD_logo_EN_white.png 356w, https://www.enabel.be/app/uploads/2022/06/CBD_logo_EN_white-300x71.png 300w" sizes="(max-width: 356px) 100vw, 356px" />
+                    </div>
+        
+        <div class="footer--copy col-span-12 flex flex-col md:flex-row justify-between">
+                            <p class="text-sm">© 2023 Enabel. All rights reserved.</p>
+                        <p class="text-sm">Made with love by <a href="http://www.cherrypulp.com/?utm_source=client-enabel&utm_medium=signature&utm_campaign=CTA&utm_content=Enabel" target="_blank" rel="external" class="text-white no-underline">Cherry Pulp</a></p>
+        </div>
+    </div>
+</footer>
+        </div>
+
+                
+<div class="wpml-ls-statics-footer wpml-ls wpml-ls-legacy-list-horizontal">
+	<ul><li class="wpml-ls-slot-footer wpml-ls-item wpml-ls-item-en wpml-ls-current-language wpml-ls-first-item wpml-ls-item-legacy-list-horizontal">
+				<a href="https://www.enabel.be/" class="wpml-ls-link">
+                    <span class="wpml-ls-native">English</span></a>
+			</li><li class="wpml-ls-slot-footer wpml-ls-item wpml-ls-item-nl wpml-ls-item-legacy-list-horizontal">
+				<a href="https://www.enabel.be/nl/" class="wpml-ls-link">
+                    <span class="wpml-ls-native" lang="nl">Nederlands</span></a>
+			</li><li class="wpml-ls-slot-footer wpml-ls-item wpml-ls-item-fr wpml-ls-last-item wpml-ls-item-legacy-list-horizontal">
+				<a href="https://www.enabel.be/fr/" class="wpml-ls-link">
+                    <span class="wpml-ls-native" lang="fr">Français</span></a>
+			</li></ul>
+</div>
+<link rel='stylesheet' id='gform_basic-css' href='https://www.enabel.be/app/plugins/gravityforms/assets/css/dist/basic.min.css?ver=2.8.4' media='all' />
+<link rel='stylesheet' id='gform_theme_components-css' href='https://www.enabel.be/app/plugins/gravityforms/assets/css/dist/theme-components.min.css?ver=2.8.4' media='all' />
+<link rel='stylesheet' id='gform_theme_ie11-css' href='https://www.enabel.be/app/plugins/gravityforms/assets/css/dist/theme-ie11.min.css?ver=2.8.4' media='all' />
+<link rel='stylesheet' id='gform_theme-css' href='https://www.enabel.be/app/plugins/gravityforms/assets/css/dist/theme.min.css?ver=2.8.4' media='all' />
+<script id="rocket-browser-checker-js-after">
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script id="rocket-preload-links-js-extra">
+var RocketPreloadLinksConfig = {"excludeUris":"\/(?:.+\/)?feed(?:\/(?:.+\/?)?)?$|\/(?:.+\/)?embed\/|\/(index.php\/)?(.*)wp-json(\/.*|$)|\/refer\/|\/go\/|\/recommend\/|\/recommends\/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm","siteUrl":"https:\/\/www.enabel.be","onHoverDelay":"100","rateThrottle":"3"};
+</script>
+<script id="rocket-preload-links-js-after">
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+</script>
+<script id="sage/vendor.js-js-before">
+(()=>{"use strict";var r,e={},t={};function o(r){var n=t[r];if(void 0!==n)return n.exports;var i=t[r]={id:r,exports:{}};return e[r].call(i.exports,i,i.exports,o),i.exports}o.m=e,r=[],o.O=(e,t,n,i)=>{if(!t){var a=1/0;for(f=0;f<r.length;f++){for(var[t,n,i]=r[f],l=!0,u=0;u<t.length;u++)(!1&i||a>=i)&&Object.keys(o.O).every((r=>o.O[r](t[u])))?t.splice(u--,1):(l=!1,i<a&&(a=i));if(l){r.splice(f--,1);var s=n();void 0!==s&&(e=s)}}return e}i=i||0;for(var f=r.length;f>0&&r[f-1][2]>i;f--)r[f]=r[f-1];r[f]=[t,n,i]},o.n=r=>{var e=r&&r.__esModule?()=>r.default:()=>r;return o.d(e,{a:e}),e},o.d=(r,e)=>{for(var t in e)o.o(e,t)&&!o.o(r,t)&&Object.defineProperty(r,t,{enumerable:!0,get:e[t]})},o.g=function(){if("object"==typeof globalThis)return globalThis;try{return this||new Function("return this")()}catch(r){if("object"==typeof window)return window}}(),o.o=(r,e)=>Object.prototype.hasOwnProperty.call(r,e),(()=>{var r={990:0,547:0,897:0,981:0};o.O.j=e=>0===r[e];var e=(e,t)=>{var n,i,[a,l,u]=t,s=0;if(a.some((e=>0!==r[e]))){for(n in l)o.o(l,n)&&(o.m[n]=l[n]);if(u)var f=u(o)}for(e&&e(t);s<a.length;s++)i=a[s],o.o(r,i)&&r[i]&&r[i][0](),r[i]=0;return o.O(f)},t=globalThis.webpackChunk=globalThis.webpackChunk||[];t.forEach(e.bind(null,0)),t.push=e.bind(null,t.push.bind(t))})(),o.nc=void 0})();
+//# sourceMappingURL=manifest.js.map
+</script>
+<script src="https://www.enabel.be/app/themes/cherrypulp/public/scripts/vendor.js?id=4baec593dcc4ac22447b45c7a3d14299" id="sage/vendor.js-js"></script>
+<script id="sage/app.js-js-extra">
+var __app = {"ajax_url":"https:\/\/www.enabel.be\/wp\/wp-admin\/admin-ajax.php","nonce":"fbdf1b163c","theme_url":"https:\/\/www.enabel.be\/app\/themes\/cherrypulp","language":"en"};
+</script>
+<script src="https://www.enabel.be/app/themes/cherrypulp/public/scripts/app.js?id=5907a595affa241e0e967f49774a79f5" id="sage/app.js-js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCa8jqX4Fi35V6OrbzJgJkbEjCGFA3mrGE&amp;v=beta&amp;libraries=marker&amp;loading=async&amp;map_ids=3ce86697f4f6c570&amp;language=en" id="google-maps-js" data-cookieconsent="ignore"></script>
+<script src="https://www.enabel.be/wp/wp-includes/js/dist/dom-ready.min.js?ver=f77871ff7694fffea381" id="wp-dom-ready-js"></script>
+<script src="https://www.enabel.be/wp/wp-includes/js/dist/hooks.min.js?ver=4d63a3d491d11ffd8ac6" id="wp-hooks-js"></script>
+<script src="https://www.enabel.be/wp/wp-includes/js/dist/i18n.min.js?ver=5e580eb46a90c2b997e6" id="wp-i18n-js"></script>
+<script id="wp-i18n-js-after">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+</script>
+<script src="https://www.enabel.be/wp/wp-includes/js/dist/a11y.min.js?ver=3156534cc54473497e14" id="wp-a11y-js"></script>
+<script defer='defer' src="https://www.enabel.be/app/plugins/gravityforms/js/jquery.json.min.js?ver=2.8.4" id="gform_json-js"></script>
+<script id="gform_gravityforms-js-extra">
+var gform_i18n = {"datepicker":{"days":{"monday":"Mo","tuesday":"Tu","wednesday":"We","thursday":"Th","friday":"Fr","saturday":"Sa","sunday":"Su"},"months":{"january":"January","february":"February","march":"March","april":"April","may":"May","june":"June","july":"July","august":"August","september":"September","october":"October","november":"November","december":"December"},"firstDay":1,"iconText":"Select date"}};
+var gf_legacy_multi = [];
+var gform_gravityforms = {"strings":{"invalid_file_extension":"This type of file is not allowed. Must be one of the following:","delete_file":"Delete this file","in_progress":"in progress","file_exceeds_limit":"File exceeds size limit","illegal_extension":"This type of file is not allowed.","max_reached":"Maximum number of files reached","unknown_error":"There was a problem while saving the file on the server","currently_uploading":"Please wait for the uploading to complete","cancel":"Cancel","cancel_upload":"Cancel this upload","cancelled":"Cancelled"},"vars":{"images_url":"https:\/\/www.enabel.be\/app\/plugins\/gravityforms\/images"}};
+var gf_global = {"gf_currency_config":{"name":"Euro","symbol_left":"","symbol_right":"&#8364;","symbol_padding":" ","thousand_separator":".","decimal_separator":",","decimals":2,"code":"EUR"},"base_url":"https:\/\/www.enabel.be\/app\/plugins\/gravityforms","number_formats":[],"spinnerUrl":"https:\/\/www.enabel.be\/app\/plugins\/gravityforms\/images\/spinner.svg","version_hash":"1a8a967da194be3fda5b97f2bd12c133","strings":{"newRowAdded":"New row added.","rowRemoved":"Row removed","formSaved":"The form has been saved.  The content contains the link to return and complete the form."}};
+</script>
+<script defer='defer' src="https://www.enabel.be/app/plugins/gravityforms/js/gravityforms.min.js?ver=2.8.4" id="gform_gravityforms-js"></script>
+<script defer='defer' src="https://www.google.com/recaptcha/api.js?hl=en&amp;ver=6.7.2#038;render=explicit" id="gform_recaptcha-js"></script>
+<script defer='defer' src="https://www.enabel.be/app/plugins/gravityforms/js/placeholders.jquery.min.js?ver=2.8.4" id="gform_placeholder-js"></script>
+<script defer='defer' src="https://www.enabel.be/app/plugins/gravityforms/assets/js/dist/utils.min.js?ver=50c7bea9c2320e16728e44ae9fde5f26" id="gform_gravityforms_utils-js"></script>
+<script defer='defer' src="https://www.enabel.be/app/plugins/gravityforms/assets/js/dist/vendor-theme.min.js?ver=54e7080aa7a02c83aa61fae430b9d869" id="gform_gravityforms_theme_vendors-js"></script>
+<script id="gform_gravityforms_theme-js-extra">
+var gform_theme_config = {"common":{"form":{"honeypot":{"version_hash":"1a8a967da194be3fda5b97f2bd12c133"}}},"hmr_dev":"","public_path":"https:\/\/www.enabel.be\/app\/plugins\/gravityforms\/assets\/js\/dist\/"};
+</script>
+<script defer='defer' src="https://www.enabel.be/app/plugins/gravityforms/assets/js/dist/scripts-theme.min.js?ver=bab19fd84843dabc070e73326d787910" id="gform_gravityforms_theme-js"></script>
+<script defer src="https://www.enabel.be/app/plugins/akismet/_inc/akismet-frontend.js?ver=1704837122" id="akismet-frontend-js"></script>
+<script>
+gform.initializeOnLoaded( function() { jQuery(document).on('gform_post_render', function(event, formId, currentPage){if(formId == 14) {if(typeof Placeholders != 'undefined'){
+                        Placeholders.enable();
+                    }} } );jQuery(document).on('gform_post_conditional_logic', function(event, formId, fields, isInit){} ) } );
+</script>
+<script>
+gform.initializeOnLoaded( function() {        const gformWrapperDiv = document.getElementById( "gform_wrapper_14" );        if ( gformWrapperDiv ) {            const visibilitySpan = document.createElement( "span" );            visibilitySpan.id = "gform_visibility_test_14";            gformWrapperDiv.insertAdjacentElement( "afterend", visibilitySpan );        }        const visibilityTestDiv = document.getElementById( "gform_visibility_test_14" );        let postRenderFired = false;                function triggerPostRender() {            if ( postRenderFired ) {                return;            }            postRenderFired = true;            jQuery( document ).trigger( 'gform_post_render', [14, 1] );            gform.utils.trigger( { event: 'gform/postRender', native: false, data: { formId: 14, currentPage: 1 } } );            if ( visibilityTestDiv ) {                visibilityTestDiv.parentNode.removeChild( visibilityTestDiv );            }        }        function debounce( func, wait, immediate ) {            var timeout;            return function() {                var context = this, args = arguments;                var later = function() {                    timeout = null;                    if ( !immediate ) func.apply( context, args );                };                var callNow = immediate && !timeout;                clearTimeout( timeout );                timeout = setTimeout( later, wait );                if ( callNow ) func.apply( context, args );            };        }        const debouncedTriggerPostRender = debounce( function() {            triggerPostRender();        }, 200 );        if ( visibilityTestDiv && visibilityTestDiv.offsetParent === null ) {            const observer = new MutationObserver( ( mutations ) => {                mutations.forEach( ( mutation ) => {                    if ( mutation.type === 'attributes' && visibilityTestDiv.offsetParent !== null ) {                        debouncedTriggerPostRender();                        observer.disconnect();                    }                });            });            observer.observe( document.body, {                attributes: true,                childList: false,                subtree: true,                attributeFilter: [ 'style', 'class' ],            });        } else {            triggerPostRender();        }    } );
+</script>
+<script>window.lazyLoadOptions=[{elements_selector:"img[data-lazy-src],.rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}},{elements_selector:".rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,}];window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(var i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://www.enabel.be/app/plugins/wp-rocket/assets/js/lazyload/17.8.3/lazyload.min.js"></script>    </body>
+</html>

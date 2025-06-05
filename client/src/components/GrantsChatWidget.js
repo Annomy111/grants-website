@@ -26,27 +26,33 @@ const GrantsChatWidget = () => {
   const getWelcomeMessage = () => {
     const welcomeMessages = {
       en: {
-        text: "Hi! I'm your grants assistant. I can help you find suitable funding opportunities for Ukrainian civil society organizations. Ask me about eligibility, deadlines, or specific grant programs!",
+        text: "👋 Hello! I'm your AI-powered grants assistant specializing in funding opportunities for Ukrainian civil society organizations.\n\n🎯 I can help you with:\n• Finding grants that match your organization's focus\n• Understanding eligibility criteria and requirements\n• Tracking application deadlines and timelines\n• Discovering funding amounts and program details\n\n💡 Try asking me about specific areas like women's rights, youth programs, education, or human rights work!",
         suggestions: [
-          "Show me grants for NGOs",
-          "What grants are available for human rights work?",
-          "Which grants have upcoming deadlines?"
+          "🏛️ Show me EU funding opportunities",
+          "👩‍⚖️ What grants support women's organizations?",
+          "⏰ Which grants have deadlines this month?",
+          "🎓 Find education and youth funding",
+          "💰 Show grants under €50,000"
         ]
       },
       uk: {
-        text: "Привіт! Я ваш помічник з грантів. Можу допомогти знайти підходящі можливості фінансування для українських організацій громадянського суспільства. Запитайте мене про критерії, терміни або конкретні грантові програми!",
+        text: "👋 Привіт! Я ваш AI-помічник з грантів, що спеціалізується на можливостях фінансування для українських організацій громадянського суспільства.\n\n🎯 Я можу допомогти вам з:\n• Пошуком грантів, що відповідають фокусу вашої організації\n• Розумінням критеріїв відбору та вимог\n• Відстеженням термінів подачі заявок\n• Виявленням сум фінансування та деталей програм\n\n💡 Спробуйте запитати мене про конкретні сфери, як права жінок, молодіжні програми, освіта або правозахисна робота!",
         suggestions: [
-          "Покажіть гранти для НГО",
-          "Які гранти доступні для правозахисної роботи?",
-          "Які гранти мають найближчі терміни?"
+          "🏛️ Покажіть можливості фінансування від ЄС",
+          "👩‍⚖️ Які гранти підтримують жіночі організації?",
+          "⏰ Які гранти мають терміни цього місяця?",
+          "🎓 Знайдіть фінансування освіти та молоді",
+          "💰 Покажіть гранти до €50,000"
         ]
       },
       de: {
-        text: "Hallo! Ich bin Ihr Grants-Assistent. Ich kann Ihnen helfen, geeignete Finanzierungsmöglichkeiten für ukrainische Zivilgesellschaftsorganisationen zu finden. Fragen Sie mich nach Berechtigung, Fristen oder spezifischen Förderprogrammen!",
+        text: "👋 Hallo! Ich bin Ihr KI-gestützter Förderungsassistent, spezialisiert auf Finanzierungsmöglichkeiten für ukrainische Zivilgesellschaftsorganisationen.\n\n🎯 Ich kann Ihnen helfen bei:\n• Finden von Förderungen, die zu Ihrer Organisation passen\n• Verstehen von Berechtigung und Anforderungen\n• Verfolgen von Bewerbungsfristen\n• Entdecken von Förderbeträgen und Programmdetails\n\n💡 Fragen Sie mich gerne nach spezifischen Bereichen wie Frauenrechte, Jugendprogramme, Bildung oder Menschenrechtsarbeit!",
         suggestions: [
-          "Zeigen Sie mir Förderungen für NGOs",
-          "Welche Förderungen gibt es für Menschenrechtsarbeit?",
-          "Welche Förderungen haben bevorstehende Fristen?"
+          "🏛️ Zeigen Sie mir EU-Fördermöglichkeiten",
+          "👩‍⚖️ Welche Förderungen unterstützen Frauenorganisationen?",
+          "⏰ Welche Förderungen haben Fristen diesen Monat?",
+          "🎓 Finden Sie Bildungs- und Jugendförderung",
+          "💰 Zeigen Sie Förderungen unter €50.000"
         ]
       }
     };
@@ -171,21 +177,28 @@ const GrantsChatWidget = () => {
 
       {/* Chat Widget */}
       {isOpen && (
-        <div className={`fixed bottom-24 right-6 z-40 w-96 h-96 max-w-[calc(100vw-3rem)] max-h-[calc(100vh-8rem)] rounded-lg shadow-xl border transition-all duration-300 ${
+        <div className={`fixed bottom-24 right-6 z-40 w-96 h-[32rem] max-w-[calc(100vw-3rem)] max-h-[calc(100vh-8rem)] rounded-xl shadow-2xl border backdrop-blur-sm transition-all duration-300 transform ${
           darkMode 
-            ? 'bg-gray-800 border-gray-700' 
-            : 'bg-white border-gray-200'
+            ? 'bg-gray-800/95 border-gray-700/50' 
+            : 'bg-white/95 border-gray-200/50'
         }`}>
           
           {/* Chat Header */}
           <div className={`flex items-center justify-between p-4 border-b ${
-            darkMode ? 'border-gray-700 bg-gray-900' : 'border-gray-200 bg-blue-50'
-          } rounded-t-lg`}>
-            <div className="flex items-center space-x-2">
-              <SparklesIcon className={`h-5 w-5 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
-              <h3 className={`font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                {t('chat.title', 'Grants Assistant')}
-              </h3>
+            darkMode ? 'border-gray-700/50 bg-gradient-to-r from-gray-900/80 to-gray-800/80' : 'border-gray-200/50 bg-gradient-to-r from-blue-50/80 to-indigo-50/80'
+          } rounded-t-xl backdrop-blur-sm`}>
+            <div className="flex items-center space-x-3">
+              <div className={`p-2 rounded-full ${darkMode ? 'bg-blue-500/20' : 'bg-blue-500/10'} animate-pulse`}>
+                <SparklesIcon className={`h-5 w-5 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+              </div>
+              <div>
+                <h3 className={`font-bold text-sm ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  🤖 AI Grants Assistant
+                </h3>
+                <p className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                  Powered by Gemini AI
+                </p>
+              </div>
             </div>
             <button
               onClick={() => setIsOpen(false)}
@@ -196,17 +209,17 @@ const GrantsChatWidget = () => {
           </div>
 
           {/* Messages Area */}
-          <div className={`flex-1 overflow-y-auto p-4 space-y-3 h-64 ${
-            darkMode ? 'bg-gray-800' : 'bg-gray-50'
-          }`}>
+          <div className={`flex-1 overflow-y-auto p-4 space-y-4 h-80 ${
+            darkMode ? 'bg-gradient-to-b from-gray-800/50 to-gray-900/50' : 'bg-gradient-to-b from-gray-50/50 to-white/50'
+          } backdrop-blur-sm`}>
             {messages.map((message) => (
-              <div key={message.id} className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`max-w-[85%] rounded-lg p-3 ${
+              <div key={message.id} className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'} animate-fadeIn`}>
+                <div className={`max-w-[90%] rounded-xl p-4 transition-all duration-200 hover:shadow-lg ${
                   message.type === 'user'
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg'
                     : message.error
-                    ? `${darkMode ? 'bg-red-900 text-red-200' : 'bg-red-100 text-red-800'}`
-                    : `${darkMode ? 'bg-gray-700 text-gray-200' : 'bg-white text-gray-800'} shadow-sm`
+                    ? `${darkMode ? 'bg-red-900/80 text-red-200' : 'bg-red-100/80 text-red-800'} shadow-md`
+                    : `${darkMode ? 'bg-gray-700/80 text-gray-100 border border-gray-600/30' : 'bg-white/80 text-gray-800 border border-gray-200/30'} shadow-md backdrop-blur-sm`
                 }`}>
                   <div 
                     dangerouslySetInnerHTML={{ __html: formatMessage(message.content) }}
@@ -214,18 +227,25 @@ const GrantsChatWidget = () => {
                   
                   {/* Display recommended grants */}
                   {message.grants && message.grants.length > 0 && (
-                    <div className="mt-3 space-y-2">
-                      <div className={`text-xs font-semibold ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                        {t('chat.recommendedGrants', 'Recommended Grants')}:
+                    <div className="mt-4 space-y-3">
+                      <div className={`text-sm font-bold flex items-center gap-2 ${darkMode ? 'text-blue-300' : 'text-blue-700'}`}>
+                        🎯 {t('chat.recommendedGrants', 'Recommended Grants')}
                       </div>
                       {message.grants.slice(0, 3).map((grant, idx) => (
-                        <div key={idx} className={`p-2 rounded border ${
-                          darkMode ? 'border-gray-600 bg-gray-600' : 'border-gray-200 bg-gray-50'
+                        <div key={idx} className={`p-3 rounded-lg border transition-all duration-200 hover:shadow-md ${
+                          darkMode ? 'border-gray-500/30 bg-gray-600/30 hover:bg-gray-600/50' : 'border-blue-200/50 bg-blue-50/30 hover:bg-blue-50/50'
                         }`}>
-                          <div className="font-medium text-sm">{grant.grant_name}</div>
-                          <div className="text-xs opacity-75">{grant.funding_organization}</div>
+                          <div className="font-semibold text-sm mb-1 flex items-start gap-2">
+                            <span className="text-yellow-500">💰</span>
+                            {grant.grant_name}
+                          </div>
+                          <div className={`text-xs mb-1 flex items-center gap-1 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                            <span>🏛️</span>
+                            {grant.funding_organization}
+                          </div>
                           {grant.application_deadline && (
-                            <div className="text-xs opacity-75">
+                            <div className={`text-xs flex items-center gap-1 ${darkMode ? 'text-blue-300' : 'text-blue-600'}`}>
+                              <span>⏰</span>
                               {t('chat.deadline', 'Deadline')}: {grant.application_deadline}
                             </div>
                           )}
@@ -236,15 +256,18 @@ const GrantsChatWidget = () => {
 
                   {/* Display suggestions */}
                   {message.suggestions && message.suggestions.length > 0 && (
-                    <div className="mt-3 space-y-1">
+                    <div className="mt-4 space-y-2">
+                      <div className={`text-sm font-semibold flex items-center gap-2 ${darkMode ? 'text-purple-300' : 'text-purple-700'}`}>
+                        💡 Quick suggestions:
+                      </div>
                       {message.suggestions.map((suggestion, idx) => (
                         <button
                           key={idx}
                           onClick={() => handleSuggestionClick(suggestion)}
-                          className={`block w-full text-left text-xs p-2 rounded border transition-colors ${
+                          className={`block w-full text-left text-sm p-3 rounded-lg border transition-all duration-200 hover:scale-[1.02] hover:shadow-md ${
                             darkMode 
-                              ? 'border-gray-600 hover:bg-gray-600 text-gray-300' 
-                              : 'border-gray-200 hover:bg-gray-100 text-gray-600'
+                              ? 'border-purple-500/30 bg-purple-900/20 hover:bg-purple-800/30 text-purple-200' 
+                              : 'border-purple-200/50 bg-purple-50/30 hover:bg-purple-100/50 text-purple-700'
                           }`}
                         >
                           {suggestion}
@@ -277,31 +300,43 @@ const GrantsChatWidget = () => {
           </div>
 
           {/* Input Area */}
-          <div className={`border-t p-3 ${darkMode ? 'border-gray-700 bg-gray-900' : 'border-gray-200 bg-white'} rounded-b-lg`}>
-            <div className="flex space-x-2">
-              <input
-                type="text"
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                placeholder={t('chat.placeholder', 'Ask about grants...')}
-                disabled={isLoading}
-                className={`flex-1 p-2 text-sm rounded-lg border resize-none ${
-                  darkMode 
-                    ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                    : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
-                } focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:opacity-50`}
-              />
+          <div className={`border-t p-4 ${darkMode ? 'border-gray-700/50 bg-gradient-to-r from-gray-900/80 to-gray-800/80' : 'border-gray-200/50 bg-gradient-to-r from-white/80 to-gray-50/80'} rounded-b-xl backdrop-blur-sm`}>
+            <div className="flex space-x-3 items-end">
+              <div className="flex-1">
+                <input
+                  type="text"
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  onKeyPress={(e) => e.key === 'Enter' && !isLoading && handleSendMessage()}
+                  placeholder={t('chat.placeholder', '💬 Ask about grants, funding, deadlines...')}
+                  disabled={isLoading}
+                  className={`w-full p-3 text-sm rounded-xl border-2 transition-all duration-200 ${
+                    darkMode 
+                      ? 'bg-gray-700/80 border-gray-600/50 text-white placeholder-gray-400 focus:border-blue-400/50 focus:bg-gray-700' 
+                      : 'bg-white/80 border-gray-300/50 text-gray-900 placeholder-gray-500 focus:border-blue-500/50 focus:bg-white'
+                  } focus:ring-2 focus:ring-blue-500/20 disabled:opacity-50 backdrop-blur-sm`}
+                />
+                {isLoading && (
+                  <div className={`text-xs mt-1 flex items-center gap-2 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                    <div className="animate-pulse">🤖</div>
+                    AI is thinking...
+                  </div>
+                )}
+              </div>
               <button
                 onClick={() => handleSendMessage()}
                 disabled={!inputValue.trim() || isLoading}
-                className={`p-2 rounded-lg transition-colors ${
+                className={`p-3 rounded-xl transition-all duration-200 transform hover:scale-105 ${
                   !inputValue.trim() || isLoading
-                    ? 'bg-gray-300 cursor-not-allowed'
-                    : 'bg-blue-600 hover:bg-blue-700'
+                    ? 'bg-gray-300/50 cursor-not-allowed'
+                    : 'bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-lg'
                 } text-white`}
               >
-                <PaperAirplaneIcon className="h-4 w-4" />
+                {isLoading ? (
+                  <div className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full"></div>
+                ) : (
+                  <PaperAirplaneIcon className="h-4 w-4" />
+                )}
               </button>
             </div>
           </div>

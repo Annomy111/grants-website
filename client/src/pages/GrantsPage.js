@@ -30,12 +30,24 @@ const GrantsPage = () => {
   const [deadlineDate, setDeadlineDate] = useState('');
   const [sortBy, setSortBy] = useState('deadlineAsc');
   const [showExpired, setShowExpired] = useState(false);
+  const [expandedGrants, setExpandedGrants] = useState(new Set());
+  const [organizationLogos, setOrganizationLogos] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         let grantsData;
         let filtersData;
+        let logosData = {};
+
+        // Load organization logos
+        try {
+          const logosResponse = await axios.get('/data/organization-logos.json');
+          logosData = logosResponse.data;
+          setOrganizationLogos(logosData);
+        } catch (logosError) {
+          console.log('Organization logos not available');
+        }
 
         try {
           // First try to fetch from API (direct function endpoints)
@@ -163,6 +175,32 @@ const GrantsPage = () => {
   const truncateText = (text, maxLength) => {
     if (!text) return '';
     return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
+  };
+
+  const toggleGrantExpansion = (index) => {
+    const newExpanded = new Set(expandedGrants);
+    if (newExpanded.has(index)) {
+      newExpanded.delete(index);
+    } else {
+      newExpanded.add(index);
+    }
+    setExpandedGrants(newExpanded);
+  };
+
+  const isGrantExpanded = (index) => expandedGrants.has(index);
+
+  // Get organization logo
+  const getOrganizationLogo = (organizationName) => {
+    if (!organizationName) return null;
+    
+    // Create slug from organization name
+    const slug = organizationName.toLowerCase()
+      .replace(/[^a-z0-9\s]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/^-+|-+$/g, '');
+    
+    const logoData = organizationLogos[slug];
+    return logoData?.hasLogo ? logoData.logo : null;
   };
 
   // Sort grants based on criteria
@@ -571,75 +609,286 @@ const GrantsPage = () => {
                               : 'bg-white border border-gray-200 hover:shadow-lg')
                         } transition-all duration-200`}
                       >
-                        <div className={`px-6 py-4 border-b ${darkMode ? 'bg-gray-700 border-gray-600' : 'bg-blue-50 border-blue-100'}`}>
-                          <h2 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-blue-800'}`}>
-                            {grant.grant_name || grant["Grant Name"]}
-                          </h2>
-                          <p className={`${darkMode ? 'text-blue-300' : 'text-blue-600'}`}>
-                            {grant.funding_organization || grant["Funding Organization"]}
-                          </p>
-                        </div>
-                        <div className="p-6">
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                            <div>
-                              <h3 className={`font-semibold text-sm uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-700'}`}>{t('grants.country')}</h3>
-                              <p className={`${darkMode ? 'text-gray-300' : 'text-gray-800'} mt-1`}>
-                                {grant.country_region || grant["Country/Region"]}
-                              </p>
-                            </div>
-                            <div>
-                              <h3 className={`font-semibold text-sm uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-700'}`}>{t('grants.focusArea')}</h3>
-                              <p className={`${darkMode ? 'text-gray-300' : 'text-gray-800'} mt-1`}>
-                                {truncateText(grant.focus_areas || grant["Focus Areas"], 100)}
-                              </p>
-                            </div>
-                            <div>
-                              <h3 className={`font-semibold text-sm uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-700'}`}>{t('grants.amount')}</h3>
-                              <p className={`${darkMode ? 'text-gray-300' : 'text-gray-800'} mt-1 font-medium`}>
-                                {grant.grant_amount || grant["Grant Amount"] || 'Not specified'}
-                              </p>
-                            </div>
-                            <div>
-                              <h3 className={`font-semibold text-sm uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-700'}`}>{t('grants.deadline')}</h3>
-                              <div>
-                                <p className={`font-medium ${
-                                  isExpired 
-                                    ? (darkMode ? 'text-red-400' : 'text-red-600')
-                                    : isUrgent 
-                                      ? (darkMode ? 'text-orange-400' : 'text-orange-600') 
-                                      : (darkMode ? 'text-yellow-400' : 'text-yellow-600')
-                                }`}>
-                                  {formatDate(grant.application_deadline || grant["Application Deadline"])}
+                        <div className={`px-6 py-5 border-b ${darkMode ? 'bg-gradient-to-r from-gray-700 to-gray-800 border-gray-600' : 'bg-gradient-to-r from-blue-50 to-blue-100 border-blue-200'}`}>
+                          <div className="flex justify-between items-start">
+                            <div className="flex items-start space-x-4 flex-1">
+                              {getOrganizationLogo(grant.funding_organization || grant["Funding Organization"]) && (
+                                <div className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden ${darkMode ? 'bg-white/10' : 'bg-white/80'} p-2`}>
+                                  <img 
+                                    src={getOrganizationLogo(grant.funding_organization || grant["Funding Organization"])}
+                                    alt={`${grant.funding_organization || grant["Funding Organization"]} logo`}
+                                    className="w-full h-full object-contain"
+                                    onError={(e) => { e.target.style.display = 'none'; }}
+                                  />
+                                </div>
+                              )}
+                              <div className="flex-1">
+                                <h2 className={`text-xl font-bold mb-2 ${darkMode ? 'text-white' : 'text-blue-900'}`}>
+                                  {grant.grant_name || grant["Grant Name"]}
+                                </h2>
+                                <p className={`text-lg font-medium ${darkMode ? 'text-blue-300' : 'text-blue-700'}`}>
+                                  {grant.funding_organization || grant["Funding Organization"]}
                                 </p>
-                                {isExpired && (
-                                  <div className={`text-xs mt-1 ${darkMode ? 'text-red-400' : 'text-red-600'} font-medium`}>
-                                    EXPIRED
-                                  </div>
-                                )}
-                                {!isExpired && isUrgent && (
-                                  <div className={`text-xs mt-1 ${darkMode ? 'text-orange-400' : 'text-orange-600'} font-medium`}>
-                                    {daysDiff <= 0 ? 'Due today!' : `${daysDiff} day${daysDiff !== 1 ? 's' : ''} left`}
-                                  </div>
-                                )}
+                              </div>
+                            </div>
+                            <div className={`text-right ml-4 ${isExpired ? 'opacity-60' : ''}`}>
+                              <div className={`text-lg font-bold ${darkMode ? 'text-green-400' : 'text-green-600'}`}>
+                                {grant.grant_amount || grant["Grant Amount"] || 'Amount varies'}
+                              </div>
+                              <div className={`text-sm font-medium mt-1 ${
+                                isExpired 
+                                  ? (darkMode ? 'text-red-400' : 'text-red-600')
+                                  : isUrgent 
+                                    ? (darkMode ? 'text-orange-400' : 'text-orange-600') 
+                                    : (darkMode ? 'text-yellow-400' : 'text-yellow-600')
+                              }`}>
+                                {formatDate(grant.application_deadline || grant["Application Deadline"])}
                               </div>
                             </div>
                           </div>
-                          
-                          <div className="mb-4">
-                            <h3 className={`font-semibold text-sm uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-700'}`}>{t('grants.eligibility')}</h3>
-                            <p className={`${darkMode ? 'text-gray-300' : 'text-gray-800'} mt-1`}>
-                              {truncateText(grant.eligibility_criteria || grant["Eligibility Criteria"], 150)}
-                            </p>
+                        </div>
+                        <div className="p-6">
+                          {/* Key Information Grid */}
+                          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+                            <div className={`p-3 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-gray-50'}`}>
+                              <h3 className={`font-semibold text-xs uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-600'} mb-1`}>{t('grants.amount')}</h3>
+                              <p className={`${darkMode ? 'text-gray-200' : 'text-gray-800'} font-bold text-sm`}>
+                                {grant.grant_amount || grant["Grant Amount"] || 'Not specified'}
+                              </p>
+                            </div>
+                            <div className={`p-3 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-gray-50'}`}>
+                              <h3 className={`font-semibold text-xs uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-600'} mb-1`}>{t('grants.deadline')}</h3>
+                              <p className={`font-bold text-sm ${
+                                isExpired 
+                                  ? (darkMode ? 'text-red-400' : 'text-red-600')
+                                  : isUrgent 
+                                    ? (darkMode ? 'text-orange-400' : 'text-orange-600') 
+                                    : (darkMode ? 'text-gray-200' : 'text-gray-800')
+                              }`}>
+                                {formatDate(grant.application_deadline || grant["Application Deadline"])}
+                              </p>
+                            </div>
+                            <div className={`p-3 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-gray-50'}`}>
+                              <h3 className={`font-semibold text-xs uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-600'} mb-1`}>{t('grants.duration')}</h3>
+                              <p className={`${darkMode ? 'text-gray-200' : 'text-gray-800'} font-medium text-sm`}>
+                                {grant.duration || grant["Duration"] || 'Varies'}
+                              </p>
+                            </div>
+                            <div className={`p-3 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-gray-50'}`}>
+                              <h3 className={`font-semibold text-xs uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-600'} mb-1`}>{t('grants.country')}</h3>
+                              <p className={`${darkMode ? 'text-gray-200' : 'text-gray-800'} font-medium text-sm`}>
+                                {grant.country_region || grant["Country/Region"]}
+                              </p>
+                            </div>
                           </div>
                           
-                          <div className={`flex justify-between items-center flex-wrap gap-2 border-t pt-4 mt-4 ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}>
-                            <div>
-                              <span className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'} mr-2`}>{t('grants.duration')}:</span>
-                              <span className={`text-sm font-medium ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                                {grant.duration || grant["Duration"] || 'Not specified'}
-                              </span>
+                          {/* Focus Areas Section */}
+                          <div className="mb-4">
+                            <h3 className={`font-semibold text-sm uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-700'} mb-2`}>{t('grants.focusArea')}</h3>
+                            <div className={`${darkMode ? 'bg-gray-750 border-gray-600' : 'bg-gray-50 border-gray-200'} p-4 rounded-lg border`}>
+                              <p className={`${darkMode ? 'text-gray-200' : 'text-gray-700'} leading-relaxed`}>
+                                {isGrantExpanded(index) 
+                                  ? (grant.focus_areas || grant["Focus Areas"])
+                                  : truncateText(grant.focus_areas || grant["Focus Areas"], 300)
+                                }
+                              </p>
+                              {(grant.focus_areas || grant["Focus Areas"])?.length > 300 && (
+                                <button
+                                  onClick={() => toggleGrantExpansion(index)}
+                                  className={`text-sm mt-2 font-medium hover:underline ${darkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'}`}
+                                >
+                                  {isGrantExpanded(index) ? 'Show less' : 'Show full focus areas'}
+                                </button>
+                              )}
                             </div>
-                            <div className="flex space-x-2">
+                          </div>
+                          
+                          {/* Status Badge */}
+                          <div className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold mb-4 ${
+                            isExpired 
+                              ? (darkMode ? 'bg-red-900/20 text-red-400 border border-red-700/30' : 'bg-red-50 text-red-600 border border-red-200')
+                              : isUrgent 
+                                ? (darkMode ? 'bg-orange-900/20 text-orange-400 border border-orange-700/30' : 'bg-orange-50 text-orange-600 border border-orange-200') 
+                                : (darkMode ? 'bg-green-900/20 text-green-400 border border-green-700/30' : 'bg-green-50 text-green-600 border border-green-200')
+                          }`}>
+                            {isExpired ? 'EXPIRED' : isUrgent ? (daysDiff <= 0 ? 'DUE TODAY!' : `${daysDiff} DAYS LEFT`) : 'OPEN'}
+                          </div>
+                          
+                          <div className="mb-4">
+                            <h3 className={`font-semibold text-sm uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-700'} mb-2`}>{t('grants.eligibility')}</h3>
+                            <div className={`${darkMode ? 'bg-gray-750 border-gray-600' : 'bg-blue-50 border-blue-200'} p-4 rounded-lg border`}>
+                              <p className={`${darkMode ? 'text-gray-200' : 'text-gray-800'} leading-relaxed`}>
+                                {isGrantExpanded(index) 
+                                  ? (grant.eligibility_criteria || grant["Eligibility Criteria"])
+                                  : truncateText(grant.eligibility_criteria || grant["Eligibility Criteria"], 400)
+                                }
+                              </p>
+                              {(grant.eligibility_criteria || grant["Eligibility Criteria"])?.length > 400 && (
+                                <button
+                                  onClick={() => toggleGrantExpansion(index)}
+                                  className={`text-sm mt-2 font-medium hover:underline ${darkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'}`}
+                                >
+                                  {isGrantExpanded(index) ? 'Show less details' : 'Show full details'}
+                                </button>
+                              )}
+                            </div>
+                          </div>
+                          
+                          {/* Enhanced Details Section - Only show if grant is expanded */}
+                          {isGrantExpanded(index) && (
+                            <div className="space-y-4 mt-6">
+                              
+                              {/* Detailed Description */}
+                              {(grant.detailed_description) && (
+                                <div className="mb-4">
+                                  <h3 className={`font-semibold text-sm uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-700'} mb-2`}>Description</h3>
+                                  <div className={`${darkMode ? 'bg-gray-750 border-gray-600' : 'bg-gray-50 border-gray-200'} p-4 rounded-lg border`}>
+                                    <p className={`${darkMode ? 'text-gray-200' : 'text-gray-800'} leading-relaxed`}>
+                                      {grant.detailed_description}
+                                    </p>
+                                  </div>
+                                </div>
+                              )}
+                              
+                              {/* Application Procedure */}
+                              {(grant.application_procedure) && (
+                                <div className="mb-4">
+                                  <h3 className={`font-semibold text-sm uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-700'} mb-2`}>Application Procedure</h3>
+                                  <div className={`${darkMode ? 'bg-purple-900/20 border-purple-500/30' : 'bg-purple-50 border-purple-200'} p-4 rounded-lg border`}>
+                                    <p className={`${darkMode ? 'text-purple-200' : 'text-purple-800'} leading-relaxed whitespace-pre-line`}>
+                                      {grant.application_procedure}
+                                    </p>
+                                  </div>
+                                </div>
+                              )}
+                              
+                              {/* Required Documents */}
+                              {(grant.required_documents) && (
+                                <div className="mb-4">
+                                  <h3 className={`font-semibold text-sm uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-700'} mb-2`}>Required Documents</h3>
+                                  <div className={`${darkMode ? 'bg-blue-900/20 border-blue-500/30' : 'bg-blue-50 border-blue-200'} p-4 rounded-lg border`}>
+                                    <p className={`${darkMode ? 'text-blue-200' : 'text-blue-800'} leading-relaxed whitespace-pre-line`}>
+                                      {grant.required_documents}
+                                    </p>
+                                  </div>
+                                </div>
+                              )}
+                              
+                              {/* Evaluation Criteria */}
+                              {(grant.evaluation_criteria) && (
+                                <div className="mb-4">
+                                  <h3 className={`font-semibold text-sm uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-700'} mb-2`}>Evaluation Criteria</h3>
+                                  <div className={`${darkMode ? 'bg-green-900/20 border-green-700/30' : 'bg-green-50 border-green-200'} p-4 rounded-lg border`}>
+                                    <p className={`${darkMode ? 'text-green-200' : 'text-green-800'} leading-relaxed whitespace-pre-line`}>
+                                      {grant.evaluation_criteria}
+                                    </p>
+                                  </div>
+                                </div>
+                              )}
+                              
+                              {/* Additional Requirements */}
+                              {(grant.additional_requirements) && (
+                                <div className="mb-4">
+                                  <h3 className={`font-semibold text-sm uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-700'} mb-2`}>Additional Requirements</h3>
+                                  <div className={`${darkMode ? 'bg-yellow-900/20 border-yellow-700/30' : 'bg-yellow-50 border-yellow-200'} p-4 rounded-lg border`}>
+                                    <p className={`${darkMode ? 'text-yellow-200' : 'text-yellow-800'} leading-relaxed whitespace-pre-line`}>
+                                      {grant.additional_requirements}
+                                    </p>
+                                  </div>
+                                </div>
+                              )}
+                              
+                              {/* Reporting Requirements */}
+                              {(grant.reporting_requirements) && (
+                                <div className="mb-4">
+                                  <h3 className={`font-semibold text-sm uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-700'} mb-2`}>Reporting Requirements</h3>
+                                  <div className={`${darkMode ? 'bg-orange-900/20 border-orange-700/30' : 'bg-orange-50 border-orange-200'} p-4 rounded-lg border`}>
+                                    <p className={`${darkMode ? 'text-orange-200' : 'text-orange-800'} leading-relaxed whitespace-pre-line`}>
+                                      {grant.reporting_requirements}
+                                    </p>
+                                  </div>
+                                </div>
+                              )}
+                              
+                              {/* Contact Information */}
+                              {(grant.contact_email || grant.contact_person || grant.contact_phone) && (
+                                <div className="mb-4">
+                                  <h3 className={`font-semibold text-sm uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-700'} mb-2`}>Contact Information</h3>
+                                  <div className={`${darkMode ? 'bg-indigo-900/20 border-indigo-500/30' : 'bg-indigo-50 border-indigo-200'} p-4 rounded-lg border`}>
+                                    <div className="space-y-2">
+                                      {grant.contact_person && (
+                                        <div className="flex items-center">
+                                          <svg xmlns="http://www.w3.org/2000/svg" className={`h-4 w-4 mr-2 ${darkMode ? 'text-indigo-400' : 'text-indigo-600'}`} viewBox="0 0 20 20" fill="currentColor">
+                                            <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                                          </svg>
+                                          <span className={`${darkMode ? 'text-indigo-200' : 'text-indigo-800'} font-medium`}>
+                                            {grant.contact_person}
+                                          </span>
+                                        </div>
+                                      )}
+                                      {grant.contact_email && (
+                                        <div className="flex items-center">
+                                          <svg xmlns="http://www.w3.org/2000/svg" className={`h-4 w-4 mr-2 ${darkMode ? 'text-indigo-400' : 'text-indigo-600'}`} viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                                          </svg>
+                                          <a 
+                                            href={`mailto:${grant.contact_email}`}
+                                            className={`${darkMode ? 'text-indigo-300 hover:text-indigo-200' : 'text-indigo-700 hover:text-indigo-800'} hover:underline`}
+                                          >
+                                            {grant.contact_email}
+                                          </a>
+                                        </div>
+                                      )}
+                                      {grant.contact_phone && (
+                                        <div className="flex items-center">
+                                          <svg xmlns="http://www.w3.org/2000/svg" className={`h-4 w-4 mr-2 ${darkMode ? 'text-indigo-400' : 'text-indigo-600'}`} viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                                          </svg>
+                                          <span className={`${darkMode ? 'text-indigo-200' : 'text-indigo-800'}`}>
+                                            {grant.contact_phone}
+                                          </span>
+                                        </div>
+                                      )}
+                                    </div>
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          )}
+                          
+                          {/* Action Section */}
+                          <div className={`flex justify-between items-center flex-wrap gap-3 border-t pt-4 mt-6 ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}>
+                            <div className="flex items-center space-x-4">
+                              {isGrantExpanded(index) && (
+                                <div className={`px-3 py-1 rounded-full text-xs font-medium ${darkMode ? 'bg-blue-900 text-blue-200' : 'bg-blue-100 text-blue-800'}`}>
+                                  Detailed view
+                                </div>
+                              )}
+                            </div>
+                            <div className="flex space-x-3">
+                              <button
+                                onClick={() => toggleGrantExpansion(index)}
+                                className={`flex items-center px-4 py-2 rounded-lg font-medium transition-all duration-200 ${darkMode 
+                                  ? 'bg-gray-700 hover:bg-gray-600 text-gray-300 hover:text-white border border-gray-600' 
+                                  : 'bg-gray-100 hover:bg-gray-200 text-gray-700 hover:text-gray-800 border border-gray-300'}`}
+                              >
+                                {isGrantExpanded(index) ? (
+                                  <>
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                                      <path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" />
+                                    </svg>
+                                    Show Less
+                                  </>
+                                ) : (
+                                  <>
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                                      <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                                    </svg>
+                                    View Details
+                                  </>
+                                )}
+                              </button>
                               {(grant.website_link || grant["Website Link"]) && (
                                 <a 
                                   href={(() => {
@@ -651,11 +900,11 @@ const GrantsPage = () => {
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   className={`flex items-center rounded-lg py-2 px-4 font-medium transition-all duration-200 ${darkMode 
-                                    ? 'bg-blue-600 hover:bg-blue-500 text-white' 
-                                    : 'bg-blue-600 hover:bg-blue-700 text-white'}`}
+                                    ? 'bg-blue-600 hover:bg-blue-500 text-white shadow-lg hover:shadow-xl' 
+                                    : 'bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl'}`}
                                 >
                                   {t('grants.applyNow')}
-                                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" viewBox="0 0 20 20" fill="currentColor">
                                     <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
                                     <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
                                   </svg>

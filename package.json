@@ -20,6 +20,7 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.49.10",
     "csv-parser": "^3.2.0",
+    "dotenv": "^16.5.0",
     "playwright-core": "^1.52.0",
     "serverless-http": "^3.2.0",
     "sqlite3": "^5.1.7"
