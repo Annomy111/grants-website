@@ -118,7 +118,32 @@ const Header = () => {
           </nav>
           
           {/* Mobile menu button */}
-          <div className="flex md:hidden items-center space-x-3">
+          <div className="flex md:hidden items-center space-x-2">
+            {/* Mobile Language Switcher - Always Visible */}
+            <div className="flex items-center space-x-1 text-sm">
+              <button 
+                onClick={() => changeLanguage('en')} 
+                className={`px-2 py-1 rounded ${language === 'en' 
+                  ? `${darkMode ? 'bg-gray-800 text-white font-bold' : 'bg-blue-100 text-blue-700 font-bold'}` 
+                  : `${darkMode ? 'text-gray-300' : 'text-gray-700'}`
+                }`}
+                aria-label="Switch to English"
+              >
+                EN
+              </button>
+              <span className={`${darkMode ? 'text-gray-600' : 'text-gray-400'} text-xs`}>|</span>
+              <button 
+                onClick={() => changeLanguage('uk')} 
+                className={`px-2 py-1 rounded ${language === 'uk' 
+                  ? `${darkMode ? 'bg-gray-800 text-white font-bold' : 'bg-blue-100 text-blue-700 font-bold'}` 
+                  : `${darkMode ? 'text-gray-300' : 'text-gray-700'}`
+                }`}
+                aria-label="Switch to Ukrainian"
+              >
+                UK
+              </button>
+            </div>
+            
             <button 
               onClick={toggleDarkMode}
               className={`p-2 rounded-full transition-colors duration-200 ${darkMode ? 'bg-gray-800 text-yellow-300' : 'bg-gray-100 text-gray-700'}`}
@@ -138,9 +163,10 @@ const Header = () => {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`inline-flex items-center justify-center p-2 rounded-md focus:outline-none ${darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-blue-600'}`}
+              className={`inline-flex items-center justify-center p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 ${darkMode ? 'text-gray-300 hover:text-white hover:bg-gray-700' : 'text-gray-700 hover:text-blue-600 hover:bg-gray-100'}`}
               aria-controls="mobile-menu"
-              aria-expanded="false"
+              aria-expanded={mobileMenuOpen}
+              data-testid="mobile-menu-button"
             >
               <span className="sr-only">Open main menu</span>
               {mobileMenuOpen ? (

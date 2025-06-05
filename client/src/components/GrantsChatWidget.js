@@ -177,11 +177,13 @@ const GrantsChatWidget = () => {
 
       {/* Chat Widget */}
       {isOpen && (
-        <div className={`fixed bottom-24 right-6 z-40 w-96 h-[32rem] max-w-[calc(100vw-3rem)] max-h-[calc(100vh-8rem)] rounded-xl shadow-2xl border backdrop-blur-sm transition-all duration-300 transform ${
+        <div className={`fixed bottom-24 right-6 md:right-6 z-40 w-[calc(100vw-3rem)] md:w-96 h-[calc(100vh-12rem)] md:h-[32rem] max-w-[calc(100vw-3rem)] md:max-w-[24rem] max-h-[calc(100vh-8rem)] rounded-xl shadow-2xl border backdrop-blur-sm transition-all duration-300 transform ${
           darkMode 
             ? 'bg-gray-800/95 border-gray-700/50' 
             : 'bg-white/95 border-gray-200/50'
-        }`}>
+        } 
+        /* Mobile adjustments */
+        left-6 md:left-auto right-6`}>
           
           {/* Chat Header */}
           <div className={`flex items-center justify-between p-4 border-b ${
