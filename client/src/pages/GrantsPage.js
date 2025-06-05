@@ -739,7 +739,6 @@ const GrantsPage = () => {
                                 </a>
                               )}
                             </div>
-                          </div>
                         </div>
                       </div>
                     );
