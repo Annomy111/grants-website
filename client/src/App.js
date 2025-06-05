@@ -20,7 +20,8 @@ import AdminDashboard from './pages/AdminDashboard';
 import AdminOverview from './pages/AdminOverview';
 import AdminGrants from './pages/AdminGrants';
 import AdminBlog from './pages/AdminBlog';
-import AdminBlogEditor from './pages/AdminBlogEditor';
+// import AdminBlogEditor from './pages/AdminBlogEditor';
+import AdminBlogEditor from './pages/AdminBlogEditorSimple'; // Using simplified version temporarily
 import AdminProfile from './pages/AdminProfile';
 import AdminUsers from './pages/AdminUsers';
 import AdminBlogGenerationDashboard from './pages/AdminBlogGenerationDashboard';
