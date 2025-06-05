@@ -472,6 +472,9 @@ const GrantsPage = () => {
             </select>
           </div>
         </div>
+        
+        {/* Grants List */}
+        <div className="mt-8">
           {loading ? (
             <div className="flex justify-center py-24">
               <div className="animate-pulse flex space-x-1">
