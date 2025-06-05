@@ -103,7 +103,7 @@ client/build-deployment.zip
 .claude/
 .env.production
 
-# Test and debug scripts
+# Test and debug files
 *-test.js
 *-debug.js
 check-*.js
@@ -119,6 +119,10 @@ investigate-*.js
 find-*.js
 generate-*.js
 ukrainian-translation-*.js
+execute-agent-*.js
+browser-*.js
+live-*.js
+comprehensive-*.js
 
 # Reports and analysis
 *_REPORT.md
@@ -126,4 +130,10 @@ ukrainian-translation-*.js
 *_SUMMARY.md
 *-report.md
 *-report.js
+*-report.json
 *-analysis-report.md
+*-updates.sql
+
+# Test directories
+tests/
+test-reports/
