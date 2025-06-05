@@ -45,7 +45,11 @@
       "Bash(wget:*)",
       "Bash(zip:*)",
       "Bash(npm search supabase mcp)",
-      "Bash(env)"
+      "Bash(env)",
+      "Bash(git push:*)",
+      "Bash(npm search:*)",
+      "Bash(NETLIFY_SKIP_EXTENSION_INSTALL=true netlify deploy --prod --dir=build)",
+      "Bash(NETLIFY_SKIP_FUNCTIONS_CACHE=true netlify deploy --prod --skip-functions-cache --timeout 300)"
     ],
     "deny": []
   },

@@ -13,6 +13,42 @@ const GrantsPage = () => {
   const { darkMode } = useContext(ThemeContext);
   const [grants, setGrants] = useState([]);
   const [filteredGrants, setFilteredGrants] = useState([]);
+  
+  // Helper function to get the correct field based on current language
+  const getLocalizedField = (grant, fieldName) => {
+    const isUkrainian = i18n.language === 'uk';
+    
+    // Map of English field names to Ukrainian field names
+    const fieldMap = {
+      'grant_name': isUkrainian ? 'grant_name_uk' : 'grant_name',
+      'Grant Name': isUkrainian ? 'grant_name_uk' : 'grant_name',
+      'funding_organization': isUkrainian ? 'funding_organization_uk' : 'funding_organization',
+      'Funding Organization': isUkrainian ? 'funding_organization_uk' : 'funding_organization',
+      'country_region': isUkrainian ? 'country_region_uk' : 'country_region',
+      'Country/Region': isUkrainian ? 'country_region_uk' : 'country_region',
+      'eligibility_criteria': isUkrainian ? 'eligibility_criteria_uk' : 'eligibility_criteria',
+      'Eligibility Criteria': isUkrainian ? 'eligibility_criteria_uk' : 'eligibility_criteria',
+      'focus_areas': isUkrainian ? 'focus_areas_uk' : 'focus_areas',
+      'Focus Areas': isUkrainian ? 'focus_areas_uk' : 'focus_areas',
+      'grant_amount': isUkrainian ? 'grant_amount_uk' : 'grant_amount',
+      'Grant Amount': isUkrainian ? 'grant_amount_uk' : 'grant_amount',
+      'duration': isUkrainian ? 'duration_uk' : 'duration',
+      'Duration': isUkrainian ? 'duration_uk' : 'duration',
+      'application_procedure': isUkrainian ? 'application_procedure_uk' : 'application_procedure',
+      'required_documents': isUkrainian ? 'required_documents_uk' : 'required_documents',
+      'evaluation_criteria': isUkrainian ? 'evaluation_criteria_uk' : 'evaluation_criteria',
+      'additional_requirements': isUkrainian ? 'additional_requirements_uk' : 'additional_requirements',
+      'reporting_requirements': isUkrainian ? 'reporting_requirements_uk' : 'reporting_requirements',
+      'detailed_description': isUkrainian ? 'detailed_description_uk' : 'detailed_description'
+    };
+    
+    // Get the appropriate field name
+    const actualFieldName = fieldMap[fieldName] || fieldName;
+    
+    // Return the value from the grant object, checking both database and JSON formats
+    return grant[actualFieldName] || grant[fieldName] || '';
+  };
+  
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({
     organizations: [],
@@ -624,16 +660,16 @@ const GrantsPage = () => {
                               )}
                               <div className="flex-1">
                                 <h2 className={`text-xl font-bold mb-2 ${darkMode ? 'text-white' : 'text-blue-900'}`}>
-                                  {grant.grant_name || grant["Grant Name"]}
+                                  {getLocalizedField(grant, 'grant_name') || getLocalizedField(grant, 'Grant Name')}
                                 </h2>
                                 <p className={`text-lg font-medium ${darkMode ? 'text-blue-300' : 'text-blue-700'}`}>
-                                  {grant.funding_organization || grant["Funding Organization"]}
+                                  {getLocalizedField(grant, 'funding_organization') || getLocalizedField(grant, 'Funding Organization')}
                                 </p>
                               </div>
                             </div>
                             <div className={`text-right ml-4 ${isExpired ? 'opacity-60' : ''}`}>
                               <div className={`text-lg font-bold ${darkMode ? 'text-green-400' : 'text-green-600'}`}>
-                                {grant.grant_amount || grant["Grant Amount"] || 'Amount varies'}
+                                {getLocalizedField(grant, 'grant_amount') || getLocalizedField(grant, 'Grant Amount') || 'Amount varies'}
                               </div>
                               <div className={`text-sm font-medium mt-1 ${
                                 isExpired 
@@ -653,7 +689,7 @@ const GrantsPage = () => {
                             <div className={`p-3 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-gray-50'}`}>
                               <h3 className={`font-semibold text-xs uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-600'} mb-1`}>{t('grants.amount')}</h3>
                               <p className={`${darkMode ? 'text-gray-200' : 'text-gray-800'} font-bold text-sm`}>
-                                {grant.grant_amount || grant["Grant Amount"] || 'Not specified'}
+                                {getLocalizedField(grant, 'grant_amount') || getLocalizedField(grant, 'Grant Amount') || 'Not specified'}
                               </p>
                             </div>
                             <div className={`p-3 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-gray-50'}`}>
@@ -671,13 +707,13 @@ const GrantsPage = () => {
                             <div className={`p-3 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-gray-50'}`}>
                               <h3 className={`font-semibold text-xs uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-600'} mb-1`}>{t('grants.duration')}</h3>
                               <p className={`${darkMode ? 'text-gray-200' : 'text-gray-800'} font-medium text-sm`}>
-                                {grant.duration || grant["Duration"] || 'Varies'}
+                                {getLocalizedField(grant, 'duration') || getLocalizedField(grant, 'Duration') || 'Varies'}
                               </p>
                             </div>
                             <div className={`p-3 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-gray-50'}`}>
                               <h3 className={`font-semibold text-xs uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-600'} mb-1`}>{t('grants.country')}</h3>
                               <p className={`${darkMode ? 'text-gray-200' : 'text-gray-800'} font-medium text-sm`}>
-                                {grant.country_region || grant["Country/Region"]}
+                                {getLocalizedField(grant, 'country_region') || getLocalizedField(grant, 'Country/Region')}
                               </p>
                             </div>
                           </div>
@@ -688,8 +724,8 @@ const GrantsPage = () => {
                             <div className={`${darkMode ? 'bg-gray-750 border-gray-600' : 'bg-gray-50 border-gray-200'} p-4 rounded-lg border`}>
                               <p className={`${darkMode ? 'text-gray-200' : 'text-gray-700'} leading-relaxed`}>
                                 {isGrantExpanded(index) 
-                                  ? (grant.focus_areas || grant["Focus Areas"])
-                                  : truncateText(grant.focus_areas || grant["Focus Areas"], 300)
+                                  ? (getLocalizedField(grant, 'focus_areas') || getLocalizedField(grant, 'Focus Areas'))
+                                  : truncateText(getLocalizedField(grant, 'focus_areas') || getLocalizedField(grant, 'Focus Areas'), 300)
                                 }
                               </p>
                               {(grant.focus_areas || grant["Focus Areas"])?.length > 300 && (
@@ -719,8 +755,8 @@ const GrantsPage = () => {
                             <div className={`${darkMode ? 'bg-gray-750 border-gray-600' : 'bg-blue-50 border-blue-200'} p-4 rounded-lg border`}>
                               <p className={`${darkMode ? 'text-gray-200' : 'text-gray-800'} leading-relaxed`}>
                                 {isGrantExpanded(index) 
-                                  ? (grant.eligibility_criteria || grant["Eligibility Criteria"])
-                                  : truncateText(grant.eligibility_criteria || grant["Eligibility Criteria"], 400)
+                                  ? (getLocalizedField(grant, 'eligibility_criteria') || getLocalizedField(grant, 'Eligibility Criteria'))
+                                  : truncateText(getLocalizedField(grant, 'eligibility_criteria') || getLocalizedField(grant, 'Eligibility Criteria'), 400)
                                 }
                               </p>
                               {(grant.eligibility_criteria || grant["Eligibility Criteria"])?.length > 400 && (
@@ -739,72 +775,72 @@ const GrantsPage = () => {
                             <div className="space-y-4 mt-6">
                               
                               {/* Detailed Description */}
-                              {(grant.detailed_description) && (
+                              {(getLocalizedField(grant, 'detailed_description')) && (
                                 <div className="mb-4">
                                   <h3 className={`font-semibold text-sm uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-700'} mb-2`}>Description</h3>
                                   <div className={`${darkMode ? 'bg-gray-750 border-gray-600' : 'bg-gray-50 border-gray-200'} p-4 rounded-lg border`}>
                                     <p className={`${darkMode ? 'text-gray-200' : 'text-gray-800'} leading-relaxed`}>
-                                      {grant.detailed_description}
+                                      {getLocalizedField(grant, 'detailed_description')}
                                     </p>
                                   </div>
                                 </div>
                               )}
                               
                               {/* Application Procedure */}
-                              {(grant.application_procedure) && (
+                              {(getLocalizedField(grant, 'application_procedure')) && (
                                 <div className="mb-4">
                                   <h3 className={`font-semibold text-sm uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-700'} mb-2`}>Application Procedure</h3>
                                   <div className={`${darkMode ? 'bg-purple-900/20 border-purple-500/30' : 'bg-purple-50 border-purple-200'} p-4 rounded-lg border`}>
                                     <p className={`${darkMode ? 'text-purple-200' : 'text-purple-800'} leading-relaxed whitespace-pre-line`}>
-                                      {grant.application_procedure}
+                                      {getLocalizedField(grant, 'application_procedure')}
                                     </p>
                                   </div>
                                 </div>
                               )}
                               
                               {/* Required Documents */}
-                              {(grant.required_documents) && (
+                              {(getLocalizedField(grant, 'required_documents')) && (
                                 <div className="mb-4">
                                   <h3 className={`font-semibold text-sm uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-700'} mb-2`}>Required Documents</h3>
                                   <div className={`${darkMode ? 'bg-blue-900/20 border-blue-500/30' : 'bg-blue-50 border-blue-200'} p-4 rounded-lg border`}>
                                     <p className={`${darkMode ? 'text-blue-200' : 'text-blue-800'} leading-relaxed whitespace-pre-line`}>
-                                      {grant.required_documents}
+                                      {getLocalizedField(grant, 'required_documents')}
                                     </p>
                                   </div>
                                 </div>
                               )}
                               
                               {/* Evaluation Criteria */}
-                              {(grant.evaluation_criteria) && (
+                              {(getLocalizedField(grant, 'evaluation_criteria')) && (
                                 <div className="mb-4">
                                   <h3 className={`font-semibold text-sm uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-700'} mb-2`}>Evaluation Criteria</h3>
                                   <div className={`${darkMode ? 'bg-green-900/20 border-green-700/30' : 'bg-green-50 border-green-200'} p-4 rounded-lg border`}>
                                     <p className={`${darkMode ? 'text-green-200' : 'text-green-800'} leading-relaxed whitespace-pre-line`}>
-                                      {grant.evaluation_criteria}
+                                      {getLocalizedField(grant, 'evaluation_criteria')}
                                     </p>
                                   </div>
                                 </div>
                               )}
                               
                               {/* Additional Requirements */}
-                              {(grant.additional_requirements) && (
+                              {(getLocalizedField(grant, 'additional_requirements')) && (
                                 <div className="mb-4">
                                   <h3 className={`font-semibold text-sm uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-700'} mb-2`}>Additional Requirements</h3>
                                   <div className={`${darkMode ? 'bg-yellow-900/20 border-yellow-700/30' : 'bg-yellow-50 border-yellow-200'} p-4 rounded-lg border`}>
                                     <p className={`${darkMode ? 'text-yellow-200' : 'text-yellow-800'} leading-relaxed whitespace-pre-line`}>
-                                      {grant.additional_requirements}
+                                      {getLocalizedField(grant, 'additional_requirements')}
                                     </p>
                                   </div>
                                 </div>
                               )}
                               
                               {/* Reporting Requirements */}
-                              {(grant.reporting_requirements) && (
+                              {(getLocalizedField(grant, 'reporting_requirements')) && (
                                 <div className="mb-4">
                                   <h3 className={`font-semibold text-sm uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-700'} mb-2`}>Reporting Requirements</h3>
                                   <div className={`${darkMode ? 'bg-orange-900/20 border-orange-700/30' : 'bg-orange-50 border-orange-200'} p-4 rounded-lg border`}>
                                     <p className={`${darkMode ? 'text-orange-200' : 'text-orange-800'} leading-relaxed whitespace-pre-line`}>
-                                      {grant.reporting_requirements}
+                                      {getLocalizedField(grant, 'reporting_requirements')}
                                     </p>
                                   </div>
                                 </div>

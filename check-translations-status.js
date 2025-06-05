@@ -1,86 +1,119 @@
-const { createClient } = require('@supabase/supabase-js');
+const puppeteer = require('puppeteer');
 
-// Use anon key for read operations
-const supabaseUrl = 'https://adpddtbsstunjotxaldb.supabase.co';
-const anonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkcGRkdGJzc3R1bmpvdHhhbGRiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA1MjQ0MjYsImV4cCI6MjA1NjEwMDQyNn0.pRi-OjfTJnAA6OsJsxy-S9Xq7vRG54DzuKhdSNT9RFo';
-
-const supabase = createClient(supabaseUrl, anonKey);
-
-async function checkTranslationStatus() {
-  console.log('🔍 Checking Ukrainian Translation Status...\n');
+async function checkTranslationsStatus() {
+  const browser = await puppeteer.launch({ 
+    headless: false,
+    defaultViewport: { width: 1400, height: 900 }
+  });
   
   try {
-    // Check total grants
-    const { data: allGrants, error: countError } = await supabase
-      .from('grants')
-      .select('id, grant_name, grant_name_uk')
-      .order('id');
-      
-    if (countError) {
-      console.error('❌ Error fetching grants:', countError);
-      return;
-    }
+    const page = await browser.newPage();
     
-    console.log(`📊 Total grants in database: ${allGrants.length}`);
+    console.log('🔍 Testing Ukrainian Translation Display...\n');
     
-    // Check which grants have Ukrainian translations
-    const translatedGrants = allGrants.filter(g => g.grant_name_uk);
-    const untranslatedGrants = allGrants.filter(g => !g.grant_name_uk);
+    await page.goto('https://civil-society-grants-database.netlify.app/grants', { 
+      waitUntil: 'networkidle2', 
+      timeout: 30000 
+    });
     
-    console.log(`✅ Translated grants: ${translatedGrants.length}`);
-    console.log(`❌ Untranslated grants: ${untranslatedGrants.length}`);
+    await new Promise(resolve => setTimeout(resolve, 5000));
     
-    if (translatedGrants.length > 0) {
-      console.log('\n📝 Translated grants:');
-      translatedGrants.forEach(grant => {
-        console.log(`   ID ${grant.id}: ${grant.grant_name} → ${grant.grant_name_uk}`);
+    // Look for language switcher
+    const languageSwitcher = await page.evaluate(() => {
+      const buttons = Array.from(document.querySelectorAll('button, a'));
+      const ukButton = buttons.find(btn => 
+        btn.textContent.includes('Ukrainian') || 
+        btn.textContent.includes('Українська') ||
+        btn.textContent.includes('UK') ||
+        btn.textContent.includes('УКР')
+      );
+      return {
+        found: \!\!ukButton,
+        text: ukButton ? ukButton.textContent : 'Not found'
+      };
+    });
+    
+    console.log('Language Switcher:', languageSwitcher);
+    
+    // Try to switch to Ukrainian
+    if (languageSwitcher.found) {
+      await page.evaluate(() => {
+        const buttons = Array.from(document.querySelectorAll('button, a'));
+        const ukButton = buttons.find(btn => 
+          btn.textContent.includes('Ukrainian') || 
+          btn.textContent.includes('Українська') ||
+          btn.textContent.includes('UK') ||
+          btn.textContent.includes('УКР')
+        );
+        if (ukButton) ukButton.click();
       });
       
-      const translatedIds = translatedGrants.map(g => g.id).sort((a, b) => a - b);
-      console.log(`\n🎯 Translated IDs: ${translatedIds.join(', ')}`);
+      await new Promise(resolve => setTimeout(resolve, 3000));
     }
     
-    if (untranslatedGrants.length > 0) {
-      console.log('\n📝 Next batch needing translation (first 25):');
-      const nextBatch = untranslatedGrants.slice(0, 25);
-      nextBatch.forEach(grant => {
-        console.log(`   ID ${grant.id}: ${grant.grant_name}`);
-      });
+    // Check current language and grant display
+    const pageAnalysis = await page.evaluate(() => {
+      const grants = document.querySelectorAll('[class*="rounded-xl"][class*="shadow-md"]');
+      let firstGrantTitle = '';
+      let firstGrantOrg = '';
       
-      const nextBatchIds = nextBatch.map(g => g.id);
-      console.log(`\n🎯 Next batch IDs: ${nextBatchIds.join(', ')}`);
-    }
+      if (grants.length > 0) {
+        for (let grant of grants) {
+          const title = grant.querySelector('h2');
+          if (title && \!title.textContent.includes('Filters')) {
+            firstGrantTitle = title.textContent;
+            const org = grant.querySelector('[class*="text-blue"]');
+            firstGrantOrg = org ? org.textContent : '';
+            break;
+          }
+        }
+      }
+      
+      return {
+        currentUrl: window.location.href,
+        htmlLang: document.documentElement.lang,
+        bodyText: document.body.innerText.substring(0, 500),
+        grantsCount: grants.length,
+        firstGrantTitle: firstGrantTitle,
+        firstGrantOrg: firstGrantOrg,
+        hasUkrainianText: document.body.innerText.includes('Гранти') || 
+                         document.body.innerText.includes('Пошук') ||
+                         document.body.innerText.includes('Організація')
+      };
+    });
     
-    // Check Agent 1's work specifically
-    const agent1Range = allGrants.filter(g => g.id >= 158 && g.id <= 177);
-    const agent1Translated = agent1Range.filter(g => g.grant_name_uk);
+    console.log('\nPage Analysis:', pageAnalysis);
     
-    console.log(`\n🤖 Agent 1 Status (IDs 158-177):`);
-    console.log(`   Total grants in range: ${agent1Range.length}`);
-    console.log(`   Translated by Agent 1: ${agent1Translated.length}`);
+    // Check API response
+    console.log('\n🌐 Checking API Response...');
+    const apiResponse = await page.evaluate(async () => {
+      try {
+        const response = await fetch('/.netlify/functions/grants');
+        const data = await response.json();
+        const firstGrant = data[0];
+        return {
+          status: response.status,
+          hasData: \!\!data && data.length > 0,
+          firstGrant: firstGrant ? {
+            grant_name: firstGrant.grant_name,
+            grant_name_uk: firstGrant.grant_name_uk,
+            funding_organization: firstGrant.funding_organization,
+            funding_organization_uk: firstGrant.funding_organization_uk
+          } : null
+        };
+      } catch (error) {
+        return { error: error.message };
+      }
+    });
     
-    if (agent1Translated.length > 0) {
-      const agent1Ids = agent1Translated.map(g => g.id).sort((a, b) => a - b);
-      console.log(`   Agent 1 translated IDs: ${agent1Ids.join(', ')}`);
-    }
-    
-    // Check Agent 2's target range
-    const agent2Range = allGrants.filter(g => g.id >= 178 && g.id <= 203);
-    const agent2Translated = agent2Range.filter(g => g.grant_name_uk);
-    
-    console.log(`\n🤖 Agent 2 Status (IDs 178-203):`);
-    console.log(`   Total grants in range: ${agent2Range.length}`);
-    console.log(`   Already translated: ${agent2Translated.length}`);
-    console.log(`   Remaining to translate: ${agent2Range.length - agent2Translated.length}`);
-    
-    if (agent2Translated.length > 0) {
-      const agent2Ids = agent2Translated.map(g => g.id).sort((a, b) => a - b);
-      console.log(`   Agent 2 translated IDs: ${agent2Ids.join(', ')}`);
-    }
+    console.log('API Response:', apiResponse);
     
   } catch (error) {
-    console.error('❌ Error:', error);
+    console.error('❌ Test failed:', error);
+  } finally {
+    await browser.close();
   }
 }
 
-checkTranslationStatus();
+checkTranslationsStatus();
+EOF < /dev/null

@@ -8,8 +8,8 @@ node_modules/
 /test-reports
 tests/debug/
 tests/screenshots/
-*.test.js
-*.spec.js
+test-report.json
+performance-trace.json
 
 # Production builds
 /client/build
@@ -39,6 +39,9 @@ lerna-debug.log*
 *.swp
 *.swo
 *~
+.project
+.settings/
+.classpath
 
 # OS generated files
 Thumbs.db
@@ -79,3 +82,48 @@ debug-report.json
 error-screenshot.png
 # Local Netlify folder
 .netlify
+.netlify/state.json
+netlify/functions/.cache/
+
+# Supabase
+supabase/.temp/
+supabase/.branches/
+
+# Package manager lock files (optional - uncomment if you want to exclude)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Build artifacts
+*.zip
+*.tar.gz
+client/build-deployment.zip
+
+# Local configuration
+.claude/
+.env.production
+
+# Test and debug scripts
+*-test.js
+*-debug.js
+check-*.js
+test-*.js
+debug-*.js
+diagnose-*.js
+verify-*.js
+simple-*.js
+final-*.js
+puppeteer-*.js
+quick-*.js
+investigate-*.js
+find-*.js
+generate-*.js
+ukrainian-translation-*.js
+
+# Reports and analysis
+*_REPORT.md
+*_ANALYSIS.md
+*_SUMMARY.md
+*-report.md
+*-report.js
+*-analysis-report.md
