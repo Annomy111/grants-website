@@ -54,7 +54,8 @@
       "Bash(gh repo create:*)",
       "Bash(git branch:*)",
       "Bash(gh repo edit:*)",
-      "Bash(gh repo view:*)"
+      "Bash(gh repo view:*)",
+      "Bash(open tests/mobile-test-report.html)"
     ],
     "deny": []
   },
