@@ -50,13 +50,13 @@
     "organization": "EU/Network 100 percent life Rivne"
   },
   "sidanorad": {
-    "hasLogo": false,
-    "logo": null,
+    "hasLogo": true,
+    "logo": "/images/logos/sida-norad.svg",
     "organization": "SIDA/NORAD"
   },
   "gizgerman-government": {
-    "hasLogo": false,
-    "logo": null,
+    "hasLogo": true,
+    "logo": "/images/logos/giz-german-government.svg",
     "organization": "GIZ/German Government"
   },
   "eugiz": {
@@ -65,8 +65,8 @@
     "organization": "EU/GIZ"
   },
   "swiss-agency-for-development-and-cooperation": {
-    "hasLogo": false,
-    "logo": null,
+    "hasLogo": true,
+    "logo": "/images/logos/sdc.svg",
     "organization": "Swiss Agency for Development and Cooperation"
   },
   "national-endowment-for-democracy": {
@@ -95,8 +95,8 @@
     "organization": "European Endowment for Democracy"
   },
   "irfopen-society": {
-    "hasLogo": false,
-    "logo": null,
+    "hasLogo": true,
+    "logo": "/images/logos/international-renaissance-foundation.svg",
     "organization": "IRF/Open Society"
   },
   "stefan-batory-foundation": {
@@ -105,8 +105,8 @@
     "organization": "Stefan Batory Foundation"
   },
   "netherlands-ministry-of-foreign-affairs": {
-    "hasLogo": false,
-    "logo": null,
+    "hasLogo": true,
+    "logo": "/images/logos/netherlands-ministry-foreign-affairs.svg",
     "organization": "Netherlands Ministry of Foreign Affairs"
   },
   "afd": {
@@ -115,8 +115,8 @@
     "organization": "AFD"
   },
   "european-bank-for-reconstruction-and-development": {
-    "hasLogo": false,
-    "logo": null,
+    "hasLogo": true,
+    "logo": "/images/logos/ebrd.svg",
     "organization": "European Bank for Reconstruction and Development"
   },
   "konrad-adenauer-stiftung": {
@@ -130,8 +130,8 @@
     "organization": "Friedrich Ebert Stiftung"
   },
   "heinrich-bll-foundation": {
-    "hasLogo": false,
-    "logo": null,
+    "hasLogo": true,
+    "logo": "/images/logos/heinrich-boll-foundation.svg",
     "organization": "Heinrich Böll Foundation"
   },
   "charles-stewart-mott-foundation": {
@@ -150,8 +150,8 @@
     "organization": "Global Affairs Canada"
   },
   "embassy-of-japan-in-ukraine": {
-    "hasLogo": false,
-    "logo": null,
+    "hasLogo": true,
+    "logo": "/images/logos/embassy-of-japan-ukraine.svg",
     "organization": "Embassy of Japan in Ukraine"
   },
   "norwegian-helsinki-committee": {
@@ -240,8 +240,8 @@
     "organization": "Ministry of Foreign Affairs Latvia"
   },
   "slovak-agency-for-international-development": {
-    "hasLogo": false,
-    "logo": null,
+    "hasLogo": true,
+    "logo": "/images/logos/slovak-agency-international-development.svg",
     "organization": "Slovak Agency for International Development"
   },
   "european-commission": {
@@ -345,8 +345,8 @@
     "organization": "AWID"
   },
   "vdem-institute": {
-    "hasLogo": false,
-    "logo": null,
+    "hasLogo": true,
+    "logo": "/images/logos/v-dem-institute.svg",
     "organization": "V-Dem Institute"
   },
   "freedom-house": {
