@@ -1,0 +1,442 @@
+{
+  "council-of-europe": {
+    "hasLogo": true,
+    "logo": "/images/logos/council-of-europe.svg",
+    "organization": "Council of Europe"
+  },
+  "european-union": {
+    "hasLogo": true,
+    "logo": "/images/logos/european-union.png",
+    "organization": "European Union"
+  },
+  "open-government-partnership": {
+    "hasLogo": true,
+    "logo": "/images/logos/open-government-partnership.svg",
+    "organization": "Open Government Partnership"
+  },
+  "un-women": {
+    "hasLogo": true,
+    "logo": "/images/logos/un-women.png",
+    "organization": "UN Women"
+  },
+  "stop-tb-partnership": {
+    "hasLogo": true,
+    "logo": "/images/logos/stop-tb-partnership.png",
+    "organization": "Stop TB Partnership"
+  },
+  "visegrad-fund": {
+    "hasLogo": true,
+    "logo": "/images/logos/visegrad-fund.png",
+    "organization": "Visegrad Fund"
+  },
+  "nordic-council-of-ministers": {
+    "hasLogo": true,
+    "logo": "/images/logos/nordic-council-of-ministers.svg",
+    "organization": "Nordic Council of Ministers"
+  },
+  "british-embassy-kyiv": {
+    "hasLogo": true,
+    "logo": "/images/logos/british-embassy-kyiv.svg",
+    "organization": "British Embassy Kyiv"
+  },
+  "undpdenmark": {
+    "hasLogo": false,
+    "logo": null,
+    "organization": "UNDP/Denmark"
+  },
+  "eunetwork-100-percent-life-rivne": {
+    "hasLogo": false,
+    "logo": null,
+    "organization": "EU/Network 100 percent life Rivne"
+  },
+  "sidanorad": {
+    "hasLogo": false,
+    "logo": null,
+    "organization": "SIDA/NORAD"
+  },
+  "gizgerman-government": {
+    "hasLogo": false,
+    "logo": null,
+    "organization": "GIZ/German Government"
+  },
+  "eugiz": {
+    "hasLogo": false,
+    "logo": null,
+    "organization": "EU/GIZ"
+  },
+  "swiss-agency-for-development-and-cooperation": {
+    "hasLogo": false,
+    "logo": null,
+    "organization": "Swiss Agency for Development and Cooperation"
+  },
+  "national-endowment-for-democracy": {
+    "hasLogo": true,
+    "logo": "/images/logos/national-endowment-for-democracy.png",
+    "organization": "National Endowment for Democracy"
+  },
+  "open-society-foundations": {
+    "hasLogo": true,
+    "logo": "/images/logos/open-society-foundations.png",
+    "organization": "Open Society Foundations"
+  },
+  "usaid": {
+    "hasLogo": true,
+    "logo": "/images/logos/usaid.svg",
+    "organization": "USAID"
+  },
+  "german-marshall-fund": {
+    "hasLogo": true,
+    "logo": "/images/logos/german-marshall-fund.svg",
+    "organization": "German Marshall Fund"
+  },
+  "european-endowment-for-democracy": {
+    "hasLogo": true,
+    "logo": "/images/logos/european-endowment-for-democracy.png",
+    "organization": "European Endowment for Democracy"
+  },
+  "irfopen-society": {
+    "hasLogo": false,
+    "logo": null,
+    "organization": "IRF/Open Society"
+  },
+  "stefan-batory-foundation": {
+    "hasLogo": true,
+    "logo": "/images/logos/stefan-batory-foundation.png",
+    "organization": "Stefan Batory Foundation"
+  },
+  "netherlands-ministry-of-foreign-affairs": {
+    "hasLogo": false,
+    "logo": null,
+    "organization": "Netherlands Ministry of Foreign Affairs"
+  },
+  "afd": {
+    "hasLogo": true,
+    "logo": "/images/logos/afd-french-development-agency.svg",
+    "organization": "AFD"
+  },
+  "european-bank-for-reconstruction-and-development": {
+    "hasLogo": false,
+    "logo": null,
+    "organization": "European Bank for Reconstruction and Development"
+  },
+  "konrad-adenauer-stiftung": {
+    "hasLogo": true,
+    "logo": "/images/logos/konrad-adenauer-stiftung.png",
+    "organization": "Konrad Adenauer Stiftung"
+  },
+  "friedrich-ebert-stiftung": {
+    "hasLogo": true,
+    "logo": "/images/logos/friedrich-ebert-stiftung.svg",
+    "organization": "Friedrich Ebert Stiftung"
+  },
+  "heinrich-bll-foundation": {
+    "hasLogo": false,
+    "logo": null,
+    "organization": "Heinrich Böll Foundation"
+  },
+  "charles-stewart-mott-foundation": {
+    "hasLogo": true,
+    "logo": "/images/logos/charles-stewart-mott-foundation.svg",
+    "organization": "Charles Stewart Mott Foundation"
+  },
+  "robert-bosch-stiftung": {
+    "hasLogo": true,
+    "logo": "/images/logos/robert-bosch-stiftung.svg",
+    "organization": "Robert Bosch Stiftung"
+  },
+  "global-affairs-canada": {
+    "hasLogo": true,
+    "logo": "/images/logos/global-affairs-canada.svg",
+    "organization": "Global Affairs Canada"
+  },
+  "embassy-of-japan-in-ukraine": {
+    "hasLogo": false,
+    "logo": null,
+    "organization": "Embassy of Japan in Ukraine"
+  },
+  "norwegian-helsinki-committee": {
+    "hasLogo": true,
+    "logo": "/images/logos/norwegian-helsinki-committee.svg",
+    "organization": "Norwegian Helsinki Committee"
+  },
+  "people-in-need": {
+    "hasLogo": true,
+    "logo": "/images/logos/people-in-need.svg",
+    "organization": "People in Need"
+  },
+  "caritas-internationalis": {
+    "hasLogo": false,
+    "logo": null,
+    "organization": "Caritas Internationalis"
+  },
+  "osce": {
+    "hasLogo": true,
+    "logo": "/images/logos/osce.svg",
+    "organization": "OSCE"
+  },
+  "world-health-organization": {
+    "hasLogo": true,
+    "logo": "/images/logos/world-health-organization.svg",
+    "organization": "World Health Organization"
+  },
+  "international-organization-for-migration": {
+    "hasLogo": true,
+    "logo": "/images/logos/international-organization-for-migration.png",
+    "organization": "International Organization for Migration"
+  },
+  "unicef": {
+    "hasLogo": true,
+    "logo": "/images/logos/unicef.svg",
+    "organization": "UNICEF"
+  },
+  "food-and-agriculture-organization": {
+    "hasLogo": true,
+    "logo": "/images/logos/food-and-agriculture-organization.svg",
+    "organization": "Food and Agriculture Organization"
+  },
+  "belgian-development-agency": {
+    "hasLogo": true,
+    "logo": "/images/logos/belgian-development-agency.svg",
+    "organization": "Belgian Development Agency"
+  },
+  "austrian-development-agency": {
+    "hasLogo": true,
+    "logo": "/images/logos/austrian-development-agency.png",
+    "organization": "Austrian Development Agency"
+  },
+  "ministry-for-foreign-affairs-finland": {
+    "hasLogo": true,
+    "logo": "/images/logos/ministry-for-foreign-affairs-finland.png",
+    "organization": "Ministry for Foreign Affairs Finland"
+  },
+  "danish-ministry-of-foreign-affairs": {
+    "hasLogo": false,
+    "logo": null,
+    "organization": "Danish Ministry of Foreign Affairs"
+  },
+  "czech-development-agency": {
+    "hasLogo": true,
+    "logo": "/images/logos/czech-development-agency.png",
+    "organization": "Czech Development Agency"
+  },
+  "lithuanian-ministry-of-foreign-affairs": {
+    "hasLogo": true,
+    "logo": "/images/logos/lithuanian-ministry-foreign-affairs.svg",
+    "organization": "Lithuanian Ministry of Foreign Affairs"
+  },
+  "polish-ministry-of-foreign-affairs": {
+    "hasLogo": true,
+    "logo": "/images/logos/polish-ministry-of-foreign-affairs.png",
+    "organization": "Polish Ministry of Foreign Affairs"
+  },
+  "estonian-ministry-of-foreign-affairs": {
+    "hasLogo": true,
+    "logo": "/images/logos/estonian-ministry-foreign-affairs.svg",
+    "organization": "Estonian Ministry of Foreign Affairs"
+  },
+  "ministry-of-foreign-affairs-latvia": {
+    "hasLogo": false,
+    "logo": null,
+    "organization": "Ministry of Foreign Affairs Latvia"
+  },
+  "slovak-agency-for-international-development": {
+    "hasLogo": false,
+    "logo": null,
+    "organization": "Slovak Agency for International Development"
+  },
+  "european-commission": {
+    "hasLogo": true,
+    "logo": "/images/logos/european-commission.svg",
+    "organization": "European Commission"
+  },
+  "anna-lindh-foundation": {
+    "hasLogo": false,
+    "logo": null,
+    "organization": "Anna Lindh Foundation"
+  },
+  "pivot": {
+    "hasLogo": true,
+    "logo": "/images/logos/pivot.svg",
+    "organization": "Pivot"
+  },
+  "global-innovation-fund": {
+    "hasLogo": true,
+    "logo": "/images/logos/global-innovation-fund.svg",
+    "organization": "Global Innovation Fund"
+  },
+  "wellspring": {
+    "hasLogo": false,
+    "logo": null,
+    "organization": "Wellspring"
+  },
+  "oak-foundation": {
+    "hasLogo": true,
+    "logo": "/images/logos/oak-foundation.svg",
+    "organization": "Oak Foundation"
+  },
+  "macarthur-foundation": {
+    "hasLogo": true,
+    "logo": "/images/logos/macarthur-foundation-primary.svg",
+    "organization": "MacArthur Foundation"
+  },
+  "rockefeller-brothers-fund": {
+    "hasLogo": true,
+    "logo": "/images/logos/rockefeller-brothers-fund.svg",
+    "organization": "Rockefeller Brothers Fund"
+  },
+  "king-baudouin-foundation": {
+    "hasLogo": true,
+    "logo": "/images/logos/king-baudouin-foundation.svg",
+    "organization": "King Baudouin Foundation"
+  },
+  "adessium-foundation": {
+    "hasLogo": true,
+    "logo": "/images/logos/adessium-foundation.svg",
+    "organization": "Adessium Foundation"
+  },
+  "porticus": {
+    "hasLogo": true,
+    "logo": "/images/logos/porticus-blue.svg",
+    "organization": "Porticus"
+  },
+  "comic-relief": {
+    "hasLogo": false,
+    "logo": null,
+    "organization": "Comic Relief"
+  },
+  "sigrid-rausing-trust": {
+    "hasLogo": true,
+    "logo": "/images/logos/sigrid-rausing-trust.png",
+    "organization": "Sigrid Rausing Trust"
+  },
+  "joseph-rowntree-charitable-trust": {
+    "hasLogo": true,
+    "logo": "/images/logos/joseph-rowntree-charitable-trust.png",
+    "organization": "Joseph Rowntree Charitable Trust"
+  },
+  "luminate": {
+    "hasLogo": true,
+    "logo": "/images/logos/luminate.svg",
+    "organization": "Luminate"
+  },
+  "fjs": {
+    "hasLogo": false,
+    "logo": null,
+    "organization": "FJS"
+  },
+  "global-fund-for-women": {
+    "hasLogo": true,
+    "logo": "/images/logos/global-fund-for-women.svg",
+    "organization": "Global Fund for Women"
+  },
+  "mama-cash": {
+    "hasLogo": true,
+    "logo": "/images/logos/mama-cash.svg",
+    "organization": "Mama Cash"
+  },
+  "urgent-action-fund": {
+    "hasLogo": false,
+    "logo": null,
+    "organization": "Urgent Action Fund"
+  },
+  "awid": {
+    "hasLogo": true,
+    "logo": "/images/logos/awid.png",
+    "organization": "AWID"
+  },
+  "vdem-institute": {
+    "hasLogo": false,
+    "logo": null,
+    "organization": "V-Dem Institute"
+  },
+  "freedom-house": {
+    "hasLogo": true,
+    "logo": "/images/logos/freedom-house.svg",
+    "organization": "Freedom House"
+  },
+  "rsf": {
+    "hasLogo": false,
+    "logo": null,
+    "organization": "RSF"
+  },
+  "cpj": {
+    "hasLogo": true,
+    "logo": "/images/logos/cpj.png",
+    "organization": "CPJ"
+  },
+  "article-19": {
+    "hasLogo": true,
+    "logo": "/images/logos/article-19.svg",
+    "organization": "Article 19"
+  },
+  "mdif": {
+    "hasLogo": true,
+    "logo": "/images/logos/mdif.svg",
+    "organization": "MDIF"
+  },
+  "deutsche-welle-akademie": {
+    "hasLogo": true,
+    "logo": "/images/logos/deutsche-welle-akademie.svg",
+    "organization": "Deutsche Welle Akademie"
+  },
+  "bbc-media-action": {
+    "hasLogo": false,
+    "logo": null,
+    "organization": "BBC Media Action"
+  },
+  "internews": {
+    "hasLogo": true,
+    "logo": "/images/logos/internews.svg",
+    "organization": "Internews"
+  },
+  "irex": {
+    "hasLogo": true,
+    "logo": "/images/logos/irex.svg",
+    "organization": "IREX"
+  },
+  "ndi": {
+    "hasLogo": true,
+    "logo": "/images/logos/ndi.svg",
+    "organization": "NDI"
+  },
+  "iri": {
+    "hasLogo": true,
+    "logo": "/images/logos/iri.svg",
+    "organization": "IRI"
+  },
+  "wfd": {
+    "hasLogo": false,
+    "logo": null,
+    "organization": "WFD"
+  },
+  "nimd": {
+    "hasLogo": true,
+    "logo": "/images/logos/nimd.svg",
+    "organization": "NIMD"
+  },
+  "international-idea": {
+    "hasLogo": true,
+    "logo": "/images/logos/international-idea.svg",
+    "organization": "International IDEA"
+  },
+  "the-carter-center": {
+    "hasLogo": true,
+    "logo": "/images/logos/carter-center.png",
+    "organization": "The Carter Center"
+  },
+  "oif": {
+    "hasLogo": true,
+    "logo": "/images/logos/oif.png",
+    "organization": "OIF"
+  },
+  "british-council": {
+    "hasLogo": true,
+    "logo": "/images/logos/british-council.svg",
+    "organization": "British Council"
+  },
+  "goethe-institute": {
+    "hasLogo": true,
+    "logo": "/images/logos/goethe-institute.svg",
+    "organization": "Goethe Institute"
+  }
+}

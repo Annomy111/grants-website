@@ -76,8 +76,11 @@ const GrantsPage = () => {
           const logosResponse = await axios.get('/data/organization-logos.json');
           logosData = logosResponse.data;
           setOrganizationLogos(logosData);
+          console.log('Organization logos loaded successfully');
         } catch (logosError) {
-          console.log('Organization logos not available');
+          console.log('Organization logos file not found, logos will not be displayed');
+          // Continue without logos - not a critical error
+          setOrganizationLogos({});
         }
 
         try {
