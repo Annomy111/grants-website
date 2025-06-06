@@ -1,0 +1,346 @@
+/* Mobile Touch Target Optimizations */
+
+/* Ensure minimum 44x44px touch targets on mobile */
+@media (max-width: 768px) {
+  /* All clickable elements should have minimum touch target size */
+  button,
+  a,
+  input[type="button"],
+  input[type="submit"],
+  input[type="checkbox"],
+  input[type="radio"],
+  select,
+  .clickable {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Links and buttons that contain only icons */
+  a:has(svg:only-child),
+  button:has(svg:only-child) {
+    padding: 10px;
+  }
+
+  /* Form inputs */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="url"],
+  textarea,
+  select {
+    min-height: 44px;
+    padding: 8px 12px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  /* Blog post cards - make entire card clickable */
+  .blog-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* Grant action buttons */
+  .grant-action-button {
+    min-height: 44px;
+    padding: 10px 16px;
+  }
+
+  /* Mobile menu button */
+  [data-testid="mobile-menu-button"] {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 8px;
+  }
+
+  /* Language switcher buttons */
+  .language-switcher button {
+    min-height: 36px;
+    padding: 6px 12px;
+  }
+
+  /* Chat widget button */
+  .chat-widget-button {
+    width: 56px;
+    height: 56px;
+  }
+
+  /* Close buttons */
+  .close-button,
+  button[aria-label*="close"],
+  button[aria-label*="Close"] {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Social media links in footer */
+  .social-link {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Improve spacing between interactive elements */
+  .button-group > * + * {
+    margin-left: 12px;
+  }
+
+  /* Filter buttons */
+  .filter-button {
+    min-height: 40px;
+    padding: 8px 16px;
+    margin: 4px;
+  }
+
+  /* Pagination buttons */
+  .pagination button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Modal close buttons */
+  .modal-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Dropdown triggers */
+  .dropdown-trigger {
+    min-height: 44px;
+    padding: 10px 16px;
+  }
+
+  /* Card action areas */
+  .card-action {
+    padding: 12px;
+    margin: -12px;
+  }
+
+  /* Ensure proper spacing for stacked buttons */
+  .button-stack > * + * {
+    margin-top: 12px;
+  }
+
+  /* Tab buttons */
+  .tab-button {
+    min-height: 44px;
+    padding: 10px 16px;
+  }
+
+  /* Floating action buttons */
+  .fab {
+    width: 56px;
+    height: 56px;
+    border-radius: 28px;
+  }
+
+  /* Toggle switches */
+  .toggle-switch {
+    min-width: 44px;
+    min-height: 24px;
+    padding: 10px 0;
+  }
+
+  /* Breadcrumb links */
+  .breadcrumb a {
+    padding: 8px 4px;
+    margin: -8px -4px;
+  }
+
+  /* Table row actions */
+  .table-action {
+    padding: 8px;
+    margin: -8px;
+  }
+
+  /* Notification close buttons */
+  .notification-close {
+    min-width: 32px;
+    min-height: 32px;
+    margin: -6px;
+    padding: 6px;
+  }
+
+  /* Increase tap target for small links */
+  a[href^="mailto:"],
+  a[href^="tel:"] {
+    display: inline-block;
+    padding: 8px 0;
+    margin: -8px 0;
+  }
+
+  /* Search suggestions */
+  .search-suggestion {
+    min-height: 44px;
+    padding: 10px 16px;
+  }
+
+  /* Tag/chip close buttons */
+  .chip-close {
+    min-width: 24px;
+    min-height: 24px;
+    margin-left: 8px;
+    padding: 4px;
+  }
+
+  /* Accordion headers */
+  .accordion-header {
+    min-height: 48px;
+    padding: 12px 16px;
+  }
+
+  /* List item actions */
+  .list-item-action {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 10px;
+  }
+
+  /* Avatar buttons */
+  .avatar-button {
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  /* Stepper buttons */
+  .stepper-button {
+    min-width: 32px;
+    min-height: 32px;
+    padding: 6px;
+  }
+
+  /* Date picker cells */
+  .date-picker-cell {
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  /* Slider thumbs */
+  .slider-thumb {
+    width: 24px;
+    height: 24px;
+    margin: -10px;
+    padding: 10px;
+  }
+
+  /* File upload areas */
+  .file-upload-area {
+    min-height: 120px;
+    padding: 20px;
+  }
+
+  /* Menu items */
+  .menu-item {
+    min-height: 44px;
+    padding: 10px 16px;
+  }
+
+  /* Toolbar buttons */
+  .toolbar-button {
+    min-width: 40px;
+    min-height: 40px;
+    padding: 8px;
+  }
+
+  /* Rating stars */
+  .rating-star {
+    min-width: 32px;
+    min-height: 32px;
+    padding: 4px;
+  }
+
+  /* Video player controls */
+  .video-control {
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  /* Gallery thumbnails */
+  .gallery-thumb {
+    min-width: 60px;
+    min-height: 60px;
+  }
+
+  /* Tooltip triggers */
+  [data-tooltip] {
+    padding: 8px;
+    margin: -8px;
+  }
+
+  /* Progress bar segments */
+  .progress-segment {
+    min-height: 24px;
+  }
+
+  /* Tree view items */
+  .tree-item {
+    min-height: 36px;
+    padding: 6px 12px;
+  }
+
+  /* Color picker swatches */
+  .color-swatch {
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  /* Timeline items */
+  .timeline-item {
+    padding: 12px;
+  }
+
+  /* Code editor line numbers */
+  .line-number {
+    min-width: 40px;
+    text-align: center;
+  }
+
+  /* Improve button group spacing */
+  .btn-group {
+    display: flex;
+    gap: 8px;
+  }
+
+  /* Ensure proper focus styles */
+  *:focus {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+  }
+
+  /* Improve touch feedback */
+  button:active,
+  a:active {
+    opacity: 0.8;
+    transform: scale(0.98);
+  }
+
+  /* Prevent text selection on touch */
+  button,
+  a,
+  label {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  /* Smooth scrolling */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Prevent double-tap zoom */
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    touch-action: manipulation;
+  }
+}

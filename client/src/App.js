@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import './App.css';
+import './styles/mobile-optimizations.css';
 import { debugEnv } from './utils/debugEnv';
 
 // Debug environment on load

@@ -714,9 +714,9 @@ const GrantsPage = () => {
                           <div className="flex justify-end items-center gap-3 mt-6">
                             <button
                               onClick={() => toggleGrantExpansion(index)}
-                              className={`text-sm font-medium transition-all duration-200 ${darkMode 
-                                ? 'text-gray-400 hover:text-gray-200' 
-                                : 'text-gray-600 hover:text-gray-900'}`}
+                              className={`px-4 py-2 text-sm font-medium transition-all duration-200 rounded-lg ${darkMode 
+                                ? 'text-gray-300 hover:text-gray-100 hover:bg-gray-700/50' 
+                                : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'}`}
                             >
                               {isGrantExpanded(index) ? 'Show less' : 'View details'}
                             </button>

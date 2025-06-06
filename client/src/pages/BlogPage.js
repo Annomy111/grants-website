@@ -131,12 +131,16 @@ const BlogPage = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredPosts.map(post => (
-              <article
+              <Link
                 key={post.id}
-                className={`rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105 ${
-                  darkMode ? 'bg-gray-800' : 'bg-white'
-                }`}
+                to={`/blog/${post.slug}`}
+                className="block"
               >
+                <article
+                  className={`rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105 cursor-pointer h-full ${
+                    darkMode ? 'bg-gray-800' : 'bg-white'
+                  }`}
+                >
                 {post.featured_image && (
                   <div className="h-48 overflow-hidden">
                     <img
@@ -151,12 +155,7 @@ const BlogPage = () => {
                   <h2 className={`text-xl font-bold mb-2 line-clamp-2 ${
                     darkMode ? 'text-white' : 'text-gray-900'
                   }`}>
-                    <Link 
-                      to={`/blog/${post.slug}`}
-                      className="hover:text-blue-600 transition-colors"
-                    >
-                      {getLocalizedContent(post, 'title')}
-                    </Link>
+                    {getLocalizedContent(post, 'title')}
                   </h2>
                   
                   <div className={`flex items-center gap-4 text-sm mb-4 ${
@@ -195,14 +194,12 @@ const BlogPage = () => {
                     </p>
                   )}
                   
-                  <Link
-                    to={`/blog/${post.slug}`}
-                    className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
-                  >
+                  <span className="inline-flex items-center text-blue-600 font-medium">
                     {t('blog.readMore', 'Read More')} →
-                  </Link>
+                  </span>
                 </div>
-              </article>
+                </article>
+              </Link>
             ))}
           </div>
         )}
