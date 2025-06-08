@@ -15,7 +15,7 @@ import {
   InternationalSupportInfographic,
   FuturePrioritiesInfographic,
   CallToActionInfographic
-} from '../components/infographics/UkraineCivilSocietyInfographicsIndex';
+} from '../components/infographics/ProfessionalInfographics';
 
 const BlogPostPage = () => {
   const { slug } = useParams();
