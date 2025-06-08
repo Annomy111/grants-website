@@ -28,7 +28,7 @@ const HomePage = () => {
 
         try {
           // First try to load from API endpoint
-          const response = await axios.get('/api/grants');
+          const response = await axios.get('/.netlify/functions/grants');
           grants = response.data;
         } catch (apiError) {
           // Fallback to static JSON file with language support

@@ -15,7 +15,7 @@ const GrantDetail = () => {
   useEffect(() => {
     const fetchGrant = async () => {
       try {
-        const response = await axios.get('/api/grants');
+        const response = await axios.get('/.netlify/functions/grants');
         const allGrants = response.data;
         
         // Find the grant matching the query parameter

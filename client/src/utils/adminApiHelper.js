@@ -10,9 +10,9 @@ export const normalizeGrant = (grant) => {
   // Handle both database format (snake_case) and JSON format (Title Case)
   return {
     id: grant.id || grant.ID,
-    name: grant.name || grant.grant_name || grant['Grant Name'],
-    organization: grant.organization || grant['Organization'],
-    deadline: grant.deadline || grant['Deadline'],
+    name: grant.grant_name || grant.name || grant['Grant Name'],
+    organization: grant.funding_organization || grant.organization || grant['Organization'],
+    deadline: grant.application_deadline || grant.deadline || grant['Deadline'],
     grant_size_min: grant.grant_size_min || grant['Grant Size Min'] || 0,
     grant_size_max: grant.grant_size_max || grant['Grant Size Max'] || 0,
     type: grant.type || grant['Type'],
@@ -37,7 +37,7 @@ export const fetchGrantsForAdmin = async () => {
     const headers = token ? { Authorization: `Bearer ${token}` } : {};
     
     // Try API first
-    const response = await axios.get('/api/grants', { headers });
+    const response = await axios.get('/.netlify/functions/grants', { headers });
     
     if (response.data) {
       // Handle both array and object response formats

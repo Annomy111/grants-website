@@ -43,12 +43,15 @@ const GrantEditModal = ({ grant, onClose, onSave, darkMode }) => {
     setError('');
 
     try {
+      const token = localStorage.getItem('authToken');
+      const headers = token ? { Authorization: `Bearer ${token}` } : {};
+      
       if (grant) {
         // Update existing grant
-        await axios.put(`/api/grants/${grant.id}`, formData);
+        await axios.put(`/.netlify/functions/grants/${grant.id}`, formData, { headers });
       } else {
         // Create new grant
-        await axios.post('/api/grants', formData);
+        await axios.post('/.netlify/functions/grants', formData, { headers });
       }
       onSave();
     } catch (error) {

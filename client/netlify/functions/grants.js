@@ -101,19 +101,29 @@ async function getGrants(params, headers) {
   }
 
   // Apply sorting
-  const sortBy = params.sortBy || 'application_deadline';
-  const sortOrder = params.sortOrder || 'asc';
+  const sortBy = params.sortBy || 'deadlineAsc';
   
   switch (sortBy) {
-    case 'name':
-      query = query.order('grant_name', { ascending: sortOrder === 'asc' });
+    case 'nameAsc':
+      query = query.order('grant_name', { ascending: true });
       break;
-    case 'organization':
-      query = query.order('funding_organization', { ascending: sortOrder === 'asc' });
+    case 'nameDesc':
+      query = query.order('grant_name', { ascending: false });
       break;
-    case 'deadline':
+    case 'deadlineAsc':
+      query = query.order('application_deadline', { ascending: true });
+      break;
+    case 'deadlineDesc':
+      query = query.order('application_deadline', { ascending: false });
+      break;
+    case 'amountAsc':
+      query = query.order('grant_amount', { ascending: true });
+      break;
+    case 'amountDesc':
+      query = query.order('grant_amount', { ascending: false });
+      break;
     default:
-      query = query.order('application_deadline', { ascending: sortOrder === 'asc' });
+      query = query.order('application_deadline', { ascending: true });
       break;
   }
 
