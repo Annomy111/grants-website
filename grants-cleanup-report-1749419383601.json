@@ -1,0 +1,793 @@
+{
+  "timestamp": "2025-06-08T21:49:42.704Z",
+  "agents": {
+    "duplicateDetection": {
+      "totalGrants": 107,
+      "duplicatesFound": 3,
+      "duplicates": [
+        {
+          "type": "same_org_deadline",
+          "grant1": {
+            "id": 213,
+            "grant_name": "Erasmus+ Civil Society Cooperation",
+            "funding_organization": "European Commission",
+            "country_region": "EU/International",
+            "eligibility_criteria": "Educational institutions and CSOs",
+            "focus_areas": "Education, training, youth, sport, civil society partnerships",
+            "grant_amount": "Various grant levels",
+            "application_deadline": "Annual calls",
+            "duration": "1-3 years",
+            "website_link": "https://erasmus-plus.ec.europa.eu/",
+            "status": "active",
+            "featured": false,
+            "view_count": 84,
+            "created_at": "2025-06-04T23:08:43.915933+00:00",
+            "updated_at": "2025-06-04T23:08:43.915933+00:00",
+            "detailed_description": "Erasmus+ offers civil society cooperation opportunities. Contact National Agencies and review Programme Guide for detailed application procedures and eligibility criteria.",
+            "contact_email": null,
+            "contact_phone": null,
+            "contact_person": null,
+            "application_procedure": "Contact Erasmus+ National Agencies for application procedures. Review Erasmus+ Programme Guide for comprehensive details.",
+            "required_documents": null,
+            "additional_requirements": "Civil society cooperation programs available. Contact National Agencies for country-specific guidance.",
+            "program_type": "Partnership Grant",
+            "target_beneficiaries": "Educational institutions and CSOs",
+            "geographical_scope": "EU/International",
+            "language_requirements": null,
+            "partnership_requirements": false,
+            "renewable": false,
+            "application_fee": null,
+            "reporting_requirements": null,
+            "evaluation_criteria": null,
+            "keywords": [
+              "education",
+              "training",
+              "youth",
+              "sport",
+              "civil society partnerships",
+              "european union",
+              "international"
+            ],
+            "last_updated": "2025-06-08T20:10:49.032787+00:00",
+            "grant_name_uk": "Erasmus+ Громадянське суспільство Співробітництво",
+            "funding_organization_uk": "Європейська Комісія",
+            "country_region_uk": "EU/International",
+            "eligibility_criteria_uk": "Educational institutions до CSOs",
+            "focus_areas_uk": "Освіта, training, Молодь, sport, Громадянське суспільство partnerships",
+            "grant_amount_uk": "Various Грант levels",
+            "duration_uk": "1-3 років",
+            "application_procedure_uk": "зв'язатися Erasmus+ National Agencies for application procedures. Review Erasmus+ Programme Guide for comprehensive details.",
+            "required_documents_uk": null,
+            "evaluation_criteria_uk": null,
+            "additional_requirements_uk": "Громадянське суспільство Співробітництво programs available. зв'язатися National Agencies for country-specific guidance.",
+            "reporting_requirements_uk": null,
+            "detailed_description_uk": "Erasmus+ offers Громадянське суспільство Співробітництво opportunities. зв'язатися National Agencies до review Programme Guide for detailed application procedures до Критерії відповідності."
+          },
+          "grant2": {
+            "id": 220,
+            "grant_name": "Justice Programme Grants",
+            "funding_organization": "European Commission",
+            "country_region": "EU/International",
+            "eligibility_criteria": "Legal and justice-focused CSOs",
+            "focus_areas": "Access to justice, judicial cooperation, crime prevention, victims' rights",
+            "grant_amount": "Operating and action grants",
+            "application_deadline": "Annual calls",
+            "duration": "1-2 years",
+            "website_link": "https://commission.europa.eu/funding-tenders/find-funding/eu-funding-programmes/justice-programme_en",
+            "status": "active",
+            "featured": false,
+            "view_count": 82,
+            "created_at": "2025-06-04T23:08:43.915933+00:00",
+            "updated_at": "2025-06-04T23:08:43.915933+00:00",
+            "detailed_description": "Justice Programme supports cooperation in civil and criminal justice. Apply for grants promoting judicial training and citizens rights.",
+            "contact_email": null,
+            "contact_phone": null,
+            "contact_person": null,
+            "application_procedure": "Apply through EU Funding and Tenders Portal during open calls. Check European Commission website for Justice Programme announcements.",
+            "required_documents": "Project proposal, budget, legal framework analysis, partnership agreements, organization registration",
+            "additional_requirements": "Focus on justice system cooperation, training, and citizens rights. May require legal expertise.",
+            "program_type": "Project Grant",
+            "target_beneficiaries": "Legal and justice-focused CSOs",
+            "geographical_scope": "EU/International",
+            "language_requirements": null,
+            "partnership_requirements": false,
+            "renewable": false,
+            "application_fee": null,
+            "reporting_requirements": null,
+            "evaluation_criteria": "Relevance to programme objectives, quality of project design, impact on justice cooperation, sustainability",
+            "keywords": [
+              "access to justice",
+              "judicial cooperation",
+              "crime prevention",
+              "victims' rights",
+              "european union",
+              "international"
+            ],
+            "last_updated": "2025-06-08T20:10:48.657928+00:00",
+            "grant_name_uk": "Гранти програми \"Юстиція\"",
+            "funding_organization_uk": "Європейська Комісія",
+            "country_region_uk": "EU/Міжнародний",
+            "eligibility_criteria_uk": "Legal та Юстиція-focused CSOs",
+            "focus_areas_uk": "Access до Юстиція, judicial Співробітництво, crime prevention, victims' rights",
+            "grant_amount_uk": "Operating та Дія Гранти",
+            "duration_uk": "1-2 років",
+            "application_procedure_uk": "Apply through EU Funding та Tenders Portal during open calls. Check Європейська Комісія website для Юстиція Програма announcements.",
+            "required_documents_uk": "Проект proposal, budget, legal framework analysis, Партнерство agreements, organization registration",
+            "evaluation_criteria_uk": "Relevance до Програма objectives, quality з Проект design, impact on Юстиція Співробітництво, sustainability",
+            "additional_requirements_uk": "Focus on Юстиція system Співробітництво, training, та Громадяни rights. May require legal expertise.",
+            "reporting_requirements_uk": null,
+            "detailed_description_uk": "Юстиція Програма supports Співробітництво в civil та criminal Юстиція. Apply для Гранти promoting judicial training та Громадяни rights."
+          },
+          "reason": "Same organization and deadline"
+        },
+        {
+          "type": "same_org_deadline",
+          "grant1": {
+            "id": 213,
+            "grant_name": "Erasmus+ Civil Society Cooperation",
+            "funding_organization": "European Commission",
+            "country_region": "EU/International",
+            "eligibility_criteria": "Educational institutions and CSOs",
+            "focus_areas": "Education, training, youth, sport, civil society partnerships",
+            "grant_amount": "Various grant levels",
+            "application_deadline": "Annual calls",
+            "duration": "1-3 years",
+            "website_link": "https://erasmus-plus.ec.europa.eu/",
+            "status": "active",
+            "featured": false,
+            "view_count": 84,
+            "created_at": "2025-06-04T23:08:43.915933+00:00",
+            "updated_at": "2025-06-04T23:08:43.915933+00:00",
+            "detailed_description": "Erasmus+ offers civil society cooperation opportunities. Contact National Agencies and review Programme Guide for detailed application procedures and eligibility criteria.",
+            "contact_email": null,
+            "contact_phone": null,
+            "contact_person": null,
+            "application_procedure": "Contact Erasmus+ National Agencies for application procedures. Review Erasmus+ Programme Guide for comprehensive details.",
+            "required_documents": null,
+            "additional_requirements": "Civil society cooperation programs available. Contact National Agencies for country-specific guidance.",
+            "program_type": "Partnership Grant",
+            "target_beneficiaries": "Educational institutions and CSOs",
+            "geographical_scope": "EU/International",
+            "language_requirements": null,
+            "partnership_requirements": false,
+            "renewable": false,
+            "application_fee": null,
+            "reporting_requirements": null,
+            "evaluation_criteria": null,
+            "keywords": [
+              "education",
+              "training",
+              "youth",
+              "sport",
+              "civil society partnerships",
+              "european union",
+              "international"
+            ],
+            "last_updated": "2025-06-08T20:10:49.032787+00:00",
+            "grant_name_uk": "Erasmus+ Громадянське суспільство Співробітництво",
+            "funding_organization_uk": "Європейська Комісія",
+            "country_region_uk": "EU/International",
+            "eligibility_criteria_uk": "Educational institutions до CSOs",
+            "focus_areas_uk": "Освіта, training, Молодь, sport, Громадянське суспільство partnerships",
+            "grant_amount_uk": "Various Грант levels",
+            "duration_uk": "1-3 років",
+            "application_procedure_uk": "зв'язатися Erasmus+ National Agencies for application procedures. Review Erasmus+ Programme Guide for comprehensive details.",
+            "required_documents_uk": null,
+            "evaluation_criteria_uk": null,
+            "additional_requirements_uk": "Громадянське суспільство Співробітництво programs available. зв'язатися National Agencies for country-specific guidance.",
+            "reporting_requirements_uk": null,
+            "detailed_description_uk": "Erasmus+ offers Громадянське суспільство Співробітництво opportunities. зв'язатися National Agencies до review Programme Guide for detailed application procedures до Критерії відповідності."
+          },
+          "grant2": {
+            "id": 218,
+            "grant_name": "LIFE Programme Environment Grants",
+            "funding_organization": "European Commission",
+            "country_region": "EU/International",
+            "eligibility_criteria": "Environmental CSOs",
+            "focus_areas": "Environment, climate action, clean energy transition, circular economy",
+            "grant_amount": "Co-financing available",
+            "application_deadline": "Annual calls",
+            "duration": "3-5 years",
+            "website_link": "https://cinea.ec.europa.eu/programmes/life_en",
+            "status": "active",
+            "featured": false,
+            "view_count": 81,
+            "created_at": "2025-06-04T23:08:43.915933+00:00",
+            "updated_at": "2025-06-04T23:08:43.915933+00:00",
+            "detailed_description": "LIFE Programme supports environmental and climate action projects. Apply through EU portal for nature, circular economy, and climate mitigation projects.",
+            "contact_email": null,
+            "contact_phone": null,
+            "contact_person": null,
+            "application_procedure": "Apply through EU Funding and Tenders Portal during open calls. Visit CINEA website for call announcements and guidance.",
+            "required_documents": "Project proposal, detailed budget, environmental impact assessment, partnership agreements, organization capacity proof",
+            "additional_requirements": "Focus on environment and climate action. Must demonstrate environmental benefits and EU added value.",
+            "program_type": "Project Grant",
+            "target_beneficiaries": "Environmental CSOs",
+            "geographical_scope": "EU/International",
+            "language_requirements": null,
+            "partnership_requirements": false,
+            "renewable": false,
+            "application_fee": null,
+            "reporting_requirements": null,
+            "evaluation_criteria": "Technical and financial quality, impact on environment and climate, cost-effectiveness, replicability",
+            "keywords": [
+              "environment",
+              "climate action",
+              "clean energy transition",
+              "circular economy",
+              "european union",
+              "international"
+            ],
+            "last_updated": "2025-06-08T20:10:49.020663+00:00",
+            "grant_name_uk": "Гранти екологічної програми LIFE",
+            "funding_organization_uk": "Європейська Комісія",
+            "country_region_uk": "EU/Міжнародний",
+            "eligibility_criteria_uk": "Environmental CSOs",
+            "focus_areas_uk": "Довкілля, climate Дія, clean energy transition, circular economy",
+            "grant_amount_uk": "Co-financing available",
+            "duration_uk": "3-5 років",
+            "application_procedure_uk": "Apply through EU Funding та Tenders Portal during open calls. Visit CINEA website для call announcements та guidance.",
+            "required_documents_uk": "Проект proposal, detailed budget, environmental impact assessment, Партнерство agreements, organization capacity proof",
+            "evaluation_criteria_uk": "Technical та financial quality, impact on Довкілля та climate, cost-effectiveness, replicability",
+            "additional_requirements_uk": "Focus on Довкілля та climate Дія. Must demonstrate environmental benefits та EU added value.",
+            "reporting_requirements_uk": null,
+            "detailed_description_uk": "LIFE Програма supports environmental та climate Дія projects. Apply through EU portal для nature, circular economy, та climate mitigation projects."
+          },
+          "reason": "Same organization and deadline"
+        },
+        {
+          "type": "same_org_deadline",
+          "grant1": {
+            "id": 220,
+            "grant_name": "Justice Programme Grants",
+            "funding_organization": "European Commission",
+            "country_region": "EU/International",
+            "eligibility_criteria": "Legal and justice-focused CSOs",
+            "focus_areas": "Access to justice, judicial cooperation, crime prevention, victims' rights",
+            "grant_amount": "Operating and action grants",
+            "application_deadline": "Annual calls",
+            "duration": "1-2 years",
+            "website_link": "https://commission.europa.eu/funding-tenders/find-funding/eu-funding-programmes/justice-programme_en",
+            "status": "active",
+            "featured": false,
+            "view_count": 82,
+            "created_at": "2025-06-04T23:08:43.915933+00:00",
+            "updated_at": "2025-06-04T23:08:43.915933+00:00",
+            "detailed_description": "Justice Programme supports cooperation in civil and criminal justice. Apply for grants promoting judicial training and citizens rights.",
+            "contact_email": null,
+            "contact_phone": null,
+            "contact_person": null,
+            "application_procedure": "Apply through EU Funding and Tenders Portal during open calls. Check European Commission website for Justice Programme announcements.",
+            "required_documents": "Project proposal, budget, legal framework analysis, partnership agreements, organization registration",
+            "additional_requirements": "Focus on justice system cooperation, training, and citizens rights. May require legal expertise.",
+            "program_type": "Project Grant",
+            "target_beneficiaries": "Legal and justice-focused CSOs",
+            "geographical_scope": "EU/International",
+            "language_requirements": null,
+            "partnership_requirements": false,
+            "renewable": false,
+            "application_fee": null,
+            "reporting_requirements": null,
+            "evaluation_criteria": "Relevance to programme objectives, quality of project design, impact on justice cooperation, sustainability",
+            "keywords": [
+              "access to justice",
+              "judicial cooperation",
+              "crime prevention",
+              "victims' rights",
+              "european union",
+              "international"
+            ],
+            "last_updated": "2025-06-08T20:10:48.657928+00:00",
+            "grant_name_uk": "Гранти програми \"Юстиція\"",
+            "funding_organization_uk": "Європейська Комісія",
+            "country_region_uk": "EU/Міжнародний",
+            "eligibility_criteria_uk": "Legal та Юстиція-focused CSOs",
+            "focus_areas_uk": "Access до Юстиція, judicial Співробітництво, crime prevention, victims' rights",
+            "grant_amount_uk": "Operating та Дія Гранти",
+            "duration_uk": "1-2 років",
+            "application_procedure_uk": "Apply through EU Funding та Tenders Portal during open calls. Check Європейська Комісія website для Юстиція Програма announcements.",
+            "required_documents_uk": "Проект proposal, budget, legal framework analysis, Партнерство agreements, organization registration",
+            "evaluation_criteria_uk": "Relevance до Програма objectives, quality з Проект design, impact on Юстиція Співробітництво, sustainability",
+            "additional_requirements_uk": "Focus on Юстиція system Співробітництво, training, та Громадяни rights. May require legal expertise.",
+            "reporting_requirements_uk": null,
+            "detailed_description_uk": "Юстиція Програма supports Співробітництво в civil та criminal Юстиція. Apply для Гранти promoting judicial training та Громадяни rights."
+          },
+          "grant2": {
+            "id": 218,
+            "grant_name": "LIFE Programme Environment Grants",
+            "funding_organization": "European Commission",
+            "country_region": "EU/International",
+            "eligibility_criteria": "Environmental CSOs",
+            "focus_areas": "Environment, climate action, clean energy transition, circular economy",
+            "grant_amount": "Co-financing available",
+            "application_deadline": "Annual calls",
+            "duration": "3-5 years",
+            "website_link": "https://cinea.ec.europa.eu/programmes/life_en",
+            "status": "active",
+            "featured": false,
+            "view_count": 81,
+            "created_at": "2025-06-04T23:08:43.915933+00:00",
+            "updated_at": "2025-06-04T23:08:43.915933+00:00",
+            "detailed_description": "LIFE Programme supports environmental and climate action projects. Apply through EU portal for nature, circular economy, and climate mitigation projects.",
+            "contact_email": null,
+            "contact_phone": null,
+            "contact_person": null,
+            "application_procedure": "Apply through EU Funding and Tenders Portal during open calls. Visit CINEA website for call announcements and guidance.",
+            "required_documents": "Project proposal, detailed budget, environmental impact assessment, partnership agreements, organization capacity proof",
+            "additional_requirements": "Focus on environment and climate action. Must demonstrate environmental benefits and EU added value.",
+            "program_type": "Project Grant",
+            "target_beneficiaries": "Environmental CSOs",
+            "geographical_scope": "EU/International",
+            "language_requirements": null,
+            "partnership_requirements": false,
+            "renewable": false,
+            "application_fee": null,
+            "reporting_requirements": null,
+            "evaluation_criteria": "Technical and financial quality, impact on environment and climate, cost-effectiveness, replicability",
+            "keywords": [
+              "environment",
+              "climate action",
+              "clean energy transition",
+              "circular economy",
+              "european union",
+              "international"
+            ],
+            "last_updated": "2025-06-08T20:10:49.020663+00:00",
+            "grant_name_uk": "Гранти екологічної програми LIFE",
+            "funding_organization_uk": "Європейська Комісія",
+            "country_region_uk": "EU/Міжнародний",
+            "eligibility_criteria_uk": "Environmental CSOs",
+            "focus_areas_uk": "Довкілля, climate Дія, clean energy transition, circular economy",
+            "grant_amount_uk": "Co-financing available",
+            "duration_uk": "3-5 років",
+            "application_procedure_uk": "Apply through EU Funding та Tenders Portal during open calls. Visit CINEA website для call announcements та guidance.",
+            "required_documents_uk": "Проект proposal, detailed budget, environmental impact assessment, Партнерство agreements, organization capacity proof",
+            "evaluation_criteria_uk": "Technical та financial quality, impact on Довкілля та climate, cost-effectiveness, replicability",
+            "additional_requirements_uk": "Focus on Довкілля та climate Дія. Must demonstrate environmental benefits та EU added value.",
+            "reporting_requirements_uk": null,
+            "detailed_description_uk": "LIFE Програма supports environmental та climate Дія projects. Apply through EU portal для nature, circular economy, та climate mitigation projects."
+          },
+          "reason": "Same organization and deadline"
+        }
+      ],
+      "recommendation": "Manual review needed for duplicates"
+    },
+    "dataValidation": {
+      "stats": {
+        "total": 107,
+        "missingFields": {
+          "description_en": 107,
+          "eligibility_criteria_en": 107
+        },
+        "invalidData": [],
+        "outdatedGrants": 10,
+        "noDescription": 107,
+        "noEligibility": 107,
+        "invalidAmounts": 0,
+        "invalidUrls": 0
+      },
+      "issues": [
+        {
+          "id": 191,
+          "name": "Japan Grassroots Grant Program",
+          "issues": [
+            "Missing description_en",
+            "Missing eligibility_criteria_en",
+            "Description too short (< 50 chars)",
+            "Eligibility criteria too short"
+          ]
+        },
+        {
+          "id": 244,
+          "name": "Urgent Action Fund for Women's Human Rights",
+          "issues": [
+            "Missing description_en",
+            "Missing eligibility_criteria_en",
+            "Description too short (< 50 chars)",
+            "Eligibility criteria too short"
+          ]
+        },
+        {
+          "id": 199,
+          "name": "FAO Ukraine Agriculture Support",
+          "issues": [
+            "Missing description_en",
+            "Missing eligibility_criteria_en",
+            "Description too short (< 50 chars)",
+            "Eligibility criteria too short"
+          ]
+        },
+        {
+          "id": 247,
+          "name": "Freedom House Democracy Support Programs",
+          "issues": [
+            "Missing description_en",
+            "Missing eligibility_criteria_en",
+            "Description too short (< 50 chars)",
+            "Eligibility criteria too short"
+          ]
+        },
+        {
+          "id": 240,
+          "name": "Luminate Foundation",
+          "issues": [
+            "Missing description_en",
+            "Missing eligibility_criteria_en",
+            "Description too short (< 50 chars)",
+            "Eligibility criteria too short"
+          ]
+        },
+        {
+          "id": 197,
+          "name": "IOM Ukraine Migration Support",
+          "issues": [
+            "Missing description_en",
+            "Missing eligibility_criteria_en",
+            "Description too short (< 50 chars)",
+            "Eligibility criteria too short"
+          ]
+        },
+        {
+          "id": 162,
+          "name": "Civil Society Innovations for Open Government Grants",
+          "issues": [
+            "Missing description_en",
+            "Missing eligibility_criteria_en",
+            "Description too short (< 50 chars)",
+            "Eligibility criteria too short",
+            "Deadline has passed"
+          ]
+        },
+        {
+          "id": 238,
+          "name": "Sigrid Rausing Trust",
+          "issues": [
+            "Missing description_en",
+            "Missing eligibility_criteria_en",
+            "Description too short (< 50 chars)",
+            "Eligibility criteria too short"
+          ]
+        },
+        {
+          "id": 176,
+          "name": "UN Women Europe and Central Asia Programs",
+          "issues": [
+            "Missing description_en",
+            "Missing eligibility_criteria_en",
+            "Description too short (< 50 chars)",
+            "Eligibility criteria too short"
+          ]
+        },
+        {
+          "id": 211,
+          "name": "Horizon Europe Civil Society",
+          "issues": [
+            "Missing description_en",
+            "Missing eligibility_criteria_en",
+            "Description too short (< 50 chars)",
+            "Eligibility criteria too short"
+          ]
+        },
+        {
+          "id": 216,
+          "name": "Europe for Citizens Ukraine",
+          "issues": [
+            "Missing description_en",
+            "Missing eligibility_criteria_en",
+            "Description too short (< 50 chars)",
+            "Eligibility criteria too short"
+          ]
+        },
+        {
+          "id": 258,
+          "name": "Westminster Foundation for Democracy",
+          "issues": [
+            "Missing description_en",
+            "Missing eligibility_criteria_en",
+            "Description too short (< 50 chars)",
+            "Eligibility criteria too short"
+          ]
+        },
+        {
+          "id": 204,
+          "name": "Czech Development Agency Ukraine Support",
+          "issues": [
+            "Missing description_en",
+            "Missing eligibility_criteria_en",
+            "Description too short (< 50 chars)",
+            "Eligibility criteria too short"
+          ]
+        },
+        {
+          "id": 252,
+          "name": "DT Institute Media Grants",
+          "issues": [
+            "Missing description_en",
+            "Missing eligibility_criteria_en",
+            "Description too short (< 50 chars)",
+            "Eligibility criteria too short"
+          ]
+        },
+        {
+          "id": 220,
+          "name": "Justice Programme Grants",
+          "issues": [
+            "Missing description_en",
+            "Missing eligibility_criteria_en",
+            "Description too short (< 50 chars)",
+            "Eligibility criteria too short"
+          ]
+        },
+        {
+          "id": 163,
+          "name": "Women's Peace & Humanitarian Fund Ukraine",
+          "issues": [
+            "Missing description_en",
+            "Missing eligibility_criteria_en",
+            "Description too short (< 50 chars)",
+            "Eligibility criteria too short",
+            "Deadline has passed"
+          ]
+        },
+        {
+          "id": 205,
+          "name": "Orange Projects Lithuania Support",
+          "issues": [
+            "Missing description_en",
+            "Missing eligibility_criteria_en",
+            "Description too short (< 50 chars)",
+            "Eligibility criteria too short"
+          ]
+        },
+        {
+          "id": 249,
+          "name": "Committee to Protect Journalists",
+          "issues": [
+            "Missing description_en",
+            "Missing eligibility_criteria_en",
+            "Description too short (< 50 chars)",
+            "Eligibility criteria too short"
+          ]
+        },
+        {
+          "id": 174,
+          "name": "National Endowment for Democracy Grants",
+          "issues": [
+            "Missing description_en",
+            "Missing eligibility_criteria_en",
+            "Description too short (< 50 chars)",
+            "Eligibility criteria too short"
+          ]
+        },
+        {
+          "id": 221,
+          "name": "EU Aid Volunteers Initiative",
+          "issues": [
+            "Missing description_en",
+            "Missing eligibility_criteria_en",
+            "Description too short (< 50 chars)",
+            "Eligibility criteria too short"
+          ]
+        }
+      ],
+      "recommendation": "Found 107 grants with validation issues"
+    },
+    "translationConsistency": {
+      "stats": {
+        "total": 107,
+        "missingUkrainian": 0,
+        "onlyEnglish": 0,
+        "suspiciousTranslations": 0,
+        "emptyTranslations": 0
+      },
+      "issues": [],
+      "recommendation": "Translation coverage is good"
+    },
+    "organizationLogo": {
+      "stats": {
+        "total": 107,
+        "missingLogos": 107,
+        "brokenLogos": 0,
+        "inconsistentOrgNames": 0,
+        "organizations": 88,
+        "inconsistentOrgs": 0
+      },
+      "issues": [
+        {
+          "id": 191,
+          "name": "Japan Grassroots Grant Program",
+          "organization": "Embassy of Japan in Ukraine",
+          "issues": [
+            "Missing logo URL"
+          ]
+        },
+        {
+          "id": 244,
+          "name": "Urgent Action Fund for Women's Human Rights",
+          "organization": "Urgent Action Fund",
+          "issues": [
+            "Missing logo URL"
+          ]
+        },
+        {
+          "id": 199,
+          "name": "FAO Ukraine Agriculture Support",
+          "organization": "Food and Agriculture Organization (FAO) Ukraine",
+          "issues": [
+            "Missing logo URL"
+          ]
+        },
+        {
+          "id": 247,
+          "name": "Freedom House Democracy Support Programs",
+          "organization": "Freedom House",
+          "issues": [
+            "Missing logo URL"
+          ]
+        },
+        {
+          "id": 240,
+          "name": "Luminate Foundation",
+          "organization": "Luminate",
+          "issues": [
+            "Missing logo URL"
+          ]
+        },
+        {
+          "id": 197,
+          "name": "IOM Ukraine Migration Support",
+          "organization": "International Organization for Migration Ukraine",
+          "issues": [
+            "Missing logo URL"
+          ]
+        },
+        {
+          "id": 162,
+          "name": "Civil Society Innovations for Open Government Grants",
+          "organization": "Open Government Partnership",
+          "issues": [
+            "Missing logo URL"
+          ]
+        },
+        {
+          "id": 238,
+          "name": "Sigrid Rausing Trust",
+          "organization": "Sigrid Rausing Trust",
+          "issues": [
+            "Missing logo URL"
+          ]
+        },
+        {
+          "id": 176,
+          "name": "UN Women Europe and Central Asia Programs",
+          "organization": "UN Women ECA",
+          "issues": [
+            "Missing logo URL"
+          ]
+        },
+        {
+          "id": 211,
+          "name": "Horizon Europe Civil Society",
+          "organization": "European Commission",
+          "issues": [
+            "Missing logo URL"
+          ]
+        },
+        {
+          "id": 216,
+          "name": "Europe for Citizens Ukraine",
+          "organization": "European Commission",
+          "issues": [
+            "Missing logo URL"
+          ]
+        },
+        {
+          "id": 258,
+          "name": "Westminster Foundation for Democracy",
+          "organization": "WFD",
+          "issues": [
+            "Missing logo URL"
+          ]
+        },
+        {
+          "id": 204,
+          "name": "Czech Development Agency Ukraine Support",
+          "organization": "Czech Development Agency (CZDA)",
+          "issues": [
+            "Missing logo URL"
+          ]
+        },
+        {
+          "id": 252,
+          "name": "DT Institute Media Grants",
+          "organization": "Deutsche Welle Akademie",
+          "issues": [
+            "Missing logo URL"
+          ]
+        },
+        {
+          "id": 220,
+          "name": "Justice Programme Grants",
+          "organization": "European Commission",
+          "issues": [
+            "Missing logo URL"
+          ]
+        },
+        {
+          "id": 163,
+          "name": "Women's Peace & Humanitarian Fund Ukraine",
+          "organization": "UN Women",
+          "issues": [
+            "Missing logo URL"
+          ]
+        },
+        {
+          "id": 205,
+          "name": "Orange Projects Lithuania Support",
+          "organization": "Orange Projects Lithuania",
+          "issues": [
+            "Missing logo URL"
+          ]
+        },
+        {
+          "id": 249,
+          "name": "Committee to Protect Journalists",
+          "organization": "CPJ",
+          "issues": [
+            "Missing logo URL"
+          ]
+        },
+        {
+          "id": 174,
+          "name": "National Endowment for Democracy Grants",
+          "organization": "National Endowment for Democracy (NED)",
+          "issues": [
+            "Missing logo URL"
+          ]
+        },
+        {
+          "id": 221,
+          "name": "EU Aid Volunteers Initiative",
+          "organization": "European Commission",
+          "issues": [
+            "Missing logo URL"
+          ]
+        }
+      ],
+      "inconsistentOrgs": [],
+      "recommendation": "Many missing logos - consider bulk logo assignment"
+    },
+    "performanceOptimization": {
+      "stats": {
+        "total": 107,
+        "activeGrants": 97,
+        "expiredGrants": 10,
+        "upcomingDeadlines": 0,
+        "largeDescriptions": 0,
+        "totalDataSize": 333595,
+        "avgDescriptionLength": 0,
+        "indexingRecommendations": [],
+        "totalDataSizeMB": "0.32"
+      },
+      "recommendations": [
+        {
+          "type": "indexing",
+          "priority": "high",
+          "action": "Ensure proper indexes on application_deadline, funding_organization, and grant_type fields",
+          "impact": "Faster filtering and sorting"
+        },
+        {
+          "type": "caching",
+          "priority": "medium",
+          "action": "Implement Redis or edge caching for grant listings",
+          "impact": "Reduce database load by 80%"
+        }
+      ],
+      "summary": {
+        "health": "Good",
+        "activeRatio": "91% active",
+        "dataSize": "0.32 MB total"
+      }
+    }
+  }
+}

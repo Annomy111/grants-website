@@ -58,7 +58,9 @@
       "Bash(open tests/mobile-test-report.html)",
       "Bash(source .env)",
       "Bash(npm run test:supabase:*)",
-      "Bash(test -f .env)"
+      "Bash(test -f .env)",
+      "Bash(diff:*)",
+      "Bash(git reset:*)"
     ],
     "deny": []
   },
