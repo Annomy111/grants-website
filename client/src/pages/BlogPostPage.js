@@ -33,7 +33,10 @@ const BlogPostPage = () => {
 
   useEffect(() => {
     if (post && contentRef.current) {
-      renderInfographics();
+      // Small delay to ensure DOM is updated
+      setTimeout(() => {
+        renderInfographics();
+      }, 100);
     }
   }, [post, darkMode]);
 
@@ -68,10 +71,13 @@ const BlogPostPage = () => {
   const renderInfographics = () => {
     const infographicContainers = contentRef.current?.querySelectorAll('.infographic-container');
     
-    if (!infographicContainers) return;
+    console.log('Rendering infographics, found containers:', infographicContainers?.length);
+    
+    if (!infographicContainers || infographicContainers.length === 0) return;
     
     infographicContainers.forEach(container => {
       const id = container.id;
+      console.log('Processing container with id:', id);
       let InfographicComponent = null;
       
       switch(id) {
