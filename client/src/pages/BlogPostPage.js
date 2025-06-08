@@ -1,11 +1,21 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
 import axios from 'axios';
 import { format } from 'date-fns';
+import { createRoot } from 'react-dom/client';
 import { ThemeContext } from '../context/ThemeContext';
 import { CalendarIcon, UserIcon, TagIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
+import {
+  KeyStatisticsInfographic,
+  DisplacementInfographic,
+  CivilianCasualtiesInfographic,
+  CSOResponseInfographic,
+  RoadmapInfographic,
+  EuropeSupportInfographic,
+  TrendsTimelineInfographic
+} from '../components/infographics/UkraineCivilSocietyInfographics';
 
 const BlogPostPage = () => {
   const { slug } = useParams();
@@ -15,10 +25,17 @@ const BlogPostPage = () => {
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const contentRef = useRef(null);
 
   useEffect(() => {
     fetchPost();
   }, [slug]);
+
+  useEffect(() => {
+    if (post && contentRef.current) {
+      renderInfographics();
+    }
+  }, [post, darkMode]);
 
   const fetchPost = async () => {
     try {
@@ -46,6 +63,52 @@ const BlogPostPage = () => {
     const isUkrainian = i18n.language === 'uk';
     const ukField = `${field}_uk`;
     return (isUkrainian && post[ukField]) ? post[ukField] : post[field];
+  };
+
+  const renderInfographics = () => {
+    const infographicContainers = contentRef.current?.querySelectorAll('.infographic-container');
+    
+    if (!infographicContainers) return;
+    
+    infographicContainers.forEach(container => {
+      const id = container.id;
+      let InfographicComponent = null;
+      
+      switch(id) {
+        case 'key-statistics-infographic':
+          InfographicComponent = KeyStatisticsInfographic;
+          break;
+        case 'displacement-infographic':
+          InfographicComponent = DisplacementInfographic;
+          break;
+        case 'civilian-casualties-infographic':
+          InfographicComponent = CivilianCasualtiesInfographic;
+          break;
+        case 'cso-response-infographic':
+          InfographicComponent = CSOResponseInfographic;
+          break;
+        case 'roadmap-infographic':
+          InfographicComponent = RoadmapInfographic;
+          break;
+        case 'europe-support-infographic':
+          InfographicComponent = EuropeSupportInfographic;
+          break;
+        case 'trends-timeline-infographic':
+          InfographicComponent = TrendsTimelineInfographic;
+          break;
+        default:
+          break;
+      }
+      
+      if (InfographicComponent) {
+        // Clear container
+        container.innerHTML = '';
+        
+        // Create root and render component
+        const root = createRoot(container);
+        root.render(<InfographicComponent darkMode={darkMode} />);
+      }
+    });
   };
 
   if (loading) {
@@ -149,6 +212,7 @@ const BlogPostPage = () => {
           darkMode ? 'prose-invert' : ''
         }`}>
           <div 
+            ref={contentRef}
             dangerouslySetInnerHTML={{ __html: getLocalizedContent('content') }}
             className={`
               ${darkMode ? 'text-gray-300' : 'text-gray-700'}
@@ -164,6 +228,10 @@ const BlogPostPage = () => {
               [&>img]:rounded-lg [&>img]:shadow-md [&>img]:my-6
               [&>pre]:bg-gray-100 [&>pre]:dark:bg-gray-800 [&>pre]:p-4 [&>pre]:rounded-lg [&>pre]:overflow-x-auto [&>pre]:my-4
               [&>code]:bg-gray-100 [&>code]:dark:bg-gray-800 [&>code]:px-1 [&>code]:py-0.5 [&>code]:rounded
+              [&_.infographic-container]:my-8 [&_.infographic-container]:p-6 [&_.infographic-container]:rounded-xl 
+              [&_.infographic-container]:bg-gray-100 [&_.infographic-container]:dark:bg-gray-800
+              [&_.infographic-container]:flex [&_.infographic-container]:justify-center [&_.infographic-container]:items-center
+              [&_.infographic-container]:overflow-x-auto [&_.infographic-container]:min-h-[400px]
             `}
           />
         </div>
