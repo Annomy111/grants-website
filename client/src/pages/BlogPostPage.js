@@ -9,13 +9,13 @@ import { ThemeContext } from '../context/ThemeContext';
 import { CalendarIcon, UserIcon, TagIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
 import {
   KeyStatisticsInfographic,
-  DisplacementInfographic,
-  CivilianCasualtiesInfographic,
-  CSOResponseInfographic,
-  RoadmapInfographic,
-  EuropeSupportInfographic,
-  TrendsTimelineInfographic
-} from '../components/infographics/UkraineCivilSocietyInfographics';
+  FocusAreasInfographic,
+  TimelineInfographic,
+  RegionalImpactInfographic,
+  InternationalSupportInfographic,
+  FuturePrioritiesInfographic,
+  CallToActionInfographic
+} from '../components/infographics/UkraineCivilSocietyInfographicsIndex';
 
 const BlogPostPage = () => {
   const { slug } = useParams();
@@ -39,7 +39,7 @@ const BlogPostPage = () => {
 
   const fetchPost = async () => {
     try {
-      const response = await axios.get(`/api/blog/slug/${slug}`);
+      const response = await axios.get(`/.netlify/functions/blog/slug/${slug}`);
       setPost(response.data);
       setLoading(false);
     } catch (error) {
@@ -75,26 +75,26 @@ const BlogPostPage = () => {
       let InfographicComponent = null;
       
       switch(id) {
-        case 'key-statistics-infographic':
+        case 'key-statistics':
           InfographicComponent = KeyStatisticsInfographic;
           break;
-        case 'displacement-infographic':
-          InfographicComponent = DisplacementInfographic;
+        case 'focus-areas':
+          InfographicComponent = FocusAreasInfographic;
           break;
-        case 'civilian-casualties-infographic':
-          InfographicComponent = CivilianCasualtiesInfographic;
+        case 'timeline':
+          InfographicComponent = TimelineInfographic;
           break;
-        case 'cso-response-infographic':
-          InfographicComponent = CSOResponseInfographic;
+        case 'regional-impact':
+          InfographicComponent = RegionalImpactInfographic;
           break;
-        case 'roadmap-infographic':
-          InfographicComponent = RoadmapInfographic;
+        case 'international-support':
+          InfographicComponent = InternationalSupportInfographic;
           break;
-        case 'europe-support-infographic':
-          InfographicComponent = EuropeSupportInfographic;
+        case 'future-priorities':
+          InfographicComponent = FuturePrioritiesInfographic;
           break;
-        case 'trends-timeline-infographic':
-          InfographicComponent = TrendsTimelineInfographic;
+        case 'call-to-action':
+          InfographicComponent = CallToActionInfographic;
           break;
         default:
           break;
