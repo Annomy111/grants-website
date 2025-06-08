@@ -55,7 +55,9 @@
       "Bash(git branch:*)",
       "Bash(gh repo edit:*)",
       "Bash(gh repo view:*)",
-      "Bash(open tests/mobile-test-report.html)"
+      "Bash(open tests/mobile-test-report.html)",
+      "Bash(source .env)",
+      "Bash(npm run test:supabase:*)"
     ],
     "deny": []
   },

@@ -27,10 +27,22 @@ const BlogPage = () => {
   const fetchPosts = async () => {
     try {
       const response = await axios.get('/.netlify/functions/blog');
-      setPosts(response.data);
+      // Handle both array and object response formats
+      if (response.data) {
+        if (Array.isArray(response.data)) {
+          setPosts(response.data);
+        } else if (response.data.posts) {
+          setPosts(response.data.posts || []);
+        } else {
+          setPosts([]);
+        }
+      } else {
+        setPosts([]);
+      }
       setLoading(false);
     } catch (error) {
       console.error('Failed to fetch posts:', error);
+      setPosts([]);
       setLoading(false);
     }
   };

@@ -1,9 +1,17 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabase = createClient(
-  process.env.REACT_APP_SUPABASE_URL || process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
-);
+// Check if Supabase is properly configured
+const supabaseUrl = process.env.REACT_APP_SUPABASE_URL || process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+let supabase = null;
+if (supabaseUrl && supabaseKey) {
+  try {
+    supabase = createClient(supabaseUrl, supabaseKey);
+  } catch (error) {
+    console.error('Failed to create Supabase client:', error);
+  }
+}
 
 export const handler = async (event, context) => {
   const headers = {
@@ -74,6 +82,20 @@ export const handler = async (event, context) => {
 // Get blog posts (all for admin, published for public)
 async function getBlogPosts(requestHeaders, headers) {
   try {
+    // If Supabase is not configured, return empty array
+    if (!supabase) {
+      console.log('Supabase not configured, returning empty blog posts');
+      return {
+        statusCode: 200,
+        headers,
+        body: JSON.stringify({ 
+          success: true, 
+          posts: [],
+          message: 'Blog service temporarily unavailable'
+        }),
+      };
+    }
+
     // Check if user is admin
     const user = await verifyAdmin(requestHeaders);
     
@@ -89,20 +111,34 @@ async function getBlogPosts(requestHeaders, headers) {
     const { data: posts, error } = await query.order('created_at', { ascending: false });
 
     if (error) {
-      throw error;
+      console.error('Supabase error:', error);
+      // Return empty array instead of error
+      return {
+        statusCode: 200,
+        headers,
+        body: JSON.stringify({ 
+          success: true, 
+          posts: [],
+          message: 'Unable to fetch blog posts'
+        }),
+      };
     }
 
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify(posts || []),
+      body: JSON.stringify({ success: true, posts: posts || [] }),
     };
   } catch (error) {
     console.error('Error fetching blog posts:', error);
     return {
-      statusCode: 500,
+      statusCode: 200,
       headers,
-      body: JSON.stringify({ error: 'Failed to fetch blog posts' }),
+      body: JSON.stringify({ 
+        success: true, 
+        posts: [],
+        error: 'Failed to fetch blog posts' 
+      }),
     };
   }
 }
