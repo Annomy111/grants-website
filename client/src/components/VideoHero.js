@@ -5,6 +5,13 @@ const VideoHero = ({ darkMode, title, subtitle, primaryCTA, secondaryCTA }) => {
   const videoRef = useRef(null);
   const [videoError, setVideoError] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+  
+  // Video playlist
+  const videos = [
+    '/videos/ukrainian-aid-intro.mp4',
+    '/videos/ukrainian-culture.mp4'
+  ];
 
   useEffect(() => {
     // Ensure video plays on mobile by re-triggering play
@@ -16,7 +23,7 @@ const VideoHero = ({ darkMode, title, subtitle, primaryCTA, secondaryCTA }) => {
         setVideoError(true);
       });
     }
-  }, []);
+  }, [currentVideoIndex]);
 
   const handleVideoLoad = () => {
     setIsVideoLoaded(true);
@@ -25,6 +32,11 @@ const VideoHero = ({ darkMode, title, subtitle, primaryCTA, secondaryCTA }) => {
   const handleVideoError = () => {
     setVideoError(true);
     console.error('Video failed to load');
+  };
+
+  const handleVideoEnded = () => {
+    // Move to next video in playlist
+    setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videos.length);
   };
 
   return (
@@ -36,19 +48,18 @@ const VideoHero = ({ darkMode, title, subtitle, primaryCTA, secondaryCTA }) => {
             ref={videoRef}
             autoPlay
             muted
-            loop
             playsInline
             preload="auto"
             onLoadedData={handleVideoLoad}
             onError={handleVideoError}
+            onEnded={handleVideoEnded}
             className={`absolute inset-0 w-full h-full object-cover ${
               isVideoLoaded ? 'opacity-100' : 'opacity-0'
             } transition-opacity duration-1000`}
             poster="/images/ukraine-aid-poster.jpg" // Add a poster image as fallback
+            key={currentVideoIndex} // Force re-render when video changes
           >
-            <source src="/videos/ukrainian-aid-intro.mp4" type="video/mp4" />
-            {/* Add WebM format for better browser support */}
-            <source src="/videos/ukrainian-aid-intro.webm" type="video/webm" />
+            <source src={videos[currentVideoIndex]} type="video/mp4" />
           </video>
           
           {/* Loading placeholder */}
@@ -120,7 +131,24 @@ const VideoHero = ({ darkMode, title, subtitle, primaryCTA, secondaryCTA }) => {
       </div>
 
       {/* Video controls for accessibility */}
-      <div className="absolute bottom-4 right-4 z-10">
+      <div className="absolute bottom-4 right-4 z-10 flex flex-col gap-2">
+        {/* Video playlist indicators */}
+        <div className="flex gap-1 justify-end mb-2">
+          {videos.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentVideoIndex(index)}
+              className={`w-2 h-2 rounded-full transition-all ${
+                index === currentVideoIndex 
+                  ? 'bg-white w-8' 
+                  : 'bg-white/50 hover:bg-white/70'
+              }`}
+              aria-label={`Play video ${index + 1}`}
+            />
+          ))}
+        </div>
+        
+        {/* Play/Pause button */}
         <button
           onClick={() => {
             const video = videoRef.current;
