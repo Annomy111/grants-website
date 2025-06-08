@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { ThemeContext } from '../context/ThemeContext';
+import { fetchGrantsForAdmin } from '../utils/adminApiHelper';
 import { PlusIcon, PencilIcon, TrashIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import GrantEditModal from '../components/GrantEditModal';
 
@@ -23,17 +24,14 @@ const AdminGrants = () => {
 
   const fetchGrants = async () => {
     try {
-      const token = localStorage.getItem('token');
-      const response = await axios.get('/.netlify/functions/grants', {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-      setGrants(response.data);
-      setFilteredGrants(response.data);
+      const grantsData = await fetchGrantsForAdmin();
+      setGrants(grantsData);
+      setFilteredGrants(grantsData);
       setLoading(false);
     } catch (error) {
       console.error('Failed to fetch grants:', error);
+      setGrants([]);
+      setFilteredGrants([]);
       setLoading(false);
     }
   };
@@ -45,12 +43,18 @@ const AdminGrants = () => {
     }
 
     const term = searchTerm.toLowerCase();
-    const filtered = grants.filter(grant =>
-      grant.grant_name?.toLowerCase().includes(term) ||
-      grant.funding_organization?.toLowerCase().includes(term) ||
-      grant.country_region?.toLowerCase().includes(term) ||
-      grant.focus_areas?.toLowerCase().includes(term)
-    );
+    const filtered = grants.filter(grant => {
+      // Data is already normalized by fetchGrantsForAdmin
+      const grantName = (grant.name || '').toLowerCase();
+      const organization = (grant.organization || '').toLowerCase();
+      const geoFocus = (grant.geographic_focus || '').toLowerCase();
+      const focusAreas = (grant.focus_areas_en || '').toLowerCase();
+      
+      return grantName.includes(term) ||
+        organization.includes(term) ||
+        geoFocus.includes(term) ||
+        focusAreas.includes(term);
+    });
     setFilteredGrants(filtered);
   };
 
@@ -68,7 +72,7 @@ const AdminGrants = () => {
     if (!window.confirm('Are you sure you want to delete this grant?')) return;
 
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('authToken'); // Fixed: was looking for 'token' instead of 'authToken'
       await axios.delete(`/.netlify/functions/grants/${id}`, {
         headers: {
           'Authorization': `Bearer ${token}`
@@ -177,20 +181,22 @@ const AdminGrants = () => {
                   <tr key={grant.id} className={`${darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-50'}`}>
                     <td className={`px-6 py-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                       <div>
-                        <div className="font-medium">{grant.grant_name}</div>
+                        <div className="font-medium">{grant.name || 'Unnamed Grant'}</div>
                         <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                          {grant.country_region}
+                          {grant.geographic_focus || 'N/A'}
                         </div>
                       </div>
                     </td>
                     <td className={`px-6 py-4 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                      {grant.funding_organization}
+                      {grant.organization || 'Unknown'}
                     </td>
                     <td className={`px-6 py-4 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                      {formatDate(grant.application_deadline)}
+                      {formatDate(grant.deadline)}
                     </td>
                     <td className={`px-6 py-4 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                      {grant.grant_amount || 'N/A'}
+                      {grant.grant_size_min && grant.grant_size_max 
+                        ? `€${grant.grant_size_min.toLocaleString()} - €${grant.grant_size_max.toLocaleString()}`
+                        : 'N/A'}
                     </td>
                     <td className="px-6 py-4 text-right">
                       <button

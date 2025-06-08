@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { ThemeContext } from '../context/ThemeContext';
+import { fetchGrantsForAdmin, fetchBlogPostsForAdmin } from '../utils/adminApiHelper';
 import {
   DocumentTextIcon,
   NewspaperIcon,
@@ -27,30 +28,23 @@ const AdminOverview = () => {
 
   const fetchDashboardData = async () => {
     try {
-      const token = localStorage.getItem('token');
-      const authHeaders = {
-        'Authorization': `Bearer ${token}`
-      };
-
-      // Fetch grants
-      const grantsResponse = await axios.get('/.netlify/functions/grants', {
-        headers: authHeaders
-      });
-      const grants = grantsResponse.data;
+      // Fetch grants using helper function
+      const grants = await fetchGrantsForAdmin();
       
       // Calculate stats
       const today = new Date();
       const upcomingDeadlines = grants.filter(grant => {
-        if (!grant.application_deadline) return false;
-        const deadline = new Date(grant.application_deadline);
-        return deadline > today;
+        if (!grant.deadline) return false;
+        try {
+          const deadline = new Date(grant.deadline);
+          return !isNaN(deadline) && deadline > today;
+        } catch {
+          return false;
+        }
       }).length;
 
-      // Fetch blog posts
-      const postsResponse = await axios.get('/.netlify/functions/blog', {
-        headers: authHeaders
-      });
-      const posts = postsResponse.data;
+      // Fetch blog posts using helper function
+      const posts = await fetchBlogPostsForAdmin();
       const publishedPosts = posts.filter(post => post.status === 'published').length;
 
       setStats({
@@ -66,6 +60,21 @@ const AdminOverview = () => {
       setLoading(false);
     } catch (error) {
       console.error('Failed to fetch dashboard data:', error);
+      console.error('Error details:', {
+        message: error.message,
+        response: error.response?.data,
+        status: error.response?.status
+      });
+      
+      // Set empty data instead of showing error to user
+      setStats({
+        totalGrants: 0,
+        upcomingDeadlines: 0,
+        totalPosts: 0,
+        publishedPosts: 0
+      });
+      setRecentGrants([]);
+      setRecentPosts([]);
       setLoading(false);
     }
   };
@@ -182,13 +191,13 @@ const AdminOverview = () => {
                     className={`pb-4 border-b ${darkMode ? 'border-gray-700' : 'border-gray-200'} last:border-0 last:pb-0`}
                   >
                     <h4 className={`font-medium ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                      {grant.grant_name}
+                      {grant.name || 'Unnamed Grant'}
                     </h4>
                     <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'} mt-1`}>
-                      {grant.funding_organization}
+                      {grant.organization || 'Unknown Organization'}
                     </p>
                     <p className={`text-xs ${darkMode ? 'text-gray-500' : 'text-gray-500'} mt-1`}>
-                      Deadline: {formatDate(grant.application_deadline)}
+                      Deadline: {formatDate(grant.deadline)}
                     </p>
                   </div>
                 ))}

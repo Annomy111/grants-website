@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { ThemeContext } from '../context/ThemeContext';
+import { fetchBlogPostsForAdmin } from '../utils/adminApiHelper';
 import { PlusIcon, PencilIcon, TrashIcon, EyeIcon } from '@heroicons/react/24/outline';
 
 const AdminBlog = () => {
@@ -17,16 +18,12 @@ const AdminBlog = () => {
   const fetchPosts = async () => {
     try {
       // Get all posts (published and drafts) for admin view
-      const token = localStorage.getItem('token');
-      const response = await axios.get('/.netlify/functions/blog', {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-      setPosts(response.data);
+      const postsData = await fetchBlogPostsForAdmin();
+      setPosts(postsData);
       setLoading(false);
     } catch (error) {
       console.error('Failed to fetch posts:', error);
+      setPosts([]);
       setLoading(false);
     }
   };
@@ -35,7 +32,7 @@ const AdminBlog = () => {
     if (!window.confirm('Are you sure you want to delete this post?')) return;
 
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('authToken'); // Fixed: was looking for 'token' instead of 'authToken'
       await axios.delete(`/.netlify/functions/blog/${id}`, {
         headers: {
           'Authorization': `Bearer ${token}`
@@ -50,7 +47,7 @@ const AdminBlog = () => {
 
   const handleStatusChange = async (id, newStatus) => {
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('authToken'); // Fixed: was looking for 'token' instead of 'authToken'
       await axios.put(`/.netlify/functions/blog/${id}`, { status: newStatus }, {
         headers: {
           'Authorization': `Bearer ${token}`
