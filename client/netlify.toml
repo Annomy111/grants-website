@@ -51,3 +51,9 @@
   for = "*.html"
   [headers.values]
     cache-control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/videos/*"
+  [headers.values]
+    cache-control = "public, max-age=31536000"
+    content-type = "video/mp4"
