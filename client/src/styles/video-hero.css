@@ -1,0 +1,137 @@
+/* Video Hero Styles */
+
+/* Ensure video covers the entire hero area */
+.video-hero-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  max-height: 900px;
+  overflow: hidden;
+}
+
+/* Video element styling */
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+/* Mobile-specific video optimizations */
+@media (max-width: 768px) {
+  .video-hero-container {
+    height: 100vh;
+    min-height: 500px;
+    max-height: 800px;
+  }
+  
+  /* Ensure video fills mobile screens properly */
+  .hero-video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Larger touch targets on mobile */
+  .video-control-button {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+/* Performance optimizations for slower connections */
+@media (prefers-reduced-motion: reduce) {
+  .hero-video {
+    display: none;
+  }
+  
+  .video-fallback-gradient {
+    display: block;
+  }
+}
+
+/* High-resolution display support */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .hero-video {
+    /* Ensure crisp rendering on retina displays */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Loading states */
+.video-loading {
+  background: linear-gradient(
+    270deg,
+    #f0f0f0 0%,
+    #e0e0e0 50%,
+    #f0f0f0 100%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Accessibility improvements */
+.video-controls:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .animate-bounce {
+    animation: none;
+  }
+  
+  .transition-all {
+    transition: none;
+  }
+}
+
+/* iOS-specific video fixes */
+@supports (-webkit-touch-callout: none) {
+  .hero-video {
+    /* Fix for iOS video playback issues */
+    -webkit-transform: translate3d(-50%, -50%, 0);
+    transform: translate3d(-50%, -50%, 0);
+  }
+}
+
+/* Android-specific optimizations */
+@media (max-width: 768px) and (hover: none) {
+  .hero-video {
+    /* Ensure proper scaling on Android devices */
+    object-position: center;
+  }
+}
+
+/* Landscape mobile optimization */
+@media (max-width: 896px) and (orientation: landscape) {
+  .video-hero-container {
+    height: 100vh;
+    max-height: 500px;
+  }
+  
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-content p {
+    font-size: 1rem;
+  }
+}

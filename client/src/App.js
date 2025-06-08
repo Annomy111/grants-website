@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import './App.css';
-import './styles/mobile-optimizations.css';
-import { debugEnv } from './utils/debugEnv';
-
-// Debug environment on load
-debugEnv();
 
 // Import Components
 import Header from './components/Header';
@@ -41,6 +35,17 @@ import BlogPostPage from './pages/BlogPostPage';
 import { LanguageContext } from './context/LanguageContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { AuthProvider } from './context/AuthContext';
+
+// Import styles
+import './App.css';
+import './styles/mobile-optimizations.css';
+import './styles/video-hero.css';
+
+// Import utilities
+import { debugEnv } from './utils/debugEnv';
+
+// Debug environment on load
+debugEnv();
 
 // Loader animation component
 const LoadingAnimation = () => (

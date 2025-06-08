@@ -5,6 +5,7 @@ import i18n from 'i18next';
 import axios from 'axios';
 import { format } from 'date-fns';
 import { ThemeContext } from '../context/ThemeContext';
+import VideoHero from '../components/VideoHero';
 
 const HomePage = () => {
   const { t } = useTranslation();
@@ -121,54 +122,63 @@ const HomePage = () => {
 
   return (
     <div className={`home-page min-h-screen ${darkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
-      {/* Hero Section - Apple-style */}
-      <section className={`relative overflow-hidden ${darkMode ? 'bg-gradient-to-b from-gray-900 to-gray-800' : 'bg-gradient-to-b from-white to-gray-50'}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-          <div className="text-center space-y-8">
-            <h1 className={`text-5xl md:text-7xl font-bold tracking-tight ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-              Civil Society
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-                Grants Platform
-              </span>
-            </h1>
-            
-            <p className={`max-w-2xl mx-auto text-xl md:text-2xl ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-              Connecting Ukrainian civil society organizations with €63M+ in funding opportunities
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-              <Link 
-                to="/grants" 
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium rounded-2xl text-white bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-lg hover:shadow-xl transform transition-all duration-200 hover:-translate-y-0.5"
-              >
-                Explore Grants
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
-              </Link>
-              
-              <Link 
-                to="/about" 
-                className={`inline-flex items-center justify-center px-8 py-4 text-lg font-medium rounded-2xl border-2 ${
-                  darkMode 
-                    ? 'border-gray-600 text-gray-300 hover:bg-gray-800' 
-                    : 'border-gray-300 text-gray-700 hover:bg-gray-100'
-                } transition-all duration-200`}
-              >
-                Learn More
-              </Link>
+      {/* Video Hero Section */}
+      <VideoHero 
+        darkMode={darkMode}
+        title={{
+          line1: t('home.hero.title1', 'Civil Society'),
+          line2: t('home.hero.title2', 'Grants Platform')
+        }}
+        subtitle={t('home.hero.subtitle', 'Connecting Ukrainian civil society organizations with €63M+ in funding opportunities')}
+        primaryCTA={{
+          text: t('home.hero.exploreGrants', 'Explore Grants'),
+          link: '/grants'
+        }}
+        secondaryCTA={{
+          text: t('home.hero.learnMore', 'Learn More'),
+          link: '/about'
+        }}
+      />
+
+      {/* Original content continues below - remove the old hero section */}
+      {/* Stats Section */}
+      <section className={`relative py-16 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className={`text-3xl md:text-4xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+              {t('home.stats.title', 'Making Impact Through Funding')}
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className={`text-center p-8 rounded-2xl ${darkMode ? 'bg-gray-700' : 'bg-gray-50'}`}>
+              <div className={`text-4xl md:text-5xl font-bold ${darkMode ? 'text-blue-400' : 'text-blue-600'} mb-2`}>
+                {stats.totalGrants}
+              </div>
+              <div className={`text-lg ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                {t('home.stats.totalGrants', 'Active Grants')}
+              </div>
+            </div>
+            <div className={`text-center p-8 rounded-2xl ${darkMode ? 'bg-gray-700' : 'bg-gray-50'}`}>
+              <div className={`text-4xl md:text-5xl font-bold ${darkMode ? 'text-green-400' : 'text-green-600'} mb-2`}>
+                €{stats.totalFunding}M+
+              </div>
+              <div className={`text-lg ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                {t('home.stats.totalFunding', 'Total Funding Available')}
+              </div>
+            </div>
+            <div className={`text-center p-8 rounded-2xl ${darkMode ? 'bg-gray-700' : 'bg-gray-50'}`}>
+              <div className={`text-4xl md:text-5xl font-bold ${darkMode ? 'text-purple-400' : 'text-purple-600'} mb-2`}>
+                {stats.upcomingDeadlines}
+              </div>
+              <div className={`text-lg ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                {t('home.stats.upcomingDeadlines', 'Upcoming Deadlines')}
+              </div>
             </div>
           </div>
         </div>
-        
-        {/* Background decoration */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className={`absolute -top-40 -right-40 w-80 h-80 rounded-full ${darkMode ? 'bg-blue-900/20' : 'bg-blue-100/50'} blur-3xl`}></div>
-          <div className={`absolute -bottom-40 -left-40 w-80 h-80 rounded-full ${darkMode ? 'bg-purple-900/20' : 'bg-purple-100/50'} blur-3xl`}></div>
-        </div>
       </section>
 
-      {/* Stats Section - Clean cards */}
+      {/* Enhanced Stats Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
