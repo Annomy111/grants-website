@@ -28,6 +28,9 @@
   "devDependencies": {
     "axios": "^1.9.0",
     "concurrently": "^9.1.2",
+    "eslint": "^8.57.1",
+    "eslint-config-react-app": "^7.0.1",
+    "prettier": "^3.5.3",
     "puppeteer": "^24.10.0"
   }
 }
