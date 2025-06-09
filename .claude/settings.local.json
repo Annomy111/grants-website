@@ -61,7 +61,8 @@
       "Bash(test -f .env)",
       "Bash(diff:*)",
       "Bash(git reset:*)",
-      "Bash(touch:*)"
+      "Bash(touch:*)",
+      "Bash(./scripts/cleanup-project.sh:*)"
     ],
     "deny": []
   },

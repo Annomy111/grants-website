@@ -137,3 +137,25 @@ comprehensive-*.js
 # Test directories
 tests/
 test-reports/
+
+# Archived files
+archived/
+*.log
+temp-*/
+*-report-*.json
+*-log-*.json
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage/
+.nyc_output/

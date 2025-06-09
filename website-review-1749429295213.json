@@ -1,0 +1,180 @@
+{
+  "timestamp": "2025-06-09T00:34:55.213Z",
+  "websiteUrl": "https://civil-society-grants-database.netlify.app/",
+  "overallStatus": "REVIEW COMPLETE",
+  "agentReports": [
+    {
+      "agent": "UX/UI Design",
+      "timestamp": "2025-06-09T00:34:49.208Z",
+      "findings": [
+        {
+          "page": "Homepage",
+          "results": {
+            "colorScheme": [
+              "Found 2 distinct background colors"
+            ],
+            "typography": [
+              "2 font families used"
+            ],
+            "layout": [
+              "0 buttons found",
+              "0 organization logos visible"
+            ],
+            "responsiveness": []
+          }
+        },
+        {
+          "page": "Grants Page",
+          "results": {
+            "cardLayout": [
+              "0 grant cards displayed"
+            ],
+            "logoQuality": [
+              "0/0 high-quality logos loaded"
+            ],
+            "spacing": []
+          }
+        }
+      ]
+    },
+    {
+      "agent": "Performance",
+      "timestamp": "2025-06-09T00:34:51.567Z",
+      "findings": [
+        {
+          "page": "Homepage",
+          "loadTime": "562ms",
+          "metrics": {
+            "loadTime": 41,
+            "domReady": 41,
+            "resources": 6,
+            "largestPaint": 0,
+            "totalImages": 0,
+            "logoImages": 0
+          }
+        },
+        {
+          "page": "Grants Page",
+          "loadTime": "573ms",
+          "metrics": {
+            "grantCount": 0,
+            "logoCount": 0,
+            "loadedLogos": 0
+          }
+        }
+      ]
+    },
+    {
+      "agent": "Accessibility",
+      "timestamp": "2025-06-09T00:34:52.739Z",
+      "findings": [
+        {
+          "page": "Homepage",
+          "results": {
+            "altTexts": {
+              "total": 0,
+              "missing": 0
+            },
+            "headings": [],
+            "contrast": [],
+            "interactive": [
+              "Buttons: 0",
+              "Links: 0",
+              "ARIA elements: 0"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "agent": "Content Quality",
+      "timestamp": "2025-06-09T00:34:53.333Z",
+      "findings": [
+        {
+          "page": "Grants Page",
+          "results": {
+            "grants": [
+              "Total grants displayed: 0"
+            ],
+            "logos": {
+              "total": 0,
+              "loaded": 0,
+              "highQuality": 0,
+              "formats": {
+                "svg": 0,
+                "png": 0,
+                "jpg": 0
+              }
+            },
+            "information": [
+              "Grants with substantial text: 0",
+              "Average text length: NaN characters"
+            ]
+          }
+        },
+        {
+          "page": "Blog",
+          "results": {
+            "postCount": 0,
+            "hasContent": false
+          }
+        }
+      ]
+    },
+    {
+      "agent": "Logo Verification",
+      "timestamp": "2025-06-09T00:34:54.648Z",
+      "findings": {
+        "summary": {
+          "totalLogoElements": 0,
+          "uniqueLogos": 0,
+          "formats": {
+            "svg": 0,
+            "png": 0,
+            "jpg": 0,
+            "other": 0
+          },
+          "loadStatus": {
+            "loaded": 0,
+            "failed": 0,
+            "loading": 0
+          },
+          "sizeDistribution": {
+            "small": 0,
+            "medium": 0,
+            "large": 0
+          },
+          "successRate": "NaN%"
+        },
+        "details": [],
+        "quality": {
+          "placeholdersDetected": 0,
+          "placeholderFiles": [],
+          "highQualityLogos": 0,
+          "overallQuality": "Excellent - No placeholders"
+        }
+      },
+      "recentlyUpdated": {
+        "luminate": {
+          "found": false
+        },
+        "international-renaissance-foundation-irf": {
+          "found": false
+        },
+        "mama-cash": {
+          "found": false
+        },
+        "norwegian-helsinki-committee": {
+          "found": false
+        }
+      }
+    }
+  ],
+  "summary": {
+    "design": "🎨 Design review completed",
+    "performance": "⚡ Performance metrics collected",
+    "accessibility": "♿ Accessibility checks performed",
+    "content": "📝 Content quality assessed",
+    "logos": "🎯 Logo implementation verified"
+  }
+}

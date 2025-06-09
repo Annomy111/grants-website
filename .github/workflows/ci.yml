@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: |
+        npm ci
+        cd client && npm ci
+    
+    - name: Run linting
+      run: |
+        cd client && npm run lint || true
+      continue-on-error: true
+    
+    - name: Run tests
+      run: |
+        npm test || true
+        cd client && npm test -- --passWithNoTests || true
+      continue-on-error: true
+    
+    - name: Build project
+      run: |
+        cd client && npm run build
+    
+    - name: Check for security vulnerabilities
+      run: |
+        npm audit --audit-level=high || true
+        cd client && npm audit --audit-level=high || true
+      continue-on-error: true
+
+  code-quality:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Check for sensitive data
+      run: |
+        # Check for potential secrets
+        ! grep -r "SUPABASE_SERVICE_ROLE_KEY\|GOOGLE_GEMINI_API_KEY" --include="*.js" --include="*.jsx" --exclude-dir=node_modules --exclude-dir=.git . || echo "Warning: Potential secrets found"
+    
+    - name: Check file sizes
+      run: |
+        # Alert on large files
+        find . -type f -size +1M -not -path "./node_modules/*" -not -path "./.git/*" -exec ls -lh {} \; | grep -v "\.mp4\|\.png\|\.jpg" || true

@@ -6,6 +6,10 @@ If this is your first time here, please run the following at the start and end o
 
 Remember: Never commit secrets or API keys. Keep them in .env files!
 
+## Architectural Memories
+
+- Make sure you know the structure of this project at all times: Supabase for DB and log in etc - Netlify for mainly frontend
+
 ## Common Commands
 
 ### Development

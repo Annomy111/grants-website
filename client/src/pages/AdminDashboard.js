@@ -24,8 +24,8 @@ const AdminDashboard = () => {
     { name: 'Dashboard', href: '/admin/dashboard', icon: HomeIcon },
     { name: 'Grants', href: '/admin/grants', icon: DocumentTextIcon },
     { name: 'Blog Posts', href: '/admin/blog', icon: NewspaperIcon },
-    { name: 'Blog Generation', href: '/admin/blog-generation', icon: SparklesIcon },
-    { name: 'Users', href: '/admin/users', icon: UserIcon },
+    // Removed: Blog Generation - requires Express server (not deployed)
+    // Removed: Users - requires Express server (not deployed)
     { name: 'Profile', href: '/admin/profile', icon: UserIcon },
   ];
 

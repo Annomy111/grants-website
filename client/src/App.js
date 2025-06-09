@@ -22,9 +22,8 @@ import AdminBlog from './pages/AdminBlog';
 // import AdminBlogEditor from './pages/AdminBlogEditor';
 import AdminBlogEditor from './pages/AdminBlogEditorSimple'; // Using simplified version temporarily
 import AdminProfile from './pages/AdminProfile';
-import AdminUsers from './pages/AdminUsers';
-import AdminBlogGenerationDashboard from './pages/AdminBlogGenerationDashboard';
-import AdminBlogGenerationCreate from './pages/AdminBlogGenerationCreate';
+// Removed: AdminUsers, AdminBlogGenerationDashboard, AdminBlogGenerationCreate
+// These features require Express server which is not deployed in production
 import ProtectedRoute from './components/ProtectedRoute';
 
 // Import Blog Components
@@ -168,9 +167,7 @@ function App() {
                 <Route path="blog" element={<AdminBlog />} />
                 <Route path="blog/new" element={<AdminBlogEditor />} />
                 <Route path="blog/edit/:id" element={<AdminBlogEditor />} />
-                <Route path="blog-generation" element={<AdminBlogGenerationDashboard />} />
-                <Route path="blog-generation/create" element={<AdminBlogGenerationCreate />} />
-                <Route path="users" element={<AdminUsers />} />
+                {/* Removed routes for blog-generation and users - require Express server */}
                 <Route path="profile" element={<AdminProfile />} />
               </Route>
               
