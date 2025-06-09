@@ -25,7 +25,8 @@
       "Bash(git stash:*)",
       "Bash(npm run sync:grants:*)",
       "Bash(psql:*)",
-      "Bash(npm start)"
+      "Bash(npm start)",
+      "Bash(git push:*)"
     ]
   },
   "enableAllProjectMcpServers": true,

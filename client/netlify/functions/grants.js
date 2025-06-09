@@ -1,8 +1,30 @@
 import { createClient } from '@supabase/supabase-js';
 
+// Debug environment variables
+console.log('Grants function environment check:', {
+  SUPABASE_URL: process.env.SUPABASE_URL ? 'SET' : 'NOT SET',
+  REACT_APP_SUPABASE_URL: process.env.REACT_APP_SUPABASE_URL ? 'SET' : 'NOT SET',
+  SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY ? 'SET' : 'NOT SET',
+  SUPABASE_ANON_KEY: process.env.SUPABASE_ANON_KEY ? 'SET' : 'NOT SET',
+  REACT_APP_SUPABASE_ANON_KEY: process.env.REACT_APP_SUPABASE_ANON_KEY ? 'SET' : 'NOT SET',
+});
+
+// Try multiple environment variable names for better compatibility
+const supabaseUrl = process.env.SUPABASE_URL || process.env.REACT_APP_SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || 
+                   process.env.SUPABASE_ANON_KEY || 
+                   process.env.REACT_APP_SUPABASE_ANON_KEY;
+
+if (!supabaseUrl || !supabaseKey) {
+  console.error('Missing Supabase credentials:', {
+    url: supabaseUrl || 'NOT FOUND',
+    hasKey: !!supabaseKey
+  });
+}
+
 const supabase = createClient(
-  process.env.SUPABASE_URL || process.env.REACT_APP_SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY // Use service role for server functions
+  supabaseUrl || '',
+  supabaseKey || ''
 );
 
 export const handler = async (event, context) => {
@@ -72,6 +94,24 @@ export const handler = async (event, context) => {
 };
 
 async function getGrants(params, headers) {
+  // Check if Supabase is properly initialized
+  if (!supabaseUrl || !supabaseKey) {
+    console.error('Supabase not initialized properly in getGrants');
+    return {
+      statusCode: 500,
+      headers,
+      body: JSON.stringify({ 
+        error: 'Database configuration error',
+        details: 'Supabase credentials not found',
+        debug: {
+          hasUrl: !!supabaseUrl,
+          hasKey: !!supabaseKey,
+          envVars: Object.keys(process.env).filter(k => k.includes('SUPABASE') || k.includes('REACT_APP')).join(', ')
+        }
+      }),
+    };
+  }
+
   let query = supabase.from('grants').select('*').eq('status', 'active');
 
   // Apply filters

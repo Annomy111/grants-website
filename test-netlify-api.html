@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Netlify API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .success {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+        pre {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 3px;
+            overflow-x: auto;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Netlify API Test</h1>
+    
+    <div class="test-section">
+        <h2>Test 1: Check Grants API</h2>
+        <button onclick="testGrantsAPI()">Test Grants API</button>
+        <div id="grants-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 2: Check Debug Endpoint</h2>
+        <button onclick="testDebugAPI()">Test Debug API</button>
+        <div id="debug-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 3: Check Static JSON</h2>
+        <button onclick="testStaticJSON()">Test Static JSON</button>
+        <div id="static-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 4: Check Environment</h2>
+        <button onclick="checkEnvironment()">Check Environment</button>
+        <div id="env-result"></div>
+    </div>
+
+    <script>
+        const baseUrl = window.location.origin;
+
+        async function testGrantsAPI() {
+            const resultDiv = document.getElementById('grants-result');
+            resultDiv.innerHTML = '<p>Testing...</p>';
+            
+            try {
+                const response = await fetch(`${baseUrl}/.netlify/functions/grants`);
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `
+                        <p class="success">✓ API Response: ${response.status}</p>
+                        <p>Grants found: ${Array.isArray(data) ? data.length : 'N/A'}</p>
+                        <pre>${JSON.stringify(data.slice ? data.slice(0, 2) : data, null, 2)}</pre>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <p class="error">✗ API Error: ${response.status}</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <p class="error">✗ Network Error</p>
+                    <pre>${error.message}</pre>
+                `;
+            }
+        }
+
+        async function testDebugAPI() {
+            const resultDiv = document.getElementById('debug-result');
+            resultDiv.innerHTML = '<p>Testing...</p>';
+            
+            try {
+                const response = await fetch(`${baseUrl}/.netlify/functions/grants-debug`);
+                const data = await response.json();
+                
+                resultDiv.innerHTML = `
+                    <p class="${response.ok ? 'success' : 'error'}">
+                        ${response.ok ? '✓' : '✗'} Debug Response: ${response.status}
+                    </p>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <p class="error">✗ Network Error</p>
+                    <pre>${error.message}</pre>
+                `;
+            }
+        }
+
+        async function testStaticJSON() {
+            const resultDiv = document.getElementById('static-result');
+            resultDiv.innerHTML = '<p>Testing...</p>';
+            
+            try {
+                const response = await fetch(`${baseUrl}/data/grants.json`);
+                const data = await response.json();
+                
+                resultDiv.innerHTML = `
+                    <p class="success">✓ Static JSON: ${response.status}</p>
+                    <p>Grants in JSON: ${data.length}</p>
+                    <pre>${JSON.stringify(data[0], null, 2)}</pre>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <p class="error">✗ Failed to load static JSON</p>
+                    <pre>${error.message}</pre>
+                `;
+            }
+        }
+
+        function checkEnvironment() {
+            const resultDiv = document.getElementById('env-result');
+            
+            const envInfo = {
+                location: window.location.href,
+                origin: window.location.origin,
+                isNetlify: window.location.hostname.includes('netlify'),
+                isLocalhost: window.location.hostname === 'localhost',
+                protocol: window.location.protocol,
+                userAgent: navigator.userAgent
+            };
+            
+            resultDiv.innerHTML = `
+                <p class="success">✓ Environment Info</p>
+                <pre>${JSON.stringify(envInfo, null, 2)}</pre>
+            `;
+        }
+    </script>
+</body>
+</html>
