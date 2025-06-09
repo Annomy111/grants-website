@@ -7,6 +7,10 @@ import { format } from 'date-fns';
 import { createRoot } from 'react-dom/client';
 import { ThemeContext } from '../context/ThemeContext';
 import { CalendarIcon, UserIcon, TagIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
+import { sanitizeHTML } from '../utils/sanitize';
+import SEOHead from '../components/SEOHead';
+import StructuredData from '../components/StructuredData';
+import Breadcrumbs from '../components/Breadcrumbs';
 import {
   KeyStatisticsInfographic,
   FocusAreasInfographic,
@@ -148,20 +152,48 @@ const BlogPostPage = () => {
   }
 
   return (
-    <div
-      className={`blog-post-page ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-800'} min-h-screen py-8`}
-    >
-      <article className="container mx-auto px-4 max-w-4xl">
-        {/* Back Button */}
-        <button
-          onClick={() => navigate('/blog')}
-          className={`inline-flex items-center mb-6 ${
-            darkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-          } transition-colors`}
-        >
-          <ArrowLeftIcon className="h-5 w-5 mr-2" />
-          {t('blog.backToBlog', 'Back to Blog')}
-        </button>
+    <>
+      <SEOHead
+        title={post?.title}
+        description={post?.excerpt || post?.summary}
+        keywords={post?.tags?.join(', ')}
+        ogImage={post?.featured_image}
+        ogType="article"
+      />
+      <StructuredData
+        type="article"
+        data={{
+          title: post?.title,
+          description: post?.excerpt || post?.summary,
+          image: post?.featured_image,
+          author: post?.author || 'Civil Society Grants Team',
+          datePublished: post?.created_at,
+          dateModified: post?.updated_at,
+          url: `/blog/${slug}`
+        }}
+      />
+      <div
+        className={`blog-post-page ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-800'} min-h-screen py-8`}
+      >
+        <article className="container mx-auto px-4 max-w-4xl">
+          {/* Breadcrumbs */}
+          <Breadcrumbs 
+            customItems={[
+              { label: t('breadcrumbs.blog', 'Blog'), path: '/blog' },
+              { label: post?.title || t('breadcrumbs.loading', 'Loading...'), isLast: true }
+            ]}
+          />
+          
+          {/* Back Button */}
+          <button
+            onClick={() => navigate('/blog')}
+            className={`inline-flex items-center mb-6 ${
+              darkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+            } transition-colors`}
+          >
+            <ArrowLeftIcon className="h-5 w-5 mr-2" />
+            {t('blog.backToBlog', 'Back to Blog')}
+          </button>
 
         {/* Featured Image */}
         {post.featured_image && (
@@ -223,7 +255,7 @@ const BlogPostPage = () => {
         <div className={`prose prose-lg max-w-none ${darkMode ? 'prose-invert' : ''}`}>
           <div
             ref={contentRef}
-            dangerouslySetInnerHTML={{ __html: getLocalizedContent('content') }}
+            dangerouslySetInnerHTML={{ __html: sanitizeHTML(getLocalizedContent('content')) }}
             className={`
               ${darkMode ? 'text-gray-300' : 'text-gray-700'}
               [&>h1]:text-3xl [&>h1]:font-bold [&>h1]:mb-4 [&>h1]:mt-8
@@ -286,6 +318,7 @@ const BlogPostPage = () => {
         </div>
       </article>
     </div>
+    </>
   );
 };
 

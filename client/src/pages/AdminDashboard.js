@@ -11,6 +11,7 @@ import {
   Bars3Icon,
   XMarkIcon,
   SparklesIcon,
+  ChartBarIcon,
 } from '@heroicons/react/24/outline';
 
 const AdminDashboard = () => {
@@ -22,6 +23,7 @@ const AdminDashboard = () => {
 
   const navigation = [
     { name: 'Dashboard', href: '/admin/dashboard', icon: HomeIcon },
+    { name: 'Analytics', href: '/admin/analytics', icon: ChartBarIcon },
     { name: 'Grants', href: '/admin/grants', icon: DocumentTextIcon },
     { name: 'Blog Posts', href: '/admin/blog', icon: NewspaperIcon },
     // Removed: Blog Generation - requires Express server (not deployed)

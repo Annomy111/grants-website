@@ -12,7 +12,20 @@
       "Bash(cat:*)",
       "Bash([ -f .env ])",
       "Bash(npm run update:static-grants:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(gh run list:*)",
+      "Bash(jq:*)",
+      "Bash(find:*)",
+      "Bash(git branch:*)",
+      "Bash(gh run view:*)",
+      "Bash(netlify:*)",
+      "Bash([ -f \"/Users/winzendwyers/grants website/.env\" ])",
+      "Bash([ -f \"/Users/winzendwyers/grants website/client/.env\" ])",
+      "Bash(npm run build:*)",
+      "Bash(git stash:*)",
+      "Bash(npm run sync:grants:*)",
+      "Bash(psql:*)",
+      "Bash(npm start)"
     ]
   },
   "enableAllProjectMcpServers": true,

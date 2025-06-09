@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -6,29 +6,29 @@ import { useTranslation } from 'react-i18next';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import GrantsChatWidget from './components/GrantsChatWidget';
-import HomePage from './pages/HomePage';
-import GrantsPage from './pages/GrantsPage';
-import GrantDetail from './pages/GrantDetail';
-import AdminPage from './pages/AdminPage';
-import AboutPage from './pages/AboutPage';
-import NotFoundPage from './pages/NotFoundPage';
 
-// Import Admin Components
-import AdminLoginPage from './pages/AdminLoginPage';
-import AdminDashboard from './pages/AdminDashboard';
-import AdminOverview from './pages/AdminOverview';
-import AdminGrants from './pages/AdminGrants';
-import AdminBlog from './pages/AdminBlog';
-// import AdminBlogEditor from './pages/AdminBlogEditor';
-import AdminBlogEditor from './pages/AdminBlogEditorSimple'; // Using simplified version temporarily
-import AdminProfile from './pages/AdminProfile';
-// Removed: AdminUsers, AdminBlogGenerationDashboard, AdminBlogGenerationCreate
-// These features require Express server which is not deployed in production
+// Lazy load pages for code splitting
+const HomePage = lazy(() => import('./pages/HomePage'));
+const GrantsPage = lazy(() => import('./pages/GrantsPageOptimized')); // Use optimized version
+const GrantDetail = lazy(() => import('./pages/GrantDetail'));
+const AdminPage = lazy(() => import('./pages/AdminPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+
+// Lazy load Admin Components
+const AdminLoginPage = lazy(() => import('./pages/AdminLoginPage'));
+const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
+const AdminOverview = lazy(() => import('./pages/AdminOverview'));
+const AdminGrants = lazy(() => import('./pages/AdminGrants'));
+const AdminBlog = lazy(() => import('./pages/AdminBlog'));
+const AdminBlogEditor = lazy(() => import('./pages/AdminBlogEditorSimple')); // Using simplified version temporarily
+const AdminProfile = lazy(() => import('./pages/AdminProfile'));
+const AdminAnalytics = lazy(() => import('./pages/AdminAnalytics'));
 import ProtectedRoute from './components/ProtectedRoute';
 
-// Import Blog Components
-import BlogPage from './pages/BlogPage';
-import BlogPostPage from './pages/BlogPostPage';
+// Lazy load Blog Components
+const BlogPage = lazy(() => import('./pages/BlogPage'));
+const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 
 // Import Contexts
 import { LanguageContext } from './context/LanguageContext';
@@ -53,6 +53,19 @@ const LoadingAnimation = () => (
       <div className="h-24 w-24 rounded-full border-t-4 border-b-4 border-blue-500 dark:border-blue-400 animate-spin"></div>
       <div
         className="absolute top-0 left-0 h-24 w-24 rounded-full border-t-4 border-b-4 border-blue-300 dark:border-blue-600 animate-spin"
+        style={{ animationDirection: 'reverse', animationDuration: '1.5s' }}
+      ></div>
+    </div>
+  </div>
+);
+
+// Page loading component for Suspense
+const PageLoader = () => (
+  <div className="flex items-center justify-center min-h-[60vh]">
+    <div className="relative">
+      <div className="h-16 w-16 rounded-full border-t-4 border-b-4 border-blue-500 dark:border-blue-400 animate-spin"></div>
+      <div
+        className="absolute top-0 left-0 h-16 w-16 rounded-full border-t-4 border-b-4 border-blue-300 dark:border-blue-600 animate-spin"
         style={{ animationDirection: 'reverse', animationDuration: '1.5s' }}
       ></div>
     </div>
@@ -91,8 +104,10 @@ function App() {
                 element={
                   <div className="App min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
                     <Header />
-                    <main className="flex-grow container mx-auto px-4 py-8 transition-all duration-300 ease-in-out">
-                      <HomePage />
+                    <main id="main-content" className="flex-grow container mx-auto px-4 py-8 transition-all duration-300 ease-in-out" role="main">
+                      <Suspense fallback={<PageLoader />}>
+                        <HomePage />
+                      </Suspense>
                     </main>
                     <Footer />
                     <GrantsChatWidget />
@@ -104,8 +119,10 @@ function App() {
                 element={
                   <div className="App min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
                     <Header />
-                    <main className="flex-grow container mx-auto px-4 py-8 transition-all duration-300 ease-in-out">
-                      <GrantsPage />
+                    <main id="main-content" className="flex-grow container mx-auto px-4 py-8 transition-all duration-300 ease-in-out" role="main">
+                      <Suspense fallback={<PageLoader />}>
+                        <GrantsPage />
+                      </Suspense>
                     </main>
                     <Footer />
                     <GrantsChatWidget />
@@ -117,8 +134,10 @@ function App() {
                 element={
                   <div className="App min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
                     <Header />
-                    <main className="flex-grow container mx-auto px-4 py-8 transition-all duration-300 ease-in-out">
-                      <GrantDetail />
+                    <main id="main-content" className="flex-grow container mx-auto px-4 py-8 transition-all duration-300 ease-in-out" role="main">
+                      <Suspense fallback={<PageLoader />}>
+                        <GrantDetail />
+                      </Suspense>
                     </main>
                     <Footer />
                     <GrantsChatWidget />
@@ -130,8 +149,10 @@ function App() {
                 element={
                   <div className="App min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
                     <Header />
-                    <main className="flex-grow container mx-auto px-4 py-8 transition-all duration-300 ease-in-out">
-                      <AboutPage />
+                    <main id="main-content" className="flex-grow container mx-auto px-4 py-8 transition-all duration-300 ease-in-out" role="main">
+                      <Suspense fallback={<PageLoader />}>
+                        <AboutPage />
+                      </Suspense>
                     </main>
                     <Footer />
                     <GrantsChatWidget />
@@ -143,8 +164,10 @@ function App() {
                 element={
                   <div className="App min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
                     <Header />
-                    <main className="flex-grow">
-                      <BlogPage />
+                    <main id="main-content" className="flex-grow" role="main">
+                      <Suspense fallback={<PageLoader />}>
+                        <BlogPage />
+                      </Suspense>
                     </main>
                     <Footer />
                     <GrantsChatWidget />
@@ -156,8 +179,10 @@ function App() {
                 element={
                   <div className="App min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
                     <Header />
-                    <main className="flex-grow">
-                      <BlogPostPage />
+                    <main id="main-content" className="flex-grow" role="main">
+                      <Suspense fallback={<PageLoader />}>
+                        <BlogPostPage />
+                      </Suspense>
                     </main>
                     <Footer />
                     <GrantsChatWidget />
@@ -171,8 +196,10 @@ function App() {
                 element={
                   <div className="App min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
                     <Header />
-                    <main className="flex-grow container mx-auto px-4 py-8 transition-all duration-300 ease-in-out">
-                      <AdminPage />
+                    <main id="main-content" className="flex-grow container mx-auto px-4 py-8 transition-all duration-300 ease-in-out" role="main">
+                      <Suspense fallback={<PageLoader />}>
+                        <AdminPage />
+                      </Suspense>
                     </main>
                     <Footer />
                   </div>
@@ -180,22 +207,25 @@ function App() {
               />
 
               {/* Admin routes without header/footer */}
-              <Route path="/admin/login" element={<AdminLoginPage />} />
+              <Route path="/admin/login" element={<Suspense fallback={<PageLoader />}><AdminLoginPage /></Suspense>} />
               <Route
                 path="/admin/*"
                 element={
                   <ProtectedRoute>
-                    <AdminDashboard />
+                    <Suspense fallback={<PageLoader />}>
+                      <AdminDashboard />
+                    </Suspense>
                   </ProtectedRoute>
                 }
               >
-                <Route path="dashboard" element={<AdminOverview />} />
-                <Route path="grants" element={<AdminGrants />} />
-                <Route path="blog" element={<AdminBlog />} />
-                <Route path="blog/new" element={<AdminBlogEditor />} />
-                <Route path="blog/edit/:id" element={<AdminBlogEditor />} />
+                <Route path="dashboard" element={<Suspense fallback={<PageLoader />}><AdminOverview /></Suspense>} />
+                <Route path="analytics" element={<Suspense fallback={<PageLoader />}><AdminAnalytics /></Suspense>} />
+                <Route path="grants" element={<Suspense fallback={<PageLoader />}><AdminGrants /></Suspense>} />
+                <Route path="blog" element={<Suspense fallback={<PageLoader />}><AdminBlog /></Suspense>} />
+                <Route path="blog/new" element={<Suspense fallback={<PageLoader />}><AdminBlogEditor /></Suspense>} />
+                <Route path="blog/edit/:id" element={<Suspense fallback={<PageLoader />}><AdminBlogEditor /></Suspense>} />
                 {/* Removed routes for blog-generation and users - require Express server */}
-                <Route path="profile" element={<AdminProfile />} />
+                <Route path="profile" element={<Suspense fallback={<PageLoader />}><AdminProfile /></Suspense>} />
               </Route>
 
               <Route
@@ -203,8 +233,10 @@ function App() {
                 element={
                   <div className="App min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
                     <Header />
-                    <main className="flex-grow container mx-auto px-4 py-8 transition-all duration-300 ease-in-out">
-                      <NotFoundPage />
+                    <main id="main-content" className="flex-grow container mx-auto px-4 py-8 transition-all duration-300 ease-in-out" role="main">
+                      <Suspense fallback={<PageLoader />}>
+                        <NotFoundPage />
+                      </Suspense>
                     </main>
                     <Footer />
                     <GrantsChatWidget />

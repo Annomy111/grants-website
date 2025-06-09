@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import { format } from 'date-fns';
+import { DocumentArrowDownIcon } from '@heroicons/react/24/outline';
 
 const GrantDetail = () => {
   const { id } = useParams();
@@ -93,28 +94,116 @@ const GrantDetail = () => {
     return link.startsWith('http') ? link : `https://${link}`;
   };
 
+  const handlePrintPDF = () => {
+    // Create a print-specific style
+    const printStyles = `
+      @media print {
+        /* Hide non-essential elements */
+        .no-print {
+          display: none !important;
+        }
+        
+        /* Reset colors for better printing */
+        * {
+          background: white !important;
+          color: black !important;
+        }
+        
+        /* Ensure proper page breaks */
+        .grant-detail {
+          page-break-inside: avoid;
+        }
+        
+        /* Style adjustments for print */
+        .bg-blue-700 {
+          background-color: #f3f4f6 !important;
+          border-bottom: 2px solid #000 !important;
+        }
+        
+        .text-blue-100 {
+          color: #374151 !important;
+        }
+        
+        a {
+          text-decoration: underline !important;
+        }
+        
+        /* Add grant info header for print */
+        @page {
+          margin: 1in;
+        }
+        
+        .print-header::before {
+          content: "Civil Society Grants Database";
+          font-size: 12px;
+          color: #666;
+          display: block;
+          margin-bottom: 20px;
+        }
+        
+        .print-header::after {
+          content: "Generated on: " attr(data-date);
+          font-size: 10px;
+          color: #666;
+          display: block;
+          position: absolute;
+          top: 10px;
+          right: 10px;
+        }
+      }
+    `;
+
+    // Inject print styles
+    const styleElement = document.createElement('style');
+    styleElement.textContent = printStyles;
+    document.head.appendChild(styleElement);
+
+    // Add date attribute for print
+    const printHeader = document.querySelector('.print-header');
+    if (printHeader) {
+      printHeader.setAttribute('data-date', new Date().toLocaleDateString());
+    }
+
+    // Trigger print dialog
+    window.print();
+
+    // Clean up styles after print
+    setTimeout(() => {
+      document.head.removeChild(styleElement);
+    }, 1000);
+  };
+
   return (
     <div className="grant-detail">
-      <Link
-        to="/grants"
-        className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5 mr-1"
-          viewBox="0 0 20 20"
-          fill="currentColor"
+      <div className="flex justify-between items-center mb-6 no-print">
+        <Link
+          to="/grants"
+          className="inline-flex items-center text-blue-600 hover:text-blue-800"
         >
-          <path
-            fillRule="evenodd"
-            d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
-            clipRule="evenodd"
-          />
-        </svg>
-        {t('grantDetail.backToGrants')}
-      </Link>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5 mr-1"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fillRule="evenodd"
+              d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
+              clipRule="evenodd"
+            />
+          </svg>
+          {t('grantDetail.backToGrants')}
+        </Link>
+        <button
+          onClick={handlePrintPDF}
+          className="inline-flex items-center px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors"
+        >
+          <DocumentArrowDownIcon className="h-5 w-5 mr-2" />
+          Export PDF
+        </button>
+      </div>
 
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200">
+      <div className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200 print-header">
         <div className="bg-blue-700 text-white px-6 py-4">
           <h1 className="text-2xl font-bold">{grant['Grant Name']}</h1>
           <p className="text-blue-100 text-lg">{grant['Funding Organization']}</p>
@@ -188,7 +277,7 @@ const GrantDetail = () => {
             </div>
           </div>
 
-          <div className="mt-8 text-center">
+          <div className="mt-8 text-center no-print">
             <a
               href={getWebsiteUrl(grant['Website Link'])}
               target="_blank"

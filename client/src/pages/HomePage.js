@@ -6,6 +6,8 @@ import axios from 'axios';
 import { format } from 'date-fns';
 import { ThemeContext } from '../context/ThemeContext';
 import VideoHero from '../components/VideoHero';
+import SEOHead from '../components/SEOHead';
+import StructuredData from '../components/StructuredData';
 
 const HomePage = () => {
   const { t } = useTranslation();
@@ -120,7 +122,16 @@ const HomePage = () => {
   };
 
   return (
-    <div className={`home-page min-h-screen ${darkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
+    <>
+      <SEOHead 
+        title={t('home.pageTitle', 'Ukraine Civil Society Grants - Find Funding Opportunities')}
+        description={t('home.metaDescription', 'Discover 107+ grants worth €63M+ for civil society organizations in Ukraine. Find international funding opportunities, EU grants, and humanitarian aid.')}
+        keywords={t('home.keywords', 'ukraine grants, civil society funding, NGO grants ukraine, EU funding ukraine, humanitarian grants, international aid ukraine')}
+      />
+      <StructuredData type="website" />
+      <StructuredData type="organization" />
+      
+      <main id="main-content" className={`home-page min-h-screen ${darkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
       {/* Video Hero Section */}
       <VideoHero
         darkMode={darkMode}
@@ -144,7 +155,7 @@ const HomePage = () => {
 
       {/* Original content continues below - remove the old hero section */}
       {/* Stats Section */}
-      <section className={`relative py-16 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+      <section className={`relative py-16 ${darkMode ? 'bg-gray-800' : 'bg-white'}`} aria-label="Platform statistics">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2
@@ -195,7 +206,7 @@ const HomePage = () => {
       </section>
 
       {/* Enhanced Stats Section */}
-      <section className="py-20">
+      <section className="py-20" aria-label="Detailed statistics">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Total Grants */}
@@ -325,7 +336,7 @@ const HomePage = () => {
       </section>
 
       {/* Featured Grants - Minimal cards */}
-      <section className="py-20">
+      <section className="py-20" aria-label="Featured grant opportunities">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className={`text-4xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
@@ -470,7 +481,7 @@ const HomePage = () => {
 
       {/* Upcoming Deadlines - Clean table */}
       {upcomingGrants.length > 0 && (
-        <section className={`py-20 ${darkMode ? 'bg-gray-800/50' : 'bg-gray-50'}`}>
+        <section className={`py-20 ${darkMode ? 'bg-gray-800/50' : 'bg-gray-50'}`} aria-label="Upcoming application deadlines">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2
@@ -568,7 +579,8 @@ const HomePage = () => {
           </div>
         </section>
       )}
-    </div>
+      </main>
+    </>
   );
 };
 

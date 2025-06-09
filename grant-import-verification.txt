@@ -1,0 +1,219 @@
+GRANT IMPORT VERIFICATION ANALYSIS
+==================================
+Date: January 9, 2025
+Source Document: update db grants.rtf
+
+This analysis compares grants mentioned in the RTF document with those currently in the database.
+
+GRANTS FROM THE RTF DOCUMENT:
+=============================
+
+SECTION 1: Initial Grant Entries (Grants 1-5)
+---------------------------------------------
+
+1. Council of Europe IDPs and Returnees Grant
+   - Funding Organization: Council of Europe
+   - Status: EXPIRED (as noted in document)
+   - In Database: YES ✓
+   - Database Name: "Council of Europe IDPs and Returnees Grant"
+
+2. Eastern Partnership Civil Society Fellowship 2025
+   - Funding Organization: European Union
+   - Status: Second Call EXPIRED
+   - In Database: YES ✓
+   - Database Name: "Eastern Partnership Civil Society Fellowship 2025"
+
+3. House of Europe International Cooperation Grants
+   - Funding Organization: European Union (Implemented by Goethe-Institut Ukraine)
+   - Status: ACTIVE (Autumn 2025 Call)
+   - In Database: YES ✓ (appears twice)
+   - Database Name: "House of Europe International Cooperation Grants (Autumn 2025 Call)"
+
+4. Canada Fund for Local Initiatives – Ukraine (2025)
+   - Funding Organization: Global Affairs Canada
+   - Status: EXPIRED
+   - In Database: YES ✓
+   - Database Name: "Canada Fund for Local Initiatives Ukraine"
+
+5. Fund for Local Cooperation (FLC) - Ukraine (Embassy of Finland)
+   - Funding Organization: Embassy of Finland in Kyiv
+   - Status: EXPIRED
+   - In Database: NOT FOUND ✗
+   - Notes: This specific Finnish embassy fund is not in the database
+
+SECTION 2: Newly Identified Grant Opportunities (Grants 6-15)
+------------------------------------------------------------
+
+6. House of Europe International Cooperation Grants (Autumn 2025 Call)
+   - Funding Organization: European Union (Implemented by Goethe-Institut Ukraine)
+   - Status: ACTIVE
+   - In Database: YES ✓ (duplicate entry of Grant 3)
+   - Database Name: "House of Europe International Cooperation Grants (Autumn 2025 Call)"
+
+7. EU Civil Society Organisations Call (via EU Funding & Tenders Portal)
+   - Funding Organization: European Union
+   - Status: ACTIVE POTENTIAL (€14 million call announced for May 2025)
+   - In Database: YES ✓
+   - Database Name: "EU Civil Society Organizations Call 2025"
+
+8. German Marshall Fund (GMF) Ukraine: Relief, Resilience, Recovery (U3R) Program
+   - Funding Organization: German Marshall Fund of the United States
+   - Status: ACTIVE (Rolling basis)
+   - In Database: PARTIAL ✓
+   - Database Name: "Black Sea Trust for Regional Cooperation Grants" (different GMF program)
+   - Notes: The specific U3R program is not in the database
+
+9. National Endowment for Democracy (NED) Regular Grants
+   - Funding Organization: National Endowment for Democracy
+   - Status: ACTIVE (Quarterly rounds)
+   - In Database: YES ✓ (appears twice)
+   - Database Name: "National Endowment for Democracy (NED) Regular Grants"
+
+10. British Council - Connections Through Culture Grants 2025
+    - Funding Organization: British Council
+    - Status: ACTIVE
+    - In Database: YES ✓ (appears twice)
+    - Database Name: "British Council - Connections Through Culture Grants 2025"
+
+11. Global Cleantech Innovation Programme (GCIP) Ukraine 2.0
+    - Funding Organization: UNIDO and GEF (Implemented by Greencubator)
+    - Status: ACTIVE
+    - In Database: YES ✓ (appears twice)
+    - Database Name: "Global Cleantech Innovation Programme (GCIP) Ukraine 2.0"
+
+12. IOM Hungary - Call for Implementing Partners (Assistance to Refugees from Ukraine)
+    - Funding Organization: International Organization for Migration (IOM) Hungary
+    - Status: ACTIVE
+    - In Database: YES ✓ (appears twice)
+    - Database Name: "IOM Hungary - Call for Implementing Partners (Assistance to Refugees from Ukraine)"
+
+13. Diia "Vlasna Sprava" (Own Business) Grant Program
+    - Funding Organization: Government of Ukraine (via State Employment Center and Ministry of Economy)
+    - Status: ACTIVE
+    - In Database: YES ✓ (appears twice)
+    - Database Name: "Diia \"Vlasna Sprava\" (Own Business) Grant Program"
+
+14. Open Society Foundations - Ukraine Democracy Fund / General Grantmaking
+    - Funding Organization: Open Society Foundations (via IRF)
+    - Status: ACTIVE
+    - In Database: YES ✓ (appears twice)
+    - Database Name: "Open Society Foundations - Ukraine Democracy Fund / General Grantmaking"
+
+15. KSE Foundation - "Talents for Ukraine" Grant Program
+    - Funding Organization: KSE (Kyiv School of Economics) Foundation
+    - Status: ACTIVE
+    - In Database: YES ✓ (appears twice)
+    - Database Name: "KSE Foundation - \"Talents for Ukraine\" Grant Program"
+
+OTHER GRANTS MENTIONED IN THE RTF DOCUMENT:
+===========================================
+
+The following grants/programs are mentioned throughout the document but not numbered:
+
+1. Civil Society Innovations for Open Government Grants
+   - Funding Organization: Open Government Partnership
+   - Status: EXPIRED
+   - In Database: YES ✓
+
+2. US Embassy's Democracy Small Grants Program
+   - Funding Organization: US Embassy
+   - Status: EXPIRED
+   - In Database: NOT FOUND ✗
+
+3. UN Women WPP (Women's Peace Programme)
+   - Funding Organization: UN Women
+   - Status: ACTIVE
+   - In Database: PARTIAL ✓
+   - Database Name: "Women's Peace & Humanitarian Fund Ukraine"
+
+4. UNDP DIA Support project
+   - Funding Organization: UNDP
+   - Status: ACTIVE
+   - In Database: PARTIAL ✓
+   - Database Name: "Supporting Ukraine Resilience through Civil Society and Youth"
+
+5. UNEP Hazardous Waste Management Initiative
+   - Funding Organization: UNEP (with Japan support)
+   - Status: ACTIVE
+   - In Database: NOT FOUND ✗
+
+6. Pact RFA P4767-2023-06 (Institutional and Project Grants)
+   - Funding Organization: Pact
+   - Status: EXPIRED
+   - In Database: NOT FOUND ✗
+
+7. Ukrainian Women's Fund
+   - Funding Organization: Ukrainian Women's Fund
+   - Status: ACTIVE
+   - In Database: NOT FOUND ✗
+
+8. Nova Ukraine Emergency Bridge Financing
+   - Funding Organization: Nova Ukraine
+   - Status: ACTIVE
+   - In Database: NOT FOUND ✗
+
+9. SPIRIT Program (UK)
+   - Funding Organization: UK Government
+   - Status: ACTIVE
+   - In Database: NOT FOUND ✗
+
+10. KUSANONE (Japan's Grassroots Human Security Projects)
+    - Funding Organization: Embassy of Japan
+    - Status: ACTIVE
+    - In Database: PARTIAL ✓
+    - Database Name: "Japan Grassroots Grant Program"
+
+11. Norwegian Direct Funding Mechanisms for Ukrainian CSOs
+    - Funding Organization: Norwegian Government
+    - Status: ACTIVE
+    - In Database: PARTIAL ✓
+    - Database Name: "Norwegian Helsinki Committee Ukraine Support"
+
+12. World Bank Recovery and Development programs
+    - Funding Organization: World Bank
+    - Status: ACTIVE
+    - In Database: NOT FOUND ✗
+
+SUMMARY:
+========
+
+Total Numbered Grants (1-15): 15
+- In Database: 13 (87%)
+- Not in Database: 2 (13%)
+  - Fund for Local Cooperation (Embassy of Finland)
+  - German Marshall Fund U3R Program (different GMF program exists)
+
+Additional Grants Mentioned: 12
+- In Database (exact or similar): 5 (42%)
+- Not in Database: 7 (58%)
+
+Key Findings:
+1. Most major grants from the RTF document are already in the database
+2. Several grants appear twice in the database (duplicates)
+3. Some specific programs (like GMF's U3R, UNEP Hazardous Waste, Pact grants) are not in the database
+4. Many expired grants are still listed as active in the database
+5. The database contains many more grants than mentioned in the RTF document
+
+RECOMMENDATIONS:
+================
+
+1. Add Missing Grants:
+   - Fund for Local Cooperation (Embassy of Finland) - EXPIRED
+   - German Marshall Fund U3R Program - ACTIVE
+   - US Embassy's Democracy Small Grants Program - EXPIRED
+   - UNEP Hazardous Waste Management Initiative - ACTIVE
+   - Pact RFA P4767-2023-06 - EXPIRED
+   - Ukrainian Women's Fund - ACTIVE
+   - Nova Ukraine Emergency Bridge Financing - ACTIVE
+   - SPIRIT Program (UK) - ACTIVE
+   - World Bank Recovery programs - ACTIVE
+
+2. Update Status:
+   - Mark expired grants as inactive
+   - Update deadlines for active grants
+
+3. Remove Duplicates:
+   - Multiple grants appear twice in the database
+
+4. Verify Information:
+   - Cross-check grant amounts, deadlines, and eligibility criteria with official sources

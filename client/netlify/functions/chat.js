@@ -7,7 +7,11 @@ const supabase = createClient(
 );
 
 // Gemini API key from environment variable
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY || 'AIzaSyD7DRJZBlzJtaszmNe-3UjLZZKE9ujH16U';
+const GEMINI_API_KEY = process.env.GOOGLE_GEMINI_API_KEY;
+
+if (!GEMINI_API_KEY) {
+  console.error('GOOGLE_GEMINI_API_KEY environment variable is not set');
+}
 
 export const handler = async (event, context) => {
   const headers = {

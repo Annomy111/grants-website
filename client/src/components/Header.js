@@ -33,16 +33,26 @@ const Header = () => {
   };
 
   return (
-    <header
-      className={`${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-800'} 
-        ${scrolled ? 'shadow-lg' : 'shadow-md'} 
-        sticky top-0 z-30 transition-all duration-300 ease-in-out`}
-    >
+    <>
+      {/* Skip navigation link for accessibility */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-50"
+      >
+        {t('skipToMain', 'Skip to main content')}
+      </a>
+      
+      <header
+        className={`${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-800'} 
+          ${scrolled ? 'shadow-lg' : 'shadow-md'} 
+          sticky top-0 z-30 transition-all duration-300 ease-in-out`}
+        role="banner"
+      >
       <div className="container mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center">
-            <Link to="/" className="flex items-center">
+            <Link to="/" className="flex items-center" aria-label={t('homePageLink', 'Go to homepage')}>
               <div
                 className={`mr-3 w-10 h-10 flex items-center justify-center rounded-full ${darkMode ? 'bg-blue-700' : 'bg-blue-600'} text-white font-bold text-xl transition-colors duration-300`}
               >
@@ -57,7 +67,7 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
+          <nav className="hidden md:flex items-center space-x-1" role="navigation" aria-label={t('mainNavigation', 'Main navigation')}>
             {[
               { path: '/', label: t('navigation.home') },
               { path: '/grants', label: t('navigation.grants') },
@@ -321,7 +331,8 @@ const Header = () => {
           </div>
         </div>
       </div>
-    </header>
+      </header>
+    </>
   );
 };
 

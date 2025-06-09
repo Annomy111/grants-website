@@ -1,0 +1,34 @@
+# robots.txt for Civil Society Grants Database
+# https://ukrainecivilsocietygrants.org
+
+User-agent: *
+Allow: /
+
+# Disallow admin areas
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://ukrainecivilsocietygrants.org/sitemap.xml
+
+# Crawl delay (in seconds) - be nice to servers
+Crawl-delay: 1
+
+# Specific bot rules
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+# Block bad bots
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /

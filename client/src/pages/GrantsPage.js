@@ -6,6 +6,14 @@ import axios from 'axios';
 import { format } from 'date-fns';
 import { ThemeContext } from '../context/ThemeContext';
 import GrantsChatWidget from '../components/GrantsChatWidget';
+import LoadingSkeleton from '../components/LoadingSkeleton';
+import GrantDeadlineIndicator, { CompactDeadlineIndicator } from '../components/GrantDeadlineIndicator';
+import GrantBookmark, { useBookmarkedGrants, BookmarksCounter } from '../components/GrantBookmark';
+import GrantComparisonModal from '../components/GrantComparisonModal';
+import Breadcrumbs from '../components/Breadcrumbs';
+import BackToTop from '../components/BackToTop';
+import SEOHead from '../components/SEOHead';
+import StructuredData from '../components/StructuredData';
 
 const GrantsPage = () => {
   const { t } = useTranslation();
@@ -65,6 +73,10 @@ const GrantsPage = () => {
   const [showExpired, setShowExpired] = useState(false);
   const [expandedGrants, setExpandedGrants] = useState(new Set());
   const [organizationLogos, setOrganizationLogos] = useState({});
+  const [selectedForComparison, setSelectedForComparison] = useState([]);
+  const [showComparisonModal, setShowComparisonModal] = useState(false);
+  const [showBookmarkedOnly, setShowBookmarkedOnly] = useState(false);
+  const bookmarkedIds = useBookmarkedGrants();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -323,6 +335,14 @@ const GrantsPage = () => {
       });
     }
 
+    // Filter bookmarked grants if enabled
+    if (showBookmarkedOnly) {
+      filtered = filtered.filter(grant => {
+        const grantId = grant.id || grant['Grant Name'];
+        return bookmarkedIds.includes(grantId);
+      });
+    }
+
     // Apply sorting
     filtered = sortGrants(filtered, sortBy);
 
@@ -334,6 +354,8 @@ const GrantsPage = () => {
     selectedFocusArea,
     sortBy,
     showExpired,
+    showBookmarkedOnly,
+    bookmarkedIds,
     sortGrants,
   ]);
 
@@ -362,6 +384,7 @@ const GrantsPage = () => {
     setSelectedFocusArea('');
     setSortBy('deadlineAsc');
     setShowExpired(false);
+    setShowBookmarkedOnly(false);
     setSearchParams({});
   };
 
@@ -374,12 +397,49 @@ const GrantsPage = () => {
     return Math.round((deadline - today) / (1000 * 60 * 60 * 24));
   };
 
+  const toggleComparison = (grant) => {
+    const grantId = grant.id || grant['Grant Name'];
+    setSelectedForComparison(prev => {
+      const isSelected = prev.find(g => (g.id || g['Grant Name']) === grantId);
+      if (isSelected) {
+        return prev.filter(g => (g.id || g['Grant Name']) !== grantId);
+      }
+      if (prev.length >= 3) {
+        // Maximum 3 grants for comparison
+        return [...prev.slice(1), grant];
+      }
+      return [...prev, grant];
+    });
+  };
+
+  const isSelectedForComparison = (grant) => {
+    const grantId = grant.id || grant['Grant Name'];
+    return selectedForComparison.some(g => (g.id || g['Grant Name']) === grantId);
+  };
+
   return (
-    <div
-      className={`grants-page ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-800'} min-h-screen transition-colors duration-300 py-12 px-4 sm:px-6 lg:px-8`}
-    >
-      {/* Header Section */}
-      <div className="max-w-7xl mx-auto mb-8">
+    <>
+      <SEOHead
+        title={t('grants.page.title', 'Browse Available Grants')}
+        description={t('grants.page.description', 'Explore over 100 funding opportunities for Ukrainian civil society organizations. Find grants for NGOs, media outlets, and community initiatives with total funding of €63M+.')}
+        keywords={t('grants.page.keywords', 'civil society grants, ukraine funding, ngo grants, media grants, development funding')}
+      />
+      <StructuredData 
+        type="grantsList" 
+        data={filteredGrants.slice(0, 10).map(grant => ({
+          id: grant.id || grant['Grant Name'],
+          name: getLocalizedField(grant, 'Grant Name') || grant.grant_name || grant['Grant Name'],
+          organization: grant.funding_organization || grant['Funding Organization'],
+          deadline: grant.application_deadline || grant['Application Deadline']
+        }))}
+      />
+      <main
+        id="main-content"
+        className={`grants-page ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-800'} min-h-screen transition-colors duration-300 py-12 px-4 sm:px-6 lg:px-8`}
+      >
+        {/* Header Section */}
+        <div className="max-w-7xl mx-auto mb-8">
+          <Breadcrumbs />
         <h1
           className={`text-4xl md:text-5xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'} transition-colors duration-300`}
         >
@@ -473,6 +533,53 @@ const GrantsPage = () => {
               {t('grants.clearFilters', 'Clear')}
             </button>
           </div>
+
+          {/* Additional filter options */}
+          <div className="flex flex-wrap gap-4 mt-4">
+            <label
+              className={`flex items-center gap-2 ${darkMode ? 'text-gray-400' : 'text-gray-600'} cursor-pointer`}
+            >
+              <input
+                type="checkbox"
+                className="rounded text-blue-600 focus:ring-blue-500 cursor-pointer"
+                checked={showBookmarkedOnly}
+                onChange={e => setShowBookmarkedOnly(e.target.checked)}
+              />
+              <span className="text-sm flex items-center gap-1">
+                {t('grants.showBookmarked', 'Bookmarked only')}
+                <BookmarksCounter className="ml-1" />
+              </span>
+            </label>
+            {selectedForComparison.length >= 2 && (
+              <button
+                onClick={() => setShowComparisonModal(true)}
+                className={`
+                  flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium
+                  transition-all duration-200
+                  ${darkMode
+                    ? 'bg-blue-900/30 text-blue-400 hover:bg-blue-900/40'
+                    : 'bg-blue-100 text-blue-700 hover:bg-blue-200'
+                  }
+                `}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                  />
+                </svg>
+                Compare ({selectedForComparison.length})
+              </button>
+            )}
+          </div>
         </div>
       </div>
 
@@ -527,22 +634,7 @@ const GrantsPage = () => {
         {/* Grants List */}
         <div className="mt-8">
           {loading ? (
-            <div className="flex justify-center py-24">
-              <div className="animate-pulse flex space-x-1">
-                <div
-                  className={`w-2 h-8 ${darkMode ? 'bg-gray-400' : 'bg-gray-600'} rounded-full animate-bounce`}
-                  style={{ animationDelay: '0s' }}
-                ></div>
-                <div
-                  className={`w-2 h-8 ${darkMode ? 'bg-gray-400' : 'bg-gray-600'} rounded-full animate-bounce`}
-                  style={{ animationDelay: '0.1s' }}
-                ></div>
-                <div
-                  className={`w-2 h-8 ${darkMode ? 'bg-gray-400' : 'bg-gray-600'} rounded-full animate-bounce`}
-                  style={{ animationDelay: '0.2s' }}
-                ></div>
-              </div>
-            </div>
+            <LoadingSkeleton type="grant-card" count={5} />
           ) : (
             <>
               {filteredGrants.length === 0 ? (
@@ -581,8 +673,9 @@ const GrantsPage = () => {
                     const isUrgent = daysDiff !== null && daysDiff >= 0 && daysDiff <= 7;
 
                     return (
-                      <div
+                      <article
                         key={index}
+                        aria-label={`Grant: ${getLocalizedField(grant, 'Grant Name') || grant.grant_name || grant['Grant Name']}`}
                         className={`rounded-2xl overflow-hidden ${
                           isExpired
                             ? darkMode
@@ -591,7 +684,13 @@ const GrantsPage = () => {
                             : darkMode
                               ? 'bg-gray-800/50 backdrop-blur border border-gray-700/50 hover:shadow-xl hover:border-gray-600/50'
                               : 'bg-white/80 backdrop-blur border border-gray-200/50 hover:shadow-xl'
-                        } transition-all duration-300`}
+                        } transition-all duration-300 transform hover:-translate-y-1 ${
+                          isSelectedForComparison(grant)
+                            ? darkMode
+                              ? 'ring-2 ring-blue-500'
+                              : 'ring-2 ring-blue-400'
+                            : ''
+                        }`}
                       >
                         <div className="p-6">
                           <div className="flex justify-between items-start mb-4">
@@ -629,8 +728,51 @@ const GrantsPage = () => {
                                 </p>
                               </div>
                             </div>
-                            {/* Status Badge moved to top right */}
-                            <div
+                            {/* Action buttons in top right */}
+                            <div className="flex items-center gap-2">
+                              <GrantBookmark grant={grant} />
+                              <button
+                                onClick={() => toggleComparison(grant)}
+                                className={`
+                                  p-2 rounded-lg transition-colors
+                                  ${isSelectedForComparison(grant)
+                                    ? darkMode
+                                      ? 'bg-blue-900/30 text-blue-400'
+                                      : 'bg-blue-100 text-blue-600'
+                                    : darkMode
+                                      ? 'hover:bg-gray-700/50 text-gray-400'
+                                      : 'hover:bg-gray-100 text-gray-500'
+                                  }
+                                `}
+                                title="Compare this grant"
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-4 w-4"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                                  />
+                                </svg>
+                              </button>
+                            </div>
+                          </div>
+
+                          {/* Status Badge */}
+                          <div className="mb-4">
+                            <GrantDeadlineIndicator
+                              deadline={grant.application_deadline || grant['Application Deadline']}
+                            />
+                          </div>
+
+                          {/* Original Status Badge - now hidden as we use GrantDeadlineIndicator */}
+                          <div className="hidden"
                               className={`ml-4 px-3 py-1 rounded-full text-xs font-semibold ${
                                 isExpired
                                   ? darkMode
@@ -688,6 +830,9 @@ const GrantsPage = () => {
                               {formatDate(
                                 grant.application_deadline || grant['Application Deadline']
                               )}
+                              <CompactDeadlineIndicator
+                                deadline={grant.application_deadline || grant['Application Deadline']}
+                              />
                             </div>
                             <div
                               className={`inline-flex items-center px-3 py-1.5 rounded-full text-sm ${darkMode ? 'bg-gray-700/50 text-gray-300' : 'bg-gray-100 text-gray-700'}`}
@@ -969,10 +1114,13 @@ const GrantsPage = () => {
                           <div className="flex justify-end items-center gap-3 mt-6">
                             <button
                               onClick={() => toggleGrantExpansion(index)}
-                              className={`px-4 py-2 text-sm font-medium transition-all duration-200 rounded-lg ${
+                              aria-expanded={isGrantExpanded(index)}
+                              aria-controls={`grant-details-${index}`}
+                              aria-label={`${isGrantExpanded(index) ? 'Hide' : 'Show'} details for ${getLocalizedField(grant, 'Grant Name') || grant.grant_name || grant['Grant Name']}`}
+                              className={`px-4 py-2 text-sm font-medium transition-all duration-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 ${
                                 darkMode
-                                  ? 'text-gray-300 hover:text-gray-100 hover:bg-gray-700/50'
-                                  : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                                  ? 'text-gray-300 hover:text-gray-100 hover:bg-gray-700/50 focus:ring-blue-500'
+                                  : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:ring-blue-600'
                               }`}
                             >
                               {isGrantExpanded(index) ? 'Show less' : 'View details'}
@@ -991,10 +1139,11 @@ const GrantsPage = () => {
                                 })()}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className={`flex items-center rounded-xl py-2.5 px-5 font-medium transition-all duration-200 ${
+                                aria-label={`Apply for ${getLocalizedField(grant, 'Grant Name') || grant.grant_name || grant['Grant Name']} (opens in new tab)`}
+                                className={`flex items-center rounded-xl py-2.5 px-5 font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 ${
                                   darkMode
-                                    ? 'bg-blue-600 hover:bg-blue-500 text-white'
-                                    : 'bg-blue-600 hover:bg-blue-700 text-white'
+                                    ? 'bg-blue-600 hover:bg-blue-500 text-white focus:ring-blue-500'
+                                    : 'bg-blue-600 hover:bg-blue-700 text-white focus:ring-blue-600'
                                 } shadow-sm hover:shadow-md`}
                               >
                                 {t('grants.applyNow')}
@@ -1011,7 +1160,7 @@ const GrantsPage = () => {
                             )}
                           </div>
                         </div>
-                      </div>
+                      </article>
                     );
                   })}
                 </div>
@@ -1023,7 +1172,18 @@ const GrantsPage = () => {
 
       {/* AI Chat Widget */}
       <GrantsChatWidget />
-    </div>
+
+      {/* Back to Top Button */}
+      <BackToTop />
+
+      {/* Comparison Modal */}
+      <GrantComparisonModal
+        grants={selectedForComparison}
+        isOpen={showComparisonModal}
+        onClose={() => setShowComparisonModal(false)}
+      />
+    </main>
+    </>
   );
 };
 

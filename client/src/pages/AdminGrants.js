@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { ThemeContext } from '../context/ThemeContext';
 import { fetchGrantsForAdmin } from '../utils/adminApiHelper';
-import { PlusIcon, PencilIcon, TrashIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { PlusIcon, PencilIcon, TrashIcon, MagnifyingGlassIcon, ArrowDownTrayIcon } from '@heroicons/react/24/outline';
 import GrantEditModal from '../components/GrantEditModal';
 
 const AdminGrants = () => {
@@ -102,6 +102,78 @@ const AdminGrants = () => {
     }
   };
 
+  const exportToCSV = () => {
+    // Define CSV headers
+    const headers = [
+      'ID',
+      'Grant Name',
+      'Organization',
+      'Geographic Focus',
+      'Focus Areas (EN)',
+      'Focus Areas (UK)',
+      'Description (EN)',
+      'Description (UK)',
+      'Eligibility (EN)',
+      'Eligibility (UK)',
+      'Grant Type',
+      'Grant Size Min',
+      'Grant Size Max',
+      'Deadline',
+      'Website',
+      'Application URL',
+      'Contact Info',
+      'Created At',
+      'Updated At'
+    ];
+
+    // Convert grants data to CSV rows
+    const csvRows = filteredGrants.map(grant => {
+      return [
+        grant.id || '',
+        grant.name || '',
+        grant.organization || '',
+        grant.geographic_focus || '',
+        grant.focus_areas_en || '',
+        grant.focus_areas_uk || '',
+        (grant.description_en || '').replace(/"/g, '""'), // Escape quotes
+        (grant.description_uk || '').replace(/"/g, '""'),
+        (grant.eligibility_en || '').replace(/"/g, '""'),
+        (grant.eligibility_uk || '').replace(/"/g, '""'),
+        grant.type || '',
+        grant.grant_size_min || '',
+        grant.grant_size_max || '',
+        grant.deadline || '',
+        grant.website || '',
+        grant.application_url || '',
+        grant.contact_info || '',
+        grant.created_at || '',
+        grant.updated_at || ''
+      ].map(field => `"${field}"`).join(','); // Wrap fields in quotes
+    });
+
+    // Combine headers and rows
+    const csvContent = [
+      headers.join(','),
+      ...csvRows
+    ].join('\n');
+
+    // Create blob and download
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    
+    // Generate filename with current date
+    const date = new Date().toISOString().split('T')[0];
+    const filename = `grants_export_${date}.csv`;
+    
+    link.setAttribute('href', url);
+    link.setAttribute('download', filename);
+    link.style.display = 'none';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
@@ -139,6 +211,14 @@ const AdminGrants = () => {
             className={`absolute left-3 top-2.5 h-5 w-5 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}
           />
         </div>
+        <button
+          onClick={exportToCSV}
+          className="flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+          disabled={filteredGrants.length === 0}
+        >
+          <ArrowDownTrayIcon className="h-5 w-5 mr-2" />
+          Export CSV
+        </button>
         <button
           onClick={handleAdd}
           className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
