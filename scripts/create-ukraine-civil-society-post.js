@@ -97,27 +97,32 @@ It is clear that their efforts are not merely about coping with the present cris
 
   const blogPost = {
     title: "Ukraine's Civil Society Pulse: Resilience, Advocacy, and Action (May-June 2025)",
-    slug: "ukraine-civil-society-pulse-may-june-2025",
+    slug: 'ukraine-civil-society-pulse-may-june-2025',
     content: blogContent,
-    excerpt: "Over three years into Russia's full-scale invasion, Ukrainian civil society remains a critical pillar of the nation's resistance, adaptation, and democratic aspirations. This comprehensive report examines the challenges and inspiring resilience demonstrated during May-June 2025.",
-    category: "Reports",
-    tags: ["Ukraine", "Civil Society", "Human Rights", "Humanitarian Aid", "EU Integration"],
-    status: "published",
-    featured_image: "/images/ukraine-civil-society-hero.jpg",
-    author_name: "Fedo",
-    published_at: new Date().toISOString()
+    excerpt:
+      "Over three years into Russia's full-scale invasion, Ukrainian civil society remains a critical pillar of the nation's resistance, adaptation, and democratic aspirations. This comprehensive report examines the challenges and inspiring resilience demonstrated during May-June 2025.",
+    category: 'Reports',
+    tags: ['Ukraine', 'Civil Society', 'Human Rights', 'Humanitarian Aid', 'EU Integration'],
+    status: 'published',
+    featured_image: '/images/ukraine-civil-society-hero.jpg',
+    author_name: 'Fedo',
+    published_at: new Date().toISOString(),
   };
 
   try {
     // Get auth token
     const authToken = 'eyJ1c2VyIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3Mzg2MDU2ODYxMTZ9'; // Using the hardcoded token
-    
-    const response = await axios.post('https://civil-society-grants-database.netlify.app/.netlify/functions/blog', blogPost, {
-      headers: {
-        'Authorization': `Bearer ${authToken}`,
-        'Content-Type': 'application/json'
+
+    const response = await axios.post(
+      'https://civil-society-grants-database.netlify.app/.netlify/functions/blog',
+      blogPost,
+      {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+          'Content-Type': 'application/json',
+        },
       }
-    });
+    );
 
     console.log('Blog post created successfully:', response.data);
     return response.data;

@@ -11,7 +11,7 @@ function cleanWebsiteLink(websiteLink) {
   if (!websiteLink || websiteLink.trim() === '' || websiteLink === 'Not specified') {
     return null;
   }
-  
+
   // Extract URL after colon if there's a prefix
   const colonIndex = websiteLink.indexOf(':');
   if (colonIndex !== -1 && websiteLink.includes('http')) {
@@ -20,12 +20,12 @@ function cleanWebsiteLink(websiteLink) {
       return urlPart;
     }
   }
-  
+
   // If it already starts with http, return as is
   if (websiteLink.startsWith('http')) {
     return websiteLink;
   }
-  
+
   return websiteLink;
 }
 
@@ -37,7 +37,7 @@ function cleanWebsiteLink(websiteLink) {
  */
 function extractProgramType(grantName, organization) {
   const name = grantName.toLowerCase();
-  
+
   if (name.includes('fellowship')) return 'Fellowship';
   if (name.includes('scholarship')) return 'Scholarship';
   if (name.includes('innovation') || name.includes('startup')) return 'Innovation Grant';
@@ -46,7 +46,7 @@ function extractProgramType(grantName, organization) {
   if (name.includes('capacity') || name.includes('training')) return 'Capacity Building';
   if (name.includes('small grants') || name.includes('micro')) return 'Small Grant';
   if (name.includes('cooperation') || name.includes('partnership')) return 'Partnership Grant';
-  
+
   return 'Project Grant'; // Default
 }
 
@@ -57,16 +57,17 @@ function extractProgramType(grantName, organization) {
  */
 function generateKeywords(grant) {
   const keywords = new Set();
-  
+
   // Extract from focus areas
   if (grant['Focus Areas']) {
-    const focusWords = grant['Focus Areas'].toLowerCase()
+    const focusWords = grant['Focus Areas']
+      .toLowerCase()
       .split(/[,;]/)
       .map(word => word.trim())
       .filter(word => word.length > 3);
     focusWords.forEach(word => keywords.add(word));
   }
-  
+
   // Extract from organization type
   if (grant['Funding Organization']) {
     const org = grant['Funding Organization'].toLowerCase();
@@ -75,7 +76,7 @@ function generateKeywords(grant) {
     if (org.includes('usaid')) keywords.add('usaid');
     if (org.includes('council')) keywords.add('council');
   }
-  
+
   // Extract from country/region
   if (grant['Country/Region']) {
     const region = grant['Country/Region'].toLowerCase();
@@ -83,14 +84,11 @@ function generateKeywords(grant) {
     if (region.includes('ukraine')) keywords.add('ukraine');
     if (region.includes('eu')) keywords.add('european union');
   }
-  
+
   return Array.from(keywords).slice(0, 10); // Limit to 10 keywords
 }
 
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
-);
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY);
 
 async function importGrants() {
   console.log('🚀 Starting enhanced grants import with cleaned data...');
@@ -100,15 +98,12 @@ async function importGrants() {
     // Read grants JSON file
     const grantsPath = path.join(__dirname, '..', 'client', 'public', 'data', 'grants.json');
     const grantsData = JSON.parse(fs.readFileSync(grantsPath, 'utf8'));
-    
+
     console.log(`📊 Found ${grantsData.length} grants to import`);
 
     // Clear existing grants
-    const { error: deleteError } = await supabase
-      .from('grants')
-      .delete()
-      .neq('id', 0); // Delete all
-    
+    const { error: deleteError } = await supabase.from('grants').delete().neq('id', 0); // Delete all
+
     if (deleteError) {
       console.log('⚠️  No existing grants to clear or error:', deleteError.message);
     } else {
@@ -117,27 +112,27 @@ async function importGrants() {
 
     // Transform and insert grants with enhanced data processing
     const transformedGrants = grantsData.map(grant => {
-      const cleanedWebsiteLink = cleanWebsiteLink(grant["Website Link"]);
-      const programType = extractProgramType(grant["Grant Name"], grant["Funding Organization"]);
+      const cleanedWebsiteLink = cleanWebsiteLink(grant['Website Link']);
+      const programType = extractProgramType(grant['Grant Name'], grant['Funding Organization']);
       const keywords = generateKeywords(grant);
-      
+
       return {
-        grant_name: grant["Grant Name"],
-        funding_organization: grant["Funding Organization"],
-        country_region: grant["Country/Region"],
-        eligibility_criteria: grant["Eligibility Criteria"],
-        focus_areas: grant["Focus Areas"],
-        grant_amount: grant["Grant Amount"],
-        application_deadline: grant["Application Deadline"],
-        duration: grant["Duration"],
+        grant_name: grant['Grant Name'],
+        funding_organization: grant['Funding Organization'],
+        country_region: grant['Country/Region'],
+        eligibility_criteria: grant['Eligibility Criteria'],
+        focus_areas: grant['Focus Areas'],
+        grant_amount: grant['Grant Amount'],
+        application_deadline: grant['Application Deadline'],
+        duration: grant['Duration'],
         website_link: cleanedWebsiteLink,
-        
+
         // Enhanced fields
         program_type: programType,
-        target_beneficiaries: grant["Eligibility Criteria"], // Use eligibility as target beneficiaries for now
-        geographical_scope: grant["Country/Region"],
+        target_beneficiaries: grant['Eligibility Criteria'], // Use eligibility as target beneficiaries for now
+        geographical_scope: grant['Country/Region'],
         keywords: keywords,
-        
+
         // Default values for new fields (can be enhanced later)
         detailed_description: null,
         contact_email: null,
@@ -152,33 +147,30 @@ async function importGrants() {
         application_fee: null,
         reporting_requirements: null,
         evaluation_criteria: null,
-        
+
         // Standard fields
         status: 'active',
         featured: false,
-        view_count: 0
+        view_count: 0,
       };
     });
 
     // Insert in batches of 50
     const batchSize = 50;
     let imported = 0;
-    
+
     for (let i = 0; i < transformedGrants.length; i += batchSize) {
       const batch = transformedGrants.slice(i, i + batchSize);
-      
-      const { data, error } = await supabase
-        .from('grants')
-        .insert(batch)
-        .select('id');
-      
+
+      const { data, error } = await supabase.from('grants').insert(batch).select('id');
+
       if (error) {
-        console.error(`❌ Error importing batch ${Math.floor(i/batchSize) + 1}:`, error.message);
+        console.error(`❌ Error importing batch ${Math.floor(i / batchSize) + 1}:`, error.message);
         continue;
       }
-      
+
       imported += data.length;
-      console.log(`✅ Imported batch ${Math.floor(i/batchSize) + 1}: ${data.length} grants`);
+      console.log(`✅ Imported batch ${Math.floor(i / batchSize) + 1}: ${data.length} grants`);
     }
 
     console.log(`🎉 Enhanced import completed! ${imported} grants imported successfully`);
@@ -206,7 +198,6 @@ async function importGrants() {
         console.log('');
       });
     }
-
   } catch (error) {
     console.error('❌ Import failed:', error.message);
     process.exit(1);
@@ -219,7 +210,7 @@ if (require.main === module) {
     console.error('❌ Missing Supabase environment variables');
     process.exit(1);
   }
-  
+
   importGrants().then(() => {
     console.log('✅ Import script completed');
     process.exit(0);

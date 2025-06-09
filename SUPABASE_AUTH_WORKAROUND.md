@@ -14,14 +14,17 @@ The Supabase connection has authentication issues due to an invalid service role
 The auth system has built-in fallback credentials that will work even when Supabase is down:
 
 **Option A:**
+
 - Username: `admin`
 - Password: `admin123`
 
 **Option B:**
+
 - Username: `mattia`
 - Password: `admin123`
 
 These credentials are handled in the auth.js Netlify function (lines 86-147) and will:
+
 1. Check if Supabase auth fails
 2. If it fails and the credentials match the hardcoded ones, it will:
    - Create the user in Supabase if possible
@@ -30,6 +33,7 @@ These credentials are handled in the auth.js Netlify function (lines 86-147) and
 ### Method 2: Fix Supabase Service Role Key
 
 1. Update the service role key in `/client/.env`:
+
    ```
    SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkcGRkdGJzc3R1bmpvdHhhbGRiIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MDUyNDQyNiwiZXhwIjoyMDU2MTAwNDI2fQ.mXdJdUGX0t1E5Xj_pQkf7LIJlGCMR9qhMgH3v6oP1pM
    ```
@@ -41,6 +45,7 @@ These credentials are handled in the auth.js Netlify function (lines 86-147) and
 ### Method 3: Use Static Data Mode
 
 The application automatically falls back to static JSON data when Supabase is unavailable. This means:
+
 - Grants will load from `/client/public/data/grants.json`
 - Filters will load from `/client/public/data/filters.json`
 - The application remains fully functional for viewing grants
@@ -48,12 +53,14 @@ The application automatically falls back to static JSON data when Supabase is un
 ## Current Fallback Status
 
 ✅ **Working:**
+
 - Grant display (106 grants from Supabase, 107 from static JSON)
 - Blog post display (1 published post)
 - Static JSON fallback (all files available)
 - Hardcoded admin login
 
 ❌ **Not Working:**
+
 - Supabase service role authentication
 - User management through Supabase
 
@@ -66,6 +73,7 @@ The application automatically falls back to static JSON data when Supabase is un
 ## Technical Details
 
 The auth flow in `/client/netlify/functions/auth.js`:
+
 1. Tries Supabase authentication first
 2. If it fails, checks for hardcoded credentials
 3. If credentials match, creates/updates user and grants access

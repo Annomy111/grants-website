@@ -18,41 +18,49 @@ Since the API authentication is having issues with Supabase, please follow these
 Copy and paste the following information into the form:
 
 ### Title:
+
 ```
 Ukraine's Civil Society Pulse: Resilience, Advocacy, and Action (May-June 2025)
 ```
 
 ### Slug (URL):
+
 ```
 ukraine-civil-society-pulse-may-june-2025
 ```
 
 ### Excerpt:
+
 ```
 Over three years into Russia's full-scale invasion, Ukrainian civil society remains a critical pillar of the nation's resistance, adaptation, and democratic aspirations. This comprehensive report examines the challenges and inspiring resilience demonstrated during May-June 2025.
 ```
 
 ### Category:
+
 ```
 Reports
 ```
 
 ### Tags (comma separated):
+
 ```
 Ukraine, Civil Society, Human Rights, Humanitarian Aid, EU Integration
 ```
 
 ### Author Name:
+
 ```
 Fedo
 ```
 
 ### Status:
+
 ```
 published
 ```
 
 ### Content:
+
 Copy everything from the file: `/Users/winzendwyers/grants website/ukraine-civil-society-blog-content.txt`
 
 ## Step 4: Save and Publish
@@ -70,6 +78,7 @@ Copy everything from the file: `/Users/winzendwyers/grants website/ukraine-civil
 ## Troubleshooting:
 
 If you can't login with admin/admin123:
+
 1. The Supabase database might be down
 2. Try again in a few minutes
 3. If it persists, you may need to check your Supabase dashboard

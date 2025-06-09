@@ -17,11 +17,11 @@ async function setupAdminUsers() {
 
     if (checkError && checkError.message.includes('does not exist')) {
       console.log('❌ app_users table does not exist. Creating via SQL...');
-      
+
       console.log('\n📋 Manual SQL needed:');
       console.log('Go to Supabase SQL Editor and run:');
       console.log('=====================================');
-      
+
       const sql = `
 -- Create app_users table
 CREATE TABLE IF NOT EXISTS app_users (
@@ -54,21 +54,21 @@ FOR ALL USING (
 CREATE INDEX IF NOT EXISTS idx_app_users_user_id ON app_users(user_id);
 CREATE INDEX IF NOT EXISTS idx_app_users_email ON app_users(email);
 `;
-      
+
       console.log(sql);
       console.log('=====================================');
       return false;
     } else {
       console.log('✅ app_users table exists');
-      
+
       // Create default admin users
       console.log('👤 Creating default admin users...');
-      
+
       const adminUsers = [
         { email: 'admin@admin.local', role: 'admin' },
-        { email: 'mattia@admin.local', role: 'admin' }
+        { email: 'mattia@admin.local', role: 'admin' },
       ];
-      
+
       for (const adminUser of adminUsers) {
         // Check if user exists
         const { data: existingUser } = await supabase
@@ -76,20 +76,18 @@ CREATE INDEX IF NOT EXISTS idx_app_users_email ON app_users(email);
           .select('*')
           .eq('email', adminUser.email)
           .single();
-        
+
         if (!existingUser) {
           console.log(`Creating admin user: ${adminUser.email}`);
-          
+
           // For now, just create the app_users record
           // The auth function will create the actual auth.users record on first login
-          const { error: insertError } = await supabase
-            .from('app_users')
-            .insert({
-              email: adminUser.email,
-              role: adminUser.role,
-              user_id: null // Will be updated when user first logs in
-            });
-          
+          const { error: insertError } = await supabase.from('app_users').insert({
+            email: adminUser.email,
+            role: adminUser.role,
+            user_id: null, // Will be updated when user first logs in
+          });
+
           if (insertError) {
             console.log(`❌ Failed to create ${adminUser.email}:`, insertError.message);
           } else {
@@ -99,22 +97,23 @@ CREATE INDEX IF NOT EXISTS idx_app_users_email ON app_users(email);
           console.log(`✅ ${adminUser.email} already exists`);
         }
       }
-      
+
       return true;
     }
-
   } catch (error) {
     console.error('❌ Setup failed:', error.message);
     return false;
   }
 }
 
-setupAdminUsers().then(success => {
-  if (success) {
-    console.log('\n🎉 Admin users setup completed!');
-  } else {
-    console.log('\n🔧 Manual setup required - follow instructions above');
-  }
-}).catch(err => {
-  console.error('❌ Script failed:', err.message);
-});
+setupAdminUsers()
+  .then(success => {
+    if (success) {
+      console.log('\n🎉 Admin users setup completed!');
+    } else {
+      console.log('\n🔧 Manual setup required - follow instructions above');
+    }
+  })
+  .catch(err => {
+    console.error('❌ Script failed:', err.message);
+  });

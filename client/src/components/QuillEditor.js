@@ -3,13 +3,17 @@ import { useQuillLoader, FallbackEditor } from '../hooks/useQuillLoader';
 
 // Loading component
 const LoadingEditor = ({ darkMode }) => (
-  <div className={`w-full min-h-[200px] flex items-center justify-center border rounded-md ${
-    darkMode ? 'bg-gray-700 border-gray-600' : 'bg-gray-50 border-gray-300'
-  }`}>
+  <div
+    className={`w-full min-h-[200px] flex items-center justify-center border rounded-md ${
+      darkMode ? 'bg-gray-700 border-gray-600' : 'bg-gray-50 border-gray-300'
+    }`}
+  >
     <div className="flex items-center space-x-2">
-      <div className={`animate-spin rounded-full h-5 w-5 border-b-2 ${
-        darkMode ? 'border-white' : 'border-gray-900'
-      }`}></div>
+      <div
+        className={`animate-spin rounded-full h-5 w-5 border-b-2 ${
+          darkMode ? 'border-white' : 'border-gray-900'
+        }`}
+      ></div>
       <span className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
         Loading rich text editor...
       </span>
@@ -30,7 +34,7 @@ class QuillErrorBoundary extends React.Component {
 
   componentDidCatch(error, errorInfo) {
     console.error('QuillEditor Error:', error, errorInfo);
-    
+
     // You could also send this to an error reporting service
     if (this.props.onError) {
       this.props.onError(error, errorInfo);
@@ -57,7 +61,7 @@ class QuillErrorBoundary extends React.Component {
 // Memoized Quill component to prevent unnecessary re-renders
 const MemoizedQuill = memo(({ QuillComponent, ...props }) => {
   if (!QuillComponent) return null;
-  
+
   return <QuillComponent {...props} />;
 });
 
@@ -80,12 +84,12 @@ const QuillEditor = ({
   // Default modules if not provided
   const defaultModules = {
     toolbar: [
-      [{ 'header': [1, 2, 3, false] }],
+      [{ header: [1, 2, 3, false] }],
       ['bold', 'italic', 'underline', 'strike'],
       ['blockquote', 'code-block'],
-      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      [{ list: 'ordered' }, { list: 'bullet' }],
       ['link', 'image'],
-      ['clean']
+      ['clean'],
     ],
   };
 

@@ -19,7 +19,7 @@ export const handler = async (event, context) => {
     hasReactAppUrl: !!process.env.REACT_APP_SUPABASE_URL,
     hasSupabaseUrl: !!process.env.SUPABASE_URL,
     hasServiceRole: !!process.env.SUPABASE_SERVICE_ROLE_KEY,
-    url: process.env.REACT_APP_SUPABASE_URL || process.env.SUPABASE_URL
+    url: process.env.REACT_APP_SUPABASE_URL || process.env.SUPABASE_URL,
   });
 
   const headers = {
@@ -57,7 +57,6 @@ export const handler = async (event, context) => {
       headers,
       body: JSON.stringify({ error: 'Not found' }),
     };
-
   } catch (error) {
     console.error('Auth function error:', error);
     return {
@@ -81,18 +80,20 @@ async function handleLogin(body, headers) {
 
   try {
     console.log('Login attempt for:', username);
-    
+
     // Check hardcoded credentials first (fallback when Supabase is down)
     if ((username === 'admin' || username === 'mattia') && password === 'admin123') {
       console.log('Using hardcoded credentials for:', username);
-      
+
       // Generate a simple JWT-like token
-      const token = Buffer.from(JSON.stringify({
-        user: username,
-        role: 'admin',
-        exp: Date.now() + 86400000 // 24 hours
-      })).toString('base64');
-      
+      const token = Buffer.from(
+        JSON.stringify({
+          user: username,
+          role: 'admin',
+          exp: Date.now() + 86400000, // 24 hours
+        })
+      ).toString('base64');
+
       return {
         statusCode: 200,
         headers,
@@ -103,17 +104,17 @@ async function handleLogin(body, headers) {
             id: username,
             email: `${username}@admin.local`,
             username: username,
-            role: 'admin'
+            role: 'admin',
           },
           session: {
             access_token: token,
             expires_in: 86400,
-            token_type: 'Bearer'
-          }
-        })
+            token_type: 'Bearer',
+          },
+        }),
       };
     }
-    
+
     // If not hardcoded creds and Supabase is not configured, fail
     if (!supabase) {
       console.log('Supabase not configured, login failed');
@@ -123,11 +124,11 @@ async function handleLogin(body, headers) {
         body: JSON.stringify({ error: 'Authentication service unavailable' }),
       };
     }
-    
+
     // Try Supabase authentication
     const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
       email: username.includes('@') ? username : `${username}@admin.local`,
-      password: password
+      password: password,
     });
 
     console.log('Auth result:', { authData: !!authData, authError: authError?.message });
@@ -138,7 +139,7 @@ async function handleLogin(body, headers) {
       if ((username === 'admin' || username === 'mattia') && password === 'admin123') {
         // Create admin user if doesn't exist
         const adminEmail = `${username}@admin.local`;
-        
+
         // Try to create the user
         const { data: signUpData, error: signUpError } = await supabase.auth.admin.createUser({
           email: adminEmail,
@@ -146,8 +147,8 @@ async function handleLogin(body, headers) {
           email_confirm: true,
           user_metadata: {
             role: 'admin',
-            username: username
-          }
+            username: username,
+          },
         });
 
         if (signUpError && !signUpError.message.includes('already exists')) {
@@ -161,7 +162,7 @@ async function handleLogin(body, headers) {
         // Try to sign in again
         const { data: retryAuth, error: retryError } = await supabase.auth.signInWithPassword({
           email: adminEmail,
-          password: password
+          password: password,
         });
 
         if (retryError) {
@@ -173,13 +174,11 @@ async function handleLogin(body, headers) {
         }
 
         // Update user role in app_users table
-        await supabase
-          .from('app_users')
-          .upsert({
-            user_id: retryAuth.user.id,
-            email: adminEmail,
-            role: 'admin'
-          });
+        await supabase.from('app_users').upsert({
+          user_id: retryAuth.user.id,
+          email: adminEmail,
+          role: 'admin',
+        });
 
         return {
           statusCode: 200,
@@ -190,8 +189,8 @@ async function handleLogin(body, headers) {
               id: retryAuth.user.id,
               email: adminEmail,
               username: username,
-              role: 'admin'
-            }
+              role: 'admin',
+            },
           }),
         };
       }
@@ -210,7 +209,11 @@ async function handleLogin(body, headers) {
       .eq('user_id', authData.user.id)
       .single();
 
-    console.log('Role lookup result:', { userRole, roleError: roleError?.message, userId: authData.user.id });
+    console.log('Role lookup result:', {
+      userRole,
+      roleError: roleError?.message,
+      userId: authData.user.id,
+    });
 
     const role = userRole?.role || 'viewer';
 
@@ -233,11 +236,10 @@ async function handleLogin(body, headers) {
           id: authData.user.id,
           email: authData.user.email,
           username: authData.user.user_metadata?.username || authData.user.email.split('@')[0],
-          role: role
-        }
+          role: role,
+        },
       }),
     };
-
   } catch (error) {
     console.error('Login error:', error);
     return {
@@ -250,7 +252,7 @@ async function handleLogin(body, headers) {
 
 async function handleGetUser(requestHeaders, headers) {
   const authHeader = requestHeaders.authorization || requestHeaders.Authorization;
-  
+
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     return {
       statusCode: 401,
@@ -288,10 +290,9 @@ async function handleGetUser(requestHeaders, headers) {
         id: userData.user.id,
         email: userData.user.email,
         username: userData.user.user_metadata?.username || userData.user.email.split('@')[0],
-        role: role
+        role: role,
       }),
     };
-
   } catch (error) {
     console.error('Get user error:', error);
     return {
@@ -305,7 +306,7 @@ async function handleGetUser(requestHeaders, headers) {
 async function handleChangePassword(body, requestHeaders, headers) {
   const { currentPassword, newPassword } = body;
   const authHeader = requestHeaders.authorization || requestHeaders.Authorization;
-  
+
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     return {
       statusCode: 401,
@@ -329,10 +330,9 @@ async function handleChangePassword(body, requestHeaders, headers) {
     }
 
     // Update password
-    const { error: updateError } = await supabase.auth.admin.updateUserById(
-      userData.user.id,
-      { password: newPassword }
-    );
+    const { error: updateError } = await supabase.auth.admin.updateUserById(userData.user.id, {
+      password: newPassword,
+    });
 
     if (updateError) {
       return {
@@ -347,7 +347,6 @@ async function handleChangePassword(body, requestHeaders, headers) {
       headers,
       body: JSON.stringify({ message: 'Password updated successfully' }),
     };
-
   } catch (error) {
     console.error('Change password error:', error);
     return {

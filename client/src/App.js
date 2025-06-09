@@ -51,7 +51,10 @@ const LoadingAnimation = () => (
   <div className="fixed inset-0 flex items-center justify-center bg-white dark:bg-gray-900 z-50 transition-opacity duration-500">
     <div className="relative">
       <div className="h-24 w-24 rounded-full border-t-4 border-b-4 border-blue-500 dark:border-blue-400 animate-spin"></div>
-      <div className="absolute top-0 left-0 h-24 w-24 rounded-full border-t-4 border-b-4 border-blue-300 dark:border-blue-600 animate-spin" style={{animationDirection: 'reverse', animationDuration: '1.5s'}}></div>
+      <div
+        className="absolute top-0 left-0 h-24 w-24 rounded-full border-t-4 border-b-4 border-blue-300 dark:border-blue-600 animate-spin"
+        style={{ animationDirection: 'reverse', animationDuration: '1.5s' }}
+      ></div>
     </div>
   </div>
 );
@@ -69,7 +72,7 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  const changeLanguage = (lng) => {
+  const changeLanguage = lng => {
     i18n.changeLanguage(lng);
     setLanguage(lng);
   };
@@ -83,85 +86,109 @@ function App() {
           ) : (
             <Routes>
               {/* Public routes with header/footer */}
-              <Route path="/" element={
-                <div className="App min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-                  <Header />
-                  <main className="flex-grow container mx-auto px-4 py-8 transition-all duration-300 ease-in-out">
-                    <HomePage />
-                  </main>
-                  <Footer />
-                  <GrantsChatWidget />
-                </div>
-              } />
-              <Route path="/grants" element={
-                <div className="App min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-                  <Header />
-                  <main className="flex-grow container mx-auto px-4 py-8 transition-all duration-300 ease-in-out">
-                    <GrantsPage />
-                  </main>
-                  <Footer />
-                  <GrantsChatWidget />
-                </div>
-              } />
-              <Route path="/grants/:id" element={
-                <div className="App min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-                  <Header />
-                  <main className="flex-grow container mx-auto px-4 py-8 transition-all duration-300 ease-in-out">
-                    <GrantDetail />
-                  </main>
-                  <Footer />
-                  <GrantsChatWidget />
-                </div>
-              } />
-              <Route path="/about" element={
-                <div className="App min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-                  <Header />
-                  <main className="flex-grow container mx-auto px-4 py-8 transition-all duration-300 ease-in-out">
-                    <AboutPage />
-                  </main>
-                  <Footer />
-                  <GrantsChatWidget />
-                </div>
-              } />
-              <Route path="/blog" element={
-                <div className="App min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-                  <Header />
-                  <main className="flex-grow">
-                    <BlogPage />
-                  </main>
-                  <Footer />
-                  <GrantsChatWidget />
-                </div>
-              } />
-              <Route path="/blog/:slug" element={
-                <div className="App min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-                  <Header />
-                  <main className="flex-grow">
-                    <BlogPostPage />
-                  </main>
-                  <Footer />
-                  <GrantsChatWidget />
-                </div>
-              } />
-              
+              <Route
+                path="/"
+                element={
+                  <div className="App min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+                    <Header />
+                    <main className="flex-grow container mx-auto px-4 py-8 transition-all duration-300 ease-in-out">
+                      <HomePage />
+                    </main>
+                    <Footer />
+                    <GrantsChatWidget />
+                  </div>
+                }
+              />
+              <Route
+                path="/grants"
+                element={
+                  <div className="App min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+                    <Header />
+                    <main className="flex-grow container mx-auto px-4 py-8 transition-all duration-300 ease-in-out">
+                      <GrantsPage />
+                    </main>
+                    <Footer />
+                    <GrantsChatWidget />
+                  </div>
+                }
+              />
+              <Route
+                path="/grants/:id"
+                element={
+                  <div className="App min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+                    <Header />
+                    <main className="flex-grow container mx-auto px-4 py-8 transition-all duration-300 ease-in-out">
+                      <GrantDetail />
+                    </main>
+                    <Footer />
+                    <GrantsChatWidget />
+                  </div>
+                }
+              />
+              <Route
+                path="/about"
+                element={
+                  <div className="App min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+                    <Header />
+                    <main className="flex-grow container mx-auto px-4 py-8 transition-all duration-300 ease-in-out">
+                      <AboutPage />
+                    </main>
+                    <Footer />
+                    <GrantsChatWidget />
+                  </div>
+                }
+              />
+              <Route
+                path="/blog"
+                element={
+                  <div className="App min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+                    <Header />
+                    <main className="flex-grow">
+                      <BlogPage />
+                    </main>
+                    <Footer />
+                    <GrantsChatWidget />
+                  </div>
+                }
+              />
+              <Route
+                path="/blog/:slug"
+                element={
+                  <div className="App min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+                    <Header />
+                    <main className="flex-grow">
+                      <BlogPostPage />
+                    </main>
+                    <Footer />
+                    <GrantsChatWidget />
+                  </div>
+                }
+              />
+
               {/* Old admin page redirect */}
-              <Route path="/admin" element={
-                <div className="App min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-                  <Header />
-                  <main className="flex-grow container mx-auto px-4 py-8 transition-all duration-300 ease-in-out">
-                    <AdminPage />
-                  </main>
-                  <Footer />
-                </div>
-              } />
-              
+              <Route
+                path="/admin"
+                element={
+                  <div className="App min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+                    <Header />
+                    <main className="flex-grow container mx-auto px-4 py-8 transition-all duration-300 ease-in-out">
+                      <AdminPage />
+                    </main>
+                    <Footer />
+                  </div>
+                }
+              />
+
               {/* Admin routes without header/footer */}
               <Route path="/admin/login" element={<AdminLoginPage />} />
-              <Route path="/admin/*" element={
-                <ProtectedRoute>
-                  <AdminDashboard />
-                </ProtectedRoute>
-              }>
+              <Route
+                path="/admin/*"
+                element={
+                  <ProtectedRoute>
+                    <AdminDashboard />
+                  </ProtectedRoute>
+                }
+              >
                 <Route path="dashboard" element={<AdminOverview />} />
                 <Route path="grants" element={<AdminGrants />} />
                 <Route path="blog" element={<AdminBlog />} />
@@ -170,17 +197,20 @@ function App() {
                 {/* Removed routes for blog-generation and users - require Express server */}
                 <Route path="profile" element={<AdminProfile />} />
               </Route>
-              
-              <Route path="*" element={
-                <div className="App min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-                  <Header />
-                  <main className="flex-grow container mx-auto px-4 py-8 transition-all duration-300 ease-in-out">
-                    <NotFoundPage />
-                  </main>
-                  <Footer />
-                  <GrantsChatWidget />
-                </div>
-              } />
+
+              <Route
+                path="*"
+                element={
+                  <div className="App min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+                    <Header />
+                    <main className="flex-grow container mx-auto px-4 py-8 transition-all duration-300 ease-in-out">
+                      <NotFoundPage />
+                    </main>
+                    <Footer />
+                    <GrantsChatWidget />
+                  </div>
+                }
+              />
             </Routes>
           )}
         </LanguageContext.Provider>

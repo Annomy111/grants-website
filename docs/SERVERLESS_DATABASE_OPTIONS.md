@@ -3,53 +3,52 @@
 ## 🎯 **Recommended Serverless Database Options**
 
 ### **Option 1: PlanetScale (MySQL-compatible)**
+
 ```javascript
 // Install: npm install @planetscale/database
-import { connect } from '@planetscale/database'
+import { connect } from '@planetscale/database';
 
 const config = {
   host: process.env.DATABASE_HOST,
   username: process.env.DATABASE_USERNAME,
   password: process.env.DATABASE_PASSWORD,
-}
+};
 
-const conn = connect(config)
-const results = await conn.execute('SELECT * FROM grants WHERE country_region = ?', [country])
+const conn = connect(config);
+const results = await conn.execute('SELECT * FROM grants WHERE country_region = ?', [country]);
 ```
 
 **Pros:**
+
 - ✅ True serverless (pay per query)
-- ✅ MySQL-compatible 
+- ✅ MySQL-compatible
 - ✅ Built-in branching for development
 - ✅ Auto-scaling
 - ✅ Generous free tier
 
 ### **Option 2: Supabase (PostgreSQL)**
+
 ```javascript
 // Install: npm install @supabase/supabase-js
-import { createClient } from '@supabase/supabase-js'
+import { createClient } from '@supabase/supabase-js';
 
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_ANON_KEY
-)
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY);
 
-const { data, error } = await supabase
-  .from('grants')
-  .select('*')
-  .eq('country_region', country)
+const { data, error } = await supabase.from('grants').select('*').eq('country_region', country);
 ```
 
 **Pros:**
+
 - ✅ PostgreSQL with real-time features
 - ✅ Built-in auth and storage
 - ✅ GraphQL API auto-generated
 - ✅ Good free tier
 
 ### **Option 3: Turso (LibSQL - SQLite-compatible)**
+
 ```javascript
 // Install: npm install @libsql/client
-import { createClient } from "@libsql/client";
+import { createClient } from '@libsql/client';
 
 const client = createClient({
   url: process.env.TURSO_DATABASE_URL,
@@ -57,18 +56,20 @@ const client = createClient({
 });
 
 const result = await client.execute({
-  sql: "SELECT * FROM grants WHERE country_region = ?",
-  args: [country]
+  sql: 'SELECT * FROM grants WHERE country_region = ?',
+  args: [country],
 });
 ```
 
 **Pros:**
+
 - ✅ SQLite-compatible syntax
 - ✅ Serverless-first design
 - ✅ Edge replication
 - ✅ Your existing SQLite schema works!
 
 ### **Option 4: Neon (PostgreSQL)**
+
 ```javascript
 // Install: npm install @neondatabase/serverless
 import { neon } from '@neondatabase/serverless';
@@ -78,6 +79,7 @@ const grants = await sql('SELECT * FROM grants WHERE country_region = $1', [coun
 ```
 
 **Pros:**
+
 - ✅ True serverless PostgreSQL
 - ✅ Instant branching
 - ✅ Scale to zero
@@ -86,6 +88,7 @@ const grants = await sql('SELECT * FROM grants WHERE country_region = $1', [coun
 ## 🔄 **Migration Strategy: SQLite → Serverless**
 
 ### **1. Schema Migration**
+
 Your current SQLite schema can be easily migrated:
 
 ```sql
@@ -107,6 +110,7 @@ CREATE TABLE grants (
 ```
 
 ### **2. Data Migration Script**
+
 ```javascript
 // migrate-to-serverless.js
 const sqlite3 = require('sqlite3');
@@ -116,7 +120,7 @@ async function migrateData() {
   // Read from SQLite
   const db = new sqlite3.Database('./server/database/grants.db');
   const grants = await new Promise((resolve, reject) => {
-    db.all("SELECT * FROM grants", (err, rows) => {
+    db.all('SELECT * FROM grants', (err, rows) => {
       if (err) reject(err);
       else resolve(rows);
     });
@@ -124,11 +128,11 @@ async function migrateData() {
 
   // Write to serverless DB
   const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY);
-  
+
   for (const grant of grants) {
     await supabase.from('grants').insert(grant);
   }
-  
+
   console.log(`Migrated ${grants.length} grants successfully!`);
 }
 ```
@@ -140,21 +144,24 @@ Turso is perfect because it's SQLite-compatible, so minimal code changes needed:
 ### **Setup Steps:**
 
 1. **Install Turso CLI:**
+
 ```bash
 npm install -g @turso/cli
 turso auth signup
 ```
 
 2. **Create Database:**
+
 ```bash
 turso db create civil-society-grants
 turso db show civil-society-grants
 ```
 
 3. **Update Netlify Functions:**
+
 ```javascript
 // netlify/functions/grants.js
-import { createClient } from "@libsql/client";
+import { createClient } from '@libsql/client';
 
 const client = createClient({
   url: process.env.TURSO_DATABASE_URL,
@@ -163,8 +170,8 @@ const client = createClient({
 
 export const handler = async (event, context) => {
   try {
-    const result = await client.execute("SELECT * FROM grants ORDER BY application_deadline ASC");
-    
+    const result = await client.execute('SELECT * FROM grants ORDER BY application_deadline ASC');
+
     return {
       statusCode: 200,
       headers: {
@@ -183,6 +190,7 @@ export const handler = async (event, context) => {
 ```
 
 4. **Update Environment Variables:**
+
 ```bash
 # Add to Netlify environment variables
 TURSO_DATABASE_URL=libsql://your-db.turso.io
@@ -191,12 +199,12 @@ TURSO_AUTH_TOKEN=your-auth-token
 
 ## 💰 **Cost Comparison**
 
-| Solution | Free Tier | Paid Plans |
-|----------|-----------|------------|
-| **Turso** | 500 DBs, 9GB storage | $5/month unlimited |
-| **PlanetScale** | 1 DB, 5GB storage, 1B reads | $29/month |
-| **Supabase** | 2 projects, 500MB DB | $25/month |
-| **Neon** | 1 project, 3GB storage | $19/month |
+| Solution        | Free Tier                   | Paid Plans         |
+| --------------- | --------------------------- | ------------------ |
+| **Turso**       | 500 DBs, 9GB storage        | $5/month unlimited |
+| **PlanetScale** | 1 DB, 5GB storage, 1B reads | $29/month          |
+| **Supabase**    | 2 projects, 500MB DB        | $25/month          |
+| **Neon**        | 1 project, 3GB storage      | $19/month          |
 
 ## 🎯 **Quick Migration Plan**
 
@@ -210,6 +218,7 @@ TURSO_AUTH_TOKEN=your-auth-token
 ## 🔧 **Why Not Edge Databases?**
 
 You could also consider:
+
 - **Cloudflare D1**: SQLite at the edge, but limited features
 - **Upstash**: Redis-based, good for caching
 - **Deta Base**: NoSQL, very simple

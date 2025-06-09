@@ -33,6 +33,7 @@ git push -u origin main
 ```
 
 If you get an authentication error, you may need to:
+
 1. Create a Personal Access Token: https://github.com/settings/tokens
 2. Use the token as your password when prompted
 

@@ -3,6 +3,7 @@
 ## 🎯 Complete Serverless Solution
 
 This implementation gives you:
+
 - ✅ **Real-time admin panel** with authentication
 - ✅ **Serverless database** with PostgreSQL
 - ✅ **AI chat with persistent history**
@@ -25,6 +26,7 @@ This implementation gives you:
 ### 2. Set Environment Variables
 
 Create `.env` file in project root:
+
 ```bash
 SUPABASE_URL=https://your-project.supabase.co
 SUPABASE_ANON_KEY=your-anon-key
@@ -36,6 +38,7 @@ REACT_APP_SUPABASE_ANON_KEY=your-anon-key
 ```
 
 Add to Netlify environment variables (Site settings > Environment variables):
+
 ```bash
 REACT_APP_SUPABASE_URL=https://your-project.supabase.co
 REACT_APP_SUPABASE_ANON_KEY=your-anon-key
@@ -53,6 +56,7 @@ node scripts/setup-supabase.js
 ```
 
 This will:
+
 - ✅ Create database schema with RLS
 - ✅ Migrate your existing SQLite data
 - ✅ Set up authentication policies
@@ -71,6 +75,7 @@ netlify deploy --prod --dir=build
 ### **Enhanced Features:**
 
 1. **Real-time Admin Panel**
+
    ```
    https://yoursite.com/admin/login
    - Live updates when grants are added/edited
@@ -80,6 +85,7 @@ netlify deploy --prod --dir=build
    ```
 
 2. **Smart AI Chat**
+
    ```
    - Persistent chat history stored in database
    - Real-time responses with Supabase Realtime
@@ -88,6 +94,7 @@ netlify deploy --prod --dir=build
    ```
 
 3. **Advanced API Endpoints**
+
    ```
    GET  /api/grants              - List grants with filtering
    GET  /api/grants/:id          - Get specific grant
@@ -112,19 +119,20 @@ netlify deploy --prod --dir=build
 
 ```sql
 -- Public can read active grants
-CREATE POLICY "Grants viewable by everyone" ON grants 
+CREATE POLICY "Grants viewable by everyone" ON grants
 FOR SELECT USING (status = 'active');
 
 -- Only admins can modify grants
-CREATE POLICY "Grants editable by admins" ON grants 
+CREATE POLICY "Grants editable by admins" ON grants
 FOR ALL USING (auth.role() = 'admin');
 
 -- Users can only access their own chat sessions
-CREATE POLICY "Own chat sessions only" ON chat_sessions 
+CREATE POLICY "Own chat sessions only" ON chat_sessions
 FOR ALL USING (user_id = auth.uid());
 ```
 
 ### **Authentication Flow:**
+
 1. Admin visits `/admin/login`
 2. Authenticates with Supabase Auth
 3. Gets JWT token with role information
@@ -134,6 +142,7 @@ FOR ALL USING (user_id = auth.uid());
 ## 💰 Cost Analysis
 
 ### **Free Tier Limits:**
+
 - Database: 500MB (your grants ~2MB)
 - API requests: 50,000/month
 - Realtime: 2,000 concurrent connections
@@ -141,6 +150,7 @@ FOR ALL USING (user_id = auth.uid());
 - Storage: 1GB (for images/documents)
 
 ### **Your Usage Estimate:**
+
 ```
 Database Size: 2-5MB (well under 500MB limit)
 API Requests: ~1,000/month (well under 50k limit)
@@ -153,6 +163,7 @@ Expected Cost: $0/month for years! 🎉
 ## 🚀 Performance Benefits
 
 ### **Before (Static JSON):**
+
 - ❌ No real-time updates
 - ❌ Manual data management
 - ❌ No user authentication
@@ -160,6 +171,7 @@ Expected Cost: $0/month for years! 🎉
 - ❌ No chat history
 
 ### **After (Supabase):**
+
 - ✅ **Real-time everything** - Changes appear instantly
 - ✅ **Admin convenience** - Add/edit grants through web interface
 - ✅ **Secure access** - Role-based permissions
@@ -171,22 +183,28 @@ Expected Cost: $0/month for years! 🎉
 ## 🔧 Advanced Features
 
 ### **1. Real-time Admin Notifications**
+
 ```javascript
 // Admins get notified when grants are viewed
 supabase
   .channel('admin_notifications')
-  .on('postgres_changes', {
-    event: 'UPDATE',
-    schema: 'public',
-    table: 'grants',
-    filter: 'view_count.gt.previous_value'
-  }, (payload) => {
-    showNotification(`Grant "${payload.new.grant_name}" was viewed`);
-  })
+  .on(
+    'postgres_changes',
+    {
+      event: 'UPDATE',
+      schema: 'public',
+      table: 'grants',
+      filter: 'view_count.gt.previous_value',
+    },
+    payload => {
+      showNotification(`Grant "${payload.new.grant_name}" was viewed`);
+    }
+  )
   .subscribe();
 ```
 
 ### **2. Smart Chat Context**
+
 ```javascript
 // AI remembers conversation history
 const { data: history } = await supabase
@@ -200,23 +218,25 @@ const { data: history } = await supabase
 ```
 
 ### **3. Advanced Analytics**
+
 ```sql
 -- Most popular grants
-SELECT grant_name, view_count 
-FROM grants 
-ORDER BY view_count DESC 
+SELECT grant_name, view_count
+FROM grants
+ORDER BY view_count DESC
 LIMIT 10;
 
 -- Search trends
-SELECT message, COUNT(*) 
-FROM chat_messages 
-GROUP BY message 
+SELECT message, COUNT(*)
+FROM chat_messages
+GROUP BY message
 ORDER BY COUNT(*) DESC;
 ```
 
 ## 🎯 Migration Benefits
 
 ### **Zero Downtime Migration:**
+
 1. Keep existing static JSON as fallback
 2. Deploy Supabase functions alongside
 3. Test admin panel thoroughly
@@ -224,6 +244,7 @@ ORDER BY COUNT(*) DESC;
 5. Remove static fallback later
 
 ### **Backward Compatibility:**
+
 - All existing URLs work the same
 - API responses have same format
 - Frontend code mostly unchanged

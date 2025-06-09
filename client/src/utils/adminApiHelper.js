@@ -6,7 +6,7 @@ export const getAuthToken = () => {
 };
 
 // Helper function to normalize grant field names
-export const normalizeGrant = (grant) => {
+export const normalizeGrant = grant => {
   // Handle both database format (snake_case) and JSON format (Title Case)
   return {
     id: grant.id || grant.ID,
@@ -26,7 +26,7 @@ export const normalizeGrant = (grant) => {
     website: grant.website || grant['Website'],
     application_url: grant.application_url || grant['Application URL'],
     logo_url: grant.logo_url || grant['Logo URL'],
-    status: grant.status || 'active'
+    status: grant.status || 'active',
   };
 };
 
@@ -35,10 +35,10 @@ export const fetchGrantsForAdmin = async () => {
   try {
     const token = getAuthToken();
     const headers = token ? { Authorization: `Bearer ${token}` } : {};
-    
+
     // Try API first
     const response = await axios.get('/.netlify/functions/grants', { headers });
-    
+
     if (response.data) {
       // Handle both array and object response formats
       let grants = [];
@@ -49,15 +49,15 @@ export const fetchGrantsForAdmin = async () => {
       } else if (response.data.data) {
         grants = response.data.data;
       }
-      
+
       // Normalize all grants
       return grants.map(normalizeGrant);
     }
-    
+
     throw new Error('No data in response');
   } catch (error) {
     console.error('Error fetching grants from API, trying static data:', error);
-    
+
     // Fallback to static JSON
     try {
       const response = await axios.get('/data/grants.json');
@@ -67,7 +67,7 @@ export const fetchGrantsForAdmin = async () => {
     } catch (staticError) {
       console.error('Error fetching static grants:', staticError);
     }
-    
+
     return [];
   }
 };
@@ -77,9 +77,9 @@ export const fetchBlogPostsForAdmin = async () => {
   try {
     const token = getAuthToken();
     const headers = token ? { Authorization: `Bearer ${token}` } : {};
-    
+
     const response = await axios.get('/.netlify/functions/blog', { headers });
-    
+
     if (response.data) {
       // Handle wrapped response format
       if (response.data.posts !== undefined) {
@@ -94,7 +94,7 @@ export const fetchBlogPostsForAdmin = async () => {
         return response.data.posts;
       }
     }
-    
+
     return [];
   } catch (error) {
     console.error('Error fetching blog posts:', error);
@@ -106,11 +106,11 @@ export const fetchBlogPostsForAdmin = async () => {
 export const calculateDashboardStats = (grants, blogPosts) => {
   const now = new Date();
   const thirtyDaysFromNow = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
-  
+
   // Count upcoming deadlines (within 30 days)
   const upcomingDeadlines = grants.filter(grant => {
     if (!grant.deadline) return false;
-    
+
     try {
       const deadline = new Date(grant.deadline);
       return !isNaN(deadline) && deadline >= now && deadline <= thirtyDaysFromNow;
@@ -118,16 +118,16 @@ export const calculateDashboardStats = (grants, blogPosts) => {
       return false;
     }
   }).length;
-  
+
   // Count published blog posts
-  const publishedPosts = blogPosts.filter(post => 
-    post.status === 'published' || post.published_at
+  const publishedPosts = blogPosts.filter(
+    post => post.status === 'published' || post.published_at
   ).length;
-  
+
   return {
     totalGrants: grants.length,
     upcomingDeadlines,
     totalBlogPosts: blogPosts.length,
-    publishedPosts
+    publishedPosts,
   };
 };

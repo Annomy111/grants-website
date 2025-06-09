@@ -1,6 +1,7 @@
 # Deployment Solution Summary
 
 ## Root Cause
+
 The "You need to enable JavaScript to run this app" message indicates the React app is loading but failing to initialize, most likely due to missing environment variables.
 
 ## Quick Solution
@@ -35,12 +36,14 @@ In Netlify dashboard → Site settings → Build & deploy:
 ### 3. Trigger a New Deploy
 
 After setting environment variables, trigger a new deploy:
+
 - Push a commit to your repository, OR
 - In Netlify dashboard, click "Trigger deploy" → "Clear cache and deploy site"
 
 ## Testing Your Deployment
 
 1. **Check Browser Console**
+
    - Open your deployed site
    - Press F12 to open developer tools
    - Look for any red error messages in Console tab
@@ -48,12 +51,15 @@ After setting environment variables, trigger a new deploy:
 2. **Common Error Messages and Fixes**
 
    **Error**: `Cannot read properties of undefined (reading 'createClient')`
+
    - **Fix**: Set `REACT_APP_SUPABASE_URL` and `REACT_APP_SUPABASE_ANON_KEY`
 
    **Error**: `Network request failed` or CORS errors
+
    - **Fix**: Ensure all Netlify Functions environment variables are set
 
    **Error**: 404 on `/api/grants`
+
    - **Fix**: The app uses `/.netlify/functions/` URLs, not `/api/` - this is correct
 
 ## Emergency Fallback Mode
@@ -61,6 +67,7 @@ After setting environment variables, trigger a new deploy:
 If you need the site working immediately without database:
 
 1. Set in Netlify environment variables:
+
    ```
    REACT_APP_USE_STATIC_DATA=true
    ```
@@ -83,6 +90,7 @@ After deployment, verify:
 ## Build Logs
 
 The build output should end with:
+
 ```
 The build folder is ready to be deployed.
 ```

@@ -6,12 +6,9 @@ const VideoHero = ({ darkMode, title, subtitle, primaryCTA, secondaryCTA }) => {
   const [videoError, setVideoError] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-  
+
   // Video playlist
-  const videos = [
-    '/videos/ukrainian-aid-intro.mp4',
-    '/videos/ukrainian-culture.mp4'
-  ];
+  const videos = ['/videos/ukrainian-aid-intro.mp4', '/videos/ukrainian-culture.mp4'];
 
   useEffect(() => {
     // Ensure video plays on mobile by re-triggering play
@@ -36,7 +33,7 @@ const VideoHero = ({ darkMode, title, subtitle, primaryCTA, secondaryCTA }) => {
 
   const handleVideoEnded = () => {
     // Move to next video in playlist
-    setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videos.length);
+    setCurrentVideoIndex(prevIndex => (prevIndex + 1) % videos.length);
   };
 
   return (
@@ -61,23 +58,27 @@ const VideoHero = ({ darkMode, title, subtitle, primaryCTA, secondaryCTA }) => {
           >
             <source src={videos[currentVideoIndex]} type="video/mp4" />
           </video>
-          
+
           {/* Loading placeholder */}
           {!isVideoLoaded && (
-            <div className={`absolute inset-0 ${
-              darkMode ? 'bg-gray-900' : 'bg-gray-100'
-            } animate-pulse`} />
+            <div
+              className={`absolute inset-0 ${
+                darkMode ? 'bg-gray-900' : 'bg-gray-100'
+              } animate-pulse`}
+            />
           )}
         </div>
       )}
 
       {/* Fallback gradient background if video fails */}
       {videoError && (
-        <div className={`absolute inset-0 ${
-          darkMode 
-            ? 'bg-gradient-to-b from-gray-900 to-gray-800' 
-            : 'bg-gradient-to-b from-blue-50 to-white'
-        }`} />
+        <div
+          className={`absolute inset-0 ${
+            darkMode
+              ? 'bg-gradient-to-b from-gray-900 to-gray-800'
+              : 'bg-gradient-to-b from-blue-50 to-white'
+          }`}
+        />
       )}
 
       {/* Overlay gradient for text readability */}
@@ -94,25 +95,34 @@ const VideoHero = ({ darkMode, title, subtitle, primaryCTA, secondaryCTA }) => {
                 {title.line2}
               </span>
             </h1>
-            
+
             {/* Subtitle */}
             <p className="max-w-2xl mx-auto text-lg sm:text-xl md:text-2xl text-gray-100 drop-shadow-md">
               {subtitle}
             </p>
-            
+
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-              <Link 
+              <Link
                 to={primaryCTA.link}
                 className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium rounded-2xl text-white bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-lg hover:shadow-xl transform transition-all duration-200 hover:-translate-y-0.5 backdrop-blur-sm bg-opacity-90"
               >
                 {primaryCTA.text}
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 ml-2"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </Link>
-              
-              <Link 
+
+              <Link
                 to={secondaryCTA.link}
                 className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium rounded-2xl text-white border-2 border-white/80 hover:bg-white hover:text-gray-900 shadow-lg hover:shadow-xl transform transition-all duration-200 hover:-translate-y-0.5 backdrop-blur-sm"
               >
@@ -122,7 +132,15 @@ const VideoHero = ({ darkMode, title, subtitle, primaryCTA, secondaryCTA }) => {
 
             {/* Scroll indicator */}
             <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-              <svg className="w-6 h-6 text-white/70" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+              <svg
+                className="w-6 h-6 text-white/70"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
                 <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
               </svg>
             </div>
@@ -139,15 +157,13 @@ const VideoHero = ({ darkMode, title, subtitle, primaryCTA, secondaryCTA }) => {
               key={index}
               onClick={() => setCurrentVideoIndex(index)}
               className={`w-2 h-2 rounded-full transition-all ${
-                index === currentVideoIndex 
-                  ? 'bg-white w-8' 
-                  : 'bg-white/50 hover:bg-white/70'
+                index === currentVideoIndex ? 'bg-white w-8' : 'bg-white/50 hover:bg-white/70'
               }`}
               aria-label={`Play video ${index + 1}`}
             />
           ))}
         </div>
-        
+
         {/* Play/Pause button */}
         <button
           onClick={() => {
@@ -164,7 +180,11 @@ const VideoHero = ({ darkMode, title, subtitle, primaryCTA, secondaryCTA }) => {
           aria-label="Toggle video playback"
         >
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+            <path
+              fillRule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+              clipRule="evenodd"
+            />
           </svg>
         </button>
       </div>

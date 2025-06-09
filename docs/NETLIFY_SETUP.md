@@ -41,6 +41,7 @@ NPM_FLAGS=--no-optional
 ```
 
 Optional (for AI chat):
+
 ```
 GOOGLE_GEMINI_API_KEY=your_gemini_api_key
 ```
@@ -139,6 +140,7 @@ With GitHub connected:
 ### Redirects and Headers
 
 Already configured in `netlify.toml`:
+
 - API routes proxy to functions
 - SPA routing for React
 - Cache headers for assets
@@ -146,6 +148,7 @@ Already configured in `netlify.toml`:
 ### Build Plugins
 
 Consider adding:
+
 - Lighthouse CI for performance monitoring
 - Sitemap generation
 - Image optimization

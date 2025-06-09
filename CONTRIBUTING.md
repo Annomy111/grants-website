@@ -24,11 +24,13 @@ By participating in this project, you agree to maintain a respectful and inclusi
 
 1. **Fork the repository**
 2. **Create a feature branch**
+
    ```bash
    git checkout -b feature/your-feature-name
    ```
 
 3. **Set up your development environment**
+
    ```bash
    npm install
    cd client && npm install
@@ -36,23 +38,27 @@ By participating in this project, you agree to maintain a respectful and inclusi
    ```
 
 4. **Make your changes**
+
    - Follow the existing code style
    - Add tests for new functionality
    - Update documentation as needed
 
 5. **Test your changes**
+
    ```bash
    npm test
    cd client && npm test
    ```
 
 6. **Commit your changes**
+
    ```bash
    git add .
    git commit -m "feat: add amazing feature"
    ```
-   
+
    Follow [Conventional Commits](https://www.conventionalcommits.org/):
+
    - `feat:` new feature
    - `fix:` bug fix
    - `docs:` documentation changes
@@ -62,6 +68,7 @@ By participating in this project, you agree to maintain a respectful and inclusi
    - `chore:` maintenance tasks
 
 7. **Push to your fork**
+
    ```bash
    git push origin feature/your-feature-name
    ```
@@ -138,6 +145,7 @@ By participating in this project, you agree to maintain a respectful and inclusi
 ## Recognition
 
 Contributors will be recognized in:
+
 - README.md contributors section
 - Release notes
 - Project documentation

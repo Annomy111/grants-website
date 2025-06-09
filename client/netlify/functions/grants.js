@@ -28,7 +28,7 @@ export const handler = async (event, context) => {
       return await getGrants(queryParams, headers);
     }
 
-    // Route: GET /grants/filters  
+    // Route: GET /grants/filters
     if (method === 'GET' && path === '/filters') {
       return await getFilters(headers);
     }
@@ -61,7 +61,6 @@ export const handler = async (event, context) => {
       headers,
       body: JSON.stringify({ error: 'Not found' }),
     };
-
   } catch (error) {
     console.error('Function error:', error);
     return {
@@ -73,15 +72,14 @@ export const handler = async (event, context) => {
 };
 
 async function getGrants(params, headers) {
-  let query = supabase
-    .from('grants')
-    .select('*')
-    .eq('status', 'active');
+  let query = supabase.from('grants').select('*').eq('status', 'active');
 
   // Apply filters
   if (params.query) {
     const searchTerm = `%${params.query}%`;
-    query = query.or(`grant_name.ilike.${searchTerm},funding_organization.ilike.${searchTerm},focus_areas.ilike.${searchTerm},eligibility_criteria.ilike.${searchTerm}`);
+    query = query.or(
+      `grant_name.ilike.${searchTerm},funding_organization.ilike.${searchTerm},focus_areas.ilike.${searchTerm},eligibility_criteria.ilike.${searchTerm}`
+    );
   }
 
   if (params.organization) {
@@ -102,7 +100,7 @@ async function getGrants(params, headers) {
 
   // Apply sorting
   const sortBy = params.sortBy || 'deadlineAsc';
-  
+
   switch (sortBy) {
     case 'nameAsc':
       query = query.order('grant_name', { ascending: true });
@@ -171,20 +169,24 @@ async function getFilters(headers) {
   }
 
   // Process filters
-  const organizations = [...new Set(grants.map(g => g.funding_organization).filter(Boolean))].sort();
+  const organizations = [
+    ...new Set(grants.map(g => g.funding_organization).filter(Boolean)),
+  ].sort();
   const countries = [...new Set(grants.map(g => g.country_region).filter(Boolean))].sort();
-  
+
   // Process focus areas (comma-separated)
-  const focusAreas = [...new Set(
-    grants.flatMap(g => 
-      g.focus_areas ? g.focus_areas.split(',').map(area => area.trim()) : []
-    ).filter(Boolean)
-  )].sort();
+  const focusAreas = [
+    ...new Set(
+      grants
+        .flatMap(g => (g.focus_areas ? g.focus_areas.split(',').map(area => area.trim()) : []))
+        .filter(Boolean)
+    ),
+  ].sort();
 
   const filters = {
     organizations,
     countries,
-    focusAreas
+    focusAreas,
   };
 
   return {
@@ -247,7 +249,7 @@ async function createGrant(data, headers, event) {
       duration: data.duration,
       website_link: data.website_link,
       status: data.status || 'active',
-      featured: data.featured || false
+      featured: data.featured || false,
     })
     .select()
     .single();
@@ -291,7 +293,7 @@ async function updateGrant(id, data, headers, event) {
       duration: data.duration,
       website_link: data.website_link,
       status: data.status,
-      featured: data.featured
+      featured: data.featured,
     })
     .eq('id', id)
     .select()
@@ -323,10 +325,7 @@ async function deleteGrant(id, headers, event) {
     };
   }
 
-  const { error } = await supabase
-    .from('grants')
-    .delete()
-    .eq('id', id);
+  const { error } = await supabase.from('grants').delete().eq('id', id);
 
   if (error) {
     return {

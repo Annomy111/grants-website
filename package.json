@@ -12,6 +12,7 @@
     "backup": "chmod +x scripts/backup-database.sh && ./scripts/backup-database.sh",
     "install:all": "npm install && cd client && npm install",
     "import:grants": "node scripts/import-grants.js",
+    "update:static-grants": "node scripts/update-static-grants.js",
     "test:supabase": "node scripts/test-supabase-connection.js",
     "setup:admin-users": "node scripts/setup-admin-users.js",
     "cleanup": "./scripts/cleanup-project.sh",
@@ -22,6 +23,7 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.10",
+    "csv-parse": "^5.6.0",
     "csv-parser": "^3.2.0",
     "dotenv": "^16.5.0",
     "playwright-core": "^1.52.0",
@@ -31,6 +33,9 @@
   "devDependencies": {
     "axios": "^1.9.0",
     "concurrently": "^9.1.2",
+    "eslint": "^8.57.1",
+    "eslint-config-react-app": "^7.0.1",
+    "prettier": "^3.5.3",
     "puppeteer": "^24.10.0"
   }
 }

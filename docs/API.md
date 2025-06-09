@@ -24,6 +24,7 @@ GET /grants
 ```
 
 Query Parameters:
+
 - `limit` (number): Maximum number of grants to return (default: 100)
 - `offset` (number): Number of grants to skip for pagination
 - `organization` (string): Filter by funding organization
@@ -31,6 +32,7 @@ Query Parameters:
 - `country` (string): Filter by eligible country
 
 Response:
+
 ```json
 {
   "grants": [
@@ -74,11 +76,12 @@ GET /grants/:id
 ```
 
 Response:
+
 ```json
 {
   "grant": {
     "id": "uuid",
-    "grant_name": "Democracy Support Grant",
+    "grant_name": "Democracy Support Grant"
     // ... all grant fields
   }
 }
@@ -91,12 +94,14 @@ POST /grants
 ```
 
 Headers:
+
 ```
 Authorization: Bearer YOUR_JWT_TOKEN
 Content-Type: application/json
 ```
 
 Request Body:
+
 ```json
 {
   "grant_name": "New Grant",
@@ -104,16 +109,17 @@ Request Body:
   "funding_organization": "Organization Name",
   "funding_organization_uk": "Назва організації",
   "description": "Grant description",
-  "description_uk": "Опис гранту",
+  "description_uk": "Опис гранту"
   // ... all required fields
 }
 ```
 
 Response:
+
 ```json
 {
   "grant": {
-    "id": "new-uuid",
+    "id": "new-uuid"
     // ... all grant fields
   }
 }
@@ -126,12 +132,14 @@ PUT /grants/:id
 ```
 
 Headers:
+
 ```
 Authorization: Bearer YOUR_JWT_TOKEN
 Content-Type: application/json
 ```
 
 Request Body:
+
 ```json
 {
   // Only include fields to update
@@ -141,6 +149,7 @@ Request Body:
 ```
 
 Response:
+
 ```json
 {
   "grant": {
@@ -156,11 +165,13 @@ DELETE /grants/:id
 ```
 
 Headers:
+
 ```
 Authorization: Bearer YOUR_JWT_TOKEN
 ```
 
 Response:
+
 ```json
 {
   "message": "Grant deleted successfully"
@@ -176,6 +187,7 @@ POST /auth/login
 ```
 
 Request Body:
+
 ```json
 {
   "email": "admin@example.com",
@@ -184,6 +196,7 @@ Request Body:
 ```
 
 Response:
+
 ```json
 {
   "user": {
@@ -207,11 +220,13 @@ POST /auth/logout
 ```
 
 Headers:
+
 ```
 Authorization: Bearer YOUR_JWT_TOKEN
 ```
 
 Response:
+
 ```json
 {
   "message": "Logged out successfully"
@@ -225,11 +240,13 @@ GET /auth/me
 ```
 
 Headers:
+
 ```
 Authorization: Bearer YOUR_JWT_TOKEN
 ```
 
 Response:
+
 ```json
 {
   "user": {
@@ -250,6 +267,7 @@ POST /chat
 ```
 
 Request Body:
+
 ```json
 {
   "message": "What grants are available for democracy projects?",
@@ -259,6 +277,7 @@ Request Body:
 ```
 
 Response:
+
 ```json
 {
   "response": "Based on your query, here are relevant grants...",
@@ -281,11 +300,13 @@ GET /blog
 ```
 
 Query Parameters:
+
 - `limit` (number): Maximum posts to return
 - `offset` (number): Pagination offset
 - `status` (string): Filter by status (published, draft)
 
 Response:
+
 ```json
 {
   "posts": [
@@ -316,6 +337,7 @@ GET /blog/:slug
 ```
 
 Response:
+
 ```json
 {
   "post": {
@@ -343,12 +365,14 @@ POST /blog
 ```
 
 Headers:
+
 ```
 Authorization: Bearer YOUR_JWT_TOKEN
 Content-Type: application/json
 ```
 
 Request Body:
+
 ```json
 {
   "title": "New Blog Post",
@@ -365,12 +389,14 @@ PUT /blog/:id
 ```
 
 Headers:
+
 ```
 Authorization: Bearer YOUR_JWT_TOKEN
 Content-Type: application/json
 ```
 
 Request Body:
+
 ```json
 {
   "title": "Updated Title",
@@ -394,6 +420,7 @@ All endpoints return consistent error responses:
 ```
 
 Common Error Codes:
+
 - `UNAUTHORIZED`: Missing or invalid authentication
 - `FORBIDDEN`: Insufficient permissions
 - `NOT_FOUND`: Resource not found
@@ -406,6 +433,7 @@ Common Error Codes:
 - **Authenticated**: 1000 requests per hour
 
 Rate limit headers:
+
 ```
 X-RateLimit-Limit: 100
 X-RateLimit-Remaining: 95
@@ -421,6 +449,7 @@ GET /grants?limit=20&offset=40
 ```
 
 Response includes pagination metadata:
+
 ```json
 {
   "data": [...],
@@ -461,6 +490,7 @@ Access-Control-Allow-Headers: Content-Type, Authorization
 ## Webhooks (Future)
 
 Planned webhook events:
+
 - `grant.created`
 - `grant.updated`
 - `grant.deleted`

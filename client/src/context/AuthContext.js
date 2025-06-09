@@ -45,11 +45,11 @@ export const AuthProvider = ({ children }) => {
       setError(null);
       const response = await axios.post('/.netlify/functions/auth/login', { username, password });
       const { token, user } = response.data;
-      
+
       localStorage.setItem('authToken', token);
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       setUser(user);
-      
+
       return { success: true };
     } catch (error) {
       const message = error.response?.data?.error || 'Login failed';
@@ -66,7 +66,10 @@ export const AuthProvider = ({ children }) => {
 
   const changePassword = async (currentPassword, newPassword) => {
     try {
-      await axios.post('/.netlify/functions/auth/change-password', { currentPassword, newPassword });
+      await axios.post('/.netlify/functions/auth/change-password', {
+        currentPassword,
+        newPassword,
+      });
       return { success: true };
     } catch (error) {
       const message = error.response?.data?.error || 'Failed to change password';
@@ -81,7 +84,7 @@ export const AuthProvider = ({ children }) => {
     login,
     logout,
     changePassword,
-    isAuthenticated: !!user
+    isAuthenticated: !!user,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

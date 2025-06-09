@@ -8,14 +8,14 @@ const QUILL_STATE = {
   isLoaded: false,
   loadingPromise: null,
   instances: new Set(),
-  errorCount: 0
+  errorCount: 0,
 };
 
 /**
  * Registers a new Quill instance
  * @param {string} instanceId - Unique identifier for the instance
  */
-export const registerQuillInstance = (instanceId) => {
+export const registerQuillInstance = instanceId => {
   QUILL_STATE.instances.add(instanceId);
   console.debug(`Quill instance registered: ${instanceId}. Total: ${QUILL_STATE.instances.size}`);
 };
@@ -24,7 +24,7 @@ export const registerQuillInstance = (instanceId) => {
  * Unregisters a Quill instance
  * @param {string} instanceId - Unique identifier for the instance
  */
-export const unregisterQuillInstance = (instanceId) => {
+export const unregisterQuillInstance = instanceId => {
   QUILL_STATE.instances.delete(instanceId);
   console.debug(`Quill instance unregistered: ${instanceId}. Total: ${QUILL_STATE.instances.size}`);
 };
@@ -107,17 +107,17 @@ export const suppressQuillWarnings = (originalMethod, ...args) => {
     'already been defined',
     'custom element',
     'customElements.define',
-    'DOMException: Failed to execute \'define\'',
+    "DOMException: Failed to execute 'define'",
     'The name "autosize-textarea" has already been used',
     'NotSupportedError',
     'webcomponents-ce.js',
-    'A custom element with name'
+    'A custom element with name',
   ];
-  
+
   if (suppressPatterns.some(pattern => message.includes(pattern))) {
     return; // Suppress this message
   }
-  
+
   originalMethod.apply(console, args);
 };
 
@@ -128,15 +128,15 @@ export const suppressQuillWarnings = (originalMethod, ...args) => {
 export const createConsoleOverride = () => {
   const originalError = console.error;
   const originalWarn = console.warn;
-  
+
   console.error = (...args) => suppressQuillWarnings(originalError, ...args);
   console.warn = (...args) => suppressQuillWarnings(originalWarn, ...args);
-  
+
   return {
     restore: () => {
       console.error = originalError;
       console.warn = originalWarn;
-    }
+    },
   };
 };
 
@@ -145,12 +145,12 @@ export const createConsoleOverride = () => {
  */
 export const DEFAULT_QUILL_MODULES = {
   toolbar: [
-    [{ 'header': [1, 2, 3, false] }],
+    [{ header: [1, 2, 3, false] }],
     ['bold', 'italic', 'underline', 'strike'],
     ['blockquote', 'code-block'],
-    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+    [{ list: 'ordered' }, { list: 'bullet' }],
     ['link', 'image'],
-    ['clean']
+    ['clean'],
   ],
 };
 
@@ -159,36 +159,49 @@ export const DEFAULT_QUILL_MODULES = {
  */
 export const EXTENDED_QUILL_MODULES = {
   toolbar: [
-    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-    [{ 'font': [] }],
-    [{ 'size': ['small', false, 'large', 'huge'] }],
+    [{ header: [1, 2, 3, 4, 5, 6, false] }],
+    [{ font: [] }],
+    [{ size: ['small', false, 'large', 'huge'] }],
     ['bold', 'italic', 'underline', 'strike'],
-    [{ 'color': [] }, { 'background': [] }],
-    [{ 'script': 'sub'}, { 'script': 'super' }],
+    [{ color: [] }, { background: [] }],
+    [{ script: 'sub' }, { script: 'super' }],
     ['blockquote', 'code-block'],
-    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-    [{ 'indent': '-1'}, { 'indent': '+1' }],
-    [{ 'direction': 'rtl' }],
-    [{ 'align': [] }],
+    [{ list: 'ordered' }, { list: 'bullet' }],
+    [{ indent: '-1' }, { indent: '+1' }],
+    [{ direction: 'rtl' }],
+    [{ align: [] }],
     ['link', 'image', 'video'],
-    ['clean']
+    ['clean'],
   ],
   clipboard: {
     matchVisual: false,
-  }
+  },
 };
 
 /**
  * Quill formats for content validation
  */
 export const QUILL_FORMATS = [
-  'header', 'font', 'size',
-  'bold', 'italic', 'underline', 'strike', 'blockquote',
-  'list', 'bullet', 'indent',
-  'link', 'image', 'video',
-  'color', 'background',
-  'align', 'direction',
-  'code-block', 'script'
+  'header',
+  'font',
+  'size',
+  'bold',
+  'italic',
+  'underline',
+  'strike',
+  'blockquote',
+  'list',
+  'bullet',
+  'indent',
+  'link',
+  'image',
+  'video',
+  'color',
+  'background',
+  'align',
+  'direction',
+  'code-block',
+  'script',
 ];
 
 export default {
@@ -204,5 +217,5 @@ export default {
   createConsoleOverride,
   DEFAULT_QUILL_MODULES,
   EXTENDED_QUILL_MODULES,
-  QUILL_FORMATS
+  QUILL_FORMATS,
 };

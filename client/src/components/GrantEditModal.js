@@ -12,7 +12,7 @@ const GrantEditModal = ({ grant, onClose, onSave, darkMode }) => {
     grant_amount: '',
     application_deadline: '',
     duration: '',
-    website_link: ''
+    website_link: '',
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -20,24 +20,25 @@ const GrantEditModal = ({ grant, onClose, onSave, darkMode }) => {
   useEffect(() => {
     if (grant) {
       // Convert date to YYYY-MM-DD format for input
-      const deadline = grant.application_deadline ? 
-        new Date(grant.application_deadline).toISOString().split('T')[0] : '';
-      
+      const deadline = grant.application_deadline
+        ? new Date(grant.application_deadline).toISOString().split('T')[0]
+        : '';
+
       setFormData({
         ...grant,
-        application_deadline: deadline
+        application_deadline: deadline,
       });
     }
   }, [grant]);
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setLoading(true);
     setError('');
@@ -45,7 +46,7 @@ const GrantEditModal = ({ grant, onClose, onSave, darkMode }) => {
     try {
       const token = localStorage.getItem('authToken');
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
-      
+
       if (grant) {
         // Update existing grant
         await axios.put(`/.netlify/functions/grants/${grant.id}`, formData, { headers });
@@ -68,9 +69,11 @@ const GrantEditModal = ({ grant, onClose, onSave, darkMode }) => {
           <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
         </div>
 
-        <div className={`inline-block align-bottom rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full ${
-          darkMode ? 'bg-gray-800' : 'bg-white'
-        }`}>
+        <div
+          className={`inline-block align-bottom rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full ${
+            darkMode ? 'bg-gray-800' : 'bg-white'
+          }`}
+        >
           <div className={`px-4 pt-5 pb-4 sm:p-6 sm:pb-4 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
             <div className="flex justify-between items-center mb-4">
               <h3 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
@@ -93,7 +96,9 @@ const GrantEditModal = ({ grant, onClose, onSave, darkMode }) => {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className={`block text-sm font-medium mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                  <label
+                    className={`block text-sm font-medium mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}
+                  >
                     Grant Name *
                   </label>
                   <input
@@ -111,7 +116,9 @@ const GrantEditModal = ({ grant, onClose, onSave, darkMode }) => {
                 </div>
 
                 <div>
-                  <label className={`block text-sm font-medium mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                  <label
+                    className={`block text-sm font-medium mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}
+                  >
                     Funding Organization *
                   </label>
                   <input
@@ -129,7 +136,9 @@ const GrantEditModal = ({ grant, onClose, onSave, darkMode }) => {
                 </div>
 
                 <div>
-                  <label className={`block text-sm font-medium mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                  <label
+                    className={`block text-sm font-medium mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}
+                  >
                     Country/Region
                   </label>
                   <input
@@ -146,7 +155,9 @@ const GrantEditModal = ({ grant, onClose, onSave, darkMode }) => {
                 </div>
 
                 <div>
-                  <label className={`block text-sm font-medium mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                  <label
+                    className={`block text-sm font-medium mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}
+                  >
                     Grant Amount
                   </label>
                   <input
@@ -164,7 +175,9 @@ const GrantEditModal = ({ grant, onClose, onSave, darkMode }) => {
                 </div>
 
                 <div>
-                  <label className={`block text-sm font-medium mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                  <label
+                    className={`block text-sm font-medium mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}
+                  >
                     Application Deadline
                   </label>
                   <input
@@ -181,7 +194,9 @@ const GrantEditModal = ({ grant, onClose, onSave, darkMode }) => {
                 </div>
 
                 <div>
-                  <label className={`block text-sm font-medium mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                  <label
+                    className={`block text-sm font-medium mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}
+                  >
                     Duration
                   </label>
                   <input
@@ -200,7 +215,9 @@ const GrantEditModal = ({ grant, onClose, onSave, darkMode }) => {
               </div>
 
               <div>
-                <label className={`block text-sm font-medium mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                <label
+                  className={`block text-sm font-medium mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}
+                >
                   Focus Areas
                 </label>
                 <textarea
@@ -217,7 +234,9 @@ const GrantEditModal = ({ grant, onClose, onSave, darkMode }) => {
               </div>
 
               <div>
-                <label className={`block text-sm font-medium mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                <label
+                  className={`block text-sm font-medium mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}
+                >
                   Eligibility Criteria
                 </label>
                 <textarea
@@ -234,7 +253,9 @@ const GrantEditModal = ({ grant, onClose, onSave, darkMode }) => {
               </div>
 
               <div>
-                <label className={`block text-sm font-medium mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                <label
+                  className={`block text-sm font-medium mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}
+                >
                   Website Link
                 </label>
                 <input
@@ -267,9 +288,7 @@ const GrantEditModal = ({ grant, onClose, onSave, darkMode }) => {
                   type="submit"
                   disabled={loading}
                   className={`px-4 py-2 rounded-md text-white ${
-                    loading
-                      ? 'bg-gray-400 cursor-not-allowed'
-                      : 'bg-blue-600 hover:bg-blue-700'
+                    loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'
                   } transition-colors`}
                 >
                   {loading ? 'Saving...' : grant ? 'Update Grant' : 'Add Grant'}

@@ -1,17 +1,20 @@
 # Project Improvement Plan - Ukraine Civil Society Grants Platform
 
 ## Executive Summary
+
 This document outlines a comprehensive plan to improve the project structure, development workflow, and maintainability of the grants website.
 
 ## Current State Assessment
 
 ### ✅ Strengths
+
 - Clear separation between frontend (React/Netlify) and backend (Supabase)
 - Well-documented README and project instructions
 - Good component organization
 - Functional deployment pipeline
 
 ### ❌ Issues to Address
+
 1. **Root directory clutter**: 53+ temporary files
 2. **Redundant scripts**: 40+ scripts with duplicates
 3. **No CI/CD pipeline**: Missing automated testing and checks
@@ -22,6 +25,7 @@ This document outlines a comprehensive plan to improve the project structure, de
 ## Phase 1: Immediate Cleanup (Week 1)
 
 ### 1.1 Directory Cleanup
+
 ```bash
 # Create archive structure
 mkdir -p archived/screenshots archived/reports archived/legacy-scripts
@@ -38,6 +42,7 @@ mv temp-* archived/
 ```
 
 ### 1.2 Scripts Reorganization
+
 ```
 scripts/
 ├── README.md              # Document all scripts
@@ -54,6 +59,7 @@ scripts/
 ```
 
 ### 1.3 Git Cleanup
+
 ```bash
 # Add to .gitignore
 echo "archived/" >> .gitignore
@@ -69,6 +75,7 @@ echo "*.png filter=lfs diff=lfs merge=lfs -text" >> .gitattributes
 ## Phase 2: Development Workflow (Week 2)
 
 ### 2.1 Add Code Quality Tools
+
 ```json
 // .prettierrc
 {
@@ -92,6 +99,7 @@ echo "*.png filter=lfs diff=lfs merge=lfs -text" >> .gitattributes
 ```
 
 ### 2.2 Pre-commit Hooks
+
 ```json
 // package.json additions
 {
@@ -108,6 +116,7 @@ echo "*.png filter=lfs diff=lfs merge=lfs -text" >> .gitattributes
 ```
 
 ### 2.3 GitHub Workflows
+
 ```yaml
 # .github/workflows/ci.yml
 name: CI
@@ -127,12 +136,15 @@ jobs:
 ## Phase 3: Architecture Improvements (Week 3-4)
 
 ### 3.1 Choose Single Backend Strategy
+
 **Recommendation**: Fully migrate to Netlify Functions
+
 - Remove `server/` directory
 - Consolidate all API logic in `client/netlify/functions/`
 - Update documentation
 
 ### 3.2 Add TypeScript
+
 ```bash
 # Progressive migration
 npm install --save-dev typescript @types/react @types/node
@@ -146,6 +158,7 @@ types/
 ```
 
 ### 3.3 Testing Structure
+
 ```
 tests/
 ├── unit/
@@ -160,6 +173,7 @@ tests/
 ## Phase 4: Documentation & Processes (Week 5)
 
 ### 4.1 Enhanced Documentation
+
 ```
 docs/
 ├── CONTRIBUTING.md       # Contribution guidelines
@@ -174,6 +188,7 @@ docs/
 ```
 
 ### 4.2 GitHub Templates
+
 ```
 .github/
 ├── ISSUE_TEMPLATE/
@@ -190,12 +205,14 @@ docs/
 ## Phase 5: Performance & Monitoring (Week 6)
 
 ### 5.1 Performance Optimization
+
 - Implement lazy loading for grant cards
 - Add service worker for offline support
 - Optimize bundle size with code splitting
 - Add performance budgets
 
 ### 5.2 Monitoring Setup
+
 - Add Sentry for error tracking
 - Implement Google Analytics 4
 - Add performance monitoring
@@ -204,6 +221,7 @@ docs/
 ## Branch Strategy Recommendation
 
 ### GitFlow Lite
+
 ```
 main (production)
 ├── develop (staging)
@@ -213,6 +231,7 @@ main (production)
 ```
 
 ### Branch Protection Rules
+
 - Require PR reviews for main
 - Require status checks to pass
 - Require branches to be up to date
@@ -221,16 +240,19 @@ main (production)
 ## Success Metrics
 
 1. **Code Quality**
+
    - 0 ESLint errors
    - 100% Prettier formatted
    - TypeScript coverage > 50%
 
 2. **Performance**
+
    - Lighthouse score > 90
    - Bundle size < 500KB
    - First contentful paint < 2s
 
 3. **Developer Experience**
+
    - Setup time < 10 minutes
    - Build time < 2 minutes
    - Clear documentation
