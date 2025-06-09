@@ -16,11 +16,11 @@ const HomePage = () => {
   const [upcomingGrants, setUpcomingGrants] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Accurate statistics based on our analysis
+  // Updated statistics based on current database
   const stats = {
-    totalGrants: 107,
-    upcomingDeadlines: 45, // Active grants
-    totalFunding: 63, // €63M+
+    totalGrants: 136,
+    upcomingDeadlines: 52, // Active grants with 2025 deadlines
+    totalFunding: 75, // €75M+ with new grants
   };
 
   useEffect(() => {
