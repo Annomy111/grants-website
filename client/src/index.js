@@ -9,7 +9,7 @@ import './i18n/i18n';
 // Prevent duplicate custom element registration errors
 if (window.customElements) {
   const originalDefine = window.customElements.define;
-  window.customElements.define = function(name, constructor, options) {
+  window.customElements.define = function (name, constructor, options) {
     if (window.customElements.get(name)) {
       console.debug(`Custom element ${name} already defined, skipping registration`);
       return;

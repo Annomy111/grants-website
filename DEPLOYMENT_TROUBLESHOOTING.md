@@ -11,26 +11,34 @@ Open the browser developer tools (F12) and check the Console tab for errors:
 ### Common Errors and Solutions:
 
 #### a) Supabase Connection Error
+
 ```
 Error: Invalid Supabase URL or Key
 ```
+
 **Solution**: Set the required environment variables in Netlify:
+
 - `REACT_APP_SUPABASE_URL`
 - `REACT_APP_SUPABASE_ANON_KEY`
 
 #### b) 404 Errors for Static Files
+
 ```
 GET https://yoursite.netlify.app/static/js/main.xxx.js 404
 ```
-**Solution**: 
+
+**Solution**:
+
 - Ensure the build command is `npm run build`
 - Ensure the publish directory is `build`
 - Check that the build completes successfully
 
 #### c) CORS Errors
+
 ```
 Access to fetch at '...' from origin '...' has been blocked by CORS policy
 ```
+
 **Solution**: This is handled in the Netlify functions, but ensure all environment variables are set.
 
 ## 2. Verify Netlify Configuration
@@ -38,12 +46,14 @@ Access to fetch at '...' from origin '...' has been blocked by CORS policy
 In your Netlify dashboard:
 
 ### Build Settings
+
 - **Base directory**: `client`
 - **Build command**: `npm run build`
 - **Publish directory**: `build`
 - **Functions directory**: `netlify/functions`
 
 ### Environment Variables Required
+
 ```
 # Client-side (React App)
 REACT_APP_SUPABASE_URL=https://your-project.supabase.co
@@ -60,6 +70,7 @@ GEMINI_API_KEY=AIzaSy...
 If you need the site working immediately without database connection:
 
 1. In Netlify, set environment variable:
+
    ```
    REACT_APP_USE_STATIC_DATA=true
    ```
@@ -80,11 +91,13 @@ Before deploying, ensure:
 ## 5. Testing After Deployment
 
 1. **Basic Load Test**:
+
    - Visit your site
    - Open browser console
    - Check for any errors
 
 2. **Functionality Test**:
+
    - Navigate to `/grants` - should show grant listings
    - Test language switcher (EN/UK)
    - Test dark mode toggle
@@ -97,17 +110,21 @@ Before deploying, ensure:
 ## 6. Common Netlify Issues
 
 ### Deploy Failed
+
 Check the deploy log in Netlify dashboard for:
+
 - Missing dependencies
 - Build errors
 - Node version mismatches
 
 ### Functions Not Working
+
 - Ensure functions are in `client/netlify/functions/`
 - Check function logs in Netlify dashboard
 - Verify all server-side environment variables are set
 
 ### Site Loads but No Data
+
 - Check if `REACT_APP_USE_STATIC_DATA` is set to `false`
 - Verify Supabase credentials are correct
 - Check Supabase dashboard for any issues
@@ -133,6 +150,7 @@ This allows the site to function while you troubleshoot database issues.
 ## Contact Support
 
 If issues persist, provide:
+
 - Browser console errors
 - Netlify deploy logs
 - Which step in this guide failed

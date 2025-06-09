@@ -1,6 +1,7 @@
 # Complete List of 107 Civil Society Grants
 
 ## Table of Contents
+
 - [Grants 1-5](#grants-1-5)
 - [Grants 6-10](#grants-6-10)
 - [Grants 11-15](#grants-11-15)
@@ -29,6 +30,7 @@
 ## Grants 1-5
 
 ### 1. Council of Europe IDPs and Returnees Grant
+
 - **Funding Organization:** Council of Europe
 - **Country/Region:** Europe/International
 - **Eligibility Criteria:** Non-governmental organizations working with IDPs and returnees
@@ -39,6 +41,7 @@
 - **Website Link:** [Call for Proposals](https://www.coe.int/en/web/kyiv/-/call-for-proposals-from-the-council-of-europe-for-civil-society-organizations-deadline-march-5-2025-)
 
 ### 2. Eastern Partnership Civil Society Fellowship 2025
+
 - **Funding Organization:** European Union
 - **Country/Region:** EU/Eastern Partnership
 - **Eligibility Criteria:** Civil society activists or civic-minded individuals from Ukraine and other EaP countries
@@ -49,6 +52,7 @@
 - **Website Link:** [Fellowship Call](https://eapcivilsociety.eu/fellowships-2)
 
 ### 3. House of Europe International Cooperation Grants
+
 - **Funding Organization:** European Union
 - **Country/Region:** EU/Ukraine
 - **Eligibility Criteria:** Public non-profit organizations in culture and creative industries from Ukraine and EU
@@ -59,6 +63,7 @@
 - **Website Link:** [International Cooperation Grants](https://houseofeurope.org.ua/en/grant/international-cooperation-grants)
 
 ### 4. EU Civil Society Organizations Call 2025
+
 - **Funding Organization:** European Union
 - **Country/Region:** EU/Ukraine
 - **Eligibility Criteria:** Civil society organizations registered in Ukraine
@@ -69,6 +74,7 @@
 - **Website Link:** [EU Funding Portal](https://eu4ukraine.eu/en/opportunities-en/eu-funding-opportunities-for-cso-project.html)
 
 ### 5. Civil Society Innovations for Open Government Grants
+
 - **Funding Organization:** Open Government Partnership
 - **Country/Region:** International
 - **Eligibility Criteria:** CSOs in Armenia, Georgia, Moldova and Ukraine
@@ -83,6 +89,7 @@
 ## Grants 6-10
 
 ### 6. Women's Peace & Humanitarian Fund Ukraine
+
 - **Funding Organization:** UN Women
 - **Country/Region:** International
 - **Eligibility Criteria:** Local women-led organizations and CSOs working on gender equality
@@ -93,6 +100,7 @@
 - **Website Link:** [WPHF Fund](https://wphfund.org/calls-for-proposals/)
 
 ### 7. Challenge Facility for Civil Society
+
 - **Funding Organization:** Stop TB Partnership
 - **Country/Region:** International
 - **Eligibility Criteria:** Civil society and TB-affected community partners
@@ -103,6 +111,7 @@
 - **Website Link:** [CFCS Call](https://www.stoptb.org/global-awards/challenge-facility-civil-society-cfcs)
 
 ### 8. Visegrad+ Grants 2025
+
 - **Funding Organization:** Visegrad Fund
 - **Country/Region:** International
 - **Eligibility Criteria:** CSOs from V4 countries working with Western Balkans and Eastern Partnership
@@ -113,6 +122,7 @@
 - **Website Link:** [Visegrad+ Grants](https://www.visegradfund.org/apply/grants/visegrad-plus-grants/)
 
 ### 9. Prosperous Future Programme Round 3
+
 - **Funding Organization:** Nordic Council of Ministers
 - **Country/Region:** Nordic-Baltic region
 - **Eligibility Criteria:** Civil society organisations in Nordic-Baltic region including partnerships with Ukraine
@@ -123,6 +133,7 @@
 - **Website Link:** [Nordic Programme](https://www.norden.org/en/funding-opportunities)
 
 ### 10. UK Small Projects Fund 2025-2026
+
 - **Funding Organization:** British Embassy Kyiv
 - **Country/Region:** UK/Ukraine
 - **Eligibility Criteria:** Ukrainian NGOs, civil society organizations, think tanks
@@ -137,6 +148,7 @@
 ## Grants 11-15
 
 ### 11. UNDP Civil Society and Youth Support
+
 - **Funding Organization:** UNDP/Denmark
 - **Country/Region:** International/Ukraine
 - **Eligibility Criteria:** Ukrainian CSOs registered for at least 2 years
@@ -147,6 +159,7 @@
 - **Website Link:** [CSYP Call](https://www.undp.org/ukraine/news/call-participation-competition-supporting-ukraines-resilience-through-civil-society-and-youth-participation-sustainable-recovery)
 
 ### 12. EU4CSOs Emergency Actions Grants
+
 - **Funding Organization:** EU/Network 100 percent life Rivne
 - **Country/Region:** EU/Ukraine
 - **Eligibility Criteria:** Ukrainian CSOs registered as non-profit with specific codes
@@ -157,6 +170,7 @@
 - **Website Link:** [Emergency Actions](https://houseofeurope.org.ua/en/opportunity/353)
 
 ### 13. Swedish-Norwegian Civil Society Resilience Project
+
 - **Funding Organization:** SIDA/NORAD
 - **Country/Region:** Sweden/Norway/Ukraine
 - **Eligibility Criteria:** Ukrainian civil society organizations
@@ -167,6 +181,7 @@
 - **Website Link:** [IRF Project](https://www.irf.ua/en/)
 
 ### 14. GIZ Civil Society Partnership Fund
+
 - **Funding Organization:** GIZ/German Government
 - **Country/Region:** Germany/Ukraine
 - **Eligibility Criteria:** Ukrainian CSOs and municipalities
@@ -177,6 +192,7 @@
 - **Website Link:** [GIZ Ukraine](https://www.giz.de/en/worldwide/302.html)
 
 ### 15. EU4Youth Grants for Youth Organizations
+
 - **Funding Organization:** EU/GIZ
 - **Country/Region:** EU/Germany/Ukraine
 - **Eligibility Criteria:** Youth organizations in Eastern Partnership countries
@@ -191,6 +207,7 @@
 ## Grants 16-20
 
 ### 16. Switzerland SDC Winter Support Package
+
 - **Funding Organization:** Swiss Agency for Development and Cooperation
 - **Country/Region:** Switzerland/Ukraine
 - **Eligibility Criteria:** Ukrainian CSOs and local organizations
@@ -201,6 +218,7 @@
 - **Website Link:** [SDC Ukraine](https://www.eda.admin.ch/deza/en/home/countries/ukraine.html)
 
 ### 17. National Endowment for Democracy Grants
+
 - **Funding Organization:** National Endowment for Democracy
 - **Country/Region:** USA/International
 - **Eligibility Criteria:** Ukrainian NGOs and civil society organizations
@@ -211,6 +229,7 @@
 - **Website Link:** [NED Grants](https://www.ned.org/apply-for-grant/en/)
 
 ### 18. Open Society Ukraine Democracy Fund
+
 - **Funding Organization:** Open Society Foundations
 - **Country/Region:** International
 - **Eligibility Criteria:** Ukrainian civil society organizations
@@ -221,6 +240,7 @@
 - **Website Link:** [OSF Ukraine](https://www.opensocietyfoundations.org/newsroom/the-open-society-foundations-in-ukraine)
 
 ### 19. UN Women Small Grants for Women-Led CSOs
+
 - **Funding Organization:** UN Women
 - **Country/Region:** International
 - **Eligibility Criteria:** Women-led CSOs and human rights CSOs in Ukraine
@@ -231,6 +251,7 @@
 - **Website Link:** [UN Women Grants](https://eca.unwomen.org/en/)
 
 ### 20. USAID Civil Society Sectoral Support
+
 - **Funding Organization:** USAID
 - **Country/Region:** USA/Ukraine
 - **Eligibility Criteria:** Ukrainian local organizations (consortium encouraged)
@@ -245,6 +266,7 @@
 ## Grants 21-25
 
 ### 21. German Marshall Fund Black Sea Trust
+
 - **Funding Organization:** German Marshall Fund
 - **Country/Region:** USA/Germany
 - **Eligibility Criteria:** CSOs in Black Sea region including Ukraine
@@ -255,6 +277,7 @@
 - **Website Link:** [BST Grants](https://www.gmfus.org/black-sea-trust-regional-cooperation)
 
 ### 22. European Endowment for Democracy Grants
+
 - **Funding Organization:** European Endowment for Democracy
 - **Country/Region:** EU/International
 - **Eligibility Criteria:** Ukrainian pro-democracy activists, CSOs, independent media
@@ -265,6 +288,7 @@
 - **Website Link:** [EED Support](https://www.democracyendowment.eu/en/)
 
 ### 23. International Renaissance Foundation Grants
+
 - **Funding Organization:** IRF/Open Society
 - **Country/Region:** Ukraine/International
 - **Eligibility Criteria:** Ukrainian civil society organizations
@@ -275,6 +299,7 @@
 - **Website Link:** [IRF Grants](https://www.irf.ua/en/grants/contests/)
 
 ### 24. Stefan Batory Foundation Ukraine Support
+
 - **Funding Organization:** Stefan Batory Foundation
 - **Country/Region:** Poland/Ukraine
 - **Eligibility Criteria:** Ukrainian and Polish CSOs working on Ukraine issues
@@ -285,6 +310,7 @@
 - **Website Link:** [Batory Foundation](https://www.batory.org.pl/en/)
 
 ### 25. Netherlands Embassy Small Grants
+
 - **Funding Organization:** Netherlands Ministry of Foreign Affairs
 - **Country/Region:** Netherlands/Ukraine
 - **Eligibility Criteria:** Ukrainian CSOs and local organizations
@@ -299,6 +325,7 @@
 ## Grants 26-30
 
 ### 26. French Development Agency Ukraine Program
+
 - **Funding Organization:** AFD
 - **Country/Region:** France/Ukraine
 - **Eligibility Criteria:** Ukrainian CSOs and municipalities
@@ -309,6 +336,7 @@
 - **Website Link:** [AFD Ukraine](https://www.afd.fr/en)
 
 ### 27. EBRD Community Initiative
+
 - **Funding Organization:** European Bank for Reconstruction and Development
 - **Country/Region:** International
 - **Eligibility Criteria:** CSOs in EBRD countries of operation including Ukraine
@@ -319,6 +347,7 @@
 - **Website Link:** [EBRD Community](https://www.ebrd.com/work-with-us/civil-society/community-initiative.html)
 
 ### 28. Konrad Adenauer Stiftung Ukraine Grants
+
 - **Funding Organization:** Konrad Adenauer Stiftung
 - **Country/Region:** Germany/Ukraine
 - **Eligibility Criteria:** Ukrainian think tanks and civil society organizations
@@ -329,6 +358,7 @@
 - **Website Link:** [KAS Ukraine](https://www.kas.de/en/web/ukraine)
 
 ### 29. Friedrich Ebert Stiftung Ukraine Support
+
 - **Funding Organization:** Friedrich Ebert Stiftung
 - **Country/Region:** Germany/Ukraine
 - **Eligibility Criteria:** Trade unions and civil society organizations
@@ -339,6 +369,7 @@
 - **Website Link:** [FES Ukraine](https://ukraine.fes.de/)
 
 ### 30. Heinrich Böll Foundation Ukraine Program
+
 - **Funding Organization:** Heinrich Böll Foundation
 - **Country/Region:** Germany/Ukraine
 - **Eligibility Criteria:** Environmental and human rights CSOs
@@ -353,6 +384,7 @@
 ## Grants 31-35
 
 ### 31. Charles Stewart Mott Foundation CEE Program
+
 - **Funding Organization:** Charles Stewart Mott Foundation
 - **Country/Region:** USA/International
 - **Eligibility Criteria:** CSOs in Central and Eastern Europe including Ukraine
@@ -363,6 +395,7 @@
 - **Website Link:** [Mott Foundation](https://www.mott.org/)
 
 ### 32. Robert Bosch Stiftung Eastern Europe
+
 - **Funding Organization:** Robert Bosch Stiftung
 - **Country/Region:** Germany/International
 - **Eligibility Criteria:** CSOs promoting German-Ukrainian cooperation
@@ -373,6 +406,7 @@
 - **Website Link:** [Bosch Stiftung](https://www.bosch-stiftung.de/en)
 
 ### 33. Canada Fund for Local Initiatives Ukraine
+
 - **Funding Organization:** Global Affairs Canada
 - **Country/Region:** Canada/Ukraine
 - **Eligibility Criteria:** Ukrainian CSOs and community organizations
@@ -383,6 +417,7 @@
 - **Website Link:** Contact Canadian Embassy
 
 ### 34. Japan Grassroots Grant Program
+
 - **Funding Organization:** Embassy of Japan in Ukraine
 - **Country/Region:** Japan/Ukraine
 - **Eligibility Criteria:** Non-profit organizations and local authorities
@@ -393,6 +428,7 @@
 - **Website Link:** Contact Japanese Embassy
 
 ### 35. Norwegian Helsinki Committee Ukraine Support
+
 - **Funding Organization:** Norwegian Helsinki Committee
 - **Country/Region:** Norway/Ukraine
 - **Eligibility Criteria:** Human rights organizations in Ukraine
@@ -407,6 +443,7 @@
 ## Grants 36-40
 
 ### 36. People in Need Ukraine Programs
+
 - **Funding Organization:** People in Need
 - **Country/Region:** Czech Republic/Ukraine
 - **Eligibility Criteria:** Local CSOs and community organizations
@@ -417,6 +454,7 @@
 - **Website Link:** [PIN Ukraine](https://ukraine.peopleinneed.net/en/)
 
 ### 37. Caritas Ukraine Partnership Grants
+
 - **Funding Organization:** Caritas Internationalis
 - **Country/Region:** International/Ukraine
 - **Eligibility Criteria:** Local faith-based and secular CSOs
@@ -427,6 +465,7 @@
 - **Website Link:** [Caritas Ukraine](https://caritas.ua/en/)
 
 ### 38. OSCE Project Co-ordinator Grants
+
 - **Funding Organization:** OSCE
 - **Country/Region:** International/Ukraine
 - **Eligibility Criteria:** Ukrainian civil society organizations
@@ -437,6 +476,7 @@
 - **Website Link:** [OSCE Ukraine](https://www.osce.org/project-coordinator-in-ukraine)
 
 ### 39. WHO Ukraine Health Grants
+
 - **Funding Organization:** World Health Organization
 - **Country/Region:** UN/Ukraine
 - **Eligibility Criteria:** Health-focused CSOs and organizations
@@ -447,6 +487,7 @@
 - **Website Link:** [WHO Ukraine](https://www.who.int/countries/ukr/)
 
 ### 40. IOM Community Stabilization Grants
+
 - **Funding Organization:** International Organization for Migration
 - **Country/Region:** UN/Ukraine
 - **Eligibility Criteria:** CSOs working with displaced populations
@@ -461,6 +502,7 @@
 ## Grants 41-45
 
 ### 41. UNICEF Ukraine Partnership Opportunities
+
 - **Funding Organization:** UNICEF
 - **Country/Region:** UN/Ukraine
 - **Eligibility Criteria:** Child-focused organizations
@@ -471,6 +513,7 @@
 - **Website Link:** [UNICEF Ukraine](https://www.unicef.org/ukraine/)
 
 ### 42. FAO Ukraine Agricultural Support
+
 - **Funding Organization:** Food and Agriculture Organization
 - **Country/Region:** UN/Ukraine
 - **Eligibility Criteria:** Agricultural cooperatives and rural CSOs
@@ -481,6 +524,7 @@
 - **Website Link:** [FAO Ukraine](https://www.fao.org/ukraine/en/)
 
 ### 43. Belgian Development Cooperation Ukraine
+
 - **Funding Organization:** Belgian Development Agency
 - **Country/Region:** Belgium/Ukraine
 - **Eligibility Criteria:** Ukrainian CSOs and local organizations
@@ -491,6 +535,7 @@
 - **Website Link:** [Enabel Ukraine](https://www.enabel.be/)
 
 ### 44. Austrian Development Agency Ukraine
+
 - **Funding Organization:** Austrian Development Agency
 - **Country/Region:** Austria/Ukraine
 - **Eligibility Criteria:** CSOs promoting Austrian-Ukrainian cooperation
@@ -501,6 +546,7 @@
 - **Website Link:** [ADA Programs](https://www.entwicklung.at/en/)
 
 ### 45. Finnish Ukraine Support Programs
+
 - **Funding Organization:** Ministry for Foreign Affairs Finland
 - **Country/Region:** Finland/Ukraine
 - **Eligibility Criteria:** Finnish and Ukrainian CSOs
@@ -515,6 +561,7 @@
 ## Grants 46-50
 
 ### 46. Danish Neighborhood Programme
+
 - **Funding Organization:** Danish Ministry of Foreign Affairs
 - **Country/Region:** Denmark/Ukraine
 - **Eligibility Criteria:** CSOs in Ukraine and neighboring countries
@@ -525,6 +572,7 @@
 - **Website Link:** Contact Danish Embassy
 
 ### 47. Czech Development Cooperation
+
 - **Funding Organization:** Czech Development Agency
 - **Country/Region:** Czech Republic/Ukraine
 - **Eligibility Criteria:** Czech and Ukrainian partner organizations
@@ -535,6 +583,7 @@
 - **Website Link:** [Czech Aid](https://www.czechaid.cz/en/)
 
 ### 48. Lithuanian Development Cooperation
+
 - **Funding Organization:** Lithuanian Ministry of Foreign Affairs
 - **Country/Region:** Lithuania/Ukraine
 - **Eligibility Criteria:** CSOs promoting Lithuanian-Ukrainian ties
@@ -545,6 +594,7 @@
 - **Website Link:** [Lithuania Support](https://orangeprojects.lt/en/)
 
 ### 49. Polish Aid Ukraine Programs
+
 - **Funding Organization:** Polish Ministry of Foreign Affairs
 - **Country/Region:** Poland/Ukraine
 - **Eligibility Criteria:** Polish and Ukrainian CSOs
@@ -555,6 +605,7 @@
 - **Website Link:** [Polish Aid](https://www.gov.pl/web/polishaid)
 
 ### 50. Estonian Development Cooperation
+
 - **Funding Organization:** Estonian Ministry of Foreign Affairs
 - **Country/Region:** Estonia/Ukraine
 - **Eligibility Criteria:** Estonian and Ukrainian partners
@@ -569,6 +620,7 @@
 ## Grants 51-55
 
 ### 51. Latvian Development Cooperation Ukraine
+
 - **Funding Organization:** Ministry of Foreign Affairs Latvia
 - **Country/Region:** Latvia/Ukraine
 - **Eligibility Criteria:** Latvian and Ukrainian CSOs
@@ -579,6 +631,7 @@
 - **Website Link:** [Latvia Support](https://www.mfa.gov.lv/en/development-cooperation)
 
 ### 52. Slovak Aid Ukraine Support
+
 - **Funding Organization:** Slovak Agency for International Development
 - **Country/Region:** Slovakia/Ukraine
 - **Eligibility Criteria:** Slovak and Ukrainian organizations
@@ -589,6 +642,7 @@
 - **Website Link:** [Slovak Aid](https://slovakaid.sk/en/)
 
 ### 53. EU House of Europe Travel Grants
+
 - **Funding Organization:** European Union
 - **Country/Region:** EU/Ukraine
 - **Eligibility Criteria:** Ukrainian cultural operators and CSOs
@@ -599,6 +653,7 @@
 - **Website Link:** [Travel Grants](https://houseofeurope.org.ua/en/grant/travel-grants)
 
 ### 54. Horizon Europe Civil Society
+
 - **Funding Organization:** European Commission
 - **Country/Region:** EU/International
 - **Eligibility Criteria:** Research organizations and CSOs
@@ -609,6 +664,7 @@
 - **Website Link:** [Horizon Europe](https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/home)
 
 ### 55. Creative Europe Ukraine Window
+
 - **Funding Organization:** European Union
 - **Country/Region:** EU/Ukraine
 - **Eligibility Criteria:** Cultural and creative organizations
@@ -623,6 +679,7 @@
 ## Grants 56-60
 
 ### 56. Erasmus+ Civil Society Cooperation
+
 - **Funding Organization:** European Commission
 - **Country/Region:** EU/International
 - **Eligibility Criteria:** Educational institutions and CSOs
@@ -633,6 +690,7 @@
 - **Website Link:** [Erasmus+](https://erasmus-plus.ec.europa.eu/)
 
 ### 57. European Instrument for Democracy and Human Rights
+
 - **Funding Organization:** European Union
 - **Country/Region:** EU/International
 - **Eligibility Criteria:** Human rights organizations
@@ -643,6 +701,7 @@
 - **Website Link:** [EIDHR](https://international-partnerships.ec.europa.eu/funding/looking-funding_en)
 
 ### 58. Rights Equality and Citizenship Programme
+
 - **Funding Organization:** European Commission
 - **Country/Region:** EU/International
 - **Eligibility Criteria:** CSOs working on rights and equality
@@ -653,6 +712,7 @@
 - **Website Link:** [REC Programme](https://commission.europa.eu/funding-tenders/find-funding/eu-funding-programmes/rights-equality-and-citizenship-programme-2014-2020_en)
 
 ### 59. Europe for Citizens Ukraine
+
 - **Funding Organization:** European Commission
 - **Country/Region:** EU/Ukraine
 - **Eligibility Criteria:** CSOs and local authorities
@@ -663,6 +723,7 @@
 - **Website Link:** [Europe for Citizens](https://www.eacea.ec.europa.eu/grants/2014-2020/europe-citizens_en)
 
 ### 60. Lifelong Learning Programme
+
 - **Funding Organization:** European Commission
 - **Country/Region:** EU/International
 - **Eligibility Criteria:** Educational and civil society organizations
@@ -677,6 +738,7 @@
 ## Grants 61-65
 
 ### 61. LIFE Programme Environment Grants
+
 - **Funding Organization:** European Commission
 - **Country/Region:** EU/International
 - **Eligibility Criteria:** Environmental CSOs
@@ -687,6 +749,7 @@
 - **Website Link:** [LIFE Programme](https://cinea.ec.europa.eu/programmes/life_en)
 
 ### 62. Digital Europe Programme
+
 - **Funding Organization:** European Commission
 - **Country/Region:** EU/International
 - **Eligibility Criteria:** Digital innovation organizations
@@ -697,6 +760,7 @@
 - **Website Link:** [Digital Europe](https://digital-strategy.ec.europa.eu/en/activities/digital-programme)
 
 ### 63. Justice Programme Grants
+
 - **Funding Organization:** European Commission
 - **Country/Region:** EU/International
 - **Eligibility Criteria:** Legal and justice-focused CSOs
@@ -707,6 +771,7 @@
 - **Website Link:** [Justice Programme](https://commission.europa.eu/funding-tenders/find-funding/eu-funding-programmes/justice-programme_en)
 
 ### 64. EU Aid Volunteers Initiative
+
 - **Funding Organization:** European Commission
 - **Country/Region:** EU/International
 - **Eligibility Criteria:** Humanitarian organizations
@@ -717,6 +782,7 @@
 - **Website Link:** [EU Aid Volunteers](https://civil-protection-humanitarian-aid.ec.europa.eu/what/humanitarian-aid/eu-aid-volunteers_en)
 
 ### 65. Internal Security Fund
+
 - **Funding Organization:** European Commission
 - **Country/Region:** EU/International
 - **Eligibility Criteria:** Security and law enforcement CSOs
@@ -731,6 +797,7 @@
 ## Grants 66-70
 
 ### 66. Asylum Migration Integration Fund
+
 - **Funding Organization:** European Commission
 - **Country/Region:** EU/International
 - **Eligibility Criteria:** Migration and integration CSOs
@@ -741,6 +808,7 @@
 - **Website Link:** [AMIF](https://home-affairs.ec.europa.eu/funding/asylum-migration-and-integration-fund_en)
 
 ### 67. European Social Fund Plus
+
 - **Funding Organization:** European Commission
 - **Country/Region:** EU/Member States
 - **Eligibility Criteria:** Social inclusion organizations
@@ -751,6 +819,7 @@
 - **Website Link:** [ESF+](https://ec.europa.eu/european-social-fund-plus/en)
 
 ### 68. Grundtvig Adult Education
+
 - **Funding Organization:** European Commission
 - **Country/Region:** EU/International
 - **Eligibility Criteria:** Adult education providers
@@ -761,6 +830,7 @@
 - **Website Link:** Contact National Agency
 
 ### 69. Youth in Action Programme
+
 - **Funding Organization:** European Commission
 - **Country/Region:** EU/International
 - **Eligibility Criteria:** Youth organizations
@@ -771,6 +841,7 @@
 - **Website Link:** [Youth in Action](https://www.salto-youth.net/)
 
 ### 70. Anna Lindh Foundation Grants
+
 - **Funding Organization:** Anna Lindh Foundation
 - **Country/Region:** Euro-Mediterranean
 - **Eligibility Criteria:** CSOs in Euro-Med region
@@ -785,6 +856,7 @@
 ## Grants 71-75
 
 ### 71. Pivot Global Education Challenge
+
 - **Funding Organization:** Pivot
 - **Country/Region:** International
 - **Eligibility Criteria:** Education-focused CSOs
@@ -795,6 +867,7 @@
 - **Website Link:** [Pivot Challenge](https://www.pivot.ngo/)
 
 ### 72. Global Innovation Fund
+
 - **Funding Organization:** Global Innovation Fund
 - **Country/Region:** International
 - **Eligibility Criteria:** Social innovation organizations
@@ -805,6 +878,7 @@
 - **Website Link:** [GIF](https://www.globalinnovation.fund/)
 
 ### 73. Wellspring Philanthropic Fund
+
 - **Funding Organization:** Wellspring
 - **Country/Region:** International
 - **Eligibility Criteria:** Human rights and social justice CSOs
@@ -815,6 +889,7 @@
 - **Website Link:** [Wellspring](https://wpfund.org/)
 
 ### 74. Oak Foundation Ukraine Response
+
 - **Funding Organization:** Oak Foundation
 - **Country/Region:** International
 - **Eligibility Criteria:** Human rights and social justice organizations
@@ -825,6 +900,7 @@
 - **Website Link:** [Oak Foundation](https://oakfnd.org/)
 
 ### 75. MacArthur Foundation Ukraine Support
+
 - **Funding Organization:** MacArthur Foundation
 - **Country/Region:** USA/International
 - **Eligibility Criteria:** CSOs and research institutions
@@ -839,6 +915,7 @@
 ## Grants 76-80
 
 ### 76. Rockefeller Brothers Fund CEE
+
 - **Funding Organization:** Rockefeller Brothers Fund
 - **Country/Region:** USA/International
 - **Eligibility Criteria:** CSOs in Central and Eastern Europe
@@ -849,6 +926,7 @@
 - **Website Link:** [RBF](https://www.rbf.org/)
 
 ### 77. King Baudouin Foundation
+
 - **Funding Organization:** King Baudouin Foundation
 - **Country/Region:** Belgium/International
 - **Eligibility Criteria:** European CSOs
@@ -859,6 +937,7 @@
 - **Website Link:** [KBF](https://www.kbs-frb.be/en/)
 
 ### 78. Adessium Foundation
+
 - **Funding Organization:** Adessium Foundation
 - **Country/Region:** Netherlands/International
 - **Eligibility Criteria:** CSOs fighting for social justice
@@ -869,6 +948,7 @@
 - **Website Link:** [Adessium](https://www.adessium.org/en/)
 
 ### 79. Porticus Global Grants
+
 - **Funding Organization:** Porticus
 - **Country/Region:** International
 - **Eligibility Criteria:** Faith-based and secular CSOs
@@ -879,6 +959,7 @@
 - **Website Link:** [Porticus](https://www.porticus.com/en/home/)
 
 ### 80. Comic Relief International
+
 - **Funding Organization:** Comic Relief
 - **Country/Region:** UK/International
 - **Eligibility Criteria:** CSOs supporting vulnerable groups
@@ -893,6 +974,7 @@
 ## Grants 81-85
 
 ### 81. Sigrid Rausing Trust
+
 - **Funding Organization:** Sigrid Rausing Trust
 - **Country/Region:** UK/International
 - **Eligibility Criteria:** Human rights organizations
@@ -903,6 +985,7 @@
 - **Website Link:** [SRT](https://www.sigrid-rausing-trust.org/)
 
 ### 82. Joseph Rowntree Charitable Trust
+
 - **Funding Organization:** Joseph Rowntree Charitable Trust
 - **Country/Region:** UK/International
 - **Eligibility Criteria:** CSOs promoting rights and justice
@@ -913,6 +996,7 @@
 - **Website Link:** [JRCT](https://www.jrct.org.uk/)
 
 ### 83. Luminate Foundation
+
 - **Funding Organization:** Luminate
 - **Country/Region:** International
 - **Eligibility Criteria:** CSOs working on transparency
@@ -923,6 +1007,7 @@
 - **Website Link:** [Luminate](https://luminategroup.com/)
 
 ### 84. Foundation for a Just Society
+
 - **Funding Organization:** FJS
 - **Country/Region:** International
 - **Eligibility Criteria:** Women's rights organizations
@@ -933,6 +1018,7 @@
 - **Website Link:** [FJS](https://www.foundationforajustsociety.org/)
 
 ### 85. Global Fund for Women Ukraine
+
 - **Funding Organization:** Global Fund for Women
 - **Country/Region:** International
 - **Eligibility Criteria:** Women's rights groups
@@ -947,6 +1033,7 @@
 ## Grants 86-90
 
 ### 86. Mama Cash Ukraine Support
+
 - **Funding Organization:** Mama Cash
 - **Country/Region:** Netherlands/International
 - **Eligibility Criteria:** Women's and trans groups
@@ -957,6 +1044,7 @@
 - **Website Link:** [Mama Cash](https://www.mamacash.org/)
 
 ### 87. Urgent Action Fund CEE
+
 - **Funding Organization:** Urgent Action Fund
 - **Country/Region:** International
 - **Eligibility Criteria:** Women human rights defenders
@@ -967,6 +1055,7 @@
 - **Website Link:** [UAF](https://urgentactionfund.org/)
 
 ### 88. AWID Ukraine Solidarity
+
 - **Funding Organization:** AWID
 - **Country/Region:** International
 - **Eligibility Criteria:** Feminist organizations
@@ -977,6 +1066,7 @@
 - **Website Link:** [AWID](https://www.awid.org/)
 
 ### 89. V-Dem Institute Support
+
 - **Funding Organization:** V-Dem Institute
 - **Country/Region:** Sweden/International
 - **Eligibility Criteria:** Democracy research organizations
@@ -987,6 +1077,7 @@
 - **Website Link:** [V-Dem](https://www.v-dem.net/)
 
 ### 90. Freedom House Emergency Assistance
+
 - **Funding Organization:** Freedom House
 - **Country/Region:** USA/International
 - **Eligibility Criteria:** Human rights defenders and CSOs
@@ -1001,6 +1092,7 @@
 ## Grants 91-95
 
 ### 91. Reporters Without Borders Support
+
 - **Funding Organization:** RSF
 - **Country/Region:** International
 - **Eligibility Criteria:** Independent media and journalists
@@ -1011,6 +1103,7 @@
 - **Website Link:** [RSF](https://rsf.org/en)
 
 ### 92. Committee to Protect Journalists
+
 - **Funding Organization:** CPJ
 - **Country/Region:** International
 - **Eligibility Criteria:** Journalists and media organizations
@@ -1021,6 +1114,7 @@
 - **Website Link:** [CPJ](https://cpj.org/)
 
 ### 93. Article 19 Media Support
+
 - **Funding Organization:** Article 19
 - **Country/Region:** International
 - **Eligibility Criteria:** Media and free expression groups
@@ -1031,6 +1125,7 @@
 - **Website Link:** [Article 19](https://www.article19.org/)
 
 ### 94. Media Development Investment Fund
+
 - **Funding Organization:** MDIF
 - **Country/Region:** International
 - **Eligibility Criteria:** Independent media companies
@@ -1041,6 +1136,7 @@
 - **Website Link:** [MDIF](https://www.mdif.org/)
 
 ### 95. DT Institute Media Grants
+
 - **Funding Organization:** Deutsche Welle Akademie
 - **Country/Region:** Germany/International
 - **Eligibility Criteria:** Media development organizations
@@ -1055,6 +1151,7 @@
 ## Grants 96-100
 
 ### 96. BBC Media Action Partnerships
+
 - **Funding Organization:** BBC Media Action
 - **Country/Region:** UK/International
 - **Eligibility Criteria:** Media and communication CSOs
@@ -1065,6 +1162,7 @@
 - **Website Link:** [BBC Media Action](https://www.bbc.co.uk/mediaaction/)
 
 ### 97. Internews Ukraine Programs
+
 - **Funding Organization:** Internews
 - **Country/Region:** USA/International
 - **Eligibility Criteria:** Media organizations and CSOs
@@ -1075,6 +1173,7 @@
 - **Website Link:** [Internews](https://internews.org/)
 
 ### 98. IREX Media Support Ukraine
+
 - **Funding Organization:** IREX
 - **Country/Region:** USA/International
 - **Eligibility Criteria:** Media and civil society groups
@@ -1085,6 +1184,7 @@
 - **Website Link:** [IREX](https://www.irex.org/)
 
 ### 99. National Democratic Institute Grants
+
 - **Funding Organization:** NDI
 - **Country/Region:** USA/International
 - **Eligibility Criteria:** Political party and civic groups
@@ -1095,6 +1195,7 @@
 - **Website Link:** [NDI](https://www.ndi.org/)
 
 ### 100. International Republican Institute
+
 - **Funding Organization:** IRI
 - **Country/Region:** USA/International
 - **Eligibility Criteria:** Democratic development organizations
@@ -1109,6 +1210,7 @@
 ## Grants 101-105
 
 ### 101. Westminster Foundation for Democracy
+
 - **Funding Organization:** WFD
 - **Country/Region:** UK/International
 - **Eligibility Criteria:** Parliamentary and political groups
@@ -1119,6 +1221,7 @@
 - **Website Link:** [WFD](https://www.wfd.org/)
 
 ### 102. Netherlands Institute for Multiparty Democracy
+
 - **Funding Organization:** NIMD
 - **Country/Region:** Netherlands/International
 - **Eligibility Criteria:** Political parties and civic groups
@@ -1129,6 +1232,7 @@
 - **Website Link:** [NIMD](https://nimd.org/)
 
 ### 103. International IDEA Support
+
 - **Funding Organization:** International IDEA
 - **Country/Region:** International
 - **Eligibility Criteria:** Electoral and democratic institutions
@@ -1139,6 +1243,7 @@
 - **Website Link:** [IDEA](https://www.idea.int/)
 
 ### 104. Carter Center Democracy Program
+
 - **Funding Organization:** The Carter Center
 - **Country/Region:** USA/International
 - **Eligibility Criteria:** Election and human rights groups
@@ -1149,6 +1254,7 @@
 - **Website Link:** [Carter Center](https://www.cartercenter.org/)
 
 ### 105. La Francophonie Ukraine Support
+
 - **Funding Organization:** OIF
 - **Country/Region:** Francophone/International
 - **Eligibility Criteria:** Francophone CSOs
@@ -1163,6 +1269,7 @@
 ## Grants 106-107
 
 ### 106. British Council Ukraine Programs
+
 - **Funding Organization:** British Council
 - **Country/Region:** UK/Ukraine
 - **Eligibility Criteria:** Cultural and educational organizations
@@ -1173,6 +1280,7 @@
 - **Website Link:** [British Council](https://www.britishcouncil.org.ua/)
 
 ### 107. Goethe Institute Ukraine Grants
+
 - **Funding Organization:** Goethe Institute
 - **Country/Region:** Germany/Ukraine
 - **Eligibility Criteria:** Cultural organizations
@@ -1184,4 +1292,4 @@
 
 ---
 
-*Total: 107 Grants for Civil Society Organizations*
+_Total: 107 Grants for Civil Society Organizations_

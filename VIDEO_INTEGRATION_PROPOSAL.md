@@ -1,6 +1,7 @@
 # Ukrainian Aid Video Integration Proposal
 
 ## Video Details
+
 - **File**: ukrainian-aid-intro.mp4
 - **Size**: 1.3MB (excellent for web)
 - **Location**: `/client/public/videos/ukrainian-aid-intro.mp4`
@@ -8,17 +9,13 @@
 ## 🎯 Recommended Placements & Uses
 
 ### 1. **Homepage Hero Section** (PRIMARY RECOMMENDATION)
+
 **Why**: Maximum visibility and emotional impact
+
 ```jsx
 // Replace or enhance the current hero text with video background
 <div className="hero-section">
-  <video 
-    autoPlay 
-    muted 
-    loop 
-    playsInline
-    className="hero-video"
-  >
+  <video autoPlay muted loop playsInline className="hero-video">
     <source src="/videos/ukrainian-aid-intro.mp4" type="video/mp4" />
   </video>
   <div className="hero-overlay">
@@ -29,13 +26,16 @@
 ```
 
 **Benefits**:
+
 - Immediate emotional connection
 - Shows real impact of grants
 - Modern, professional appearance
 - Sets tone for entire site
 
 ### 2. **About Page - Mission Section**
+
 **Why**: Explains the platform's purpose
+
 ```jsx
 // Add video to illustrate the mission
 <div className="about-video-section">
@@ -47,22 +47,26 @@
 ```
 
 ### 3. **Floating Video Modal** (INNOVATIVE)
+
 **Why**: Available everywhere without being intrusive
+
 ```jsx
 // Add a "Watch Our Story" button in header
-<button onClick={openVideoModal}>
-  🎥 Watch Our Story
-</button>
+<button onClick={openVideoModal}>🎥 Watch Our Story</button>
 ```
 
 ### 4. **Grant Application Helper**
+
 **Why**: Motivate organizations before they apply
+
 - Show before grant listings
 - Include in "How to Apply" section
 - Use as introduction in blog posts
 
 ### 5. **Success Stories Section**
+
 **Why**: Demonstrate impact
+
 - Create a dedicated "Impact" page
 - Embed video with testimonials
 - Link to specific grants that enabled the work shown
@@ -70,6 +74,7 @@
 ## 🛠 Technical Implementation Options
 
 ### Option 1: Simple HTML5 Video (Recommended)
+
 ```jsx
 const VideoPlayer = ({ autoplay = false, controls = true, loop = false }) => {
   return (
@@ -92,31 +97,27 @@ const VideoPlayer = ({ autoplay = false, controls = true, loop = false }) => {
 ```
 
 ### Option 2: Advanced Video Component with Features
+
 ```jsx
 const AdvancedVideoPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
-  
+
   return (
     <div className="advanced-video-wrapper">
       <video ref={videoRef} />
       <div className="video-controls">
-        <button onClick={togglePlay}>
-          {isPlaying ? '⏸️' : '▶️'}
-        </button>
-        <button onClick={toggleMute}>
-          {isMuted ? '🔇' : '🔊'}
-        </button>
+        <button onClick={togglePlay}>{isPlaying ? '⏸️' : '▶️'}</button>
+        <button onClick={toggleMute}>{isMuted ? '🔇' : '🔊'}</button>
       </div>
-      <div className="video-caption">
-        Supporting Ukrainian civil society organizations
-      </div>
+      <div className="video-caption">Supporting Ukrainian civil society organizations</div>
     </div>
   );
 };
 ```
 
 ### Option 3: Background Video with Parallax
+
 ```css
 .hero-video-background {
   position: fixed;
@@ -138,11 +139,13 @@ const AdvancedVideoPlayer = () => {
 ## 📱 Mobile Considerations
 
 1. **Autoplay Restrictions**
+
    - Must be muted for autoplay on mobile
    - Consider play button overlay
    - Provide poster image
 
 2. **Performance**
+
    - Use `loading="lazy"` for below-fold videos
    - Consider different qualities for mobile/desktop
    - Implement intersection observer for autoplay
@@ -155,6 +158,7 @@ const AdvancedVideoPlayer = () => {
 ## 🎨 Styling Suggestions
 
 ### Hero Video Style
+
 ```css
 .hero-video-container {
   position: relative;
@@ -175,11 +179,7 @@ const AdvancedVideoPlayer = () => {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.3),
-    rgba(0, 0, 0, 0.6)
-  );
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -188,6 +188,7 @@ const AdvancedVideoPlayer = () => {
 ```
 
 ### Responsive Video
+
 ```css
 .video-wrapper {
   position: relative;
@@ -207,16 +208,19 @@ const AdvancedVideoPlayer = () => {
 ## 🚀 Quick Implementation Plan
 
 ### Phase 1: Basic Integration (1 hour)
+
 1. Copy video to public folder ✅
 2. Add to About page with controls
 3. Test on mobile/desktop
 
 ### Phase 2: Homepage Hero (2 hours)
+
 1. Create hero video component
 2. Add overlay with CTA
 3. Implement lazy loading
 
 ### Phase 3: Advanced Features (3 hours)
+
 1. Create reusable video component
 2. Add to multiple pages
 3. Implement analytics tracking
@@ -225,6 +229,7 @@ const AdvancedVideoPlayer = () => {
 ## 📊 Success Metrics
 
 Track video engagement:
+
 - Play rate
 - Completion rate
 - CTA clicks after viewing
@@ -233,7 +238,8 @@ Track video engagement:
 ## 🎯 Final Recommendation
 
 **Start with**: Homepage hero background video (muted, autoplay, loop)
-**Why**: 
+**Why**:
+
 - Maximum impact
 - Sets professional tone
 - Tells your story instantly

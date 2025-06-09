@@ -9,19 +9,19 @@ const AdminProfile = () => {
   const [passwordForm, setPasswordForm] = useState({
     currentPassword: '',
     newPassword: '',
-    confirmPassword: ''
+    confirmPassword: '',
   });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState({ type: '', text: '' });
 
-  const handlePasswordChange = (e) => {
+  const handlePasswordChange = e => {
     setPasswordForm({
       ...passwordForm,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
-  const handlePasswordSubmit = async (e) => {
+  const handlePasswordSubmit = async e => {
     e.preventDefault();
     setMessage({ type: '', text: '' });
 
@@ -37,7 +37,7 @@ const AdminProfile = () => {
 
     setLoading(true);
     const result = await changePassword(passwordForm.currentPassword, passwordForm.newPassword);
-    
+
     if (result.success) {
       setMessage({ type: 'success', text: 'Password changed successfully' });
       setPasswordForm({ currentPassword: '', newPassword: '', confirmPassword: '' });
@@ -65,7 +65,9 @@ const AdminProfile = () => {
 
           <div className="space-y-4">
             <div>
-              <label className={`block text-sm font-medium ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+              <label
+                className={`block text-sm font-medium ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}
+              >
                 Username
               </label>
               <p className={`mt-1 text-lg ${darkMode ? 'text-white' : 'text-gray-900'}`}>
@@ -74,7 +76,9 @@ const AdminProfile = () => {
             </div>
 
             <div>
-              <label className={`block text-sm font-medium ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+              <label
+                className={`block text-sm font-medium ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}
+              >
                 Email
               </label>
               <p className={`mt-1 text-lg ${darkMode ? 'text-white' : 'text-gray-900'}`}>
@@ -83,7 +87,9 @@ const AdminProfile = () => {
             </div>
 
             <div>
-              <label className={`block text-sm font-medium ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+              <label
+                className={`block text-sm font-medium ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}
+              >
                 Role
               </label>
               <p className={`mt-1 text-lg ${darkMode ? 'text-white' : 'text-gray-900'}`}>
@@ -92,7 +98,9 @@ const AdminProfile = () => {
             </div>
 
             <div>
-              <label className={`block text-sm font-medium ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+              <label
+                className={`block text-sm font-medium ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}
+              >
                 Member Since
               </label>
               <p className={`mt-1 text-lg ${darkMode ? 'text-white' : 'text-gray-900'}`}>
@@ -112,11 +120,13 @@ const AdminProfile = () => {
           </div>
 
           {message.text && (
-            <div className={`mb-4 p-4 rounded-md ${
-              message.type === 'success'
-                ? 'bg-green-50 border border-green-200'
-                : 'bg-red-50 border border-red-200'
-            }`}>
+            <div
+              className={`mb-4 p-4 rounded-md ${
+                message.type === 'success'
+                  ? 'bg-green-50 border border-green-200'
+                  : 'bg-red-50 border border-red-200'
+              }`}
+            >
               <p className={message.type === 'success' ? 'text-green-800' : 'text-red-800'}>
                 {message.text}
               </p>
@@ -125,7 +135,9 @@ const AdminProfile = () => {
 
           <form onSubmit={handlePasswordSubmit} className="space-y-4">
             <div>
-              <label className={`block text-sm font-medium mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+              <label
+                className={`block text-sm font-medium mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}
+              >
                 Current Password
               </label>
               <input
@@ -143,7 +155,9 @@ const AdminProfile = () => {
             </div>
 
             <div>
-              <label className={`block text-sm font-medium mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+              <label
+                className={`block text-sm font-medium mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}
+              >
                 New Password
               </label>
               <input
@@ -162,7 +176,9 @@ const AdminProfile = () => {
             </div>
 
             <div>
-              <label className={`block text-sm font-medium mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+              <label
+                className={`block text-sm font-medium mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}
+              >
                 Confirm New Password
               </label>
               <input
@@ -183,9 +199,7 @@ const AdminProfile = () => {
               type="submit"
               disabled={loading}
               className={`w-full py-2 px-4 rounded-md text-white ${
-                loading
-                  ? 'bg-gray-400 cursor-not-allowed'
-                  : 'bg-blue-600 hover:bg-blue-700'
+                loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'
               } transition-colors`}
             >
               {loading ? 'Changing Password...' : 'Change Password'}

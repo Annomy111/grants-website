@@ -23,6 +23,7 @@ The Civil Society Grants Database follows a modern JAMstack architecture with th
 ## Frontend Architecture
 
 ### Technology Stack
+
 - **React 18**: UI library with hooks and functional components
 - **TypeScript**: Type safety (optional, can be added)
 - **Tailwind CSS**: Utility-first CSS framework
@@ -122,6 +123,7 @@ POST   /api/chat/grants     # AI chat query
 ### Schema Design
 
 **grants table**
+
 ```sql
 - id (uuid, primary key)
 - grant_name (text)
@@ -150,6 +152,7 @@ POST   /api/chat/grants     # AI chat query
 ```
 
 **app_users table**
+
 ```sql
 - id (uuid, primary key)
 - email (text, unique)
@@ -160,6 +163,7 @@ POST   /api/chat/grants     # AI chat query
 ```
 
 **blog_posts table**
+
 ```sql
 - id (uuid, primary key)
 - title (text)
@@ -196,12 +200,14 @@ GitHub Push → Netlify Build → Deploy to CDN
 ### Infrastructure
 
 1. **Netlify**
+
    - Static site hosting
    - Serverless functions (AWS Lambda)
    - Automatic SSL
    - Global CDN
 
 2. **Supabase**
+
    - PostgreSQL database
    - Authentication service
    - Realtime subscriptions
@@ -214,12 +220,14 @@ GitHub Push → Netlify Build → Deploy to CDN
 ## Performance Optimization
 
 ### Frontend
+
 - Code splitting with React.lazy()
 - Image optimization (SVG logos)
 - Static data fallback
 - Service worker (optional)
 
 ### Backend
+
 - Serverless function caching
 - Database query optimization
 - Connection pooling
@@ -238,17 +246,20 @@ GitHub Push → Netlify Build → Deploy to CDN
 ## Security Architecture
 
 ### Authentication
+
 - Supabase Auth with JWT tokens
 - Secure HTTP-only cookies (optional)
 - Role-based access control
 
 ### API Security
+
 - CORS configuration
 - Rate limiting (via Netlify)
 - Input validation
 - SQL injection prevention (via Supabase)
 
 ### Data Protection
+
 - Environment variables for secrets
 - No sensitive data in Git
 - Encrypted database connections
@@ -257,16 +268,19 @@ GitHub Push → Netlify Build → Deploy to CDN
 ## Scalability Considerations
 
 ### Horizontal Scaling
+
 - Serverless functions auto-scale
 - CDN handles traffic spikes
 - Database connection pooling
 
 ### Vertical Scaling
+
 - Upgrade Supabase tier for more resources
 - Increase Netlify function timeout/memory
 - Add caching layers
 
 ### Future Considerations
+
 1. **Microservices**: Split functions by domain
 2. **GraphQL**: For complex data queries
 3. **Redis Cache**: For session/data caching
@@ -276,16 +290,19 @@ GitHub Push → Netlify Build → Deploy to CDN
 ## Monitoring and Observability
 
 ### Application Monitoring
+
 - Netlify Analytics
 - Function logs
 - Error tracking (Sentry)
 
 ### Performance Monitoring
+
 - Core Web Vitals
 - API response times
 - Database query performance
 
 ### Business Metrics
+
 - Grant views/applications
 - User engagement
 - Popular search terms

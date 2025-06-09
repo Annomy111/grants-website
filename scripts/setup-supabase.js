@@ -2,7 +2,7 @@
 
 /**
  * Supabase Setup and Migration Script
- * 
+ *
  * This script sets up Supabase database schema and migrates existing data
  * from SQLite to Supabase PostgreSQL with enhanced features.
  */
@@ -37,10 +37,7 @@ Then run this script again.
       process.exit(1);
     }
 
-    this.supabase = createClient(
-      process.env.SUPABASE_URL,
-      process.env.SUPABASE_SERVICE_ROLE_KEY
-    );
+    this.supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY);
 
     console.log('✅ Connected to Supabase');
   }
@@ -167,8 +164,8 @@ CREATE TRIGGER update_chat_sessions_updated_at BEFORE UPDATE ON chat_sessions FO
         const statements = schema.split(';').filter(s => s.trim());
         for (const statement of statements) {
           if (statement.trim()) {
-            const { error: stmtError } = await this.supabase.rpc('exec_sql', { 
-              sql_query: statement.trim() + ';' 
+            const { error: stmtError } = await this.supabase.rpc('exec_sql', {
+              sql_query: statement.trim() + ';',
             });
             if (stmtError) console.log(`⚠️  Statement warning: ${stmtError.message}`);
           }
@@ -230,8 +227,8 @@ CREATE POLICY "Users can create chat messages" ON chat_messages FOR INSERT WITH 
       const statements = rlsPolicies.split(';').filter(s => s.trim());
       for (const statement of statements) {
         if (statement.trim()) {
-          const { error } = await this.supabase.rpc('exec_sql', { 
-            sql_query: statement.trim() + ';' 
+          const { error } = await this.supabase.rpc('exec_sql', {
+            sql_query: statement.trim() + ';',
           });
           if (error) console.log(`⚠️  RLS warning: ${error.message}`);
         }
@@ -254,14 +251,14 @@ CREATE POLICY "Users can create chat messages" ON chat_messages FOR INSERT WITH 
 
     // Create default admin user
     const { data: existingUsers } = await this.supabase.from('users').select('*').limit(1);
-    
+
     if (!existingUsers || existingUsers.length === 0) {
       console.log('👤 Creating default admin user...');
       const { error: userError } = await this.supabase.from('users').insert({
         email: 'admin@grants.ua',
         username: 'admin',
         full_name: 'System Administrator',
-        role: 'admin'
+        role: 'admin',
       });
       if (userError) console.log('⚠️  Admin user creation warning:', userError.message);
     }
@@ -269,7 +266,7 @@ CREATE POLICY "Users can create chat messages" ON chat_messages FOR INSERT WITH 
     // Migrate grants
     if (data.grants.length > 0) {
       console.log(`📊 Migrating ${data.grants.length} grants...`);
-      
+
       const grantsToInsert = data.grants.map(grant => ({
         grant_name: grant.grant_name,
         funding_organization: grant.funding_organization,
@@ -280,13 +277,11 @@ CREATE POLICY "Users can create chat messages" ON chat_messages FOR INSERT WITH 
         application_deadline: grant.application_deadline,
         duration: grant.duration,
         website_link: grant.website_link,
-        status: 'active'
+        status: 'active',
       }));
 
-      const { error: grantsError } = await this.supabase
-        .from('grants')
-        .insert(grantsToInsert);
-      
+      const { error: grantsError } = await this.supabase.from('grants').insert(grantsToInsert);
+
       if (grantsError) {
         console.log('⚠️  Some grants may not have migrated:', grantsError.message);
       } else {
@@ -297,7 +292,7 @@ CREATE POLICY "Users can create chat messages" ON chat_messages FOR INSERT WITH 
     // Migrate blog posts if they exist
     if (data.blogPosts.length > 0) {
       console.log(`📝 Migrating ${data.blogPosts.length} blog posts...`);
-      
+
       const postsToInsert = data.blogPosts.map(post => ({
         title: post.title,
         title_uk: post.title_uk,
@@ -308,13 +303,11 @@ CREATE POLICY "Users can create chat messages" ON chat_messages FOR INSERT WITH 
         excerpt_uk: post.excerpt_uk,
         featured_image: post.featured_image,
         status: post.status || 'draft',
-        published_at: post.published_at
+        published_at: post.published_at,
       }));
 
-      const { error: postsError } = await this.supabase
-        .from('blog_posts')
-        .insert(postsToInsert);
-      
+      const { error: postsError } = await this.supabase.from('blog_posts').insert(postsToInsert);
+
       if (postsError) {
         console.log('⚠️  Some blog posts may not have migrated:', postsError.message);
       } else {
@@ -326,15 +319,15 @@ CREATE POLICY "Users can create chat messages" ON chat_messages FOR INSERT WITH 
   async readLocalData() {
     return new Promise((resolve, reject) => {
       const db = new sqlite3.Database(this.localDbPath);
-      
+
       const data = {
         users: [],
         grants: [],
-        blogPosts: []
+        blogPosts: [],
       };
 
       // Read grants
-      db.all("SELECT * FROM grants", (err, rows) => {
+      db.all('SELECT * FROM grants', (err, rows) => {
         if (err) {
           data.grants = [];
         } else {
@@ -342,7 +335,7 @@ CREATE POLICY "Users can create chat messages" ON chat_messages FOR INSERT WITH 
         }
 
         // Read blog posts
-        db.all("SELECT * FROM blog_posts", (err, rows) => {
+        db.all('SELECT * FROM blog_posts', (err, rows) => {
           if (err) {
             data.blogPosts = [];
           } else {
@@ -400,7 +393,9 @@ REACT_APP_SUPABASE_ANON_KEY=${process.env.SUPABASE_ANON_KEY}
       .limit(1);
 
     if (sampleGrant && sampleGrant.length > 0) {
-      console.log(`✅ Sample grant: "${sampleGrant[0].grant_name}" by ${sampleGrant[0].funding_organization}`);
+      console.log(
+        `✅ Sample grant: "${sampleGrant[0].grant_name}" by ${sampleGrant[0].funding_organization}`
+      );
     }
   }
 
@@ -422,7 +417,6 @@ REACT_APP_SUPABASE_ANON_KEY=${process.env.SUPABASE_ANON_KEY}
       console.log('3. Deploy updated Netlify functions');
       console.log('4. Test admin panel with Supabase auth');
       console.log('5. Enable AI chat enhancements');
-
     } catch (error) {
       console.error('❌ Setup failed:', error.message);
       process.exit(1);

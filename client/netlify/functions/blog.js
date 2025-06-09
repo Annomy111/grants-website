@@ -68,7 +68,6 @@ export const handler = async (event, context) => {
       headers,
       body: JSON.stringify({ error: 'Not found' }),
     };
-
   } catch (error) {
     console.error('Blog function error:', error);
     return {
@@ -88,26 +87,24 @@ async function getBlogPosts(requestHeaders, headers) {
       return {
         statusCode: 200,
         headers,
-        body: JSON.stringify({ 
-          success: true, 
+        body: JSON.stringify({
+          success: true,
           posts: [],
-          message: 'Blog service temporarily unavailable'
+          message: 'Blog service temporarily unavailable',
         }),
       };
     }
 
     // Check if user is admin
     const user = await verifyAdmin(requestHeaders);
-    
-    let query = supabase
-      .from('blog_posts')
-      .select('*');
-    
+
+    let query = supabase.from('blog_posts').select('*');
+
     // If not admin, only show published posts
     if (!user) {
       query = query.eq('status', 'published');
     }
-    
+
     const { data: posts, error } = await query.order('created_at', { ascending: false });
 
     if (error) {
@@ -116,10 +113,10 @@ async function getBlogPosts(requestHeaders, headers) {
       return {
         statusCode: 200,
         headers,
-        body: JSON.stringify({ 
-          success: true, 
+        body: JSON.stringify({
+          success: true,
           posts: [],
-          message: 'Unable to fetch blog posts'
+          message: 'Unable to fetch blog posts',
         }),
       };
     }
@@ -134,10 +131,10 @@ async function getBlogPosts(requestHeaders, headers) {
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify({ 
-        success: true, 
+      body: JSON.stringify({
+        success: true,
         posts: [],
-        error: 'Failed to fetch blog posts' 
+        error: 'Failed to fetch blog posts',
       }),
     };
   }
@@ -218,7 +215,7 @@ async function getBlogPostBySlug(slug, headers) {
 // Verify admin authentication
 async function verifyAdmin(requestHeaders) {
   const authHeader = requestHeaders.authorization || requestHeaders.Authorization;
-  
+
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     return null;
   }
@@ -253,7 +250,7 @@ async function verifyAdmin(requestHeaders) {
 // Create new blog post (admin only)
 async function createBlogPost(body, requestHeaders, headers) {
   const user = await verifyAdmin(requestHeaders);
-  
+
   if (!user) {
     return {
       statusCode: 401,
@@ -274,7 +271,8 @@ async function createBlogPost(body, requestHeaders, headers) {
     }
 
     // Generate slug from title
-    const slug = title.toLowerCase()
+    const slug = title
+      .toLowerCase()
       .replace(/[^a-z0-9\s]/g, '')
       .replace(/\s+/g, '-')
       .trim();
@@ -289,7 +287,7 @@ async function createBlogPost(body, requestHeaders, headers) {
       tags,
       featured_image,
       status: status || 'draft',
-      published_at: status === 'published' ? new Date().toISOString() : null
+      published_at: status === 'published' ? new Date().toISOString() : null,
     };
 
     const { data: post, error } = await supabase
@@ -320,7 +318,7 @@ async function createBlogPost(body, requestHeaders, headers) {
 // Update blog post (admin only)
 async function updateBlogPost(postId, body, requestHeaders, headers) {
   const user = await verifyAdmin(requestHeaders);
-  
+
   if (!user) {
     return {
       statusCode: 401,
@@ -333,12 +331,13 @@ async function updateBlogPost(postId, body, requestHeaders, headers) {
     const { title, content, excerpt, category, tags, featured_image, status } = body;
 
     const updateData = {
-      updated_at: new Date().toISOString()
+      updated_at: new Date().toISOString(),
     };
 
     if (title) {
       updateData.title = title;
-      updateData.slug = title.toLowerCase()
+      updateData.slug = title
+        .toLowerCase()
         .replace(/[^a-z0-9\s]/g, '')
         .replace(/\s+/g, '-')
         .trim();
@@ -391,7 +390,7 @@ async function updateBlogPost(postId, body, requestHeaders, headers) {
 // Delete blog post (admin only)
 async function deleteBlogPost(postId, requestHeaders, headers) {
   const user = await verifyAdmin(requestHeaders);
-  
+
   if (!user) {
     return {
       statusCode: 401,
@@ -401,10 +400,7 @@ async function deleteBlogPost(postId, requestHeaders, headers) {
   }
 
   try {
-    const { error } = await supabase
-      .from('blog_posts')
-      .delete()
-      .eq('id', postId);
+    const { error } = await supabase.from('blog_posts').delete().eq('id', postId);
 
     if (error) {
       throw error;

@@ -1,9 +1,6 @@
 const { createClient } = require('@supabase/supabase-js');
 
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
-);
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY);
 
 async function createSchema() {
   console.log('🚀 Creating Supabase schema...');
@@ -29,7 +26,7 @@ async function createSchema() {
       updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
     );
     `,
-    
+
     // Users table for admin authentication
     `
     CREATE TABLE IF NOT EXISTS app_users (
@@ -41,7 +38,7 @@ async function createSchema() {
       updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
     );
     `,
-    
+
     // Chat sessions
     `
     CREATE TABLE IF NOT EXISTS chat_sessions (
@@ -52,7 +49,7 @@ async function createSchema() {
       updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
     );
     `,
-    
+
     // Chat messages
     `
     CREATE TABLE IF NOT EXISTS chat_messages (
@@ -64,7 +61,7 @@ async function createSchema() {
       created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
     );
     `,
-    
+
     // Blog posts
     `
     CREATE TABLE IF NOT EXISTS blog_posts (
@@ -93,19 +90,19 @@ async function createSchema() {
     CREATE POLICY "Grants viewable by everyone" ON grants 
     FOR SELECT USING (status = 'active');
     `,
-    
+
     `
     DROP POLICY IF EXISTS "Blog posts viewable by everyone" ON blog_posts;
     CREATE POLICY "Blog posts viewable by everyone" ON blog_posts 
     FOR SELECT USING (status = 'published');
     `,
-    
+
     `
     DROP POLICY IF EXISTS "Own chat sessions only" ON chat_sessions;
     CREATE POLICY "Own chat sessions only" ON chat_sessions 
     FOR ALL USING (user_id = auth.uid() OR user_id IS NULL);
     `,
-    
+
     `
     DROP POLICY IF EXISTS "Chat messages for own sessions" ON chat_messages;
     CREATE POLICY "Chat messages for own sessions" ON chat_messages 
@@ -131,7 +128,7 @@ async function createSchema() {
   for (const [index, sql] of schemas.entries()) {
     try {
       const { error } = await supabase.rpc('exec_sql', { sql_query: sql.trim() });
-      
+
       if (error) {
         console.log(`❌ Schema ${index + 1} failed:`, error.message);
         errors++;
@@ -158,8 +155,8 @@ if (require.main === module) {
     console.error('❌ Missing Supabase environment variables');
     process.exit(1);
   }
-  
-  createSchema().then((success) => {
+
+  createSchema().then(success => {
     if (success) {
       console.log('✅ Schema creation completed');
       process.exit(0);

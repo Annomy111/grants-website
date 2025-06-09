@@ -91,11 +91,14 @@ git push -u origin main
 
 1. Clone your repo locally (if not already)
 2. Update `.env` with Supabase credentials:
+
 ```bash
 SUPABASE_URL=your_project_url
 SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 ```
+
 3. Run import script:
+
 ```bash
 node scripts/import-grants.js
 ```
@@ -103,6 +106,7 @@ node scripts/import-grants.js
 ### 3.4 Get API Keys
 
 From Supabase Dashboard > Settings > API:
+
 - `SUPABASE_URL`: Your project URL
 - `SUPABASE_ANON_KEY`: Public anon key
 - `SUPABASE_SERVICE_ROLE_KEY`: Service role key (keep secret!)
@@ -249,6 +253,7 @@ If issues occur:
 ---
 
 For additional help, check:
+
 - [Netlify Docs](https://docs.netlify.com)
 - [Supabase Docs](https://supabase.com/docs)
 - Project README.md

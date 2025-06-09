@@ -62,7 +62,10 @@
       "Bash(diff:*)",
       "Bash(git reset:*)",
       "Bash(touch:*)",
-      "Bash(./scripts/cleanup-project.sh:*)"
+      "Bash(./scripts/cleanup-project.sh:*)",
+      "Bash(npm run branch:feature:*)",
+      "Bash(./scripts/create-feature-branch.sh:*)",
+      "Bash(git pull:*)"
     ],
     "deny": []
   },

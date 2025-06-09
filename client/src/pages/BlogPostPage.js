@@ -14,7 +14,7 @@ import {
   RegionalImpactInfographic,
   InternationalSupportInfographic,
   FuturePrioritiesInfographic,
-  CallToActionInfographic
+  CallToActionInfographic,
 } from '../components/infographics/ProfessionalInfographics';
 
 const BlogPostPage = () => {
@@ -52,7 +52,7 @@ const BlogPostPage = () => {
     }
   };
 
-  const formatDate = (dateString) => {
+  const formatDate = dateString => {
     if (!dateString) return '';
     try {
       return format(new Date(dateString), 'MMMM d, yyyy');
@@ -61,26 +61,26 @@ const BlogPostPage = () => {
     }
   };
 
-  const getLocalizedContent = (field) => {
+  const getLocalizedContent = field => {
     if (!post) return '';
     const isUkrainian = i18n.language === 'uk';
     const ukField = `${field}_uk`;
-    return (isUkrainian && post[ukField]) ? post[ukField] : post[field];
+    return isUkrainian && post[ukField] ? post[ukField] : post[field];
   };
 
   const renderInfographics = () => {
     const infographicContainers = contentRef.current?.querySelectorAll('.infographic-container');
-    
+
     console.log('Rendering infographics, found containers:', infographicContainers?.length);
-    
+
     if (!infographicContainers || infographicContainers.length === 0) return;
-    
+
     infographicContainers.forEach(container => {
       const id = container.id;
       console.log('Processing container with id:', id);
       let InfographicComponent = null;
-      
-      switch(id) {
+
+      switch (id) {
         case 'key-statistics':
           InfographicComponent = KeyStatisticsInfographic;
           break;
@@ -105,11 +105,11 @@ const BlogPostPage = () => {
         default:
           break;
       }
-      
+
       if (InfographicComponent) {
         // Clear container
         container.innerHTML = '';
-        
+
         // Create root and render component
         const root = createRoot(container);
         root.render(<InfographicComponent darkMode={darkMode} />);
@@ -148,7 +148,9 @@ const BlogPostPage = () => {
   }
 
   return (
-    <div className={`blog-post-page ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-800'} min-h-screen py-8`}>
+    <div
+      className={`blog-post-page ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-800'} min-h-screen py-8`}
+    >
       <article className="container mx-auto px-4 max-w-4xl">
         {/* Back Button */}
         <button
@@ -174,15 +176,19 @@ const BlogPostPage = () => {
 
         {/* Post Header */}
         <header className="mb-8">
-          <h1 className={`text-4xl md:text-5xl font-bold mb-4 ${
-            darkMode ? 'text-white' : 'text-gray-900'
-          }`}>
+          <h1
+            className={`text-4xl md:text-5xl font-bold mb-4 ${
+              darkMode ? 'text-white' : 'text-gray-900'
+            }`}
+          >
             {getLocalizedContent('title')}
           </h1>
 
-          <div className={`flex flex-wrap items-center gap-4 text-sm ${
-            darkMode ? 'text-gray-400' : 'text-gray-600'
-          }`}>
+          <div
+            className={`flex flex-wrap items-center gap-4 text-sm ${
+              darkMode ? 'text-gray-400' : 'text-gray-600'
+            }`}
+          >
             <div className="flex items-center">
               <CalendarIcon className="h-5 w-5 mr-2" />
               {formatDate(post.published_at)}
@@ -199,12 +205,12 @@ const BlogPostPage = () => {
                     <span
                       key={category.id}
                       className={`px-3 py-1 rounded-full text-xs ${
-                        darkMode 
-                          ? 'bg-gray-800 text-gray-300'
-                          : 'bg-gray-200 text-gray-700'
+                        darkMode ? 'bg-gray-800 text-gray-300' : 'bg-gray-200 text-gray-700'
                       }`}
                     >
-                      {i18n.language === 'uk' && category.name_uk ? category.name_uk : category.name}
+                      {i18n.language === 'uk' && category.name_uk
+                        ? category.name_uk
+                        : category.name}
                     </span>
                   ))}
                 </div>
@@ -214,10 +220,8 @@ const BlogPostPage = () => {
         </header>
 
         {/* Post Content */}
-        <div className={`prose prose-lg max-w-none ${
-          darkMode ? 'prose-invert' : ''
-        }`}>
-          <div 
+        <div className={`prose prose-lg max-w-none ${darkMode ? 'prose-invert' : ''}`}>
+          <div
             ref={contentRef}
             dangerouslySetInnerHTML={{ __html: getLocalizedContent('content') }}
             className={`

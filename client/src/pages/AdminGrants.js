@@ -49,16 +49,18 @@ const AdminGrants = () => {
       const organization = (grant.organization || '').toLowerCase();
       const geoFocus = (grant.geographic_focus || '').toLowerCase();
       const focusAreas = (grant.focus_areas_en || '').toLowerCase();
-      
-      return grantName.includes(term) ||
+
+      return (
+        grantName.includes(term) ||
         organization.includes(term) ||
         geoFocus.includes(term) ||
-        focusAreas.includes(term);
+        focusAreas.includes(term)
+      );
     });
     setFilteredGrants(filtered);
   };
 
-  const handleEdit = (grant) => {
+  const handleEdit = grant => {
     setEditingGrant(grant);
     setShowModal(true);
   };
@@ -68,15 +70,15 @@ const AdminGrants = () => {
     setShowModal(true);
   };
 
-  const handleDelete = async (id) => {
+  const handleDelete = async id => {
     if (!window.confirm('Are you sure you want to delete this grant?')) return;
 
     try {
       const token = localStorage.getItem('authToken'); // Fixed: was looking for 'token' instead of 'authToken'
       await axios.delete(`/.netlify/functions/grants/${id}`, {
         headers: {
-          'Authorization': `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       });
       fetchGrants();
     } catch (error) {
@@ -91,7 +93,7 @@ const AdminGrants = () => {
     setEditingGrant(null);
   };
 
-  const formatDate = (dateString) => {
+  const formatDate = dateString => {
     if (!dateString) return 'N/A';
     try {
       return new Date(dateString).toLocaleDateString();
@@ -126,14 +128,16 @@ const AdminGrants = () => {
             type="text"
             placeholder="Search grants..."
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={e => setSearchTerm(e.target.value)}
             className={`w-full pl-10 pr-4 py-2 rounded-lg border ${
               darkMode
                 ? 'bg-gray-800 border-gray-700 text-white placeholder-gray-400'
                 : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
             } focus:ring-2 focus:ring-blue-500 focus:border-blue-500`}
           />
-          <MagnifyingGlassIcon className={`absolute left-3 top-2.5 h-5 w-5 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`} />
+          <MagnifyingGlassIcon
+            className={`absolute left-3 top-2.5 h-5 w-5 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}
+          />
         </div>
         <button
           onClick={handleAdd}
@@ -150,19 +154,29 @@ const AdminGrants = () => {
           <table className="min-w-full divide-y ${darkMode ? 'divide-gray-700' : 'divide-gray-200'}">
             <thead className={`${darkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
               <tr>
-                <th className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                <th
+                  className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}
+                >
                   Grant Name
                 </th>
-                <th className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                <th
+                  className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}
+                >
                   Organization
                 </th>
-                <th className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                <th
+                  className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}
+                >
                   Deadline
                 </th>
-                <th className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                <th
+                  className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}
+                >
                   Amount
                 </th>
-                <th className={`px-6 py-3 text-right text-xs font-medium uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                <th
+                  className={`px-6 py-3 text-right text-xs font-medium uppercase tracking-wider ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}
+                >
                   Actions
                 </th>
               </tr>
@@ -177,8 +191,11 @@ const AdminGrants = () => {
                   </td>
                 </tr>
               ) : (
-                filteredGrants.map((grant) => (
-                  <tr key={grant.id} className={`${darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-50'}`}>
+                filteredGrants.map(grant => (
+                  <tr
+                    key={grant.id}
+                    className={`${darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-50'}`}
+                  >
                     <td className={`px-6 py-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                       <div>
                         <div className="font-medium">{grant.name || 'Unnamed Grant'}</div>
@@ -194,7 +211,7 @@ const AdminGrants = () => {
                       {formatDate(grant.deadline)}
                     </td>
                     <td className={`px-6 py-4 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                      {grant.grant_size_min && grant.grant_size_max 
+                      {grant.grant_size_min && grant.grant_size_max
                         ? `€${grant.grant_size_min.toLocaleString()} - €${grant.grant_size_max.toLocaleString()}`
                         : 'N/A'}
                     </td>

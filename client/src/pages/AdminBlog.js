@@ -28,15 +28,15 @@ const AdminBlog = () => {
     }
   };
 
-  const handleDelete = async (id) => {
+  const handleDelete = async id => {
     if (!window.confirm('Are you sure you want to delete this post?')) return;
 
     try {
       const token = localStorage.getItem('authToken'); // Fixed: was looking for 'token' instead of 'authToken'
       await axios.delete(`/.netlify/functions/blog/${id}`, {
         headers: {
-          'Authorization': `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       });
       fetchPosts();
     } catch (error) {
@@ -48,18 +48,22 @@ const AdminBlog = () => {
   const handleStatusChange = async (id, newStatus) => {
     try {
       const token = localStorage.getItem('authToken'); // Fixed: was looking for 'token' instead of 'authToken'
-      await axios.put(`/.netlify/functions/blog/${id}`, { status: newStatus }, {
-        headers: {
-          'Authorization': `Bearer ${token}`
+      await axios.put(
+        `/.netlify/functions/blog/${id}`,
+        { status: newStatus },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-      });
+      );
       fetchPosts();
     } catch (error) {
       console.error('Failed to update post status:', error);
     }
   };
 
-  const formatDate = (dateString) => {
+  const formatDate = dateString => {
     if (!dateString) return 'N/A';
     try {
       return new Date(dateString).toLocaleDateString();
@@ -68,9 +72,7 @@ const AdminBlog = () => {
     }
   };
 
-  const filteredPosts = filter === 'all' 
-    ? posts 
-    : posts.filter(post => post.status === filter);
+  const filteredPosts = filter === 'all' ? posts : posts.filter(post => post.status === filter);
 
   if (loading) {
     return (
@@ -99,7 +101,7 @@ const AdminBlog = () => {
             className={`px-4 py-2 rounded-lg ${
               filter === 'all'
                 ? 'bg-blue-600 text-white'
-                : darkMode 
+                : darkMode
                   ? 'bg-gray-800 text-gray-300 hover:bg-gray-700'
                   : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
             } transition-colors`}
@@ -111,7 +113,7 @@ const AdminBlog = () => {
             className={`px-4 py-2 rounded-lg ${
               filter === 'published'
                 ? 'bg-blue-600 text-white'
-                : darkMode 
+                : darkMode
                   ? 'bg-gray-800 text-gray-300 hover:bg-gray-700'
                   : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
             } transition-colors`}
@@ -123,7 +125,7 @@ const AdminBlog = () => {
             className={`px-4 py-2 rounded-lg ${
               filter === 'draft'
                 ? 'bg-blue-600 text-white'
-                : darkMode 
+                : darkMode
                   ? 'bg-gray-800 text-gray-300 hover:bg-gray-700'
                   : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
             } transition-colors`}
@@ -143,13 +145,13 @@ const AdminBlog = () => {
       {/* Posts Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {filteredPosts.length === 0 ? (
-          <div className={`col-span-2 text-center py-12 ${darkMode ? 'bg-gray-800' : 'bg-white'} rounded-lg`}>
-            <p className={`${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-              No blog posts found
-            </p>
+          <div
+            className={`col-span-2 text-center py-12 ${darkMode ? 'bg-gray-800' : 'bg-white'} rounded-lg`}
+          >
+            <p className={`${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>No blog posts found</p>
           </div>
         ) : (
-          filteredPosts.map((post) => (
+          filteredPosts.map(post => (
             <div
               key={post.id}
               className={`${darkMode ? 'bg-gray-800' : 'bg-white'} rounded-lg shadow-md overflow-hidden`}
@@ -163,28 +165,34 @@ const AdminBlog = () => {
               )}
               <div className="p-6">
                 <div className="flex items-start justify-between mb-2">
-                  <h3 className={`text-xl font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  <h3
+                    className={`text-xl font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}
+                  >
                     {post.title}
                   </h3>
-                  <span className={`px-2 py-1 text-xs rounded-full ${
-                    post.status === 'published'
-                      ? 'bg-green-100 text-green-800'
-                      : 'bg-yellow-100 text-yellow-800'
-                  }`}>
+                  <span
+                    className={`px-2 py-1 text-xs rounded-full ${
+                      post.status === 'published'
+                        ? 'bg-green-100 text-green-800'
+                        : 'bg-yellow-100 text-yellow-800'
+                    }`}
+                  >
                     {post.status}
                   </span>
                 </div>
-                
+
                 <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'} mb-4`}>
                   By {post.author_name} • {formatDate(post.created_at)}
                 </p>
-                
+
                 {post.excerpt && (
-                  <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-4 line-clamp-3`}>
+                  <p
+                    className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-4 line-clamp-3`}
+                  >
                     {post.excerpt}
                   </p>
                 )}
-                
+
                 <div className="flex items-center justify-between">
                   <div className="flex gap-2">
                     <Link
@@ -210,7 +218,7 @@ const AdminBlog = () => {
                       </a>
                     )}
                   </div>
-                  
+
                   {post.status === 'draft' ? (
                     <button
                       onClick={() => handleStatusChange(post.id, 'published')}

@@ -2,13 +2,14 @@ const { createClient } = require('@supabase/supabase-js');
 
 // Supabase connection
 const supabaseUrl = 'https://adpddtbsstunjotxaldb.supabase.co';
-const supabaseServiceKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkcGRkdGJzc3R1bmpvdHhhbGRiIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MDUyNDQyNiwiZXhwIjoyMDU2MTAwNDI2fQ.Kk7UCYqa543oR7W0MRPHqytv8LBhbaq_zaMf32n2ZjM';
+const supabaseServiceKey =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkcGRkdGJzc3R1bmpvdHhhbGRiIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MDUyNDQyNiwiZXhwIjoyMDU2MTAwNDI2fQ.Kk7UCYqa543oR7W0MRPHqytv8LBhbaq_zaMf32n2ZjM';
 
 async function createFullHTMLContent() {
   console.log('🔄 Creating full HTML formatted blog content...\n');
-  
+
   const supabase = createClient(supabaseUrl, supabaseServiceKey);
-  
+
   const htmlContent = `<p>Over three years into Russia's full-scale invasion, Ukrainian civil society remains a critical pillar of the nation's resistance, adaptation, and democratic aspirations. This comprehensive report examines the challenges and inspiring resilience demonstrated during May-June 2025.</p>
 
 <div id="key-statistics" class="infographic-container my-8"></div>
@@ -249,23 +250,23 @@ Civil society organizations continue to fill critical gaps in healthcare:</p>
 <hr>
 
 <p><em>This report was compiled based on data from leading Ukrainian civil society organizations, international partners, and verified open sources. For more detailed information on specific initiatives or to support Ukrainian civil society, please visit the <a href="https://civil-society-grants-database.netlify.app" target="_blank">Ukrainian Civil Society Portal</a>.</em></p>`;
-  
+
   try {
     // Update in database
     const { data, error } = await supabase
       .from('blog_posts')
-      .update({ 
+      .update({
         content: htmlContent,
-        updated_at: new Date().toISOString()
+        updated_at: new Date().toISOString(),
       })
       .eq('slug', 'ukraine-civil-society-pulse-may-june-2025')
       .select();
-    
+
     if (error) {
       console.error('❌ Update error:', error);
     } else {
       console.log('✅ Blog post updated with full HTML formatting!');
-      
+
       // Count elements
       const h2Count = (htmlContent.match(/<h2>/g) || []).length;
       const h3Count = (htmlContent.match(/<h3>/g) || []).length;
@@ -274,7 +275,7 @@ Civil society organizations continue to fill critical gaps in healthcare:</p>
       const liCount = (htmlContent.match(/<li>/g) || []).length;
       const strongCount = (htmlContent.match(/<strong>/g) || []).length;
       const linkCount = (htmlContent.match(/<a /g) || []).length;
-      
+
       console.log('\n📊 HTML elements in content:');
       console.log(`  H2 headings: ${h2Count}`);
       console.log(`  H3 headings: ${h3Count}`);
@@ -285,7 +286,7 @@ Civil society organizations continue to fill critical gaps in healthcare:</p>
       console.log(`  Links: ${linkCount}`);
       console.log(`  Infographics: 7`);
     }
-    
+
     console.log('\n🎉 Blog content has been updated with proper HTML formatting!');
     console.log('\nFormatting includes:');
     console.log('✅ All section headings (H2)');
@@ -296,7 +297,6 @@ Civil society organizations continue to fill critical gaps in healthcare:</p>
     console.log('✅ Italic text in footer');
     console.log('✅ Link to the grants portal');
     console.log('✅ All 7 infographic containers with correct IDs');
-    
   } catch (error) {
     console.error('❌ Error:', error);
   }

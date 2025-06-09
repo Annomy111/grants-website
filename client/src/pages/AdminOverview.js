@@ -7,7 +7,7 @@ import {
   DocumentTextIcon,
   NewspaperIcon,
   UserGroupIcon,
-  CalendarIcon
+  CalendarIcon,
 } from '@heroicons/react/24/outline';
 
 const AdminOverview = () => {
@@ -16,7 +16,7 @@ const AdminOverview = () => {
     totalGrants: 0,
     upcomingDeadlines: 0,
     totalPosts: 0,
-    publishedPosts: 0
+    publishedPosts: 0,
   });
   const [recentGrants, setRecentGrants] = useState([]);
   const [recentPosts, setRecentPosts] = useState([]);
@@ -30,7 +30,7 @@ const AdminOverview = () => {
     try {
       // Fetch grants using helper function
       const grants = await fetchGrantsForAdmin();
-      
+
       // Calculate stats
       const today = new Date();
       const upcomingDeadlines = grants.filter(grant => {
@@ -51,7 +51,7 @@ const AdminOverview = () => {
         totalGrants: grants.length,
         upcomingDeadlines,
         totalPosts: posts.length,
-        publishedPosts
+        publishedPosts,
       });
 
       // Set recent items
@@ -63,15 +63,15 @@ const AdminOverview = () => {
       console.error('Error details:', {
         message: error.message,
         response: error.response?.data,
-        status: error.response?.status
+        status: error.response?.status,
       });
-      
+
       // Set empty data instead of showing error to user
       setStats({
         totalGrants: 0,
         upcomingDeadlines: 0,
         totalPosts: 0,
-        publishedPosts: 0
+        publishedPosts: 0,
       });
       setRecentGrants([]);
       setRecentPosts([]);
@@ -79,7 +79,7 @@ const AdminOverview = () => {
     }
   };
 
-  const formatDate = (dateString) => {
+  const formatDate = dateString => {
     if (!dateString) return 'N/A';
     try {
       return new Date(dateString).toLocaleDateString();
@@ -107,7 +107,9 @@ const AdminOverview = () => {
         <div className={`${darkMode ? 'bg-gray-800' : 'bg-white'} rounded-lg shadow p-6`}>
           <div className="flex items-center">
             <div className={`p-3 rounded-full ${darkMode ? 'bg-blue-900' : 'bg-blue-100'}`}>
-              <DocumentTextIcon className={`h-8 w-8 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+              <DocumentTextIcon
+                className={`h-8 w-8 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}
+              />
             </div>
             <div className="ml-4">
               <h2 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
@@ -121,13 +123,17 @@ const AdminOverview = () => {
         <div className={`${darkMode ? 'bg-gray-800' : 'bg-white'} rounded-lg shadow p-6`}>
           <div className="flex items-center">
             <div className={`p-3 rounded-full ${darkMode ? 'bg-yellow-900' : 'bg-yellow-100'}`}>
-              <CalendarIcon className={`h-8 w-8 ${darkMode ? 'text-yellow-400' : 'text-yellow-600'}`} />
+              <CalendarIcon
+                className={`h-8 w-8 ${darkMode ? 'text-yellow-400' : 'text-yellow-600'}`}
+              />
             </div>
             <div className="ml-4">
               <h2 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                 {stats.upcomingDeadlines}
               </h2>
-              <p className={`${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>Upcoming Deadlines</p>
+              <p className={`${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                Upcoming Deadlines
+              </p>
             </div>
           </div>
         </div>
@@ -135,7 +141,9 @@ const AdminOverview = () => {
         <div className={`${darkMode ? 'bg-gray-800' : 'bg-white'} rounded-lg shadow p-6`}>
           <div className="flex items-center">
             <div className={`p-3 rounded-full ${darkMode ? 'bg-green-900' : 'bg-green-100'}`}>
-              <NewspaperIcon className={`h-8 w-8 ${darkMode ? 'text-green-400' : 'text-green-600'}`} />
+              <NewspaperIcon
+                className={`h-8 w-8 ${darkMode ? 'text-green-400' : 'text-green-600'}`}
+              />
             </div>
             <div className="ml-4">
               <h2 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
@@ -149,7 +157,9 @@ const AdminOverview = () => {
         <div className={`${darkMode ? 'bg-gray-800' : 'bg-white'} rounded-lg shadow p-6`}>
           <div className="flex items-center">
             <div className={`p-3 rounded-full ${darkMode ? 'bg-purple-900' : 'bg-purple-100'}`}>
-              <UserGroupIcon className={`h-8 w-8 ${darkMode ? 'text-purple-400' : 'text-purple-600'}`} />
+              <UserGroupIcon
+                className={`h-8 w-8 ${darkMode ? 'text-purple-400' : 'text-purple-600'}`}
+              />
             </div>
             <div className="ml-4">
               <h2 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
@@ -185,7 +195,7 @@ const AdminOverview = () => {
               </p>
             ) : (
               <div className="space-y-4">
-                {recentGrants.map((grant) => (
+                {recentGrants.map(grant => (
                   <div
                     key={grant.id}
                     className={`pb-4 border-b ${darkMode ? 'border-gray-700' : 'border-gray-200'} last:border-0 last:pb-0`}
@@ -228,7 +238,7 @@ const AdminOverview = () => {
               </p>
             ) : (
               <div className="space-y-4">
-                {recentPosts.map((post) => (
+                {recentPosts.map(post => (
                   <div
                     key={post.id}
                     className={`pb-4 border-b ${darkMode ? 'border-gray-700' : 'border-gray-200'} last:border-0 last:pb-0`}
