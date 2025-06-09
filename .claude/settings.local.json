@@ -60,7 +60,8 @@
       "Bash(npm run test:supabase:*)",
       "Bash(test -f .env)",
       "Bash(diff:*)",
-      "Bash(git reset:*)"
+      "Bash(git reset:*)",
+      "Bash(touch:*)"
     ],
     "deny": []
   },

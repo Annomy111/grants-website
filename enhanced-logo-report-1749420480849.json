@@ -1,0 +1,72 @@
+{
+  "discovery": {
+    "urlsFound": 212
+  },
+  "scraping": {
+    "organizationsScraped": 7
+  },
+  "download": {
+    "logosDownloaded": 8
+  },
+  "optimization": {
+    "logosOptimized": 8
+  },
+  "integration": {
+    "timestamp": "2025-06-08T22:08:00.847Z",
+    "summary": {
+      "totalLogosUpdated": 7,
+      "totalMappings": 101,
+      "successRate": "29%"
+    },
+    "details": [
+      {
+        "organization": "Association for Women's Rights in Development (AWID)",
+        "file": "association-for-women-s-rights-in-development-awid.png",
+        "source": "scraped",
+        "size": "12.52 KB"
+      },
+      {
+        "organization": "Austrian Development Agency (ADA)",
+        "file": "austrian-development-agency-ada.png",
+        "source": "scraped",
+        "size": "717.17 KB"
+      },
+      {
+        "organization": "Danish Embassy/Danish Government",
+        "file": "danish-embassy-danish-government.ashx",
+        "source": "scraped",
+        "size": "10.63 KB"
+      },
+      {
+        "organization": "Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ) GmbH",
+        "file": "deutsche-gesellschaft-f-r-internationale-zusammenarbeit-giz-gmbh.jpg",
+        "source": "scraped",
+        "size": "54.47 KB"
+      },
+      {
+        "organization": "Enabel - Belgian Development Agency",
+        "file": "enabel-belgian-development-agency.jpg",
+        "source": "scraped",
+        "size": "557.58 KB"
+      },
+      {
+        "organization": "European Endowment for Democracy (EED)",
+        "file": "european-endowment-for-democracy-eed.png",
+        "source": "scraped",
+        "size": "10.94 KB"
+      },
+      {
+        "organization": "Food and Agriculture Organization (FAO) Ukraine",
+        "file": "food-and-agriculture-organization-fao-ukraine.jpg",
+        "source": "scraped",
+        "size": "71.25 KB"
+      },
+      {
+        "organization": "International Organization for Migration Ukraine",
+        "file": "international-organization-for-migration-ukraine.svg",
+        "source": "specific_pattern",
+        "size": "3.40 KB"
+      }
+    ]
+  }
+}
