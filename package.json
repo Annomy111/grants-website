@@ -15,7 +15,10 @@
     "test:supabase": "node scripts/test-supabase-connection.js",
     "setup:admin-users": "node scripts/setup-admin-users.js",
     "cleanup": "./scripts/cleanup-project.sh",
-    "verify:db": "node scripts/database-verification-agents.js"
+    "verify:db": "node scripts/database-verification-agents.js",
+    "branch:feature": "./scripts/create-feature-branch.sh",
+    "branch:bugfix": "git checkout develop && git pull && git checkout -b bugfix/",
+    "branch:hotfix": "git checkout main && git pull && git checkout -b hotfix/"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.10",

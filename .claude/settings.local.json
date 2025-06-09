@@ -62,7 +62,8 @@
       "Bash(diff:*)",
       "Bash(git reset:*)",
       "Bash(touch:*)",
-      "Bash(./scripts/cleanup-project.sh:*)"
+      "Bash(./scripts/cleanup-project.sh:*)",
+      "Bash(git checkout:*)"
     ],
     "deny": []
   },
