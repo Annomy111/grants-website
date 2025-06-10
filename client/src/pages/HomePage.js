@@ -219,7 +219,7 @@ const HomePage = () => {
               {t('home.stats.title', 'Making Impact Through Funding')}
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="stats-grid grid grid-cols-1 md:grid-cols-3 gap-8">
             <div
               className={`text-center p-8 rounded-2xl ${darkMode ? 'bg-gray-700' : 'bg-gray-50'}`}
             >
@@ -420,7 +420,7 @@ const HomePage = () => {
               </div>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="featured-grants-grid grid grid-cols-1 md:grid-cols-3 gap-8">
               {featuredGrants.map((grant, index) => {
                 console.log(`Rendering grant ${index}:`, grant?.grant_name || grant?.['Grant Name'] || 'UNDEFINED', grant?.funding_organization || grant?.['Funding Organization'] || 'UNDEFINED');
                 
