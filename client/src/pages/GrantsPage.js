@@ -144,6 +144,8 @@ const GrantsPage = () => {
 
         setGrants(grantsData);
         setFilters(filtersData);
+        // Initialize filteredGrants with all grants when first loaded
+        setFilteredGrants(grantsData);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -248,36 +250,41 @@ const GrantsPage = () => {
 
   // Sort grants based on criteria
   const sortGrants = useCallback((grantsToSort, sortCriteria) => {
-    switch (sortCriteria) {
+    try {
+      switch (sortCriteria) {
       case 'nameAsc':
         return [...grantsToSort].sort((a, b) =>
-          (a['Grant Name'] || '').localeCompare(b['Grant Name'] || '')
+          ((a.grant_name || a['Grant Name']) || '').localeCompare((b.grant_name || b['Grant Name']) || '')
         );
       case 'nameDesc':
         return [...grantsToSort].sort((a, b) =>
-          (b['Grant Name'] || '').localeCompare(a['Grant Name'] || '')
+          ((b.grant_name || b['Grant Name']) || '').localeCompare((a.grant_name || a['Grant Name']) || '')
         );
       case 'deadlineAsc':
         return [...grantsToSort].sort((a, b) => {
-          const dateA = new Date(a['Application Deadline'] || '9999-12-31');
-          const dateB = new Date(b['Application Deadline'] || '9999-12-31');
+          const dateA = new Date((a.application_deadline || a['Application Deadline']) || '9999-12-31');
+          const dateB = new Date((b.application_deadline || b['Application Deadline']) || '9999-12-31');
           return dateA - dateB;
         });
       case 'deadlineDesc':
         return [...grantsToSort].sort((a, b) => {
-          const dateA = new Date(a['Application Deadline'] || '0000-01-01');
-          const dateB = new Date(b['Application Deadline'] || '0000-01-01');
+          const dateA = new Date((a.application_deadline || a['Application Deadline']) || '0000-01-01');
+          const dateB = new Date((b.application_deadline || b['Application Deadline']) || '0000-01-01');
           return dateB - dateA;
         });
       case 'amountAsc':
       case 'amountDesc':
         return [...grantsToSort].sort((a, b) => {
-          const amountA = extractAmount(a['Grant Amount'] || '');
-          const amountB = extractAmount(b['Grant Amount'] || '');
+          const amountA = extractAmount((a.grant_amount || a['Grant Amount']) || '');
+          const amountB = extractAmount((b.grant_amount || b['Grant Amount']) || '');
           return sortCriteria === 'amountAsc' ? amountA - amountB : amountB - amountA;
         });
       default:
         return grantsToSort;
+      }
+    } catch (error) {
+      console.error('Error in sortGrants:', error);
+      return grantsToSort; // Return unsorted array on error
     }
   }, []);
 
@@ -772,7 +779,8 @@ const GrantsPage = () => {
                           </div>
 
                           {/* Original Status Badge - now hidden as we use GrantDeadlineIndicator */}
-                          <div className="hidden"
+                          <div className="hidden">
+                            <div
                               className={`ml-4 px-3 py-1 rounded-full text-xs font-semibold ${
                                 isExpired
                                   ? darkMode

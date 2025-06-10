@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 /**
  * Debounce utility function to limit the rate at which a function can fire
  * @param {Function} func - The function to debounce
@@ -24,7 +26,6 @@ export function debounce(func, wait) {
  * @param {number} delay - The delay in milliseconds
  * @returns {any} - The debounced value
  */
-import { useState, useEffect } from 'react';
 
 export function useDebounce(value, delay) {
   const [debouncedValue, setDebouncedValue] = useState(value);

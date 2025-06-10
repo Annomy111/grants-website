@@ -6,10 +6,24 @@ import { useTranslation } from 'react-i18next';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import GrantsChatWidget from './components/GrantsChatWidget';
+import ProtectedRoute from './components/ProtectedRoute';
+
+// Import Contexts
+import { LanguageContext } from './context/LanguageContext';
+import { ThemeProvider } from './context/ThemeContext';
+import { AuthProvider } from './context/AuthContext';
+
+// Import styles
+import './App.css';
+import './styles/mobile-optimizations.css';
+import './styles/video-hero.css';
+
+// Import utilities
+import { debugEnv } from './utils/debugEnv';
 
 // Lazy load pages for code splitting
 const HomePage = lazy(() => import('./pages/HomePage'));
-const GrantsPage = lazy(() => import('./pages/GrantsPageOptimized')); // Use optimized version
+const GrantsPage = lazy(() => import('./pages/GrantsPage'));
 const GrantDetail = lazy(() => import('./pages/GrantDetail'));
 const AdminPage = lazy(() => import('./pages/AdminPage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
@@ -24,24 +38,10 @@ const AdminBlog = lazy(() => import('./pages/AdminBlog'));
 const AdminBlogEditor = lazy(() => import('./pages/AdminBlogEditorSimple')); // Using simplified version temporarily
 const AdminProfile = lazy(() => import('./pages/AdminProfile'));
 const AdminAnalytics = lazy(() => import('./pages/AdminAnalytics'));
-import ProtectedRoute from './components/ProtectedRoute';
 
 // Lazy load Blog Components
 const BlogPage = lazy(() => import('./pages/BlogPage'));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
-
-// Import Contexts
-import { LanguageContext } from './context/LanguageContext';
-import { ThemeProvider } from './context/ThemeContext';
-import { AuthProvider } from './context/AuthContext';
-
-// Import styles
-import './App.css';
-import './styles/mobile-optimizations.css';
-import './styles/video-hero.css';
-
-// Import utilities
-import { debugEnv } from './utils/debugEnv';
 
 // Debug environment on load
 debugEnv();
