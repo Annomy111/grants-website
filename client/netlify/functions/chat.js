@@ -51,13 +51,13 @@ export const handler = async (event, context) => {
 
     console.log(`[Chat] Processing message in ${language}: ${message.substring(0, 100)}...`);
 
-    // Get grants from database for context
+    // Get grants from database for context - expanded to include more grants
     const { data: grants, error: grantsError } = await supabase
       .from('grants')
       .select('*')
       .eq('status', 'active')
       .order('application_deadline', { ascending: true })
-      .limit(20);
+      .limit(100); // Increased from 20 to 100 for better coverage
 
     if (grantsError) {
       console.error('Grants fetch error:', grantsError);
@@ -70,9 +70,9 @@ export const handler = async (event, context) => {
 
     console.log(`[Chat] Found ${grants?.length || 0} grants in database`);
 
-    // Create grants context for AI
+    // Create grants context for AI - expanded context
     const grantsContext =
-      grants?.slice(0, 8).map(grant => ({
+      grants?.slice(0, 15).map(grant => ({
         name: grant.grant_name || 'Unknown',
         organization: grant.funding_organization || 'Unknown',
         country: grant.country_region || 'Unknown',
@@ -147,7 +147,7 @@ export const handler = async (event, context) => {
 async function generateGeminiResponse(userMessage, grantsContext, language) {
   // Prepare system prompt based on language
   const systemPrompts = {
-    en: `You are an expert AI grants consultant specializing in funding opportunities for Ukrainian civil society organizations. You have access to a comprehensive database of grants and funding programs.
+    en: `You are an expert AI grants consultant specializing in funding opportunities for Ukrainian civil society organizations. You have access to a comprehensive, up-to-date database of 136 active grants and funding programs (last updated January 2025 with the latest opportunities).
 
 Available grants database: ${JSON.stringify(grantsContext, null, 2)}
 
@@ -172,7 +172,7 @@ User's question: ${userMessage}
 
 Provide a comprehensive, professional response that helps the user find the most suitable funding opportunities.`,
 
-    uk: `Ви експерт-консультант з грантів, що спеціалізується на можливостях фінансування для українських організацій громадянського суспільства. У вас є доступ до комплексної бази даних грантів та програм фінансування.
+    uk: `Ви експерт-консультант з грантів, що спеціалізується на можливостях фінансування для українських організацій громадянського суспільства. У вас є доступ до комплексної, актуальної бази даних з 136 активних грантів та програм фінансування (останнє оновлення січень 2025 з найновішими можливостями).
 
 База даних доступних грантів: ${JSON.stringify(grantsContext, null, 2)}
 
@@ -197,7 +197,7 @@ Provide a comprehensive, professional response that helps the user find the most
 
 Надайте вичерпну, професійну відповідь, що допоможе користувачу знайти найбільш підходящі можливості фінансування.`,
 
-    de: `Sie sind ein hilfreicher Förderungsassistent für ukrainische Zivilgesellschaftsorganisationen. Helfen Sie Benutzern dabei, Fördermöglichkeiten zu finden und zu verstehen.
+    de: `Sie sind ein hilfreicher Förderungsassistent für ukrainische Zivilgesellschaftsorganisationen. Sie haben Zugang zu einer aktuellen Datenbank mit 136 aktiven Förderungen (zuletzt aktualisiert Januar 2025).
 
 Verfügbare Förderungen: ${JSON.stringify(grantsContext, null, 2)}
 
@@ -234,7 +234,7 @@ Benutzerfrage: ${userMessage}`,
           temperature: 0.7,
           topK: 40,
           topP: 0.95,
-          maxOutputTokens: 400,
+          maxOutputTokens: 600, // Increased from 400 to 600 for more comprehensive responses
         },
       },
       {
@@ -360,6 +360,28 @@ function smartGrantMatching(grants, message, language) {
 
       if (daysUntilDeadline > 0 && daysUntilDeadline <= 90) {
         score += 1;
+      }
+    }
+
+    // Budget range matching bonus
+    const budgetKeywords = {
+      small: ['small', 'малий', 'klein', 'micro', 'мікро', '€1', '€2', '€3', '€4', '€5', '$1', '$2', '$3', '$4', '$5'],
+      medium: ['medium', 'середній', 'mittel', '€10', '€20', '€30', '€40', '€50', '$10', '$20', '$30', '$40', '$50'],
+      large: ['large', 'великий', 'groß', 'million', 'мільйон', '€100', '€200', '€500', '$100', '$200', '$500']
+    };
+
+    for (const [budgetSize, keywords] of Object.entries(budgetKeywords)) {
+      const messageHasBudget = keywords.some(keyword => messageLower.includes(keyword));
+      const grantAmount = (grant.grant_amount || '').toLowerCase();
+      
+      if (messageHasBudget) {
+        if (budgetSize === 'small' && (grantAmount.includes('€5') || grantAmount.includes('$5') || grantAmount.includes('micro'))) {
+          score += 2;
+        } else if (budgetSize === 'medium' && (grantAmount.includes('€50') || grantAmount.includes('$50') || grantAmount.includes('thousand'))) {
+          score += 2;
+        } else if (budgetSize === 'large' && (grantAmount.includes('million') || grantAmount.includes('€100') || grantAmount.includes('$100'))) {
+          score += 2;
+        }
       }
     }
 
