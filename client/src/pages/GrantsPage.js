@@ -715,14 +715,14 @@ const GrantsPage = () => {
                         <div className="p-6">
                           <div className="flex justify-between items-start mb-4">
                             <div className="flex items-start space-x-4 flex-1">
-                              {getOrganizationLogo(
+                              {(grant.logo_url || getOrganizationLogo(
                                 grant.funding_organization || grant['Funding Organization']
-                              ) && (
+                              )) && (
                                 <div
                                   className={`flex-shrink-0 w-14 h-14 rounded-xl overflow-hidden ${darkMode ? 'bg-gray-700/50' : 'bg-gray-100'} p-2`}
                                 >
                                   <img
-                                    src={getOrganizationLogo(
+                                    src={grant.logo_url || getOrganizationLogo(
                                       grant.funding_organization || grant['Funding Organization']
                                     )}
                                     alt={`${grant.funding_organization || grant['Funding Organization']} logo`}
