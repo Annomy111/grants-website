@@ -48,45 +48,77 @@ const HomePage = () => {
           }
         }
 
-        // Get featured grants (select specific high-value ones)
+        // Get featured grants (select specific high-value ones using correct field names)
         const featuredNames = [
-          'Swedish-Norwegian Civil Society Resilience Project',
-          'USAID Civil Society Sectoral Support',
           'EU Civil Society Organizations Call 2025',
+          'German Marshall Fund (GMF) Ukraine: Relief, Resilience, Recovery (U3R) Program',
+          'National Endowment for Democracy (NED) Regular Grants',
+          'British Council - Connections Through Culture Grants 2025',
         ];
 
-        const featured = grants.filter(g => featuredNames.includes(g['Grant Name']));
+        // Check both field name formats for compatibility
+        const featured = grants.filter(g => 
+          featuredNames.includes(g.grant_name) || featuredNames.includes(g['Grant Name'])
+        );
 
-        // If not enough featured, add random ones
+        console.log('Featured grants found:', featured.length, 'out of', featuredNames.length, 'expected');
+
+        // If not enough featured, add high-value ones
         if (featured.length < 3) {
           const remaining = grants
             .filter(g => !featured.includes(g))
-            .sort(() => 0.5 - Math.random())
+            .filter(g => {
+              // Prioritize grants with higher amounts or from major organizations
+              const amount = g.grant_amount || g['Grant Amount'] || '';
+              const org = g.funding_organization || g['Funding Organization'] || '';
+              return amount.includes('€') && (
+                amount.includes('million') || 
+                org.includes('European Union') ||
+                org.includes('World Bank') ||
+                org.includes('United Nations')
+              );
+            })
             .slice(0, 3 - featured.length);
           featured.push(...remaining);
         }
 
+        // Final fallback to any grants if still not enough
+        if (featured.length < 3) {
+          const anyRemaining = grants
+            .filter(g => !featured.includes(g))
+            .slice(0, 3 - featured.length);
+          featured.push(...anyRemaining);
+        }
+
         setFeaturedGrants(featured);
 
-        // Get grants with 2025 deadlines
+        // Get grants with upcoming deadlines (check both field name formats)
         const today = new Date();
         const upcomingDeadlineGrants = grants
           .filter(grant => {
-            const deadline = grant['Application Deadline'];
+            const deadline = grant.application_deadline || grant['Application Deadline'];
             if (!deadline) return false;
 
-            // Check for 2025 dates
-            if (deadline.includes('2025')) {
+            // Check for 2025-2026 dates or rolling deadlines
+            if (deadline.includes('2025') || deadline.includes('2026') || deadline.toLowerCase().includes('rolling')) {
               try {
+                // For actual dates, check if they're in the future
                 const deadlineDate = new Date(deadline);
-                return !isNaN(deadlineDate.getTime()) && deadlineDate > today;
+                if (!isNaN(deadlineDate.getTime())) {
+                  return deadlineDate > today;
+                } else {
+                  // Include rolling deadlines and text-based deadlines
+                  return true;
+                }
               } catch (e) {
-                return true; // Include if it mentions 2025
+                return true; // Include if it mentions future years
               }
             }
             return false;
           })
           .slice(0, 5);
+
+        console.log('Found', upcomingDeadlineGrants.length, 'upcoming deadline grants');
 
         setUpcomingGrants(upcomingDeadlineGrants);
         setLoading(false);
