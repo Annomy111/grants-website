@@ -208,11 +208,18 @@ const GrantsPage = () => {
 
   const formatDate = dateString => {
     try {
+      if (!dateString) return 'No deadline specified';
+      
+      // Handle non-date strings like "Annual calls", "Rolling deadlines", etc.
+      if (typeof dateString === 'string' && !dateString.match(/^\d{4}-\d{2}-\d{2}/)) {
+        return dateString;
+      }
+      
       const date = new Date(dateString);
       if (isNaN(date.getTime())) return dateString;
       return format(date, 'MMMM d, yyyy');
     } catch (error) {
-      return dateString;
+      return dateString || 'No deadline specified';
     }
   };
 
@@ -244,8 +251,8 @@ const GrantsPage = () => {
       .replace(/\s+/g, '-')
       .replace(/^-+|-+$/g, '');
 
-    const logoData = organizationLogos[slug];
-    return logoData?.hasLogo ? logoData.logo : null;
+    // organizationLogos is a flat object with logo paths directly
+    return organizationLogos[slug] || null;
   };
 
   // Sort grants based on criteria
@@ -398,6 +405,12 @@ const GrantsPage = () => {
   // Calculate days until deadline
   const calculateDaysRemaining = deadlineString => {
     if (!deadlineString) return null;
+    
+    // Handle non-date strings - return null so they're treated as "rolling" deadlines
+    if (typeof deadlineString === 'string' && !deadlineString.match(/^\d{4}-\d{2}-\d{2}/)) {
+      return null;
+    }
+    
     const today = new Date();
     const deadline = new Date(deadlineString);
     if (isNaN(deadline.getTime())) return null;

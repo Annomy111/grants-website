@@ -6,6 +6,12 @@ const GrantDeadlineIndicator = ({ deadline, className = '' }) => {
 
   const calculateDaysRemaining = (deadlineString) => {
     if (!deadlineString) return null;
+    
+    // Handle non-date strings like "Annual calls", "Rolling deadlines", etc.
+    if (typeof deadlineString === 'string' && !deadlineString.match(/^\d{4}-\d{2}-\d{2}/)) {
+      return null;
+    }
+    
     const today = new Date();
     const deadlineDate = new Date(deadlineString);
     if (isNaN(deadlineDate.getTime())) return null;
@@ -66,8 +72,12 @@ const GrantDeadlineIndicator = ({ deadline, className = '' }) => {
   };
 
   const formatDeadlineText = (days, urgencyLevel) => {
-    if (urgencyLevel === 'unknown' || deadline === 'Rolling') {
-      return deadline || 'No deadline';
+    if (urgencyLevel === 'unknown') {
+      // For non-date deadlines, show the original text
+      if (deadline && typeof deadline === 'string' && !deadline.match(/^\d{4}-\d{2}-\d{2}/)) {
+        return deadline;
+      }
+      return 'No deadline';
     }
     if (urgencyLevel === 'expired') {
       return `Expired ${Math.abs(days)} days ago`;
@@ -135,6 +145,12 @@ export const CompactDeadlineIndicator = ({ deadline }) => {
 
   const calculateDaysRemaining = (deadlineString) => {
     if (!deadlineString) return null;
+    
+    // Handle non-date strings like "Annual calls", "Rolling deadlines", etc.
+    if (typeof deadlineString === 'string' && !deadlineString.match(/^\d{4}-\d{2}-\d{2}/)) {
+      return null;
+    }
+    
     const today = new Date();
     const deadlineDate = new Date(deadlineString);
     if (isNaN(deadlineDate.getTime())) return null;
@@ -143,10 +159,14 @@ export const CompactDeadlineIndicator = ({ deadline }) => {
 
   const days = calculateDaysRemaining(deadline);
   
-  if (deadline === 'Rolling' || days === null) {
+  if (days === null) {
+    // Show the actual deadline text for non-date deadlines
+    const displayText = deadline && typeof deadline === 'string' && !deadline.match(/^\d{4}-\d{2}-\d{2}/) 
+      ? deadline 
+      : 'Rolling deadline';
     return (
       <span className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-        Rolling deadline
+        {displayText}
       </span>
     );
   }
