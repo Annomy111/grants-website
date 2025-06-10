@@ -61,8 +61,6 @@ const HomePage = () => {
           featuredNames.includes(g.grant_name) || featuredNames.includes(g['Grant Name'])
         );
 
-        console.log('Featured grants found:', featured.length, 'out of', featuredNames.length, 'expected');
-
         // If not enough featured, add high-value ones
         if (featured.length < 3) {
           const remaining = grants
@@ -118,7 +116,6 @@ const HomePage = () => {
           })
           .slice(0, 5);
 
-        console.log('Found', upcomingDeadlineGrants.length, 'upcoming deadline grants');
 
         setUpcomingGrants(upcomingDeadlineGrants);
         setLoading(false);
