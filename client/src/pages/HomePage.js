@@ -180,7 +180,7 @@ const HomePage = () => {
     <>
       <SEOHead 
         title={t('home.pageTitle', 'Ukraine Civil Society Grants - Find Funding Opportunities')}
-        description={t('home.metaDescription', 'Discover 107+ grants worth €63M+ for civil society organizations in Ukraine. Find international funding opportunities, EU grants, and humanitarian aid.')}
+        description={t('home.metaDescription', 'Discover 136 grants worth €75M+ for civil society organizations in Ukraine. Find international funding opportunities, EU grants, and humanitarian aid.')}
         keywords={t('home.keywords', 'ukraine grants, civil society funding, NGO grants ukraine, EU funding ukraine, humanitarian grants, international aid ukraine')}
       />
       <StructuredData type="website" />
@@ -196,7 +196,7 @@ const HomePage = () => {
         }}
         subtitle={t(
           'home.hero.subtitle',
-          'Connecting Ukrainian civil society organizations with €63M+ in funding opportunities'
+          'Connecting Ukrainian civil society organizations with €75M+ in funding opportunities'
         )}
         primaryCTA={{
           text: t('home.hero.exploreGrants', 'Explore Grants'),
@@ -260,135 +260,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Enhanced Stats Section */}
-      <section className="py-20" aria-label="Detailed statistics">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Total Grants */}
-            <div
-              className={`relative overflow-hidden rounded-3xl p-8 ${
-                darkMode
-                  ? 'bg-gradient-to-br from-gray-800 to-gray-700'
-                  : 'bg-gradient-to-br from-white to-gray-50'
-              } shadow-xl border ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}
-            >
-              <div className="relative z-10">
-                <div
-                  className={`inline-flex p-3 rounded-2xl ${darkMode ? 'bg-blue-900/30' : 'bg-blue-100'} mb-4`}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className={`h-8 w-8 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-                    />
-                  </svg>
-                </div>
-                <h3
-                  className={`text-5xl font-bold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}
-                >
-                  {stats.totalGrants}
-                </h3>
-                <p className={`text-lg ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                  Available Grants
-                </p>
-              </div>
-              <div
-                className={`absolute -bottom-8 -right-8 w-32 h-32 rounded-full ${darkMode ? 'bg-blue-900/20' : 'bg-blue-100/30'} blur-2xl`}
-              ></div>
-            </div>
-
-            {/* Active Opportunities */}
-            <div
-              className={`relative overflow-hidden rounded-3xl p-8 ${
-                darkMode
-                  ? 'bg-gradient-to-br from-gray-800 to-gray-700'
-                  : 'bg-gradient-to-br from-white to-gray-50'
-              } shadow-xl border ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}
-            >
-              <div className="relative z-10">
-                <div
-                  className={`inline-flex p-3 rounded-2xl ${darkMode ? 'bg-green-900/30' : 'bg-green-100'} mb-4`}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className={`h-8 w-8 ${darkMode ? 'text-green-400' : 'text-green-600'}`}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <h3
-                  className={`text-5xl font-bold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}
-                >
-                  {stats.upcomingDeadlines}
-                </h3>
-                <p className={`text-lg ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                  Active Opportunities
-                </p>
-              </div>
-              <div
-                className={`absolute -bottom-8 -right-8 w-32 h-32 rounded-full ${darkMode ? 'bg-green-900/20' : 'bg-green-100/30'} blur-2xl`}
-              ></div>
-            </div>
-
-            {/* Total Funding */}
-            <div
-              className={`relative overflow-hidden rounded-3xl p-8 ${
-                darkMode
-                  ? 'bg-gradient-to-br from-gray-800 to-gray-700'
-                  : 'bg-gradient-to-br from-white to-gray-50'
-              } shadow-xl border ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}
-            >
-              <div className="relative z-10">
-                <div
-                  className={`inline-flex p-3 rounded-2xl ${darkMode ? 'bg-purple-900/30' : 'bg-purple-100'} mb-4`}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className={`h-8 w-8 ${darkMode ? 'text-purple-400' : 'text-purple-600'}`}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <h3
-                  className={`text-5xl font-bold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}
-                >
-                  €{stats.totalFunding}M+
-                </h3>
-                <p className={`text-lg ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                  Total Funding
-                </p>
-              </div>
-              <div
-                className={`absolute -bottom-8 -right-8 w-32 h-32 rounded-full ${darkMode ? 'bg-purple-900/20' : 'bg-purple-100/30'} blur-2xl`}
-              ></div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Featured Grants - Minimal cards */}
       <section className="py-20" aria-label="Featured grant opportunities">
