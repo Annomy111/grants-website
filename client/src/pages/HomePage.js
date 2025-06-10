@@ -32,6 +32,7 @@ const HomePage = () => {
           // First try to load from API endpoint
           const response = await axios.get('/.netlify/functions/grants');
           grants = response.data;
+          console.log('HomePage: Loaded grants from API:', grants.length);
         } catch (apiError) {
           // Fallback to static JSON file with language support
           const currentLanguage = i18n.language;
@@ -88,6 +89,7 @@ const HomePage = () => {
           featured.push(...anyRemaining);
         }
 
+        console.log('HomePage: Setting featured grants:', featured.length, featured.map(g => g.grant_name || g['Grant Name']));
         setFeaturedGrants(featured);
 
         // Get grants with upcoming deadlines (check both field name formats)
@@ -395,7 +397,9 @@ const HomePage = () => {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {featuredGrants.map((grant, index) => (
+              {featuredGrants.map((grant, index) => {
+                console.log(`Rendering grant ${index}:`, grant.grant_name || grant['Grant Name'], grant.funding_organization || grant['Funding Organization']);
+                return (
                 <div
                   key={index}
                   className={`group relative rounded-3xl overflow-hidden ${
@@ -477,7 +481,8 @@ const HomePage = () => {
                     </Link>
                   </div>
                 </div>
-              ))}
+                );
+              })}
             </div>
           )}
 
