@@ -113,8 +113,6 @@ const GrantsChatWidget = () => {
 
         setIsTyping(false);
 
-        console.log('Chat response received:', response.data);
-
         const botMessage = {
           id: Date.now() + 1,
           type: 'bot',
@@ -124,13 +122,7 @@ const GrantsChatWidget = () => {
           timestamp: new Date(),
         };
 
-        console.log('Bot message created:', botMessage);
-
-        setMessages(prev => {
-          const newMessages = [...prev, botMessage];
-          console.log('Updated messages:', newMessages);
-          return newMessages;
-        });
+        setMessages(prev => [...prev, botMessage]);
       } catch (error) {
         setIsTyping(false);
         console.error('Chat error:', error);
@@ -241,7 +233,6 @@ const GrantsChatWidget = () => {
                 : 'bg-gradient-to-b from-gray-50/50 to-white/50'
             } backdrop-blur-sm`}
           >
-            {console.log('Rendering messages:', messages)}
             {messages.map(message => (
               <div
                 key={message.id}
