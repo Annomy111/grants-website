@@ -19,7 +19,17 @@
     "updateMessage": "Last updated:",
     "featuredGrants": "Featured Grants",
     "upcomingDeadlines": "Upcoming Deadlines",
-    "viewAll": "View All Grants"
+    "viewAll": "View All Grants",
+    "hero": {
+      "title1": "Civil Society",
+      "title2": "Grants Platform",
+      "subtitle": "Connecting Ukrainian civil society organizations with €75M+ in funding opportunities",
+      "exploreGrants": "Explore Grants",
+      "learnMore": "Learn More"
+    },
+    "stats": {
+      "title": "Making Impact Through Funding"
+    }
   },
   "grants": {
     "search": "Search Grants",
