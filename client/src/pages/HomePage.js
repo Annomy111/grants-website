@@ -57,10 +57,15 @@ const HomePage = () => {
           'British Council - Connections Through Culture Grants 2025',
         ];
 
+        console.log('Total grants loaded:', grants.length);
+        console.log('Sample grant fields:', grants[0] ? Object.keys(grants[0]) : 'No grants');
+
         // Check both field name formats for compatibility
         const featured = grants.filter(g => 
           featuredNames.includes(g.grant_name) || featuredNames.includes(g['Grant Name'])
         );
+
+        console.log('Featured grants found by name:', featured.length);
 
         // If not enough featured, add high-value ones
         if (featured.length < 3) {
@@ -79,6 +84,7 @@ const HomePage = () => {
             })
             .slice(0, 3 - featured.length);
           featured.push(...remaining);
+          console.log('Added high-value grants:', remaining.length);
         }
 
         // Final fallback to any grants if still not enough
@@ -87,7 +93,17 @@ const HomePage = () => {
             .filter(g => !featured.includes(g))
             .slice(0, 3 - featured.length);
           featured.push(...anyRemaining);
+          console.log('Added fallback grants:', anyRemaining.length);
         }
+
+        // Absolute fallback - ensure we always have 3 grants
+        if (featured.length === 0 && grants.length > 0) {
+          featured.push(...grants.slice(0, 3));
+          console.log('Emergency fallback: using first 3 grants');
+        }
+
+        console.log('Final featured grants count:', featured.length);
+        console.log('Featured grants:', featured.map(g => g.grant_name || g['Grant Name'] || 'Unknown'));
 
         console.log('HomePage: Setting featured grants:', featured.length, featured.map(g => g.grant_name || g['Grant Name']));
         
