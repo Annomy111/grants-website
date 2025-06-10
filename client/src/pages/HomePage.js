@@ -96,7 +96,7 @@ const HomePage = () => {
         const today = new Date();
         const upcomingDeadlineGrants = grants
           .filter(grant => {
-            const deadline = grant.application_deadline || grant['Application Deadline'];
+            const deadline = grant.application_deadline || grant.deadline || grant['Application Deadline'];
             if (!deadline) return false;
 
             // Check for 2025-2026 dates or rolling deadlines
@@ -421,17 +421,17 @@ const HomePage = () => {
                       <p
                         className={`text-sm font-medium mb-2 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}
                       >
-                        {grant['Funding Organization']}
+                        {grant.funding_organization || grant['Funding Organization']}
                       </p>
                       <h3
                         className={`text-xl font-bold mb-3 line-clamp-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}
                       >
-                        {grant['Grant Name']}
+                        {grant.grant_name || grant['Grant Name']}
                       </h3>
                       <p
                         className={`text-sm line-clamp-3 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}
                       >
-                        {grant['Focus Areas']}
+                        {grant.focus_areas || grant['Focus Areas']}
                       </p>
                     </div>
 
@@ -442,22 +442,22 @@ const HomePage = () => {
                           darkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-100 text-gray-700'
                         }`}
                       >
-                        {formatCurrency(grant['Grant Amount'])}
+                        {formatCurrency(grant.grant_amount || grant['Grant Amount'])}
                       </span>
-                      {grant['Application Deadline'] &&
-                        grant['Application Deadline'] !== 'Rolling' && (
+                      {(grant.application_deadline || grant['Application Deadline']) &&
+                        (grant.application_deadline || grant['Application Deadline']) !== 'Rolling' && (
                           <span
                             className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${
                               darkMode ? 'bg-red-900/30 text-red-400' : 'bg-red-100 text-red-700'
                             }`}
                           >
-                            {formatDate(grant['Application Deadline'])}
+                            {formatDate(grant.application_deadline || grant['Application Deadline'])}
                           </span>
                         )}
                     </div>
 
                     <Link
-                      to={`/grants?query=${encodeURIComponent(grant['Grant Name'])}`}
+                      to={`/grants?query=${encodeURIComponent(grant.grant_name || grant['Grant Name'])}`}
                       className={`inline-flex items-center text-sm font-medium ${
                         darkMode
                           ? 'text-blue-400 hover:text-blue-300'
@@ -564,10 +564,10 @@ const HomePage = () => {
                         <td
                           className={`px-6 py-4 ${darkMode ? 'text-white' : 'text-gray-900'} font-medium`}
                         >
-                          {grant['Grant Name']}
+                          {grant.grant_name || grant['Grant Name']}
                         </td>
                         <td className={`px-6 py-4 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                          {grant['Funding Organization']}
+                          {grant.funding_organization || grant['Funding Organization']}
                         </td>
                         <td className={`px-6 py-4`}>
                           <span
@@ -575,12 +575,12 @@ const HomePage = () => {
                               darkMode ? 'bg-red-900/30 text-red-400' : 'bg-red-100 text-red-600'
                             }`}
                           >
-                            {grant['Application Deadline']}
+                            {grant.application_deadline || grant.deadline || grant['Application Deadline']}
                           </span>
                         </td>
                         <td className="px-6 py-4 text-right">
                           <Link
-                            to={`/grants?query=${encodeURIComponent(grant['Grant Name'])}`}
+                            to={`/grants?query=${encodeURIComponent(grant.grant_name || grant['Grant Name'])}`}
                             className={`inline-flex items-center text-sm font-medium ${
                               darkMode
                                 ? 'text-blue-400 hover:text-blue-300'
