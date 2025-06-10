@@ -60,7 +60,15 @@
   /* Statistics grid mobile layout fix */
   .stats-grid,
   .stats-container,
-  [class*="grid-cols-1 md:grid-cols-3"] {
+  .grid.grid-cols-1.md\:grid-cols-3,
+  .grid.grid-cols-1.md\:grid-cols-4 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+  
+  /* Force all multi-column grids to stack on mobile */
+  .grid[class*="md:grid-cols"] {
     display: flex !important;
     flex-direction: column !important;
     gap: 16px !important;
@@ -180,10 +188,15 @@
     padding: 10px 0;
   }
 
-  /* Breadcrumb links */
-  .breadcrumb a {
-    padding: 8px 4px;
-    margin: -8px -4px;
+  /* Breadcrumb links and footer navigation */
+  .breadcrumb a,
+  footer a,
+  nav a.text-sm {
+    padding: 12px 8px !important;
+    margin: -12px -8px !important;
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
   }
 
   /* Table row actions */
