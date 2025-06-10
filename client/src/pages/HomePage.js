@@ -90,7 +90,15 @@ const HomePage = () => {
         }
 
         console.log('HomePage: Setting featured grants:', featured.length, featured.map(g => g.grant_name || g['Grant Name']));
-        setFeaturedGrants(featured);
+        
+        // Ensure we always have some featured grants
+        if (featured.length === 0) {
+          console.log('HomePage: No featured grants found, using first 3 grants as fallback');
+          const fallbackGrants = grants.slice(0, 3);
+          setFeaturedGrants(fallbackGrants);
+        } else {
+          setFeaturedGrants(featured);
+        }
 
         // Get grants with upcoming deadlines (check both field name formats)
         const today = new Date();
@@ -398,7 +406,14 @@ const HomePage = () => {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {featuredGrants.map((grant, index) => {
-                console.log(`Rendering grant ${index}:`, grant.grant_name || grant['Grant Name'], grant.funding_organization || grant['Funding Organization']);
+                console.log(`Rendering grant ${index}:`, grant?.grant_name || grant?.['Grant Name'] || 'UNDEFINED', grant?.funding_organization || grant?.['Funding Organization'] || 'UNDEFINED');
+                
+                // Safety check to ensure grant exists
+                if (!grant) {
+                  console.log(`Grant ${index} is null/undefined, skipping`);
+                  return null;
+                }
+                
                 return (
                 <div
                   key={index}
