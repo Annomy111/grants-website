@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civil Society Grants Database - Investment Deck</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f8f9fa;
+            color: #1a1a1a;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* Progress indicator */
+        .progress-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: rgba(0, 102, 255, 0.1);
+            z-index: 100;
+        }
+        
+        .progress-indicator-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #0066ff 0%, #0052cc 100%);
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 10px rgba(0, 102, 255, 0.5);
+        }
+        
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px;
+            position: relative;
+            background: #ffffff;
+            overflow: hidden;
+        }
+        
+        .slide.active {
+            display: flex;
+        }
+        
+        /* Background pattern */
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(0, 102, 255, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 102, 255, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .slide-number {
+            position: absolute;
+            bottom: 40px;
+            right: 60px;
+            font-size: 14px;
+            color: #999;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+        
+        .logo-container {
+            position: absolute;
+            top: 60px;
+            left: 80px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            opacity: 0;
+            animation: fadeInDown 0.8s ease forwards;
+        }
+        
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #0066ff 0%, #0052cc 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            box-shadow: 0 8px 24px rgba(0, 102, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .logo-container:hover .logo-icon {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(0, 102, 255, 0.3);
+        }
+        
+        .logo-text {
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.3;
+            color: #1a1a1a;
+            letter-spacing: -0.02em;
+        }
+        
+        h1 {
+            font-size: 64px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            max-width: 900px;
+        }
+        
+        h2 {
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 50px;
+            text-align: center;
+            color: #1a1a1a;
+            letter-spacing: -0.02em;
+        }
+        
+        h3 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+            letter-spacing: -0.01em;
+        }
+        
+        p {
+            font-size: 20px;
+            line-height: 1.7;
+            text-align: center;
+            max-width: 800px;
+            color: #666;
+            font-weight: 300;
+        }
+        
+        .subtitle {
+            font-size: 24px;
+            color: #666;
+            margin-bottom: 60px;
+            text-align: center;
+            font-weight: 300;
+            letter-spacing: -0.01em;
+        }
+        
+        .highlight {
+            color: #0066ff;
+            font-weight: 500;
+        }
+        
+        /* Enhanced metrics */
+        .metrics-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 900px;
+            margin-top: 60px;
+        }
+        
+        .metric-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0, 102, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 102, 255, 0.05) 0%, transparent 70%);
+            transition: transform 0.6s ease;
+            transform: scale(0);
+        }
+        
+        .metric-card:hover::before {
+            transform: scale(1);
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 102, 255, 0.15);
+            border-color: rgba(0, 102, 255, 0.2);
+        }
+        
+        .metric-value {
+            font-size: 56px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0066ff 0%, #0052cc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        
+        .metric-label {
+            font-size: 16px;
+            color: #666;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+        }
+        
+        /* Process flow with enhanced design */
+        .process-flow {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-top: 60px;
+            position: relative;
+        }
+        
+        .process-connector {
+            position: absolute;
+            top: 60px;
+            left: 120px;
+            right: 120px;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(0, 102, 255, 0.2) 10%, 
+                rgba(0, 102, 255, 0.2) 90%, 
+                transparent 100%
+            );
+            z-index: 0;
+        }
+        
+        .process-step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            flex: 1;
+        }
+        
+        .step-icon-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .step-icon {
+            width: 100px;
+            height: 100px;
+            background: #ffffff;
+            border: 2px solid rgba(0, 102, 255, 0.2);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 102, 255, 0.1);
+        }
+        
+        .step-icon svg {
+            width: 40px;
+            height: 40px;
+            stroke: #0066ff;
+            fill: none;
+            stroke-width: 2;
+        }
+        
+        .process-step:hover .step-icon {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 102, 255, 0.2);
+            border-color: #0066ff;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #0066ff 0%, #0052cc 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #ffffff;
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
+        }
+        
+        .step-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+        
+        .step-description {
+            font-size: 14px;
+            color: #666;
+            max-width: 150px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+        
+        .step-time {
+            font-size: 12px;
+            color: #999;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+        
+        .process-step.success .step-icon {
+            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8f4 100%);
+            border-color: #4caf50;
+        }
+        
+        .process-step.success .step-icon svg {
+            stroke: #4caf50;
+        }
+        
+        /* Feature cards */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 900px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 35px;
+            border-radius: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 102, 255, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(0, 102, 255, 0.05) 0%, transparent 60%);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+        
+        .feature-card:hover::after {
+            opacity: 1;
+            top: -150%;
+            left: -150%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(0, 102, 255, 0.12);
+            border-color: rgba(0, 102, 255, 0.15);
+        }
+        
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #e8f0ff 0%, #f0f6ff 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .feature-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: #0066ff;
+            fill: none;
+            stroke-width: 2;
+        }
+        
+        .feature-content h4 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+            letter-spacing: -0.01em;
+        }
+        
+        .feature-content p {
+            font-size: 15px;
+            color: #666;
+            text-align: left;
+            line-height: 1.6;
+        }
+        
+        /* Impact visual enhancements */
+        .impact-visual {
+            background: linear-gradient(135deg, #f8f9fa 0%, #f0f2f5 100%);
+            padding: 60px;
+            border-radius: 30px;
+            max-width: 900px;
+            margin-top: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 102, 255, 0.08);
+        }
+        
+        .impact-stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .impact-label {
+            font-size: 18px;
+            color: #1a1a1a;
+            font-weight: 500;
+        }
+        
+        .impact-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0066ff;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(0, 102, 255, 0.08);
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #0066ff 0%, #0052cc 100%);
+            border-radius: 5px;
+            position: relative;
+            animation: progressSlide 2s ease-out;
+            box-shadow: 0 2px 8px rgba(0, 102, 255, 0.3);
+        }
+        
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+            animation: shimmer 2s infinite;
+        }
+        
+        /* Enhanced CTA */
+        .cta-section {
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #0066ff 0%, #0052cc 100%);
+            color: white;
+            padding: 18px 48px;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 24px rgba(0, 102, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: -0.01em;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .cta-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(0, 102, 255, 0.4);
+        }
+        
+        .cta-secondary {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Platform preview */
+        .platform-preview {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            background: #f5f5f5;
+            padding: 10px;
+            position: relative;
+        }
+        
+        .browser-bar {
+            height: 30px;
+            background: #e0e0e0;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            gap: 8px;
+        }
+        
+        .browser-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #999;
+        }
+        
+        .platform-preview img {
+            width: 100%;
+            border-radius: 0 0 10px 10px;
+            display: block;
+        }
+        
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes progressSlide {
+            from {
+                width: 0;
+            }
+        }
+        
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(200%);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 102, 255, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 20px rgba(0, 102, 255, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 102, 255, 0);
+            }
+        }
+        
+        .fade-in-element {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+        
+        /* Success state */
+        .success-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8f4 100%);
+            color: #2e7d32;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            border: 1px solid rgba(76, 175, 80, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-indicator">
+        <div class="progress-indicator-fill" id="progressBar"></div>
+    </div>
+    
+    <!-- Slide 1: Title -->
+    <div class="slide active">
+        <div class="logo-container">
+            <div class="logo-icon">G</div>
+            <div class="logo-text">Civil Society<br>Grants Database</div>
+        </div>
+        
+        <h1 class="fade-in-element">Investment Opportunity</h1>
+        <p class="subtitle fade-in-element delay-1">Strategic Platform for Supporting Ukrainian Civil Society</p>
+        
+        <div class="metrics-container fade-in-element delay-2">
+            <div class="metric-card">
+                <div class="metric-value">€75M+</div>
+                <div class="metric-label">Available Funding</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">136</div>
+                <div class="metric-label">Active Grants</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">10K+</div>
+                <div class="metric-label">Potential Users</div>
+            </div>
+        </div>
+        
+        <div class="slide-number">1 / 9</div>
+    </div>
+    
+    <!-- Slide 2: Problem -->
+    <div class="slide">
+        <h2 class="fade-in-element">The Problem We Solve</h2>
+        
+        <div class="impact-visual fade-in-element delay-1">
+            <div class="impact-stat">
+                <span class="impact-label">CSOs that never find suitable grants</span>
+                <span class="impact-value">70%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 70%;"></div>
+            </div>
+            
+            <div class="impact-stat" style="margin-top: 35px;">
+                <span class="impact-label">Time spent searching per grant</span>
+                <span class="impact-value">20+ hours</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 85%;"></div>
+            </div>
+            
+            <div class="impact-stat" style="margin-top: 35px;">
+                <span class="impact-label">Information scattered across</span>
+                <span class="impact-value">100+ sources</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 95%;"></div>
+            </div>
+        </div>
+        
+        <p style="margin-top: 40px; font-size: 20px;" class="fade-in-element delay-2">
+            Civil society organizations miss millions in funding due to inefficient grant discovery processes
+        </p>
+        
+        <div class="slide-number">2 / 9</div>
+    </div>
+    
+    <!-- Slide 3: Solution Process -->
+    <div class="slide">
+        <h2 class="fade-in-element">How It Works for Ukrainian CSOs</h2>
+        
+        <div class="process-flow fade-in-element delay-1">
+            <div class="process-connector"></div>
+            
+            <div class="process-step">
+                <div class="step-icon-wrapper">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                            <path d="M19 8h-2v3h-3v2h3v3h2v-3h3v-2h-3z"/>
+                        </svg>
+                    </div>
+                    <div class="step-number">1</div>
+                </div>
+                <div class="step-title">Registration</div>
+                <div class="step-description">Create organization profile</div>
+                <div class="step-time">⏱ 5 min</div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-icon-wrapper">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="m21 21-4.35-4.35"/>
+                            <path d="M11 8v6M8 11h6"/>
+                        </svg>
+                    </div>
+                    <div class="step-number">2</div>
+                </div>
+                <div class="step-title">Discovery</div>
+                <div class="step-description">AI-powered grant matching</div>
+                <div class="step-time">⏱ Instant</div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-icon-wrapper">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                    </div>
+                    <div class="step-number">3</div>
+                </div>
+                <div class="step-title">Application</div>
+                <div class="step-description">Guided submission process</div>
+                <div class="step-time">⏱ 2-5 days</div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-icon-wrapper">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 13h2v7H3zm4-8h2v12H7zm4-2h2v14h-2zm4 4h2v10h-2zm4-2h2v12h-2z"/>
+                        </svg>
+                    </div>
+                    <div class="step-number">4</div>
+                </div>
+                <div class="step-title">Tracking</div>
+                <div class="step-description">Real-time status monitoring</div>
+                <div class="step-time">⏱ Ongoing</div>
+            </div>
+            
+            <div class="process-step success">
+                <div class="step-icon-wrapper">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" style="stroke: #4caf50;">
+                            <polyline points="20 6 9 17 4 12"/>
+                            <circle cx="12" cy="12" r="10" fill="none" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="step-number" style="background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);">5</div>
+                </div>
+                <div class="step-title">Impact</div>
+                <div class="step-description">Measurable community results</div>
+                <div class="success-badge">💰 Success</div>
+            </div>
+        </div>
+        
+        <div class="slide-number">3 / 9</div>
+    </div>
+    
+    <!-- Slide 4: Key Features -->
+    <div class="slide">
+        <h2 class="fade-in-element">Platform Key Features</h2>
+        
+        <div class="feature-grid fade-in-element delay-1">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="3" y="11" width="18" height="10" rx="2" ry="2"/>
+                        <circle cx="12" cy="5" r="2"/>
+                        <path d="M12 7v4"/>
+                        <path d="M8 16h.01M12 16h.01M16 16h.01"/>
+                    </svg>
+                </div>
+                <div class="feature-content">
+                    <h4>AI Assistant</h4>
+                    <p>Personalized grant recommendations based on organization profile</p>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                </div>
+                <div class="feature-content">
+                    <h4>Multilingual</h4>
+                    <p>Full support for Ukrainian, English, and German languages</p>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                        <line x1="12" y1="18" x2="12.01" y2="18"/>
+                    </svg>
+                </div>
+                <div class="feature-content">
+                    <h4>Mobile First</h4>
+                    <p>100% responsive design for access from any device</p>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                    </svg>
+                </div>
+                <div class="feature-content">
+                    <h4>Speed</h4>
+                    <p>Find relevant grants in 3 minutes instead of 20+ hours</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-number">4 / 9</div>
+    </div>
+    
+    <!-- Slide 5: Collective Impact -->
+    <div class="slide">
+        <h2 class="fade-in-element">Collective Funding Impact</h2>
+        
+        <div style="background: linear-gradient(135deg, #f8f9fa 0%, #f0f2f5 100%); padding: 60px; border-radius: 30px; max-width: 1000px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04); border: 1px solid rgba(0, 102, 255, 0.08);" class="fade-in-element delay-1">
+            <p style="font-size: 22px; margin-bottom: 40px; line-height: 1.8;">
+                Transform rejected applications into funding opportunities. When your organization cannot fund 
+                a worthy project, our platform instantly redirects applications to funders whose criteria perfectly 
+                match the CSO's mission and needs.
+            </p>
+            
+            <div style="display: flex; justify-content: space-around; margin-top: 50px;">
+                <div style="text-align: center;">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #e8f0ff 0%, #f0f6ff 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 36px;">👥</div>
+                    <p style="font-size: 17px; margin-top: 10px; font-weight: 500;">No worthy project left unfunded</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #e8f0ff 0%, #f0f6ff 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 36px;">🎯</div>
+                    <p style="font-size: 17px; margin-top: 10px; font-weight: 500;">Strengthening the entire ecosystem</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-number">5 / 9</div>
+    </div>
+    
+    <!-- Slide 6: Strategic Goal -->
+    <div class="slide">
+        <h2 class="fade-in-element">Strategic Goal</h2>
+        
+        <div style="max-width: 900px; margin: 0 auto;">
+            <div style="background: linear-gradient(135deg, #e8f0ff 0%, #f0f6ff 100%); padding: 40px; border-radius: 20px; margin-bottom: 40px; border: 1px solid rgba(0, 102, 255, 0.1); box-shadow: 0 8px 24px rgba(0, 102, 255, 0.08);" class="fade-in-element delay-1">
+                <div style="display: flex; align-items: center; gap: 30px;">
+                    <div class="logo-icon" style="width: 80px; height: 80px; font-size: 36px;">🎯</div>
+                    <div>
+                        <h3 style="margin-bottom: 10px;">Create the defining bilingual platform</h3>
+                        <p style="text-align: left; font-size: 18px;">connecting Ukrainian civil society organizations with international funding opportunities</p>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="font-size: 20px; margin-bottom: 30px;" class="fade-in-element delay-2">
+                Our technology approach eliminates inefficiencies in traditional grant searching, 
+                ensuring transparent, measurable impact.
+            </p>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 60px; gap: 60px;" class="fade-in-element delay-3">
+                <div style="text-align: center; flex: 1;">
+                    <h3 style="color: #0066ff; font-size: 48px; margin-bottom: 10px;">18</h3>
+                    <p style="font-size: 16px; color: #666;">Months to break-even</p>
+                </div>
+                <div style="flex: 2;">
+                    <div class="progress-bar" style="height: 16px;">
+                        <div class="progress-fill" style="width: 65%;"></div>
+                    </div>
+                    <p style="font-size: 18px; color: #0066ff; margin-top: 15px; text-align: center; font-weight: 600;">65% complete</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-number">6 / 9</div>
+    </div>
+    
+    <!-- Slide 7: Platform Demo -->
+    <div class="slide">
+        <h2 class="fade-in-element">Live Platform</h2>
+        
+        <div class="platform-preview fade-in-element delay-1">
+            <div class="browser-bar">
+                <div class="browser-dot"></div>
+                <div class="browser-dot"></div>
+                <div class="browser-dot"></div>
+            </div>
+            <img src="screenshots/01-homepage-hero.png" alt="Platform Homepage">
+        </div>
+        
+        <p style="font-size: 20px; margin-top: 30px;" class="fade-in-element delay-2">
+            Currently serving <span class="highlight">136 active grants</span> worth <span class="highlight">€75M+</span> in funding opportunities
+        </p>
+        
+        <div style="display: flex; justify-content: center; gap: 60px; margin-top: 40px;" class="fade-in-element delay-3">
+            <div style="text-align: center;">
+                <div style="font-size: 48px; color: #0066ff;">📈</div>
+                <p style="font-size: 18px; margin-top: 10px; font-weight: 600;">38.8% growth</p>
+                <p style="font-size: 14px; color: #666;">in 6 months</p>
+            </div>
+            <div style="text-align: center;">
+                <div style="font-size: 48px; color: #0066ff;">⚡</div>
+                <p style="font-size: 18px; margin-top: 10px; font-weight: 600;">3-minute</p>
+                <p style="font-size: 14px; color: #666;">grant discovery</p>
+            </div>
+            <div style="text-align: center;">
+                <div style="font-size: 48px; color: #0066ff;">🌍</div>
+                <p style="font-size: 18px; margin-top: 10px; font-weight: 600;">3 languages</p>
+                <p style="font-size: 14px; color: #666;">supported</p>
+            </div>
+        </div>
+        
+        <div class="slide-number">7 / 9</div>
+    </div>
+    
+    <!-- Slide 8: Market & Expansion -->
+    <div class="slide">
+        <h2 class="fade-in-element">Market Opportunity</h2>
+        
+        <div class="metrics-container fade-in-element delay-1">
+            <div class="metric-card">
+                <div class="metric-value">10K+</div>
+                <div class="metric-label">Registered CSOs in Ukraine</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">€2B+</div>
+                <div class="metric-label">Annual grant funding</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">50M</div>
+                <div class="metric-label">CEE region population</div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 60px; max-width: 800px;" class="fade-in-element delay-2">
+            <h3 style="text-align: center; margin-bottom: 40px;">Expansion Roadmap</h3>
+            <div style="display: flex; justify-content: space-between; align-items: center; position: relative;">
+                <div style="position: absolute; top: 40px; left: 20%; right: 20%; height: 2px; background: linear-gradient(90deg, rgba(0, 102, 255, 0.2) 0%, rgba(0, 102, 255, 0.4) 50%, rgba(0, 102, 255, 0.2) 100%); z-index: 0;"></div>
+                
+                <div style="text-align: center; position: relative; z-index: 1;">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #e8f0ff 0%, #f0f6ff 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 36px; box-shadow: 0 4px 16px rgba(0, 102, 255, 0.2);">🇺🇦</div>
+                    <p style="font-size: 18px; margin-top: 15px; font-weight: 600;">2025</p>
+                    <p style="font-size: 14px; color: #666;">Ukraine</p>
+                </div>
+                
+                <div style="text-align: center; position: relative; z-index: 1;">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #e8f0ff 0%, #f0f6ff 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 36px; box-shadow: 0 4px 16px rgba(0, 102, 255, 0.2);">🇵🇱</div>
+                    <p style="font-size: 18px; margin-top: 15px; font-weight: 600;">2026</p>
+                    <p style="font-size: 14px; color: #666;">Poland, Romania</p>
+                </div>
+                
+                <div style="text-align: center; position: relative; z-index: 1;">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #0066ff 0%, #0052cc 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 36px; box-shadow: 0 4px 16px rgba(0, 102, 255, 0.3); color: white;">🇪🇺</div>
+                    <p style="font-size: 18px; margin-top: 15px; font-weight: 600;">2027</p>
+                    <p style="font-size: 14px; color: #666;">Full CEE Region</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-number">8 / 9</div>
+    </div>
+    
+    <!-- Slide 9: Partnership CTA -->
+    <div class="slide">
+        <div class="logo-container">
+            <div class="logo-icon">G</div>
+            <div class="logo-text">Civil Society<br>Grants Database</div>
+        </div>
+        
+        <h2 class="fade-in-element">Partnership Opportunities</h2>
+        
+        <p style="font-size: 22px; margin-bottom: 50px; max-width: 900px;" class="fade-in-element delay-1">
+            Join leading foundations and institutions in supporting Ukrainian civil society through 
+            strategic technology investment. Our partnership model offers measurable impact with transparent 
+            reporting and direct engagement opportunities.
+        </p>
+        
+        <div class="feature-grid" style="max-width: 700px; grid-template-columns: 1fr 1fr; gap: 40px;" class="fade-in-element delay-2">
+            <div style="text-align: center;">
+                <div class="logo-icon" style="margin: 0 auto 20px; width: 80px; height: 80px;">
+                    <svg viewBox="0 0 24 24" style="width: 40px; height: 40px; stroke: white; fill: none; stroke-width: 2;">
+                        <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                </div>
+                <h4 style="font-size: 20px; margin-bottom: 10px;">Foundations & Donors</h4>
+                <p style="font-size: 16px;">Direct access to verified CSOs</p>
+            </div>
+            <div style="text-align: center;">
+                <div class="logo-icon" style="margin: 0 auto 20px; width: 80px; height: 80px;">
+                    <svg viewBox="0 0 24 24" style="width: 40px; height: 40px; stroke: white; fill: none; stroke-width: 2;">
+                        <line x1="12" y1="2" x2="12" y2="22"/>
+                        <polyline points="17 5 12 10 7 5"/>
+                        <polyline points="17 12 12 17 7 12"/>
+                        <polyline points="17 19 12 24 7 19"/>
+                    </svg>
+                </div>
+                <h4 style="font-size: 20px; margin-bottom: 10px;">Investors</h4>
+                <p style="font-size: 16px;">SaaS model with social impact</p>
+            </div>
+        </div>
+        
+        <div class="cta-section fade-in-element delay-3">
+            <button class="cta-button">Schedule Partnership Discussion</button>
+            <p class="cta-secondary">
+                <strong>civil-society-grants-database.netlify.app</strong><br>
+                contact@civilsocietygrants.org
+            </p>
+        </div>
+        
+        <div class="slide-number">9 / 9</div>
+    </div>
+    
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const progressBar = document.getElementById('progressBar');
+        
+        function updateProgress() {
+            const progress = ((currentSlide + 1) / totalSlides) * 100;
+            progressBar.style.width = progress + '%';
+        }
+        
+        function animateSlide(slide) {
+            const elements = slide.querySelectorAll('.fade-in-element');
+            elements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.animation = 'none';
+                setTimeout(() => {
+                    el.style.animation = '';
+                }, 10);
+            });
+        }
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' && currentSlide < slides.length - 1) {
+                slides[currentSlide].classList.remove('active');
+                currentSlide++;
+                slides[currentSlide].classList.add('active');
+                animateSlide(slides[currentSlide]);
+                updateProgress();
+            } else if (e.key === 'ArrowLeft' && currentSlide > 0) {
+                slides[currentSlide].classList.remove('active');
+                currentSlide--;
+                slides[currentSlide].classList.add('active');
+                animateSlide(slides[currentSlide]);
+                updateProgress();
+            } else if (e.key === 'Escape') {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = 0;
+                slides[currentSlide].classList.add('active');
+                animateSlide(slides[currentSlide]);
+                updateProgress();
+            }
+        });
+        
+        // Click to advance
+        document.addEventListener('click', (e) => {
+            if (!e.target.matches('button, a')) {
+                if (currentSlide < slides.length - 1) {
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide++;
+                    slides[currentSlide].classList.add('active');
+                    animateSlide(slides[currentSlide]);
+                    updateProgress();
+                }
+            }
+        });
+        
+        // Initialize
+        updateProgress();
+        animateSlide(slides[0]);
+        
+        // Animate progress fills when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-fill');
+                    fills.forEach(fill => {
+                        const width = fill.style.width;
+                        fill.style.width = '0';
+                        setTimeout(() => {
+                            fill.style.width = width;
+                        }, 100);
+                    });
+                }
+            });
+        });
+        
+        document.querySelectorAll('.impact-visual').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

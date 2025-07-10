@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civil Society Grants Database - Executive Summary</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #ffffff;
+            color: #000000;
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            padding: 15mm;
+            position: relative;
+        }
+        
+        @media print {
+            body {
+                margin: 0;
+                padding: 15mm;
+            }
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #4CAF50;
+        }
+        
+        .logo-section {
+            flex: 1;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: #000;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.1;
+            color: #000;
+        }
+        
+        .tagline {
+            font-size: 14px;
+            color: #666;
+            margin-left: 65px;
+        }
+        
+        .contact-info {
+            text-align: right;
+            font-size: 12px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .metric-box {
+            background: #f8f8f8;
+            padding: 20px 10px;
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .metric-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #4CAF50;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            font-size: 11px;
+            color: #666;
+            text-transform: uppercase;
+        }
+        
+        .problem-solution {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .problem-box, .solution-box {
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .problem-box {
+            background: #ffebee;
+            border: 1px solid #ffcdd2;
+        }
+        
+        .solution-box {
+            background: #e8f5e9;
+            border: 1px solid #c8e6c9;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #4CAF50;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .list-item {
+            font-size: 12px;
+            line-height: 1.5;
+            margin-bottom: 6px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .list-item:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .highlight {
+            color: #4CAF50;
+            font-weight: 600;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .tech-badge {
+            background: #f0f0f0;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            border: 1px solid #ddd;
+        }
+        
+        .platform-screenshot {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border: 1px solid #e0e0e0;
+        }
+        
+        .impact-visual {
+            background: #000;
+            color: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .impact-visual h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #4CAF50;
+        }
+        
+        .impact-visual p {
+            font-size: 14px;
+            color: #ccc;
+        }
+        
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        
+        .timeline-item {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .timeline-quarter {
+            font-weight: 600;
+            color: #4CAF50;
+            font-size: 13px;
+        }
+        
+        .timeline-task {
+            font-size: 10px;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 11px;
+            color: #666;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-section">
+            <div class="logo">
+                <div class="logo-icon">G</div>
+                <div class="logo-text">Civil Society<br>Grants Database</div>
+            </div>
+            <div class="tagline">AI-Powered Grant Discovery Platform for Ukraine</div>
+        </div>
+        <div class="contact-info">
+            <strong>Live Platform:</strong><br>
+            civil-society-grants-database.netlify.app<br>
+            contact@civilsocietygrants.org
+        </div>
+    </div>
+    
+    <div class="hero-metrics">
+        <div class="metric-box">
+            <div class="metric-value">€75M+</div>
+            <div class="metric-label">Total Funding</div>
+        </div>
+        <div class="metric-box">
+            <div class="metric-value">136</div>
+            <div class="metric-label">Active Grants</div>
+        </div>
+        <div class="metric-box">
+            <div class="metric-value">106</div>
+            <div class="metric-label">Organizations</div>
+        </div>
+        <div class="metric-box">
+            <div class="metric-value">99.9%</div>
+            <div class="metric-label">Uptime</div>
+        </div>
+    </div>
+    
+    <div class="problem-solution">
+        <div class="problem-box">
+            <div class="section-title">The Challenge</div>
+            <div class="list-item">70% of eligible NGOs never find suitable grants</div>
+            <div class="list-item">Grant information scattered across 100+ sources</div>
+            <div class="list-item">Language barriers limit international funding</div>
+            <div class="list-item">Manual search takes 20+ hours per opportunity</div>
+        </div>
+        <div class="solution-box">
+            <div class="section-title">Our Solution</div>
+            <div class="list-item">Centralized database with AI-powered matching</div>
+            <div class="list-item">Trilingual support (EN/UA/DE)</div>
+            <div class="list-item">3-click discovery process (< 3 minutes)</div>
+            <div class="list-item">Real-time updates and deadline tracking</div>
+        </div>
+    </div>
+    
+    <div class="two-column">
+        <div class="section">
+            <div class="section-title">Platform Features</div>
+            <div class="list-item"><span class="highlight">AI Assistant:</span> Natural language grant discovery</div>
+            <div class="list-item"><span class="highlight">Smart Filtering:</span> By size, focus area, deadline</div>
+            <div class="list-item"><span class="highlight">Mobile Optimized:</span> 100% responsive design</div>
+            <div class="list-item"><span class="highlight">Real-time Data:</span> Live statistics dashboard</div>
+            <div class="list-item"><span class="highlight">Knowledge Hub:</span> Blog with grant tips</div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Proven Results</div>
+            <div class="list-item">38.8% grant database growth (6 months)</div>
+            <div class="list-item">500% user growth trajectory</div>
+            <div class="list-item">10+ hours saved per grant search</div>
+            <div class="list-item">98% user satisfaction rate</div>
+            <div class="list-item">< 200ms average response time</div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <div class="section-title">Technology Excellence</div>
+        <div class="tech-stack">
+            <div class="tech-badge">React 18</div>
+            <div class="tech-badge">Netlify Functions</div>
+            <div class="tech-badge">Supabase PostgreSQL</div>
+            <div class="tech-badge">Google Gemini AI</div>
+            <div class="tech-badge">Tailwind CSS</div>
+            <div class="tech-badge">i18next</div>
+            <div class="tech-badge">JWT Auth</div>
+            <div class="tech-badge">Row Level Security</div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <div class="section-title">Market Opportunity</div>
+        <div class="two-column">
+            <div>
+                <div class="list-item">10,000+ registered NGOs in Ukraine</div>
+                <div class="list-item">€2B+ annual grant funding in region</div>
+                <div class="list-item">First AI-powered grants platform</div>
+            </div>
+            <div>
+                <div class="list-item">Expandable to CEE region (50M+ population)</div>
+                <div class="list-item">SaaS revenue model from grant providers</div>
+                <div class="list-item">Partnership opportunities with donors</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <div class="section-title">2025 Roadmap</div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-quarter">Q1 2025</div>
+                <div class="timeline-task">Application Tracking</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-quarter">Q2 2025</div>
+                <div class="timeline-task">Partner API</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-quarter">Q3 2025</div>
+                <div class="timeline-task">Advanced AI Matching</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-quarter">Q4 2025</div>
+                <div class="timeline-task">Regional Expansion</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="impact-visual">
+        <h3>Transform Civil Society Funding Together</h3>
+        <p>From Ukrainian platform to regional infrastructure serving 10,000+ organizations across CEE</p>
+    </div>
+    
+    <div class="footer">
+        Civil Society Grants Database © 2024 | Connecting NGOs with €75M+ in Funding Opportunities<br>
+        Platform developed with support from international partners
+    </div>
+</body>
+</html>

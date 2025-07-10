@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ukrainian Civil Society Grants Database - URC 2025</title>
+    
+    <!-- Modern Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://unpkg.com/lucide@latest/dist/lucide.css" rel="stylesheet">
+    
+    <style>
+        /* Modern Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #0066FF;
+            --secondary: #00C896;
+            --accent: #FFD700;
+            --dark: #0A0E27;
+            --gray-900: #111827;
+            --gray-800: #1F2937;
+            --gray-700: #374151;
+            --gray-600: #4B5563;
+            --gray-500: #6B7280;
+            --gray-400: #9CA3AF;
+            --gray-300: #D1D5DB;
+            --gray-200: #E5E7EB;
+            --gray-100: #F3F4F6;
+            --gray-50: #F9FAFB;
+            --white: #FFFFFF;
+            
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--gray-50);
+            color: var(--gray-900);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Page Container */
+        .flyer-container {
+            width: 210mm;
+            margin: 20px auto;
+            background: var(--white);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        /* Side 1 - Front Page */
+        .page {
+            width: 100%;
+            min-height: 297mm;
+            position: relative;
+            overflow: hidden;
+            background: var(--white);
+        }
+        
+        /* Modern Header */
+        .header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--gray-900) 100%);
+            padding: 40px 50px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -25%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo-area {
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .partnership-badge {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 12px 24px;
+            border-radius: 100px;
+            color: var(--white);
+            font-size: 14px;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .main-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+        
+        .tagline {
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+        
+        .impact-stats {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 5px;
+        }
+        
+        /* Flow Chart Section */
+        .flow-section {
+            padding: 60px 50px;
+            background: var(--gray-50);
+        }
+        
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+            color: var(--gray-900);
+            margin-bottom: 50px;
+        }
+        
+        .flow-chart {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        
+        .flow-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+        
+        .flow-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 40px;
+            right: -40px;
+            width: 80px;
+            height: 2px;
+            background: var(--gray-300);
+        }
+        
+        .flow-step:not(:last-child)::before {
+            content: '→';
+            position: absolute;
+            top: 30px;
+            right: -50px;
+            font-size: 24px;
+            color: var(--gray-400);
+        }
+        
+        .flow-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 36px;
+            color: var(--white);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .flow-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+        
+        .flow-desc {
+            font-size: 14px;
+            color: var(--gray-600);
+            line-height: 1.4;
+        }
+        
+        /* Value Proposition */
+        .value-section {
+            padding: 60px 50px;
+            background: var(--white);
+        }
+        
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+        
+        .value-card {
+            background: var(--gray-50);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary);
+        }
+        
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+        
+        .value-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+        }
+        
+        .value-metric {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .value-desc {
+            font-size: 16px;
+            color: var(--gray-600);
+            line-height: 1.5;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 60px 50px;
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .cta-title {
+            font-size: 40px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        .cta-subtitle {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .contact-item {
+            text-align: center;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 24px;
+        }
+        
+        .contact-label {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+        
+        .contact-value {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .qr-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .qr-code {
+            width: 100px;
+            height: 100px;
+            background: var(--white);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: var(--gray-400);
+        }
+        
+        .qr-text {
+            text-align: left;
+        }
+        
+        .qr-text h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .qr-text p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        /* Side 2 - Back Page */
+        .page-2 {
+            page-break-before: always;
+        }
+        
+        /* Success Metrics */
+        .metrics-header {
+            background: var(--gray-900);
+            padding: 50px;
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .metrics-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .metric-item {
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+        }
+        
+        .metric-label {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+        
+        /* Transform Section */
+        .transform-section {
+            padding: 60px 50px;
+            background: var(--gray-50);
+        }
+        
+        .transform-visual {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .transform-box {
+            flex: 1;
+            padding: 40px;
+            border-radius: 24px;
+            text-align: center;
+        }
+        
+        .transform-before {
+            background: var(--gray-200);
+            color: var(--gray-700);
+        }
+        
+        .transform-after {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+        }
+        
+        .transform-arrow {
+            font-size: 48px;
+            color: var(--gray-400);
+        }
+        
+        .transform-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            opacity: 0.7;
+        }
+        
+        .transform-value {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+        
+        .transform-desc {
+            font-size: 16px;
+            line-height: 1.4;
+        }
+        
+        /* Partnership Benefits */
+        .benefits-section {
+            padding: 60px 50px;
+            background: var(--white);
+        }
+        
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .benefit-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        
+        .benefit-check {
+            width: 32px;
+            height: 32px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        
+        .benefit-content h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 5px;
+        }
+        
+        .benefit-content p {
+            font-size: 14px;
+            color: var(--gray-600);
+            line-height: 1.5;
+        }
+        
+        /* Final CTA */
+        .final-cta {
+            background: var(--dark);
+            padding: 60px 50px;
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .booth-badge {
+            background: var(--accent);
+            color: var(--dark);
+            padding: 20px 40px;
+            border-radius: 16px;
+            display: inline-block;
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 30px;
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                margin: 0;
+            }
+            
+            .flyer-container {
+                margin: 0;
+                box-shadow: none;
+            }
+            
+            .page {
+                page-break-after: always;
+            }
+            
+            @page {
+                size: A4;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flyer-container">
+        <!-- Page 1 - Front -->
+        <div class="page">
+            <!-- Modern Header -->
+            <div class="header">
+                <div class="header-top">
+                    <div class="logo-area">Logo Here</div>
+                    <div class="partnership-badge">🇩🇪 German-Ukrainian Partnership 🇺🇦</div>
+                </div>
+                
+                <div class="header-content">
+                    <h1 class="main-title">Ukrainian Civil Society<br>Grants Database</h1>
+                    <p class="tagline">Transforming Humanitarian Funding Through Technology</p>
+                    
+                    <div class="impact-stats">
+                        <div class="stat">
+                            <span class="stat-number">€75M+</span>
+                            <span class="stat-label">Available Funding</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">136</span>
+                            <span class="stat-label">Active Grants</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">38.8%</span>
+                            <span class="stat-label">Growth in 3 Weeks</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Flow Chart -->
+            <div class="flow-section">
+                <h2 class="section-title">How It Works</h2>
+                
+                <div class="flow-chart">
+                    <div class="flow-step">
+                        <div class="flow-icon">1</div>
+                        <h3 class="flow-title">NGO Registration</h3>
+                        <p class="flow-desc">Quick onboarding<br>in Ukrainian or English</p>
+                    </div>
+                    
+                    <div class="flow-step">
+                        <div class="flow-icon">2</div>
+                        <h3 class="flow-title">AI Matching</h3>
+                        <p class="flow-desc">Smart algorithms find<br>relevant grants in seconds</p>
+                    </div>
+                    
+                    <div class="flow-step">
+                        <div class="flow-icon">3</div>
+                        <h3 class="flow-title">Application Support</h3>
+                        <p class="flow-desc">Guided process with<br>eligibility checks</p>
+                    </div>
+                    
+                    <div class="flow-step">
+                        <div class="flow-icon">4</div>
+                        <h3 class="flow-title">Funding Success</h3>
+                        <p class="flow-desc">3x higher success rate<br>than traditional methods</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Value Proposition -->
+            <div class="value-section">
+                <h2 class="section-title">Proven Impact</h2>
+                
+                <div class="value-grid">
+                    <div class="value-card">
+                        <div class="value-icon">⏱️</div>
+                        <h3 class="value-title">Time Saved</h3>
+                        <span class="value-metric">95%</span>
+                        <p class="value-desc">From 40 hours to 30 minutes per grant search</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <div class="value-icon">💰</div>
+                        <h3 class="value-title">ROI</h3>
+                        <span class="value-metric">100:1</span>
+                        <p class="value-desc">Every €100 invested mobilizes €10,000+ in funding</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <div class="value-icon">🌍</div>
+                        <h3 class="value-title">Global Reach</h3>
+                        <span class="value-metric">38</span>
+                        <p class="value-desc">Countries already engaged with the platform</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <div class="value-icon">📈</div>
+                        <h3 class="value-title">Success Rate</h3>
+                        <span class="value-metric">3x</span>
+                        <p class="value-desc">Higher application success compared to traditional methods</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <h2 class="cta-title">Connect With Us</h2>
+                <p class="cta-subtitle">Join the transformation of humanitarian funding</p>
+                
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <div class="contact-icon">👤</div>
+                        <div class="contact-label">Contact</div>
+                        <div class="contact-value">Fedo Hagge-Kubat</div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value">fedo.hagge-kubat@du-bureau.org</div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">🏢</div>
+                        <div class="contact-label">Organization</div>
+                        <div class="contact-value">Deutsch-Ukrainisches Büro</div>
+                    </div>
+                </div>
+                
+                <div class="qr-container">
+                    <div class="qr-code">QR Code</div>
+                    <div class="qr-text">
+                        <h4>Visit Our Platform</h4>
+                        <p>Scan to explore the grants database</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page 2 - Back -->
+        <div class="page page-2">
+            <!-- Success Metrics -->
+            <div class="metrics-header">
+                <h2 class="metrics-title">3 Weeks. Real Results.</h2>
+                
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <span class="metric-value">€478K</span>
+                        <span class="metric-label">Funding Facilitated</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-value">2,400</span>
+                        <span class="metric-label">NGOs Served</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-value">200+</span>
+                        <span class="metric-label">Grants Awarded</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-value">20hrs</span>
+                        <span class="metric-label">Saved per NGO</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Transformation -->
+            <div class="transform-section">
+                <h2 class="section-title">The Transformation Opportunity</h2>
+                
+                <div class="transform-visual">
+                    <div class="transform-box transform-before">
+                        <div class="transform-label">Today</div>
+                        <div class="transform-value">500</div>
+                        <div class="transform-desc">NGOs struggle with manual grant searches</div>
+                    </div>
+                    
+                    <div class="transform-arrow">→</div>
+                    
+                    <div class="transform-box transform-after">
+                        <div class="transform-label">With Your Partnership</div>
+                        <div class="transform-value">10,000+</div>
+                        <div class="transform-desc">NGOs accessing funding efficiently</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Partnership Benefits -->
+            <div class="benefits-section">
+                <h2 class="section-title">Partnership Benefits</h2>
+                
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <div class="benefit-check">✓</div>
+                        <div class="benefit-content">
+                            <h4>Immediate Visibility</h4>
+                            <p>Your brand prominently featured to 10,000+ Ukrainian NGOs</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-check">✓</div>
+                        <div class="benefit-content">
+                            <h4>Data-Driven Insights</h4>
+                            <p>Real-time analytics on funding trends and NGO needs</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-check">✓</div>
+                        <div class="benefit-content">
+                            <h4>Direct Impact</h4>
+                            <p>Measurable outcomes with quarterly impact reports</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-check">✓</div>
+                        <div class="benefit-content">
+                            <h4>Strategic Advantage</h4>
+                            <p>First-mover position in digital humanitarian infrastructure</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-check">✓</div>
+                        <div class="benefit-content">
+                            <h4>Conference Leadership</h4>
+                            <p>Co-present at URC 2025 as innovation partner</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-check">✓</div>
+                        <div class="benefit-content">
+                            <h4>Scalable Solution</h4>
+                            <p>Platform ready for expansion to other regions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Final CTA -->
+            <div class="final-cta">
+                <h2 class="cta-title">Join Us at URC 2025</h2>
+                <p class="cta-subtitle">Be part of the digital transformation of humanitarian aid</p>
+                
+                <div class="booth-badge">
+                    Visit Booth #42 • Live Platform Demos • Partnership Discussions
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

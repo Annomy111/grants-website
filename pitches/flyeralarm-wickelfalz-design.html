@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlyerAlarm Wickelfalz Pamphlet - Civil Society Grants Database</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #999;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .info-panel {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+        
+        .info-panel h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .info-panel p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Container for both sides */
+        .pamphlet-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        /* Each side of the pamphlet */
+        .pamphlet-side {
+            width: 632mm; /* 3 panels of 210mm + 2mm bleed */
+            height: 299mm; /* DIN A4 height + 1mm bleed top/bottom */
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Fold lines indicator */
+        .fold-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: repeating-linear-gradient(
+                to bottom,
+                #ff0000 0,
+                #ff0000 5px,
+                transparent 5px,
+                transparent 10px
+            );
+            opacity: 0.3;
+            z-index: 1000;
+            pointer-events: none;
+        }
+        
+        .fold-line-1 { left: 211mm; }
+        .fold-line-2 { left: 422mm; }
+        
+        /* Panels */
+        .panel {
+            width: 210.67mm; /* Account for bleed distribution */
+            height: 100%;
+            padding: 4mm; /* 1mm bleed + 3mm safety */
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        /* OUTSIDE PANELS */
+        
+        /* Back Cover */
+        .back-cover {
+            background: #f5f5f5;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .back-cover-content {
+            max-width: 80%;
+        }
+        
+        .partner-logos {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            font-size: 48px;
+        }
+        
+        .back-tagline {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .contact-block {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .contact-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .contact-item {
+            margin: 10px 0;
+            font-size: 16px;
+            color: #666;
+        }
+        
+        /* Front Cover */
+        .front-cover {
+            background: linear-gradient(135deg, #0057B7 0%, #0066CC 100%);
+            color: white;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+        
+        .front-header {
+            z-index: 10;
+            padding-top: 40px;
+        }
+        
+        .ukraine-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+        
+        .cover-title {
+            font-size: 52px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+        
+        .cover-subtitle {
+            font-size: 26px;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+        
+        .key-stat {
+            background: #FFD700;
+            color: #333;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .key-stat-number {
+            font-size: 64px;
+            font-weight: 900;
+            line-height: 1;
+        }
+        
+        .key-stat-label {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        .cover-visual {
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,215,0,0.1);
+            border-radius: 50%;
+        }
+        
+        .front-footer {
+            text-align: center;
+            font-size: 16px;
+            opacity: 0.9;
+            z-index: 10;
+            padding-bottom: 30px;
+        }
+        
+        /* First Flap (Problem Statement) */
+        .first-flap {
+            background: white;
+        }
+        
+        .problem-header {
+            background: #ff6b6b;
+            margin: -4mm -4mm 30px -4mm;
+            padding: 30px;
+            color: white;
+            text-align: center;
+        }
+        
+        .problem-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        
+        .problem-subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .problem-points {
+            padding: 0 20px;
+        }
+        
+        .problem-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .problem-icon {
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+        
+        .problem-content h4 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        .problem-content p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .impact-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 30px 20px;
+            text-align: center;
+        }
+        
+        .impact-box-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        
+        .impact-box-text {
+            font-size: 24px;
+            font-weight: 900;
+            color: #856404;
+        }
+        
+        /* INSIDE PANELS */
+        
+        /* Panel 1 - Solution Overview */
+        .panel-1 {
+            background: white;
+        }
+        
+        .solution-header {
+            background: linear-gradient(135deg, #00AA44 0%, #00CC55 100%);
+            margin: -4mm -4mm 30px -4mm;
+            padding: 30px;
+            color: white;
+            text-align: center;
+        }
+        
+        .solution-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        
+        .solution-points {
+            display: grid;
+            gap: 20px;
+            padding: 0 20px;
+        }
+        
+        .solution-item {
+            background: #f0f9ff;
+            border-left: 4px solid #0066CC;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .solution-item h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0057B7;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .solution-item p {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        .platform-preview {
+            margin: 30px 20px 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border: 2px solid #dee2e6;
+            text-align: center;
+        }
+        
+        .platform-preview-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .platform-url {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0066CC;
+        }
+        
+        /* Panel 2 - Features & Benefits */
+        .panel-2 {
+            background: #fafafa;
+        }
+        
+        .features-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-top: 30px;
+        }
+        
+        .features-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .features-subtitle {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 0 20px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .feature-card-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .feature-card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0057B7;
+            margin-bottom: 10px;
+        }
+        
+        .feature-card-desc {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.4;
+        }
+        
+        .benefits-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #e8f5e9;
+            border-radius: 12px;
+            margin: 30px 20px;
+        }
+        
+        .benefits-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2e7d32;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .benefit-list {
+            display: grid;
+            gap: 10px;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            color: #2e7d32;
+        }
+        
+        /* Panel 3 - Success Metrics & CTA */
+        .panel-3 {
+            background: white;
+        }
+        
+        .metrics-header {
+            background: #FFD700;
+            margin: -4mm -4mm 30px -4mm;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .metrics-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .metrics-subtitle {
+            font-size: 18px;
+            color: #666;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 0 20px;
+            margin-bottom: 30px;
+        }
+        
+        .metric-card {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+        
+        .metric-icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .metric-value {
+            font-size: 28px;
+            font-weight: 900;
+            color: #0057B7;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .cta-section {
+            background: #333;
+            color: white;
+            padding: 30px;
+            margin: 0 -4mm -4mm -4mm;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .cta-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .cta-button {
+            background: #FFD700;
+            color: #333;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            display: inline-block;
+        }
+        
+        .event-info {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        /* Print styles */
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            
+            .info-panel {
+                display: none;
+            }
+            
+            .pamphlet-side {
+                box-shadow: none;
+                page-break-after: always;
+            }
+            
+            .fold-line {
+                display: none;
+            }
+        }
+        
+        /* Responsive preview */
+        @media (max-width: 1400px) {
+            .pamphlet-side {
+                transform: scale(0.5);
+                transform-origin: top center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="info-panel">
+        <h2>Wickelfalz (Roll Fold) Pamphlet Preview</h2>
+        <p>This design shows both sides of a 6-page roll fold pamphlet. When printed, the pamphlet unfolds from right to left, revealing information progressively. The fold lines are indicated by red dashed lines. Final size when folded: 210 x 297mm (DIN A4).</p>
+    </div>
+    
+    <div class="pamphlet-container">
+        <!-- OUTSIDE (when folded) -->
+        <div class="pamphlet-side">
+            <div class="fold-line fold-line-1"></div>
+            <div class="fold-line fold-line-2"></div>
+            
+            <!-- Back Cover -->
+            <div class="panel back-cover">
+                <div class="back-cover-content">
+                    <div class="partner-logos">
+                        <span>🇩🇪</span>
+                        <span>🤝</span>
+                        <span>🇺🇦</span>
+                    </div>
+                    
+                    <p class="back-tagline">
+                        "Building bridges between funding and impact"
+                    </p>
+                    
+                    <div class="contact-block">
+                        <h3 class="contact-title">Get Started Today</h3>
+                        <div class="contact-item">🌐 grants.netlify.app</div>
+                        <div class="contact-item">📧 info@grants.org</div>
+                        <div class="contact-item">📱 Mobile-friendly platform</div>
+                        <div class="contact-item">🏢 URC 2025 Booth #42</div>
+                    </div>
+                    
+                    <p style="margin-top: 30px; font-size: 14px; color: #999;">
+                        © 2025 Civil Society Grants Database<br>
+                        A German-Ukrainian Partnership Initiative
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Front Cover -->
+            <div class="panel front-cover">
+                <div class="front-header">
+                    <div class="ukraine-badge">
+                        <span>🇺🇦</span>
+                        <span>For Ukrainian Civil Society</span>
+                    </div>
+                    
+                    <h1 class="cover-title">
+                        Civil Society<br>
+                        Grants Database
+                    </h1>
+                    
+                    <p class="cover-subtitle">
+                        AI-Powered Funding Discovery<br>
+                        for Ukrainian NGOs
+                    </p>
+                </div>
+                
+                <div class="key-stat">
+                    <div class="key-stat-number">€75M+</div>
+                    <div class="key-stat-label">Available Funding</div>
+                </div>
+                
+                <div class="cover-visual"></div>
+                
+                <div class="front-footer">
+                    Transforming how Ukrainian NGOs<br>
+                    access international funding
+                </div>
+            </div>
+            
+            <!-- First Flap (opens first) -->
+            <div class="panel first-flap">
+                <div class="problem-header">
+                    <h2 class="problem-title">The Challenge</h2>
+                    <p class="problem-subtitle">Why Ukrainian NGOs struggle to find funding</p>
+                </div>
+                
+                <div class="problem-points">
+                    <div class="problem-item">
+                        <span class="problem-icon">🔍</span>
+                        <div class="problem-content">
+                            <h4>Scattered Information</h4>
+                            <p>Grants spread across 100+ websites, each with different formats and requirements</p>
+                        </div>
+                    </div>
+                    
+                    <div class="problem-item">
+                        <span class="problem-icon">🌐</span>
+                        <div class="problem-content">
+                            <h4>Language Barriers</h4>
+                            <p>Most grants only available in English, creating accessibility issues</p>
+                        </div>
+                    </div>
+                    
+                    <div class="problem-item">
+                        <span class="problem-icon">⏰</span>
+                        <div class="problem-content">
+                            <h4>Missed Deadlines</h4>
+                            <p>No centralized tracking system leads to lost opportunities</p>
+                        </div>
+                    </div>
+                    
+                    <div class="problem-item">
+                        <span class="problem-icon">📋</span>
+                        <div class="problem-content">
+                            <h4>Complex Requirements</h4>
+                            <p>Difficult to understand eligibility without expert knowledge</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="impact-box">
+                    <div class="impact-box-title">The Result:</div>
+                    <div class="impact-box-text">40+ hours wasted per grant search</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- INSIDE (when unfolded) -->
+        <div class="pamphlet-side">
+            <div class="fold-line fold-line-1"></div>
+            <div class="fold-line fold-line-2"></div>
+            
+            <!-- Panel 1 - Solution Overview -->
+            <div class="panel panel-1">
+                <div class="solution-header">
+                    <h2 class="solution-title">Our Solution</h2>
+                </div>
+                
+                <div class="solution-points">
+                    <div class="solution-item">
+                        <h4><span>🎯</span> One Central Platform</h4>
+                        <p>All 136+ active grants for Ukrainian civil society in one searchable database</p>
+                    </div>
+                    
+                    <div class="solution-item">
+                        <h4><span>🤖</span> AI-Powered Matching</h4>
+                        <p>Describe your organization and get personalized grant recommendations in 30 seconds</p>
+                    </div>
+                    
+                    <div class="solution-item">
+                        <h4><span>🇺🇦</span> Full Ukrainian Translation</h4>
+                        <p>Every grant fully translated and explained in Ukrainian language</p>
+                    </div>
+                    
+                    <div class="solution-item">
+                        <h4><span>📱</span> Mobile-First Design</h4>
+                        <p>Access grants anywhere, anytime - 85% of our users are on mobile</p>
+                    </div>
+                </div>
+                
+                <div class="platform-preview">
+                    <div class="platform-preview-title">Try it now:</div>
+                    <div class="platform-url">grants.netlify.app</div>
+                </div>
+            </div>
+            
+            <!-- Panel 2 - Features & Benefits -->
+            <div class="panel panel-2">
+                <div class="features-header">
+                    <h2 class="features-title">Platform Features</h2>
+                    <p class="features-subtitle">Everything you need to find the right funding</p>
+                </div>
+                
+                <div class="feature-cards">
+                    <div class="feature-card">
+                        <span class="feature-card-icon">🔍</span>
+                        <h4 class="feature-card-title">Smart Search</h4>
+                        <p class="feature-card-desc">Filter by organization type, location, and focus area</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <span class="feature-card-icon">⏰</span>
+                        <h4 class="feature-card-title">Deadline Alerts</h4>
+                        <p class="feature-card-desc">Never miss an opportunity with automated reminders</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <span class="feature-card-icon">📊</span>
+                        <h4 class="feature-card-title">Grant Analytics</h4>
+                        <p class="feature-card-desc">Track success rates and application history</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <span class="feature-card-icon">💬</span>
+                        <h4 class="feature-card-title">AI Assistant</h4>
+                        <p class="feature-card-desc">Get instant answers about eligibility and requirements</p>
+                    </div>
+                </div>
+                
+                <div class="benefits-section">
+                    <h3 class="benefits-title">Why Organizations Choose Us</h3>
+                    <div class="benefit-list">
+                        <div class="benefit-item">
+                            <span>✅</span>
+                            <span>Save 20+ hours per grant search</span>
+                        </div>
+                        <div class="benefit-item">
+                            <span>✅</span>
+                            <span>3x higher application success rate</span>
+                        </div>
+                        <div class="benefit-item">
+                            <span>✅</span>
+                            <span>100% free to use - always</span>
+                        </div>
+                        <div class="benefit-item">
+                            <span>✅</span>
+                            <span>Trusted by 2,400+ NGOs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Panel 3 - Success Metrics & CTA -->
+            <div class="panel panel-3">
+                <div class="metrics-header">
+                    <h2 class="metrics-title">Proven Impact</h2>
+                    <p class="metrics-subtitle">Results from just 3 weeks of operation</p>
+                </div>
+                
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <span class="metric-icon">💰</span>
+                        <div class="metric-value">€478,000</div>
+                        <div class="metric-label">Funding Facilitated</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <span class="metric-icon">🌍</span>
+                        <div class="metric-value">38</div>
+                        <div class="metric-label">Countries Reached</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <span class="metric-icon">🏛️</span>
+                        <div class="metric-value">2,400+</div>
+                        <div class="metric-label">NGOs Served</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <span class="metric-icon">📈</span>
+                        <div class="metric-value">18,000+</div>
+                        <div class="metric-label">Page Views</div>
+                    </div>
+                </div>
+                
+                <div class="cta-section">
+                    <h3 class="cta-title">Join the Transformation</h3>
+                    
+                    <div class="cta-buttons">
+                        <a href="#" class="cta-button">Visit Platform</a>
+                        <a href="#" class="cta-button">Schedule Demo</a>
+                    </div>
+                    
+                    <p class="event-info">
+                        Meet us at URC 2025<br>
+                        Booth #42 • Live Demos Every Hour
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

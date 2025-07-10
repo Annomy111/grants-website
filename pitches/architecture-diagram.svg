@@ -1,0 +1,82 @@
+<svg viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="600" fill="#000000"/>
+  
+  <!-- Title -->
+  <text x="600" y="50" font-family="Arial, sans-serif" font-size="36" font-weight="bold" text-anchor="middle" fill="#ffffff">
+    GrantsUA Technical Architecture
+  </text>
+  
+  <!-- Frontend Section -->
+  <g transform="translate(100, 100)">
+    <rect x="0" y="0" width="250" height="400" rx="20" fill="#111111" stroke="#333333" stroke-width="2"/>
+    <text x="125" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#4CAF50">Frontend</text>
+    
+    <rect x="20" y="70" width="210" height="60" rx="10" fill="#1a1a1a" stroke="#444444"/>
+    <text x="125" y="105" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#ffffff">React 18</text>
+    
+    <rect x="20" y="150" width="210" height="60" rx="10" fill="#1a1a1a" stroke="#444444"/>
+    <text x="125" y="185" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#ffffff">Tailwind CSS</text>
+    
+    <rect x="20" y="230" width="210" height="60" rx="10" fill="#1a1a1a" stroke="#444444"/>
+    <text x="125" y="265" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#ffffff">i18next</text>
+    
+    <rect x="20" y="310" width="210" height="60" rx="10" fill="#1a1a1a" stroke="#444444"/>
+    <text x="125" y="345" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#ffffff">React Router v6</text>
+  </g>
+  
+  <!-- Backend Section -->
+  <g transform="translate(475, 100)">
+    <rect x="0" y="0" width="250" height="400" rx="20" fill="#111111" stroke="#333333" stroke-width="2"/>
+    <text x="125" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#4CAF50">Backend</text>
+    
+    <rect x="20" y="70" width="210" height="60" rx="10" fill="#1a1a1a" stroke="#444444"/>
+    <text x="125" y="105" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#ffffff">Netlify Functions</text>
+    
+    <rect x="20" y="150" width="210" height="60" rx="10" fill="#1a1a1a" stroke="#444444"/>
+    <text x="125" y="185" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#ffffff">Serverless APIs</text>
+    
+    <rect x="20" y="230" width="210" height="60" rx="10" fill="#1a1a1a" stroke="#444444"/>
+    <text x="125" y="265" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#ffffff">Google Gemini AI</text>
+    
+    <rect x="20" y="310" width="210" height="60" rx="10" fill="#1a1a1a" stroke="#444444"/>
+    <text x="125" y="345" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#ffffff">JWT Auth</text>
+  </g>
+  
+  <!-- Database Section -->
+  <g transform="translate(850, 100)">
+    <rect x="0" y="0" width="250" height="400" rx="20" fill="#111111" stroke="#333333" stroke-width="2"/>
+    <text x="125" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#4CAF50">Database</text>
+    
+    <rect x="20" y="70" width="210" height="60" rx="10" fill="#1a1a1a" stroke="#444444"/>
+    <text x="125" y="105" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#ffffff">Supabase</text>
+    
+    <rect x="20" y="150" width="210" height="60" rx="10" fill="#1a1a1a" stroke="#444444"/>
+    <text x="125" y="185" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#ffffff">PostgreSQL</text>
+    
+    <rect x="20" y="230" width="210" height="60" rx="10" fill="#1a1a1a" stroke="#444444"/>
+    <text x="125" y="265" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#ffffff">Row Level Security</text>
+    
+    <rect x="20" y="310" width="210" height="60" rx="10" fill="#1a1a1a" stroke="#444444"/>
+    <text x="125" y="345" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#ffffff">Real-time Updates</text>
+  </g>
+  
+  <!-- Arrows -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4CAF50" />
+    </marker>
+  </defs>
+  
+  <line x1="350" y1="300" x2="475" y2="300" stroke="#4CAF50" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <line x1="725" y1="300" x2="850" y2="300" stroke="#4CAF50" stroke-width="3" marker-end="url(#arrowhead)"/>
+  
+  <!-- Labels on arrows -->
+  <text x="412" y="290" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#999999">API Calls</text>
+  <text x="787" y="290" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#999999">Queries</text>
+  
+  <!-- Key Features -->
+  <text x="600" y="550" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#666666">
+    Serverless • Scalable • Multi-lingual • AI-Powered • Secure
+  </text>
+</svg>

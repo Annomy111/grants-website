@@ -1,0 +1,14 @@
+<svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle for logo -->
+  <circle cx="60" cy="100" r="50" fill="#4CAF50"/>
+  
+  <!-- Letter G in circle -->
+  <text x="60" y="115" font-family="Arial, sans-serif" font-size="48" font-weight="bold" text-anchor="middle" fill="#000000">G</text>
+  
+  <!-- Text next to logo -->
+  <text x="130" y="85" font-family="Arial, sans-serif" font-size="28" font-weight="600" fill="#ffffff">Civil Society</text>
+  <text x="130" y="115" font-family="Arial, sans-serif" font-size="28" font-weight="600" fill="#ffffff">Grants Database</text>
+  
+  <!-- Tagline -->
+  <text x="130" y="140" font-family="Arial, sans-serif" font-size="14" fill="#4CAF50">Empowering Ukrainian NGOs</text>
+</svg>

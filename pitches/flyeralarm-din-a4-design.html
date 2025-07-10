@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlyerAlarm DIN A4 Flyer - Civil Society Grants Database</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ccc;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        /* A4 with 1mm bleed */
+        .flyer-container {
+            width: 212mm;
+            height: 299mm;
+            background: white;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        /* Bleed area indicator */
+        .flyer-container::before {
+            content: '';
+            position: absolute;
+            top: 1mm;
+            left: 1mm;
+            right: 1mm;
+            bottom: 1mm;
+            border: 1px dashed #ff0000;
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        
+        .flyer {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            /* Account for bleed */
+            padding: 4mm; /* 1mm bleed + 3mm safety */
+        }
+        
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #0057B7 0%, #005BBB 50%, #0066CC 100%);
+            margin: -4mm -4mm 0 -4mm;
+            padding: 40px 40px 35px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: #FFD700;
+        }
+        
+        .partnership-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .main-title {
+            font-size: 48px;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+        
+        .subtitle {
+            font-size: 24px;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+        
+        /* Key Statistics */
+        .stats-section {
+            background: #FFD700;
+            margin: 0 -4mm;
+            padding: 25px 40px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .stat {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .stat-number {
+            font-size: 42px;
+            font-weight: 900;
+            color: #0057B7;
+            line-height: 1;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 13px;
+            color: #333;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 5px;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Main Content */
+        .content {
+            padding: 30px 36px;
+        }
+        
+        /* Problem/Solution Section */
+        .problem-solution {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .problem-box, .solution-box {
+            padding: 25px;
+            border-radius: 12px;
+        }
+        
+        .problem-box {
+            background: #f8f8f8;
+            border-left: 4px solid #ff6b6b;
+        }
+        
+        .solution-box {
+            background: #e8f5e9;
+            border-left: 4px solid #00AA44;
+        }
+        
+        .box-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .box-content {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+        }
+        
+        .box-content ul {
+            margin: 10px 0 0 20px;
+        }
+        
+        /* Features Grid */
+        .features {
+            margin-bottom: 30px;
+        }
+        
+        .features-title {
+            font-size: 24px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 20px 15px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+        
+        .feature-icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .feature-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0057B7;
+            margin-bottom: 8px;
+        }
+        
+        .feature-desc {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.4;
+        }
+        
+        /* Impact Section */
+        .impact {
+            background: #f0f7ff;
+            margin: 0 -36px;
+            padding: 25px 36px;
+            border-top: 2px solid #0057B7;
+            border-bottom: 2px solid #0057B7;
+        }
+        
+        .impact-title {
+            font-size: 22px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0057B7;
+        }
+        
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .impact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .impact-icon {
+            width: 45px;
+            height: 45px;
+            background: #00AA44;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        
+        .impact-text {
+            flex: 1;
+        }
+        
+        .impact-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #333;
+        }
+        
+        .impact-desc {
+            font-size: 13px;
+            color: #666;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: #333;
+            color: white;
+            margin: 30px -36px -4mm;
+            padding: 30px 36px;
+            text-align: center;
+        }
+        
+        .cta-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        .cta-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-item {
+            text-align: center;
+        }
+        
+        .cta-label {
+            font-size: 12px;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .cta-link {
+            color: #FFD700;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .booth-banner {
+            background: #FFD700;
+            color: #333;
+            padding: 12px 24px;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: 700;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        
+        /* Print Guidelines */
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            
+            .flyer-container {
+                box-shadow: none;
+            }
+            
+            .flyer-container::before {
+                display: none;
+            }
+        }
+        
+        /* Responsive Preview */
+        @media (max-width: 900px) {
+            .flyer-container {
+                transform: scale(0.6);
+                transform-origin: top center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flyer-container">
+        <div class="flyer">
+            <!-- Header -->
+            <div class="header">
+                <div class="partnership-badge">
+                    <span>🇩🇪</span>
+                    <span>German-Ukrainian Partnership</span>
+                    <span>🇺🇦</span>
+                </div>
+                <h1 class="main-title">Civil Society<br>Grants Database</h1>
+                <p class="subtitle">Connecting €75M+ in Funding<br>to Ukrainian Civil Society</p>
+            </div>
+            
+            <!-- Statistics -->
+            <div class="stats-section">
+                <div class="stat">
+                    <span class="stat-number">136</span>
+                    <span class="stat-label">Active Grants</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">€75M+</span>
+                    <span class="stat-label">Total Funding</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">2,400+</span>
+                    <span class="stat-label">NGOs Served</span>
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="content">
+                <!-- Problem/Solution -->
+                <div class="problem-solution">
+                    <div class="problem-box">
+                        <h3 class="box-title">
+                            <span>❌</span>
+                            <span>The Challenge</span>
+                        </h3>
+                        <div class="box-content">
+                            Ukrainian NGOs spend 40+ hours searching for grants across:
+                            <ul>
+                                <li>100+ scattered websites</li>
+                                <li>Complex eligibility criteria</li>
+                                <li>Language barriers</li>
+                                <li>Missed deadlines</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="solution-box">
+                        <h3 class="box-title">
+                            <span>✅</span>
+                            <span>Our Solution</span>
+                        </h3>
+                        <div class="box-content">
+                            One platform that delivers:
+                            <ul>
+                                <li>All grants in one place</li>
+                                <li>AI-powered matching</li>
+                                <li>Full Ukrainian translation</li>
+                                <li>30-second discovery</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Features -->
+                <div class="features">
+                    <h2 class="features-title">Platform Features</h2>
+                    <div class="features-grid">
+                        <div class="feature">
+                            <span class="feature-icon">🤖</span>
+                            <h4 class="feature-title">AI Matching</h4>
+                            <p class="feature-desc">Smart recommendations in seconds</p>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">🌐</span>
+                            <h4 class="feature-title">Bilingual</h4>
+                            <p class="feature-desc">Full Ukrainian + English support</p>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">📱</span>
+                            <h4 class="feature-title">Mobile-First</h4>
+                            <p class="feature-desc">85% access via mobile</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Impact Section -->
+            <div class="impact">
+                <h2 class="impact-title">Proven Impact in Just 3 Weeks</h2>
+                <div class="impact-grid">
+                    <div class="impact-item">
+                        <div class="impact-icon">€</div>
+                        <div class="impact-text">
+                            <div class="impact-value">€478,000</div>
+                            <div class="impact-desc">Funding facilitated</div>
+                        </div>
+                    </div>
+                    <div class="impact-item">
+                        <div class="impact-icon">🌍</div>
+                        <div class="impact-text">
+                            <div class="impact-value">38 Countries</div>
+                            <div class="impact-desc">Global reach achieved</div>
+                        </div>
+                    </div>
+                    <div class="impact-item">
+                        <div class="impact-icon">⏱️</div>
+                        <div class="impact-text">
+                            <div class="impact-value">20+ Hours</div>
+                            <div class="impact-desc">Saved per organization</div>
+                        </div>
+                    </div>
+                    <div class="impact-item">
+                        <div class="impact-icon">📈</div>
+                        <div class="impact-text">
+                            <div class="impact-value">3x Success</div>
+                            <div class="impact-desc">Higher application rate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CTA -->
+            <div class="cta">
+                <h2 class="cta-title">Join the Transformation</h2>
+                <div class="cta-grid">
+                    <div class="cta-item">
+                        <div class="cta-label">Visit Platform</div>
+                        <a href="#" class="cta-link">grants.netlify.app</a>
+                    </div>
+                    <div class="cta-item">
+                        <div class="cta-label">Contact Us</div>
+                        <a href="#" class="cta-link">info@grants.org</a>
+                    </div>
+                </div>
+                <div class="booth-banner">
+                    URC 2025 • Booth #42 • Live Demos Every Hour
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

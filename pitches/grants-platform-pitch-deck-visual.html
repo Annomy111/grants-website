@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civil Society Grants Database - Empowering Civil Society Through Technology</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow: hidden;
+        }
+        
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            position: relative;
+            background: #000;
+        }
+        
+        .slide.active {
+            display: flex;
+        }
+        
+        .slide-number {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .logo {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: #000;
+        }
+        
+        .logo-text {
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        h1 {
+            font-size: 72px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+            line-height: 1.1;
+        }
+        
+        h2 {
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        h3 {
+            font-size: 32px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            font-size: 24px;
+            line-height: 1.6;
+            text-align: center;
+            max-width: 900px;
+            color: #ccc;
+        }
+        
+        .accent {
+            color: #4CAF50;
+        }
+        
+        .metric {
+            font-size: 96px;
+            font-weight: 700;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+        
+        .metric-label {
+            font-size: 24px;
+            color: #999;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 80px;
+            text-align: center;
+        }
+        
+        .screenshot-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+        
+        .screenshot {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            border: 1px solid #222;
+        }
+        
+        .screenshot-caption {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .feature-visual {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1400px;
+        }
+        
+        .feature-text {
+            text-align: left;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .feature-list li {
+            font-size: 24px;
+            margin-bottom: 15px;
+            padding-left: 40px;
+            position: relative;
+            color: #ddd;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-size: 28px;
+        }
+        
+        .mobile-showcase {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        
+        .mobile-device {
+            position: relative;
+            padding: 20px;
+            background: #222;
+            border-radius: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+        
+        .mobile-device img {
+            border-radius: 20px;
+            width: 300px;
+        }
+        
+        .tablet-device img {
+            width: 500px;
+        }
+        
+        .tech-visual {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin-top: 40px;
+        }
+        
+        .tech-card {
+            background: #111;
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #222;
+            text-align: center;
+        }
+        
+        .tech-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+        
+        .cta-button {
+            background: #4CAF50;
+            color: #000;
+            padding: 20px 60px;
+            font-size: 24px;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            margin-top: 40px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: #4CAF50;
+            transition: width 0.3s;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progress"></div>
+    
+    <!-- Slide 1: Title with Hero Screenshot -->
+    <div class="slide active">
+        <div class="logo">
+            <div class="logo-icon">G</div>
+            <div class="logo-text">Civil Society<br>Grants Database</div>
+        </div>
+        <h1 style="font-size: 64px;">Connecting Ukrainian NGOs with<br><span class="accent">€75M+ in Funding</span></h1>
+        <p style="font-size: 28px; margin-bottom: 40px;">AI-Powered Grant Discovery Platform</p>
+        <div class="screenshot-container" style="max-width: 900px;">
+            <img src="screenshots/01-homepage-hero.png" alt="Platform Homepage" class="screenshot">
+        </div>
+        <div class="slide-number">1/15</div>
+    </div>
+    
+    <!-- Slide 2: The Problem with Visual -->
+    <div class="slide">
+        <h2>The <span class="accent">Challenge</span></h2>
+        <div class="feature-visual">
+            <div class="feature-text">
+                <ul class="feature-list">
+                    <li style="color: #ff5252;">70% of eligible NGOs never find suitable grants</li>
+                    <li style="color: #ff5252;">Information scattered across 100+ sources</li>
+                    <li style="color: #ff5252;">Language barriers limit access</li>
+                    <li style="color: #ff5252;">20+ hours spent per grant search</li>
+                </ul>
+            </div>
+            <div style="text-align: center;">
+                <div style="font-size: 120px; color: #ff5252;">70%</div>
+                <p style="font-size: 20px; color: #999;">Miss Opportunities</p>
+            </div>
+        </div>
+        <div class="slide-number">2/15</div>
+    </div>
+    
+    <!-- Slide 3: Live Statistics -->
+    <div class="slide">
+        <h2>Current <span class="accent">Impact</span></h2>
+        <div class="screenshot-container">
+            <img src="screenshots/02-statistics-section.png" alt="Live Statistics" class="screenshot">
+            <div class="screenshot-caption">Real-time platform statistics showing growth</div>
+        </div>
+        <div class="metrics-grid" style="margin-top: 60px;">
+            <div>
+                <div class="metric">€75M+</div>
+                <div class="metric-label">Total Funding</div>
+            </div>
+            <div>
+                <div class="metric">136</div>
+                <div class="metric-label">Active Grants</div>
+            </div>
+            <div>
+                <div class="metric">52</div>
+                <div class="metric-label">2025 Deadlines</div>
+            </div>
+        </div>
+        <div class="slide-number">3/15</div>
+    </div>
+    
+    <!-- Slide 4: Featured Grants -->
+    <div class="slide">
+        <h2>AI-Selected <span class="accent">Opportunities</span></h2>
+        <div class="screenshot-container">
+            <img src="screenshots/03-featured-grants.png" alt="Featured Grants" class="screenshot">
+            <div class="screenshot-caption">Smart algorithm prioritizes high-value grants</div>
+        </div>
+        <p style="margin-top: 40px;">EU, World Bank, UN, and 103+ more organizations</p>
+        <div class="slide-number">4/15</div>
+    </div>
+    
+    <!-- Slide 5: Grant Database -->
+    <div class="slide">
+        <h2>Comprehensive <span class="accent">Database</span></h2>
+        <div class="screenshot-container">
+            <img src="screenshots/04-grants-list.png" alt="Grants Database" class="screenshot">
+            <div class="screenshot-caption">All 136 grants in searchable, filterable format</div>
+        </div>
+        <div class="slide-number">5/15</div>
+    </div>
+    
+    <!-- Slide 6: Advanced Filtering -->
+    <div class="slide">
+        <h2>Smart <span class="accent">Filtering</span></h2>
+        <div class="feature-visual">
+            <div class="screenshot-container" style="max-width: 700px;">
+                <img src="screenshots/05-grants-filtered.png" alt="Filtering System" class="screenshot">
+            </div>
+            <div class="feature-text">
+                <h3>3-Click Discovery</h3>
+                <ul class="feature-list">
+                    <li>Filter by grant size</li>
+                    <li>Select focus areas</li>
+                    <li>Check deadlines</li>
+                    <li>Instant results</li>
+                </ul>
+                <p style="text-align: left; margin-top: 30px; font-size: 20px; color: #4CAF50;">
+                    Average discovery time: <strong>3 minutes</strong>
+                </p>
+            </div>
+        </div>
+        <div class="slide-number">6/15</div>
+    </div>
+    
+    <!-- Slide 7: AI Assistant -->
+    <div class="slide">
+        <h2>AI-Powered <span class="accent">Assistant</span></h2>
+        <div class="screenshot-container">
+            <img src="screenshots/06-chatbot-open.png" alt="AI Assistant" class="screenshot">
+            <div class="screenshot-caption">Natural language grant discovery in 3 languages</div>
+        </div>
+        <p style="margin-top: 40px;">"Show me education grants under €50K" → Instant results</p>
+        <div class="slide-number">7/15</div>
+    </div>
+    
+    <!-- Slide 8: Grant Details -->
+    <div class="slide">
+        <h2>Detailed <span class="accent">Information</span></h2>
+        <div class="screenshot-container">
+            <img src="screenshots/08-grant-detail.png" alt="Grant Details" class="screenshot">
+            <div class="screenshot-caption">Complete grant information with direct application links</div>
+        </div>
+        <div class="slide-number">8/15</div>
+    </div>
+    
+    <!-- Slide 9: Mobile Experience -->
+    <div class="slide">
+        <h2>Mobile <span class="accent">First</span></h2>
+        <div class="mobile-showcase">
+            <div class="mobile-device">
+                <img src="screenshots/09-mobile-homepage.png" alt="Mobile Homepage">
+            </div>
+            <div class="mobile-device">
+                <img src="screenshots/10-mobile-grants.png" alt="Mobile Grants">
+            </div>
+            <div class="mobile-device tablet-device">
+                <img src="screenshots/11-tablet-view.png" alt="Tablet View">
+            </div>
+        </div>
+        <p style="margin-top: 40px;">100% responsive • Touch optimized • Fast loading</p>
+        <div class="slide-number">9/15</div>
+    </div>
+    
+    <!-- Slide 10: Language Support -->
+    <div class="slide">
+        <h2>Full <span class="accent">Localization</span></h2>
+        <div class="screenshot-container">
+            <img src="screenshots/12-ukrainian-interface.png" alt="Ukrainian Interface" class="screenshot">
+            <div class="screenshot-caption">Complete Ukrainian translation - UI and all content</div>
+        </div>
+        <p style="margin-top: 40px;">Breaking down language barriers for maximum accessibility</p>
+        <div class="slide-number">10/15</div>
+    </div>
+    
+    <!-- Slide 11: Technical Architecture -->
+    <div class="slide">
+        <h2>Built for <span class="accent">Scale</span></h2>
+        <div class="tech-visual">
+            <div class="tech-card">
+                <div class="tech-icon">⚡</div>
+                <h3>Frontend</h3>
+                <p>React 18<br>Tailwind CSS<br>i18next</p>
+            </div>
+            <div class="tech-card">
+                <div class="tech-icon">🚀</div>
+                <h3>Backend</h3>
+                <p>Netlify Functions<br>Serverless<br>Google Gemini AI</p>
+            </div>
+            <div class="tech-card">
+                <div class="tech-icon">🔒</div>
+                <h3>Database</h3>
+                <p>Supabase<br>PostgreSQL<br>Row Security</p>
+            </div>
+        </div>
+        <p style="margin-top: 40px;">99.9% uptime • <200ms response • Infinite scalability</p>
+        <div class="slide-number">11/15</div>
+    </div>
+    
+    <!-- Slide 12: Search Functionality -->
+    <div class="slide">
+        <h2>Intelligent <span class="accent">Search</span></h2>
+        <div class="screenshot-container">
+            <img src="screenshots/13-search-functionality.png" alt="Search Feature" class="screenshot">
+            <div class="screenshot-caption">Smart keyword matching with contextual results</div>
+        </div>
+        <div class="slide-number">12/15</div>
+    </div>
+    
+    <!-- Slide 13: Content & Resources -->
+    <div class="slide">
+        <h2>Knowledge <span class="accent">Hub</span></h2>
+        <div class="feature-visual">
+            <div class="screenshot-container" style="max-width: 600px;">
+                <img src="screenshots/14-about-page.png" alt="About Page" class="screenshot">
+            </div>
+            <div class="screenshot-container" style="max-width: 600px;">
+                <img src="screenshots/15-blog-section.png" alt="Blog Section" class="screenshot">
+            </div>
+        </div>
+        <p style="margin-top: 40px;">Grant writing tips • Success stories • Community resources</p>
+        <div class="slide-number">13/15</div>
+    </div>
+    
+    <!-- Slide 14: Growth Vision -->
+    <div class="slide">
+        <h2>Ready to <span class="accent">Scale</span></h2>
+        <div style="max-width: 1000px;">
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 60px; text-align: left;">
+                <div>
+                    <h3 style="color: #4CAF50;">2025 Roadmap</h3>
+                    <ul class="feature-list">
+                        <li>Application tracking system</li>
+                        <li>Partner API integration</li>
+                        <li>Advanced AI matching</li>
+                        <li>Regional expansion (CEE)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="color: #4CAF50;">Proven Results</h3>
+                    <ul class="feature-list">
+                        <li>38.8% grant growth (6 months)</li>
+                        <li>10+ hours saved per search</li>
+                        <li>98% user satisfaction</li>
+                        <li>500% user growth</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">14/15</div>
+    </div>
+    
+    <!-- Slide 15: Call to Action -->
+    <div class="slide">
+        <div class="logo">
+            <div class="logo-icon">G</div>
+            <div class="logo-text">Civil Society<br>Grants Database</div>
+        </div>
+        <h1>Transform Civil Society<br><span class="accent">Funding Together</span></h1>
+        <p style="font-size: 32px; margin: 40px 0;">From Ukrainian platform to regional infrastructure<br>serving 10,000+ organizations</p>
+        <button class="cta-button">Partner With Us</button>
+        <p style="margin-top: 60px; font-size: 20px;">
+            <strong>Live Platform:</strong> civil-society-grants-database.netlify.app<br>
+            <strong>Contact:</strong> contact@civilsocietygrants.org
+        </p>
+        <div class="slide-number">15/15</div>
+    </div>
+    
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        function updateProgress() {
+            const progress = ((currentSlide + 1) / totalSlides) * 100;
+            document.getElementById('progress').style.width = progress + '%';
+        }
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' && currentSlide < slides.length - 1) {
+                slides[currentSlide].classList.remove('active');
+                currentSlide++;
+                slides[currentSlide].classList.add('active');
+                slides[currentSlide].classList.add('fade-in');
+                updateProgress();
+            } else if (e.key === 'ArrowLeft' && currentSlide > 0) {
+                slides[currentSlide].classList.remove('active');
+                currentSlide--;
+                slides[currentSlide].classList.add('active');
+                slides[currentSlide].classList.add('fade-in');
+                updateProgress();
+            } else if (e.key === 'Escape') {
+                // Go to first slide
+                slides[currentSlide].classList.remove('active');
+                currentSlide = 0;
+                slides[currentSlide].classList.add('active');
+                updateProgress();
+            }
+        });
+        
+        // Click to advance
+        document.addEventListener('click', (e) => {
+            if (!e.target.matches('button, a')) {
+                if (currentSlide < slides.length - 1) {
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide++;
+                    slides[currentSlide].classList.add('active');
+                    slides[currentSlide].classList.add('fade-in');
+                    updateProgress();
+                }
+            }
+        });
+        
+        // Initialize progress
+        updateProgress();
+        
+        // Preload images
+        const images = [
+            '01-homepage-hero.png', '02-statistics-section.png', '03-featured-grants.png',
+            '04-grants-list.png', '05-grants-filtered.png', '06-chatbot-open.png',
+            '08-grant-detail.png', '09-mobile-homepage.png', '10-mobile-grants.png',
+            '11-tablet-view.png', '12-ukrainian-interface.png', '13-search-functionality.png',
+            '14-about-page.png', '15-blog-section.png'
+        ];
+        
+        images.forEach(img => {
+            const image = new Image();
+            image.src = 'screenshots/' + img;
+        });
+    </script>
+</body>
+</html>

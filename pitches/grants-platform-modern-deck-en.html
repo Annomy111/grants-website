@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civil Society Grants Database - Investment Deck</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f8f9fa;
+            color: #1a1a1a;
+            overflow: hidden;
+        }
+        
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px;
+            position: relative;
+            background: #ffffff;
+        }
+        
+        .slide.active {
+            display: flex;
+        }
+        
+        .slide-number {
+            position: absolute;
+            bottom: 40px;
+            right: 60px;
+            font-size: 16px;
+            color: #999;
+            font-weight: 300;
+        }
+        
+        .logo-container {
+            position: absolute;
+            top: 60px;
+            left: 80px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .logo-icon {
+            width: 80px;
+            height: 80px;
+            background: #0066ff;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #ffffff;
+            box-shadow: 0 4px 20px rgba(0, 102, 255, 0.2);
+        }
+        
+        .logo-text {
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 1.3;
+            color: #1a1a1a;
+        }
+        
+        h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+            line-height: 1.2;
+            color: #1a1a1a;
+            max-width: 900px;
+        }
+        
+        h2 {
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 50px;
+            text-align: center;
+            color: #1a1a1a;
+        }
+        
+        h3 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+        
+        p {
+            font-size: 22px;
+            line-height: 1.6;
+            text-align: center;
+            max-width: 800px;
+            color: #666;
+        }
+        
+        .subtitle {
+            font-size: 24px;
+            color: #666;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+        
+        .highlight {
+            color: #0066ff;
+        }
+        
+        .process-flow {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            margin-top: 60px;
+        }
+        
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-icon {
+            width: 120px;
+            height: 120px;
+            background: #0066ff;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 48px;
+            box-shadow: 0 8px 30px rgba(0, 102, 255, 0.2);
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: 3px solid #0066ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #0066ff;
+            font-size: 18px;
+        }
+        
+        .step-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+        
+        .step-description {
+            font-size: 16px;
+            color: #666;
+            max-width: 200px;
+            margin: 0 auto;
+        }
+        
+        .process-arrow {
+            color: #0066ff;
+            font-size: 36px;
+        }
+        
+        .metrics-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            max-width: 1000px;
+            margin-top: 60px;
+        }
+        
+        .metric-card {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .metric-value {
+            font-size: 64px;
+            font-weight: 700;
+            color: #0066ff;
+            margin-bottom: 10px;
+        }
+        
+        .metric-label {
+            font-size: 18px;
+            color: #666;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1000px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: #e8f0ff;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            flex-shrink: 0;
+        }
+        
+        .feature-content h4 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+        
+        .feature-content p {
+            font-size: 16px;
+            color: #666;
+            text-align: left;
+        }
+        
+        .impact-visual {
+            background: #f8f9fa;
+            padding: 60px;
+            border-radius: 30px;
+            max-width: 900px;
+            margin-top: 40px;
+        }
+        
+        .impact-stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .impact-label {
+            font-size: 20px;
+            color: #1a1a1a;
+        }
+        
+        .impact-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0066ff;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: #0066ff;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        
+        .cta-section {
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .cta-button {
+            background: #0066ff;
+            color: white;
+            padding: 20px 60px;
+            font-size: 20px;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(0, 102, 255, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(0, 102, 255, 0.4);
+        }
+        
+        .cta-secondary {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #666;
+        }
+        
+        .platform-preview {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Title -->
+    <div class="slide active">
+        <div class="logo-container">
+            <div class="logo-icon">G</div>
+            <div class="logo-text">Civil Society<br>Grants Database</div>
+        </div>
+        
+        <h1>Investment Opportunity</h1>
+        <p class="subtitle">Strategic Platform for Supporting Ukrainian Civil Society</p>
+        
+        <div class="metrics-container" style="margin-top: 80px;">
+            <div class="metric-card">
+                <div class="metric-value">€75M+</div>
+                <div class="metric-label">Available Funding</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">136</div>
+                <div class="metric-label">Active Grants</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">10K+</div>
+                <div class="metric-label">Potential Users</div>
+            </div>
+        </div>
+        
+        <div class="slide-number">1</div>
+    </div>
+    
+    <!-- Slide 2: Problem -->
+    <div class="slide">
+        <h2>The Problem We Solve</h2>
+        
+        <div class="impact-visual">
+            <div class="impact-stat">
+                <span class="impact-label">CSOs that never find suitable grants</span>
+                <span class="impact-value">70%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 70%;"></div>
+            </div>
+            
+            <div class="impact-stat" style="margin-top: 40px;">
+                <span class="impact-label">Time spent searching per grant</span>
+                <span class="impact-value">20+ hours</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 85%;"></div>
+            </div>
+            
+            <div class="impact-stat" style="margin-top: 40px;">
+                <span class="impact-label">Information scattered across</span>
+                <span class="impact-value">100+ sources</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 95%;"></div>
+            </div>
+        </div>
+        
+        <p style="margin-top: 40px; font-size: 20px;">
+            Civil society organizations miss millions in funding due to inefficient grant discovery processes
+        </p>
+        
+        <div class="slide-number">2</div>
+    </div>
+    
+    <!-- Slide 3: Solution Process -->
+    <div class="slide">
+        <h2>How It Works for Ukrainian CSOs</h2>
+        
+        <div class="process-flow">
+            <div class="process-step">
+                <div class="step-icon">👥</div>
+                <div class="step-number">1</div>
+                <div class="step-title">Registration</div>
+                <div class="step-description">Create organization profile</div>
+                <p style="font-size: 14px; color: #999; margin-top: 10px;">⏱ 5 min</p>
+            </div>
+            
+            <div class="process-arrow">→</div>
+            
+            <div class="process-step">
+                <div class="step-icon">🔍</div>
+                <div class="step-number">2</div>
+                <div class="step-title">Discovery</div>
+                <div class="step-description">AI-powered grant matching</div>
+                <p style="font-size: 14px; color: #999; margin-top: 10px;">⏱ Instant</p>
+            </div>
+            
+            <div class="process-arrow">→</div>
+            
+            <div class="process-step">
+                <div class="step-icon">🎯</div>
+                <div class="step-number">3</div>
+                <div class="step-title">Application</div>
+                <div class="step-description">Guided submission process</div>
+                <p style="font-size: 14px; color: #999; margin-top: 10px;">⏱ 2-5 days</p>
+            </div>
+            
+            <div class="process-arrow">→</div>
+            
+            <div class="process-step">
+                <div class="step-icon">📊</div>
+                <div class="step-number">4</div>
+                <div class="step-title">Tracking</div>
+                <div class="step-description">Real-time status monitoring</div>
+                <p style="font-size: 14px; color: #999; margin-top: 10px;">⏱ Ongoing</p>
+            </div>
+            
+            <div class="process-arrow">→</div>
+            
+            <div class="process-step" style="background: #e8f0ff; padding: 20px; border-radius: 20px;">
+                <div class="step-icon" style="background: #00c851;">✓</div>
+                <div class="step-number">5</div>
+                <div class="step-title">Impact</div>
+                <div class="step-description">Measurable community results</div>
+                <p style="font-size: 14px; color: #00c851; margin-top: 10px; font-weight: 600;">💰 Success</p>
+            </div>
+        </div>
+        
+        <div class="slide-number">3</div>
+    </div>
+    
+    <!-- Slide 4: Key Features -->
+    <div class="slide">
+        <h2>Platform Key Features</h2>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🤖</div>
+                <div class="feature-content">
+                    <h4>AI Assistant</h4>
+                    <p>Personalized grant recommendations based on organization profile</p>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🌐</div>
+                <div class="feature-content">
+                    <h4>Multilingual</h4>
+                    <p>Full support for Ukrainian, English, and German languages</p>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <div class="feature-content">
+                    <h4>Mobile First</h4>
+                    <p>100% responsive design for access from any device</p>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-content">
+                    <h4>Speed</h4>
+                    <p>Find relevant grants in 3 minutes instead of 20+ hours</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-number">4</div>
+    </div>
+    
+    <!-- Slide 5: Collective Impact -->
+    <div class="slide">
+        <h2>Collective Funding Impact</h2>
+        
+        <div style="background: #f8f9fa; padding: 60px; border-radius: 30px; max-width: 1000px;">
+            <p style="font-size: 24px; margin-bottom: 40px;">
+                Transform rejected applications into funding opportunities. When your organization cannot fund 
+                a worthy project, our platform instantly redirects applications to funders whose criteria perfectly 
+                match the CSO's mission and needs.
+            </p>
+            
+            <div style="display: flex; justify-content: space-around; margin-top: 40px;">
+                <div style="text-align: center;">
+                    <div style="font-size: 20px; color: #666;">👥</div>
+                    <p style="font-size: 18px; margin-top: 10px;">No worthy project left unfunded</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 20px; color: #0066ff;">🎯</div>
+                    <p style="font-size: 18px; margin-top: 10px;">Strengthening the entire ecosystem</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-number">5</div>
+    </div>
+    
+    <!-- Slide 6: Strategic Goal -->
+    <div class="slide">
+        <h2>Strategic Goal</h2>
+        
+        <div style="max-width: 900px; margin: 0 auto;">
+            <div style="background: #e8f0ff; padding: 40px; border-radius: 20px; margin-bottom: 40px;">
+                <div style="display: flex; align-items: center; gap: 30px;">
+                    <div class="logo-icon" style="font-size: 36px;">🎯</div>
+                    <div>
+                        <h3 style="margin-bottom: 10px;">Create the defining bilingual platform</h3>
+                        <p style="text-align: left; font-size: 18px;">connecting Ukrainian civil society organizations with international funding opportunities</p>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="font-size: 20px; margin-bottom: 30px;">
+                Our technology approach eliminates inefficiencies in traditional grant searching, 
+                ensuring transparent, measurable impact.
+            </p>
+            
+            <div style="display: flex; justify-content: space-between; margin-top: 60px;">
+                <div style="text-align: center;">
+                    <h3 style="color: #0066ff; font-size: 36px;">18</h3>
+                    <p style="font-size: 16px; color: #666;">Months to break-even</p>
+                </div>
+                <div style="text-align: center;">
+                    <div class="progress-bar" style="width: 300px;">
+                        <div class="progress-fill" style="width: 65%;"></div>
+                    </div>
+                    <p style="font-size: 18px; color: #0066ff; margin-top: 10px;">65% complete</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-number">6</div>
+    </div>
+    
+    <!-- Slide 7: Platform Demo -->
+    <div class="slide">
+        <h2>Live Platform</h2>
+        
+        <div class="platform-preview">
+            <img src="screenshots/01-homepage-hero.png" alt="Platform Homepage" style="width: 100%;">
+        </div>
+        
+        <p style="font-size: 20px; margin-top: 30px;">
+            Currently serving 136 active grants worth €75M+ in funding opportunities
+        </p>
+        
+        <div style="display: flex; justify-content: center; gap: 40px; margin-top: 40px;">
+            <div style="text-align: center;">
+                <div style="font-size: 48px;">🏆</div>
+                <p style="font-size: 18px;">38.8% growth<br>in 6 months</p>
+            </div>
+            <div style="text-align: center;">
+                <div style="font-size: 48px;">⏱️</div>
+                <p style="font-size: 18px;">3-minute<br>grant discovery</p>
+            </div>
+            <div style="text-align: center;">
+                <div style="font-size: 48px;">🌍</div>
+                <p style="font-size: 18px;">3 languages<br>supported</p>
+            </div>
+        </div>
+        
+        <div class="slide-number">7</div>
+    </div>
+    
+    <!-- Slide 8: Market & Expansion -->
+    <div class="slide">
+        <h2>Market Opportunity</h2>
+        
+        <div class="metrics-container">
+            <div class="metric-card">
+                <div class="metric-value">10K+</div>
+                <div class="metric-label">Registered CSOs in Ukraine</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">€2B+</div>
+                <div class="metric-label">Annual grant funding</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">50M</div>
+                <div class="metric-label">CEE region population</div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 60px; max-width: 800px;">
+            <h3 style="text-align: center; margin-bottom: 30px;">Expansion Plan</h3>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="text-align: center;">
+                    <div style="font-size: 48px;">🇺🇦</div>
+                    <p style="font-size: 18px; margin-top: 10px;">2025<br>Ukraine</p>
+                </div>
+                <div style="font-size: 36px; color: #0066ff;">→</div>
+                <div style="text-align: center;">
+                    <div style="font-size: 48px;">🇵🇱🇷🇴</div>
+                    <p style="font-size: 18px; margin-top: 10px;">2026<br>Poland, Romania</p>
+                </div>
+                <div style="font-size: 36px; color: #0066ff;">→</div>
+                <div style="text-align: center;">
+                    <div style="font-size: 48px;">🇪🇺</div>
+                    <p style="font-size: 18px; margin-top: 10px;">2027<br>Full CEE Region</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-number">8</div>
+    </div>
+    
+    <!-- Slide 9: Partnership CTA -->
+    <div class="slide">
+        <div class="logo-container">
+            <div class="logo-icon">G</div>
+            <div class="logo-text">Civil Society<br>Grants Database</div>
+        </div>
+        
+        <h2>Partnership Opportunities</h2>
+        
+        <p style="font-size: 24px; margin-bottom: 40px;">
+            Join leading foundations and institutions in supporting Ukrainian civil society through 
+            strategic technology investment. Our partnership model offers measurable impact with transparent 
+            reporting and direct engagement opportunities.
+        </p>
+        
+        <div class="feature-grid" style="max-width: 800px;">
+            <div style="text-align: center;">
+                <div class="logo-icon" style="margin: 0 auto 20px;">✉️</div>
+                <h4>Foundations & Donors</h4>
+                <p style="font-size: 16px;">Direct access to verified CSOs</p>
+            </div>
+            <div style="text-align: center;">
+                <div class="logo-icon" style="margin: 0 auto 20px;">📊</div>
+                <h4>Investors</h4>
+                <p style="font-size: 16px;">SaaS model with social impact</p>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <button class="cta-button">Schedule Partnership Discussion</button>
+            <p class="cta-secondary">
+                civil-society-grants-database.netlify.app<br>
+                contact@civilsocietygrants.org
+            </p>
+        </div>
+        
+        <div class="slide-number">9</div>
+    </div>
+    
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' && currentSlide < slides.length - 1) {
+                slides[currentSlide].classList.remove('active');
+                currentSlide++;
+                slides[currentSlide].classList.add('active');
+                slides[currentSlide].classList.add('fade-in');
+            } else if (e.key === 'ArrowLeft' && currentSlide > 0) {
+                slides[currentSlide].classList.remove('active');
+                currentSlide--;
+                slides[currentSlide].classList.add('active');
+                slides[currentSlide].classList.add('fade-in');
+            }
+        });
+        
+        // Click to advance
+        document.addEventListener('click', (e) => {
+            if (!e.target.matches('button')) {
+                if (currentSlide < slides.length - 1) {
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide++;
+                    slides[currentSlide].classList.add('active');
+                    slides[currentSlide].classList.add('fade-in');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

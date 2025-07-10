@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civil Society Grants Database</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+            background: #ffffff;
+            color: #000000;
+            overflow: hidden;
+            cursor: default;
+        }
+        
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: none;
+            position: relative;
+            background: #ffffff;
+        }
+        
+        .slide.active {
+            display: block;
+        }
+        
+        .grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(12, 1fr);
+            padding: 60px;
+        }
+        
+        .center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        .slide-indicator {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+        
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        .dot.active {
+            background: #000000;
+            width: 24px;
+            border-radius: 4px;
+        }
+        
+        /* Typography */
+        h1 {
+            font-size: 64px;
+            font-weight: 400;
+            letter-spacing: -0.04em;
+            line-height: 1;
+        }
+        
+        h2 {
+            font-size: 64px;
+            font-weight: 300;
+            letter-spacing: -0.04em;
+            line-height: 1;
+        }
+        
+        .number {
+            font-size: 96px;
+            font-weight: 600;
+            letter-spacing: -0.06em;
+        }
+        
+        .label {
+            font-size: 24px;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+            margin-top: 16px;
+        }
+        
+        .small {
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            color: #666666;
+        }
+        
+        /* Elements */
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: #0066ff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+        
+        .qr-container {
+            padding: 40px;
+            background: #ffffff;
+            border-radius: 0;
+        }
+        
+        .qr-code {
+            width: 280px;
+            height: 280px;
+            display: block;
+        }
+        
+        .process-dots {
+            display: flex;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .process-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #000000;
+            position: relative;
+        }
+        
+        .process-dot::after {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 50%;
+            width: 64px;
+            height: 1px;
+            background: #e0e0e0;
+            transform: translateY(-50%);
+        }
+        
+        .process-dot:last-child::after {
+            display: none;
+        }
+        
+        .process-dot.active {
+            background: #0066ff;
+            width: 24px;
+            height: 24px;
+            margin: -4px;
+        }
+        
+        .metric {
+            text-align: center;
+        }
+        
+        .metric .number {
+            color: #0066ff;
+        }
+        
+        /* Grid-based layouts */
+        .title-slide {
+            grid-column: 1 / -1;
+            grid-row: 1 / -1;
+        }
+        
+        .logo-position {
+            grid-column: 1 / 3;
+            grid-row: 1 / 2;
+        }
+        
+        .main-content {
+            grid-column: 3 / 11;
+            grid-row: 4 / 10;
+        }
+        
+        .qr-position {
+            grid-column: 5 / 9;
+            grid-row: 6 / 11;
+        }
+        
+        .metrics-grid {
+            grid-column: 2 / 12;
+            grid-row: 5 / 9;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 80px;
+        }
+        
+        .problem-grid {
+            grid-column: 3 / 11;
+            grid-row: 5 / 9;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            text-align: center;
+        }
+        
+        .features-grid {
+            grid-column: 2 / 12;
+            grid-row: 4 / 10;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 120px;
+        }
+        
+        .feature-word {
+            font-size: 32px;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .fade {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        /* Hover states */
+        .clickable {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Title -->
+    <div class="slide active">
+        <div class="grid">
+            <div class="logo-position">
+                <div class="logo">G</div>
+            </div>
+            <div class="main-content center">
+                <h1>Civil Society Grants</h1>
+                <div style="margin-top: 40px;">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjI4MCIgdmlld0JveD0iMCAwIDI4MCAyODAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHJlY3Qgd2lkdGg9IjI4MCIgaGVpZ2h0PSIyODAiIGZpbGw9IiNmZmZmZmYiLz4KICAKICA8IS0tIFF1aWV0IHpvbmUgLS0+CiAgPHJlY3QgeD0iMjAiIHk9IjIwIiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjI0MCIgZmlsbD0iI2ZmZmZmZiIvPgogIAogIDwhLS0gUVIgQ29kZSBtYXRyaXggLS0+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjAsIDIwKSI+CiAgICA8IS0tIFBvc2l0aW9uIGRldGVjdGlvbiBwYXR0ZXJucyAtLT4KICAgIDwhLS0gVG9wIGxlZnQgLS0+CiAgICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iNzAiIGhlaWdodD0iNzAiIGZpbGw9IiMwMDAwMDAiLz4KICAgIDxyZWN0IHg9IjEwIiB5PSIxMCIgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjZmZmZmZmIi8+CiAgICA8cmVjdCB4PSIyMCIgeT0iMjAiIHdpZHRoPSIzMCIgaGVpZ2h0PSIzMCIgZmlsbD0iIzAwMDAwMCIvPgogICAgCiAgICA8IS0tIFRvcCByaWdodCAtLT4KICAgIDxyZWN0IHg9IjE3MCIgeT0iMCIgd2lkdGg9IjcwIiBoZWlnaHQ9IjcwIiBmaWxsPSIjMDAwMDAwIi8+CiAgICA8cmVjdCB4PSIxODAiIHk9IjEwIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIGZpbGw9IiNmZmZmZmYiLz4KICAgIDxyZWN0IHg9IjE5MCIgeT0iMjAiIHdpZHRoPSIzMCIgaGVpZ2h0PSIzMCIgZmlsbD0iIzAwMDAwMCIvPgogICAgCiAgICA8IS0tIEJvdHRvbSBsZWZ0IC0tPgogICAgPHJlY3QgeD0iMCIgeT0iMTcwIiB3aWR0aD0iNzAiIGhlaWdodD0iNzAiIGZpbGw9IiMwMDAwMDAiLz4KICAgIDxyZWN0IHg9IjEwIiB5PSIxODAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iI2ZmZmZmZiIvPgogICAgPHJlY3QgeD0iMjAiIHk9IjE5MCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjMDAwMDAwIi8+CiAgICAKICAgIDwhLS0gVGltaW5nIHBhdHRlcm5zIC0tPgogICAgPGxpbmUgeDE9IjcwIiB5MT0iMzUiIHgyPSIxNzAiIHkyPSIzNSIgc3Ryb2tlPSIjMDAwMDAwIiBzdHJva2Utd2lkdGg9IjEwIiBzdHJva2UtZGFzaGFycmF5PSIxMCwxMCIvPgogICAgPGxpbmUgeDE9IjM1IiB5MT0iNzAiIHgyPSIzNSIgeTI9IjE3MCIgc3Ryb2tlPSIjMDAwMDAwIiBzdHJva2Utd2lkdGg9IjEwIiBzdHJva2UtZGFzaGFycmF5PSIxMCwxMCIvPgogICAgCiAgICA8IS0tIERhdGEgbWF0cml4IChzaW1wbGlmaWVkIHBhdHRlcm4pIC0tPgogICAgPGcgZmlsbD0iIzAwMDAwMCI+CiAgICAgIDwhLS0gU2ltcGxpZmllZCBRUiBkYXRhIHBhdHRlcm4gLS0+CiAgICAgIDxyZWN0IHg9IjgwIiB5PSI4MCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICAgIDxyZWN0IHg9IjEwMCIgeT0iODAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPgogICAgICA8cmVjdCB4PSIxMjAiIHk9IjgwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgICAgPHJlY3QgeD0iMTQwIiB5PSI4MCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICAgIDxyZWN0IHg9IjgwIiB5PSIxMDAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPgogICAgICA8cmVjdCB4PSIxMjAiIHk9IjEwMCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICAgIDxyZWN0IHg9IjE2MCIgeT0iMTAwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgICAgPHJlY3QgeD0iODAiIHk9IjEyMCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICAgIDxyZWN0IHg9IjEwMCIgeT0iMTIwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgICAgPHJlY3QgeD0iMTQwIiB5PSIxMjAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPgogICAgICA8cmVjdCB4PSI4MCIgeT0iMTQwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgICAgPHJlY3QgeD0iMTIwIiB5PSIxNDAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPgogICAgICA8cmVjdCB4PSIxNjAiIHk9IjE0MCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICAgIDxyZWN0IHg9IjkwIiB5PSI5MCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICAgIDxyZWN0IHg9IjExMCIgeT0iOTAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPgogICAgICA8cmVjdCB4PSIxMzAiIHk9IjkwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgICAgPHJlY3QgeD0iMTUwIiB5PSI5MCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICAgIDxyZWN0IHg9IjkwIiB5PSIxMTAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPgogICAgICA8cmVjdCB4PSIxMzAiIHk9IjExMCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICAgIDxyZWN0IHg9IjkwIiB5PSIxMzAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPgogICAgICA8cmVjdCB4PSIxMTAiIHk9IjEzMCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICAgIDxyZWN0IHg9IjE1MCIgeT0iMTMwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgIDwvZz4KICAgIAogICAgPCEtLSBBbGlnbm1lbnQgcGF0dGVybiAtLT4KICAgIDxyZWN0IHg9IjE2MCIgeT0iMTYwIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIGZpbGw9IiMwMDAwMDAiLz4KICAgIDxyZWN0IHg9IjE3MCIgeT0iMTcwIiB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIGZpbGw9IiNmZmZmZmYiLz4KICAgIDxyZWN0IHg9IjE4MCIgeT0iMTgwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIGZpbGw9IiMwMDAwMDAiLz4KICAKICA8IS0tIFRleHQgYXQgYm90dG9tIC0tPgogIDx0ZXh0IHg9IjIxMCIgeT0iMjMwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMwMDAwMDAiIGZvbnQtd2VpZ2h0PSI2MDAiPgogICAgVFFSQ0cKICA8L3RleHQ+CiAgPC9nPgo8L3N2Zz4=" alt="QR Code" class="qr-code">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Slide 2: Impact -->
+    <div class="slide">
+        <div class="grid">
+            <div class="main-content center">
+                <h2>Impact</h2>
+                <div class="metrics-grid" style="margin-top: 80px;">
+                    <div class="metric">
+                        <div class="number">€75M</div>
+                    </div>
+                    <div class="metric">
+                        <div class="number">136</div>
+                    </div>
+                    <div class="metric">
+                        <div class="number">10K</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Slide 3: Problem -->
+    <div class="slide">
+        <div class="grid">
+            <div class="main-content center">
+                <h2>Problem</h2>
+                <div class="problem-grid" style="margin-top: 80px;">
+                    <div class="metric">
+                        <div class="number">70%</div>
+                        <div class="small">miss funding</div>
+                    </div>
+                    <div class="metric">
+                        <div class="number">20h</div>
+                        <div class="small">per search</div>
+                    </div>
+                    <div class="metric">
+                        <div class="number">100+</div>
+                        <div class="small">sources</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Slide 4: Solution -->
+    <div class="slide">
+        <div class="grid">
+            <div class="main-content center">
+                <h2>Solution</h2>
+                <div class="process-dots" style="margin-top: 80px;">
+                    <div class="process-dot"></div>
+                    <div class="process-dot"></div>
+                    <div class="process-dot"></div>
+                    <div class="process-dot"></div>
+                    <div class="process-dot active"></div>
+                </div>
+                <div class="label" style="margin-top: 60px;">3 minutes to funding</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Slide 5: Features -->
+    <div class="slide">
+        <div class="grid">
+            <div class="features-grid center">
+                <div class="feature-word">Intelligent</div>
+                <div class="feature-word">Multilingual</div>
+                <div class="feature-word">Mobile</div>
+                <div class="feature-word">Fast</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Slide 6: Growth -->
+    <div class="slide">
+        <div class="grid">
+            <div class="main-content center">
+                <div class="number" style="color: #0066ff;">38.8%</div>
+                <div class="label">growth</div>
+                <div style="margin-top: 60px;">
+                    <div class="small">18 months to break-even</div>
+                    <div style="display: flex; gap: 8px; margin-top: 20px; justify-content: center;">
+                        <div style="width: 120px; height: 4px; background: #0066ff;"></div>
+                        <div style="width: 60px; height: 4px; background: #e0e0e0;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Slide 7: Contact -->
+    <div class="slide">
+        <div class="grid">
+            <div class="qr-position center">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjI4MCIgdmlld0JveD0iMCAwIDI4MCAyODAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHJlY3Qgd2lkdGg9IjI4MCIgaGVpZ2h0PSIyODAiIGZpbGw9IiNmZmZmZmYiLz4KICAKICA8IS0tIFF1aWV0IHpvbmUgLS0+CiAgPHJlY3QgeD0iMjAiIHk9IjIwIiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjI0MCIgZmlsbD0iI2ZmZmZmZiIvPgogIAogIDwhLS0gUVIgQ29kZSBtYXRyaXggLS0+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjAsIDIwKSI+CiAgICA8IS0tIFBvc2l0aW9uIGRldGVjdGlvbiBwYXR0ZXJucyAtLT4KICAgIDwhLS0gVG9wIGxlZnQgLS0+CiAgICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iNzAiIGhlaWdodD0iNzAiIGZpbGw9IiMwMDAwMDAiLz4KICAgIDxyZWN0IHg9IjEwIiB5PSIxMCIgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjZmZmZmZmIi8+CiAgICA8cmVjdCB4PSIyMCIgeT0iMjAiIHdpZHRoPSIzMCIgaGVpZ2h0PSIzMCIgZmlsbD0iIzAwMDAwMCIvPgogICAgCiAgICA8IS0tIFRvcCByaWdodCAtLT4KICAgIDxyZWN0IHg9IjE3MCIgeT0iMCIgd2lkdGg9IjcwIiBoZWlnaHQ9IjcwIiBmaWxsPSIjMDAwMDAwIi8+CiAgICA8cmVjdCB4PSIxODAiIHk9IjEwIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIGZpbGw9IiNmZmZmZmYiLz4KICAgIDxyZWN0IHg9IjE5MCIgeT0iMjAiIHdpZHRoPSIzMCIgaGVpZ2h0PSIzMCIgZmlsbD0iIzAwMDAwMCIvPgogICAgCiAgICA8IS0tIEJvdHRvbSBsZWZ0IC0tPgogICAgPHJlY3QgeD0iMCIgeT0iMTcwIiB3aWR0aD0iNzAiIGhlaWdodD0iNzAiIGZpbGw9IiMwMDAwMDAiLz4KICAgIDxyZWN0IHg9IjEwIiB5PSIxODAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iI2ZmZmZmZiIvPgogICAgPHJlY3QgeD0iMjAiIHk9IjE5MCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjMDAwMDAwIi8+CiAgICAKICAgIDwhLS0gVGltaW5nIHBhdHRlcm5zIC0tPgogICAgPGxpbmUgeDE9IjcwIiB5MT0iMzUiIHgyPSIxNzAiIHkyPSIzNSIgc3Ryb2tlPSIjMDAwMDAwIiBzdHJva2Utd2lkdGg9IjEwIiBzdHJva2UtZGFzaGFycmF5PSIxMCwxMCIvPgogICAgPGxpbmUgeDE9IjM1IiB5MT0iNzAiIHgyPSIzNSIgeTI9IjE3MCIgc3Ryb2tlPSIjMDAwMDAwIiBzdHJva2Utd2lkdGg9IjEwIiBzdHJva2UtZGFzaGFycmF5PSIxMCwxMCIvPgogICAgCiAgICA8IS0tIERhdGEgbWF0cml4IChzaW1wbGlmaWVkIHBhdHRlcm4pIC0tPgogICAgPGcgZmlsbD0iIzAwMDAwMCI+CiAgICAgIDwhLS0gU2ltcGxpZmllZCBRUiBkYXRhIHBhdHRlcm4gLS0+CiAgICAgIDxyZWN0IHg9IjgwIiB5PSI4MCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICAgIDxyZWN0IHg9IjEwMCIgeT0iODAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPgogICAgICA8cmVjdCB4PSIxMjAiIHk9IjgwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgICAgPHJlY3QgeD0iMTQwIiB5PSI4MCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICAgIDxyZWN0IHg9IjgwIiB5PSIxMDAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPgogICAgICA8cmVjdCB4PSIxMjAiIHk9IjEwMCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICAgIDxyZWN0IHg9IjE2MCIgeT0iMTAwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgICAgPHJlY3QgeD0iODAiIHk9IjEyMCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICAgIDxyZWN0IHg9IjEwMCIgeT0iMTIwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgICAgPHJlY3QgeD0iMTQwIiB5PSIxMjAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPgogICAgICA8cmVjdCB4PSI4MCIgeT0iMTQwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgICAgPHJlY3QgeD0iMTIwIiB5PSIxNDAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPgogICAgICA8cmVjdCB4PSIxNjAiIHk9IjE0MCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICAgIDxyZWN0IHg9IjkwIiB5PSI5MCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICAgIDxyZWN0IHg9IjExMCIgeT0iOTAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPgogICAgICA8cmVjdCB4PSIxMzAiIHk9IjkwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgICAgPHJlY3QgeD0iMTUwIiB5PSI5MCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICAgIDxyZWN0IHg9IjkwIiB5PSIxMTAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPgogICAgICA8cmVjdCB4PSIxMzAiIHk9IjExMCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICAgIDxyZWN0IHg9IjkwIiB5PSIxMzAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPgogICAgICA8cmVjdCB4PSIxMTAiIHk9IjEzMCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIi8+CiAgICAgIDxyZWN0IHg9IjE1MCIgeT0iMTMwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiLz4KICAgIDwvZz4KICAgIAogICAgPCEtLSBBbGlnbm1lbnQgcGF0dGVybiAtLT4KICAgIDxyZWN0IHg9IjE2MCIgeT0iMTYwIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIGZpbGw9IiMwMDAwMDAiLz4KICAgIDxyZWN0IHg9IjE3MCIgeT0iMTcwIiB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIGZpbGw9IiNmZmZmZmYiLz4KICAgIDxyZWN0IHg9IjE4MCIgeT0iMTgwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIGZpbGw9IiMwMDAwMDAiLz4KICAKICA8IS0tIFRleHQgYXQgYm90dG9tIC0tPgogIDx0ZXh0IHg9IjIxMCIgeT0iMjMwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMwMDAwMDAiIGZvbnQtd2VpZ2h0PSI2MDAiPgogICAgVFFSQ0cKICA8L3RleHQ+CiAgPC9nPgo8L3N2Zz4=" alt="QR Code" class="qr-code">
+            </div>
+        </div>
+    </div>
+    
+    <!-- Slide indicators -->
+    <div class="slide-indicator">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+    
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const totalSlides = slides.length;
+        
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+            
+            // Add fade animation
+            slides[currentSlide].classList.add('fade');
+            setTimeout(() => {
+                slides[currentSlide].classList.remove('fade');
+            }, 600);
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                showSlide(currentSlide + 1);
+            } else if (e.key === 'ArrowLeft') {
+                showSlide(currentSlide - 1);
+            } else if (e.key === 'Escape') {
+                showSlide(0);
+            }
+        });
+        
+        // Click navigation
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.qr-code')) {
+                showSlide(currentSlide + 1);
+            }
+        });
+        
+        // Touch navigation
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+        });
+        
+        document.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].clientX;
+            if (touchStartX - touchEndX > 50) {
+                showSlide(currentSlide + 1);
+            } else if (touchEndX - touchStartX > 50) {
+                showSlide(currentSlide - 1);
+            }
+        });
+    </script>
+</body>
+</html>

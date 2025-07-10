@@ -1,0 +1,76 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#000000"/>
+  
+  <!-- Title -->
+  <text x="600" y="60" font-family="Arial, sans-serif" font-size="42" font-weight="bold" text-anchor="middle" fill="#ffffff">
+    GrantsUA Impact Metrics
+  </text>
+  
+  <!-- Funding Circle -->
+  <g transform="translate(300, 200)">
+    <circle cx="0" cy="0" r="120" fill="none" stroke="#4CAF50" stroke-width="8"/>
+    <circle cx="0" cy="0" r="120" fill="none" stroke="#4CAF50" stroke-width="8" stroke-dasharray="377 377" stroke-dashoffset="94" opacity="0.3"/>
+    <text x="0" y="-10" font-family="Arial, sans-serif" font-size="48" font-weight="bold" text-anchor="middle" fill="#4CAF50">€75M+</text>
+    <text x="0" y="20" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#999999">Total Funding</text>
+    <text x="0" y="40" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#999999">Available</text>
+  </g>
+  
+  <!-- Grants Count -->
+  <g transform="translate(600, 200)">
+    <rect x="-100" y="-100" width="200" height="200" rx="20" fill="none" stroke="#4CAF50" stroke-width="8"/>
+    <text x="0" y="-10" font-family="Arial, sans-serif" font-size="72" font-weight="bold" text-anchor="middle" fill="#4CAF50">107</text>
+    <text x="0" y="20" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#999999">Active Grants</text>
+    <text x="0" y="40" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#999999">Verified</text>
+  </g>
+  
+  <!-- Organizations -->
+  <g transform="translate(900, 200)">
+    <polygon points="0,-120 104,-60 104,60 0,120 -104,60 -104,-60" fill="none" stroke="#4CAF50" stroke-width="8"/>
+    <text x="0" y="-10" font-family="Arial, sans-serif" font-size="60" font-weight="bold" text-anchor="middle" fill="#4CAF50">50+</text>
+    <text x="0" y="20" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#999999">Partner</text>
+    <text x="0" y="40" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#999999">Organizations</text>
+  </g>
+  
+  <!-- Growth Chart -->
+  <g transform="translate(150, 450)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#ffffff">User Growth</text>
+    <polyline points="0,100 60,90 120,70 180,40 240,10 300,-30" fill="none" stroke="#4CAF50" stroke-width="4"/>
+    <circle cx="0" cy="100" r="6" fill="#4CAF50"/>
+    <circle cx="60" cy="90" r="6" fill="#4CAF50"/>
+    <circle cx="120" cy="70" r="6" fill="#4CAF50"/>
+    <circle cx="180" cy="40" r="6" fill="#4CAF50"/>
+    <circle cx="240" cy="10" r="6" fill="#4CAF50"/>
+    <circle cx="300" cy="-30" r="6" fill="#4CAF50"/>
+    <text x="300" y="-50" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#4CAF50">+500%</text>
+    <line x1="0" y1="120" x2="300" y2="120" stroke="#333333" stroke-width="2"/>
+    <line x1="0" y1="120" x2="0" y2="-50" stroke="#333333" stroke-width="2"/>
+  </g>
+  
+  <!-- Language Distribution -->
+  <g transform="translate(600, 500)">
+    <text x="0" y="-30" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">Language Support</text>
+    <rect x="-80" y="0" width="80" height="120" fill="#4CAF50" opacity="0.8"/>
+    <rect x="0" y="0" width="80" height="120" fill="#4CAF50" opacity="0.6"/>
+    <text x="-40" y="140" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#999999">English</text>
+    <text x="40" y="140" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#999999">Ukrainian</text>
+    <text x="0" y="-50" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#4CAF50">100% Bilingual</text>
+  </g>
+  
+  <!-- AI Usage Stats -->
+  <g transform="translate(900, 500)">
+    <text x="0" y="-30" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">AI Assistant Usage</text>
+    <circle cx="0" cy="40" r="80" fill="none" stroke="#333333" stroke-width="4"/>
+    <circle cx="0" cy="40" r="80" fill="none" stroke="#4CAF50" stroke-width="8" stroke-dasharray="301.6 502.7" stroke-dashoffset="-125.7" stroke-linecap="round"/>
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="28" font-weight="bold" text-anchor="middle" fill="#4CAF50">60%</text>
+    <text x="0" y="150" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#999999">Users Engage with AI</text>
+  </g>
+  
+  <!-- Footer Stats -->
+  <g transform="translate(600, 720)">
+    <rect x="-500" y="-30" width="1000" height="60" rx="30" fill="#111111"/>
+    <text x="-300" y="5" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#666666">15+ New Grants/Week</text>
+    <text x="0" y="5" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#666666">98% User Satisfaction</text>
+    <text x="300" y="5" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#666666">3-Click Discovery</text>
+  </g>
+</svg>
