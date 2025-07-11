@@ -56,14 +56,14 @@ const Header = () => {
               <img
                 src="/images/ukraine-grants-logo.png"
                 alt="Ukrainian Civil Society Grants Database"
-                className="h-12 w-auto"
-                style={{ maxWidth: '280px' }}
+                className="h-10 w-auto"
+                style={{ maxWidth: '240px' }}
               />
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1" role="navigation" aria-label={t('mainNavigation', 'Main navigation')}>
+          <nav className="hidden md:flex items-center space-x-4" role="navigation" aria-label={t('mainNavigation', 'Main navigation')}>
             {[
               { path: '/', label: t('navigation.home') },
               { path: '/grants', label: t('navigation.grants') },
