@@ -1,0 +1,50 @@
+<svg width="600" height="200" viewBox="0 0 600 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Globe background with handshake and trident -->
+  <g id="logo-emblem">
+    <!-- Blue circle -->
+    <circle cx="100" cy="100" r="80" fill="#0057B7"/>
+    
+    <!-- Globe lines -->
+    <g opacity="0.3">
+      <!-- Meridians -->
+      <path d="M100 20 Q140 100 100 180" stroke="white" stroke-width="1" fill="none"/>
+      <path d="M100 20 Q60 100 100 180" stroke="white" stroke-width="1" fill="none"/>
+      <!-- Parallels -->
+      <ellipse cx="100" cy="100" rx="70" ry="25" stroke="white" stroke-width="1" fill="none"/>
+      <ellipse cx="100" cy="100" rx="50" ry="18" stroke="white" stroke-width="1" fill="none" transform="translate(0,-40)"/>
+      <ellipse cx="100" cy="100" rx="50" ry="18" stroke="white" stroke-width="1" fill="none" transform="translate(0,40)"/>
+    </g>
+    
+    <!-- Ukrainian Trident -->
+    <g transform="translate(100, 50)">
+      <path d="M0,-15 L-8,-10 L-8,-5 L-3,-5 L-3,0 L-8,0 L-8,5 L-3,10 L0,15 L3,10 L8,5 L8,0 L3,0 L3,-5 L8,-5 L8,-10 L0,-15 Z" fill="white" stroke="white" stroke-width="1"/>
+      <path d="M0,-15 L0,15" stroke="white" stroke-width="2"/>
+    </g>
+    
+    <!-- Handshake -->
+    <g transform="translate(100, 100)">
+      <!-- Left hand -->
+      <path d="M-30,0 C-30,-5 -25,-10 -20,-10 L-10,-10 C-5,-10 0,-5 0,0" stroke="white" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <!-- Right hand -->
+      <path d="M30,0 C30,-5 25,-10 20,-10 L10,-10 C5,-10 0,-5 0,0" stroke="white" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <!-- Clasped hands -->
+      <circle cx="0" cy="0" r="8" fill="white"/>
+    </g>
+    
+    <!-- Ukraine map outline (simplified) -->
+    <g transform="translate(100, 100)" opacity="0.2">
+      <path d="M-40,-20 L-30,-25 L-10,-20 L10,-25 L30,-20 L40,-10 L35,0 L30,10 L10,15 L-10,20 L-30,15 L-40,5 L-40,-20 Z" fill="white"/>
+    </g>
+  </g>
+  
+  <!-- Yellow base/platform -->
+  <rect x="60" y="160" width="80" height="20" rx="10" fill="#FFD700"/>
+  
+  <!-- Text -->
+  <g id="logo-text" font-family="Arial, sans-serif">
+    <text x="200" y="70" font-size="48" font-weight="bold" fill="#0057B7">Ukrainian</text>
+    <text x="200" y="110" font-size="48" font-weight="bold" fill="#0057B7">Civil Society</text>
+    <text x="200" y="150" font-size="48" font-weight="bold" fill="#0057B7">Grants</text>
+    <text x="200" y="190" font-size="48" font-weight="bold" fill="#0057B7">Database</text>
+  </g>
+</svg>

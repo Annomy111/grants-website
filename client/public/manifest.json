@@ -1,6 +1,6 @@
 {
-  "short_name": "Grants Database",
-  "name": "Civil Society Grants Database",
+  "short_name": "UA Grants",
+  "name": "Ukrainian Civil Society Grants Database",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#1e40af",
+  "theme_color": "#0057B7",
   "background_color": "#ffffff"
 }

@@ -53,16 +53,11 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center">
             <Link to="/" className="flex items-center" aria-label={t('homePageLink', 'Go to homepage')}>
-              <div
-                className={`mr-3 w-10 h-10 flex items-center justify-center rounded-full ${darkMode ? 'bg-blue-700' : 'bg-blue-600'} text-white font-bold text-xl transition-colors duration-300`}
-              >
-                G
-              </div>
-              <span
-                className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-800'} hidden md:block transition-colors duration-300`}
-              >
-                {t('appName')}
-              </span>
+              <img
+                src="/images/ukraine-civil-society-logo.svg"
+                alt="Ukrainian Civil Society Grants Database"
+                className="h-12 w-auto mr-3"
+              />
             </Link>
           </div>
 

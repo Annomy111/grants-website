@@ -17,11 +17,11 @@ const Footer = () => {
           {/* Logo and info */}
           <div className="col-span-1 md:col-span-1">
             <div className="flex items-center mb-4">
-              <div
-                className={`mr-3 w-10 h-10 flex items-center justify-center rounded-full ${darkMode ? 'bg-blue-700' : 'bg-blue-600'} text-white font-bold text-xl`}
-              >
-                FHK
-              </div>
+              <img
+                src="/images/ukraine-civil-society-icon.svg"
+                alt="Ukrainian Civil Society Grants Database"
+                className="h-10 w-10 mr-3"
+              />
               <span className={`font-bold text-lg ${darkMode ? 'text-white' : 'text-gray-800'}`}>
                 {t('appName')}
               </span>
