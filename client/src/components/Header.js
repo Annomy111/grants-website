@@ -54,9 +54,10 @@ const Header = () => {
           <div className="flex items-center">
             <Link to="/" className="flex items-center" aria-label={t('homePageLink', 'Go to homepage')}>
               <img
-                src="/images/ukraine-civil-society-logo.svg"
+                src="/images/ukraine-grants-logo.png"
                 alt="Ukrainian Civil Society Grants Database"
-                className="h-12 w-auto mr-3"
+                className="h-12 w-auto"
+                style={{ maxWidth: '280px' }}
               />
             </Link>
           </div>

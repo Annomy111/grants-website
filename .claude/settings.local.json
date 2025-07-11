@@ -39,7 +39,9 @@
       "Bash(git restore:*)",
       "Bash(brew install:*)",
       "Bash(supabase login:*)",
-      "Bash(cp:*)"
+      "Bash(cp:*)",
+      "Bash(cd:*)",
+      "Bash(mv:*)"
     ]
   },
   "enableAllProjectMcpServers": true,

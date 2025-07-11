@@ -18,13 +18,11 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-1">
             <div className="flex items-center mb-4">
               <img
-                src="/images/ukraine-civil-society-icon.svg"
+                src="/images/ukraine-grants-logo.png"
                 alt="Ukrainian Civil Society Grants Database"
-                className="h-10 w-10 mr-3"
+                className="h-12 w-auto"
+                style={{ maxWidth: '200px' }}
               />
-              <span className={`font-bold text-lg ${darkMode ? 'text-white' : 'text-gray-800'}`}>
-                {t('appName')}
-              </span>
             </div>
             <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'} mb-4 max-w-xs`}>
               Helping civil society organizations find funding opportunities in Ukraine and
