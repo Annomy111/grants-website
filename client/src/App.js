@@ -43,6 +43,9 @@ const AdminAnalytics = lazy(() => import('./pages/AdminAnalytics'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 
+// Lazy load Wizard Component
+const GrantMatchingWizard = lazy(() => import('./components/GrantMatchingWizard'));
+
 // Debug environment on load
 debugEnv();
 
@@ -137,6 +140,21 @@ function App() {
                     <main id="main-content" className="flex-grow container mx-auto px-4 py-8 transition-all duration-300 ease-in-out" role="main">
                       <Suspense fallback={<PageLoader />}>
                         <GrantDetail />
+                      </Suspense>
+                    </main>
+                    <Footer />
+                    <GrantsChatWidget />
+                  </div>
+                }
+              />
+              <Route
+                path="/grants/wizard"
+                element={
+                  <div className="App min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+                    <Header />
+                    <main id="main-content" className="flex-grow container mx-auto px-4 py-8 transition-all duration-300 ease-in-out" role="main">
+                      <Suspense fallback={<PageLoader />}>
+                        <GrantMatchingWizard />
                       </Suspense>
                     </main>
                     <Footer />

@@ -36,6 +36,6 @@
     "eslint": "^8.57.1",
     "eslint-config-react-app": "^7.0.1",
     "prettier": "^3.5.3",
-    "puppeteer": "^24.10.0"
+    "puppeteer": "^24.12.1"
   }
 }

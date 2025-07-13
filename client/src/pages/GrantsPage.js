@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import i18n from 'i18next';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import { format } from 'date-fns';
 import { ThemeContext } from '../context/ThemeContext';
@@ -472,6 +472,42 @@ const GrantsPage = () => {
 
       {/* Simplified Filter Bar */}
       <div className="max-w-7xl mx-auto mb-12">
+        {/* Wizard CTA Banner */}
+        <div className={`rounded-2xl p-6 mb-6 ${darkMode ? 'bg-gradient-to-r from-yellow-900/30 to-orange-900/30 border border-yellow-700/50' : 'bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-200'}`}>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              <h2 className={`text-xl font-semibold mb-2 ${darkMode ? 'text-yellow-300' : 'text-yellow-900'}`}>
+                {t('wizard.ctaTitle', 'Need help finding the right grant?')}
+              </h2>
+              <p className={`text-sm ${darkMode ? 'text-yellow-400/80' : 'text-yellow-700'}`}>
+                {t('wizard.ctaDescription', 'Use our AI-powered wizard to get personalized grant recommendations')}
+              </p>
+            </div>
+            <Link
+              to="/grants/wizard"
+              className={`inline-flex items-center px-6 py-3 rounded-xl font-medium transition-all duration-200 ${
+                darkMode
+                  ? 'bg-yellow-600 hover:bg-yellow-700 text-white'
+                  : 'bg-yellow-500 hover:bg-yellow-600 text-white'
+              }`}
+            >
+              {t('wizard.ctaButton', 'Start Matching Wizard')}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 ml-2"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </Link>
+          </div>
+        </div>
+
         <div
           className={`rounded-2xl shadow-sm p-6 ${darkMode ? 'bg-gray-800/50 backdrop-blur border border-gray-700/50' : 'bg-white/80 backdrop-blur border border-gray-200/50'} transition-all duration-300`}
         >

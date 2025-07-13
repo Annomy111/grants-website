@@ -388,29 +388,53 @@ const HomePage = () => {
             </div>
           )}
 
-          <div className="text-center mt-12">
-            <Link
-              to="/grants"
-              className={`inline-flex items-center px-6 py-3 text-base font-medium rounded-xl ${
-                darkMode
-                  ? 'bg-gray-800 text-gray-200 hover:bg-gray-700'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              } transition-colors duration-200`}
-            >
-              View all grants
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 ml-2"
-                viewBox="0 0 20 20"
-                fill="currentColor"
+          <div className="text-center mt-12 space-y-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/grants"
+                className={`inline-flex items-center px-6 py-3 text-base font-medium rounded-xl ${
+                  darkMode
+                    ? 'bg-gray-800 text-gray-200 hover:bg-gray-700'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                } transition-colors duration-200`}
               >
-                <path
-                  fillRule="evenodd"
-                  d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </Link>
+                View all grants
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 ml-2"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </Link>
+              <Link
+                to="/grants/wizard"
+                className={`inline-flex items-center px-6 py-3 text-base font-medium rounded-xl ${
+                  darkMode
+                    ? 'bg-yellow-600 text-white hover:bg-yellow-700'
+                    : 'bg-yellow-500 text-white hover:bg-yellow-600'
+                } transition-colors duration-200`}
+              >
+                {t('wizard.title', 'Grant Matching Wizard')}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 ml-2"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
