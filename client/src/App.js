@@ -1,6 +1,7 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 // Import Components
 import Header from './components/Header';
@@ -75,6 +76,16 @@ const PageLoader = () => (
   </div>
 );
 
+// Create QueryClient instance
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: 1,
+    },
+  },
+});
+
 function App() {
   const { i18n } = useTranslation();
   const [language, setLanguage] = useState(i18n.language);
@@ -94,13 +105,14 @@ function App() {
   };
 
   return (
-    <AuthProvider>
-      <ThemeProvider>
-        <LanguageContext.Provider value={{ language, changeLanguage }}>
-          {loading ? (
-            <LoadingAnimation />
-          ) : (
-            <Routes>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <ThemeProvider>
+          <LanguageContext.Provider value={{ language, changeLanguage }}>
+            {loading ? (
+              <LoadingAnimation />
+            ) : (
+              <Routes>
               {/* Public routes with header/footer */}
               <Route
                 path="/"
@@ -266,6 +278,7 @@ function App() {
         </LanguageContext.Provider>
       </ThemeProvider>
     </AuthProvider>
+    </QueryClientProvider>
   );
 }
 

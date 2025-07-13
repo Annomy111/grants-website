@@ -34,7 +34,6 @@
       "Bash(open:*)",
       "Bash(timeout:*)",
       "Bash(gtimeout:*)",
-      "Bash(gtimeout:*)",
       "Bash(mkdir:*)",
       "Bash(git restore:*)",
       "Bash(brew install:*)",
@@ -42,8 +41,7 @@
       "Bash(cp:*)",
       "Bash(cd:*)",
       "Bash(mv:*)",
-      "Bash(cd:*)",
-      "Bash(cd:*)"
+      "Bash(ls:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
