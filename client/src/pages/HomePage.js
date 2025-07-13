@@ -260,6 +260,35 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* Grant Matching Wizard CTA Section */}
+      <section className={`py-16 ${darkMode ? 'bg-gradient-to-br from-blue-900/20 to-yellow-900/20' : 'bg-gradient-to-br from-blue-50 to-yellow-50'}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+              {t('home.wizard.title', 'Find Your Perfect Grant Match')}
+            </h2>
+            <p className={`text-xl mb-8 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+              {t('home.wizard.subtitle', 'Get AI-powered grant recommendations tailored to your Ukrainian civil society organization')}
+            </p>
+            <Link
+              to="/grants/wizard"
+              className={`inline-flex items-center px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105 ${
+                darkMode 
+                  ? 'bg-gradient-to-r from-blue-500 to-yellow-500 text-white hover:from-blue-600 hover:to-yellow-600' 
+                  : 'bg-gradient-to-r from-blue-600 to-yellow-500 text-white hover:from-blue-700 hover:to-yellow-600'
+              } shadow-xl hover:shadow-2xl`}
+            >
+              <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+              </svg>
+              {t('home.wizard.button', 'Start Grant Matching Wizard')}
+            </Link>
+            <p className={`mt-4 text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+              {t('home.wizard.time', 'Takes only 2 minutes • Get instant recommendations')}
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Featured Grants - Minimal cards */}
       <section className="py-20" aria-label="Featured grant opportunities">

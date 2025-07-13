@@ -41,7 +41,8 @@
       "Bash(cp:*)",
       "Bash(cd:*)",
       "Bash(mv:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(npm run test:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
